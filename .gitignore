@@ -1,1 +1,5 @@
 ri20min.rb
+.env
+./lib/newsman/.env
+*.gem
+.idea/*
