@@ -13,7 +13,6 @@ def generate
   # Reporter Info
   reporter = "Vladimir Zakharov"
   reporter_position = "R&D Software Developer"
-  report_date = Time.now.strftime("%d/%m/%Y")
   # GitHub 
   username = 'volodya-lombrozo'
   # Your GitHub personal access token
@@ -21,26 +20,16 @@ def generate
   github_token = ENV['GITHUB_TOKEN']
   # Your OpenAI personal access token
   openai_token = ENV['OPENAI_TOKEN']
-
   # Create a GitHub client instance with your access token
   client = Octokit::Client.new(github_token: github_token)
-
-
-
-  # Get the current date
-  today = Time.now
-
   # Calculate the date one week ago
-  one_week_ago = today - (7 * 24 * 60 * 60)
-
-  # Format dates for GitHub API query
-  today_str = today.strftime('%Y-%m-%d')
-  one_week_ago_str = one_week_ago.strftime('%Y-%m-%d')
-
-  # Display pull requests
-  puts "Pull requests for #{username} created in the last week:"
+  one_week_ago = date_one_week_ago(Date.today)
+  # Display pull request
+  query = "is:pr author:#{username} created:>=#{one_week_ago} repo:objectionary/jeo-maven-plugin repo:objectionary/opeo-maven-plugin"
+  puts "Searching pull requests for #{username}."
+  puts "Newsman uses the following request to GitHub to gather the required information about user activity: '#{query}'"
   prs = []
-  pull_requests = client.search_issues('is:pr author:volodya-lombrozo created:>=2024-02-19 repo:objectionary/jeo-maven-plugin repo:objectionary/opeo-maven-plugin')
+  pull_requests = client.search_issues(query)
   pull_requests.items.each do |pr|
     title = "#{pr.title}"
     description = "#{pr.body}"
@@ -50,11 +39,8 @@ def generate
     pr = PullRequest.new(repository, title, description)
     prs << pr
   end
-
   puts "\nNow lets test some aggregation using OpenAI\n\n"
-
   openai_client = OpenAI::Client.new(github_token: openai_token)
-
   example = "Last week achievements.
   jeo-meven-plugin:
   - Added 100 new files to the Dataset [#168]
