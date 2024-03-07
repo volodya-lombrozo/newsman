@@ -12,6 +12,7 @@ GEM
       multipart-post (~> 2)
     faraday-net_http (3.1.0)
       net-http
+    minitest (5.22.2)
     multipart-post (2.4.0)
     net-http (0.4.1)
       uri
@@ -35,6 +36,7 @@ PLATFORMS
 
 DEPENDENCIES
   dotenv
+  minitest
   octokit (~> 8.0)
   ruby-openai
 

@@ -6,80 +6,71 @@ require 'dotenv'
 require_relative 'pull_request.rb'
 
 def generate
-
+  # Load all required environment variables
   Dotenv.load
   Dotenv.require_keys("GITHUB_TOKEN", "OPENAI_TOKEN")
+  # Init all required parameters
+  # Reporter Info
+  reporter = "Vladimir Zakharov"
+  reporter_position = "R&D Software Developer"
+  report_date = Time.now.strftime("%d/%m/%Y")
+  # GitHub 
+  username = 'volodya-lombrozo'
+  # Your GitHub personal access token
+  # Make sure it has the 'repo' scope
+  github_token = ENV['GITHUB_TOKEN']
+  # Your OpenAI personal access token
+  openai_token = ENV['OPENAI_TOKEN']
+
+  # Create a GitHub client instance with your access token
+  client = Octokit::Client.new(github_token: github_token)
 
 
-# Reporter Info
-reporter = "Vladimir Zakharov"
-reporter_position = "R&D Software Developer"
-report_date = Time.now.strftime("%d/%m/%Y")
 
+  # Get the current date
+  today = Time.now
 
-# Your GitHub username
-username = 'volodya-lombrozo'
+  # Calculate the date one week ago
+  one_week_ago = today - (7 * 24 * 60 * 60)
 
-# Your GitHub personal access token
-# Make sure it has the 'repo' scope
-github_token = ENV['GITHUB_TOKEN']
+  # Format dates for GitHub API query
+  today_str = today.strftime('%Y-%m-%d')
+  one_week_ago_str = one_week_ago.strftime('%Y-%m-%d')
 
-# Your OpenAI personal access token
-openai_token = ENV['OPENAI_TOKEN']
+  # Display pull requests
+  puts "Pull requests for #{username} created in the last week:"
+  prs = []
+  pull_requests = client.search_issues('is:pr author:volodya-lombrozo created:>=2024-02-19 repo:objectionary/jeo-maven-plugin repo:objectionary/opeo-maven-plugin')
+  pull_requests.items.each do |pr|
+    title = "#{pr.title}"
+    description = "#{pr.body}"
+    repository = pr.repository_url.split('/').last
+    puts "Found PR in #{repository}: #{title}"
+    # Create a new PullRequest object and add it to the list
+    pr = PullRequest.new(repository, title, description)
+    prs << pr
+  end
 
-# Create a client instance with your access token
-client = Octokit::Client.new(github_token: github_token)
+  puts "\nNow lets test some aggregation using OpenAI\n\n"
 
-# Get the current date
-today = Time.now
+  openai_client = OpenAI::Client.new(github_token: openai_token)
 
-# Calculate the date one week ago
-one_week_ago = today - (7 * 24 * 60 * 60)
+  example = "Last week achievements.
+  jeo-meven-plugin:
+  - Added 100 new files to the Dataset [#168]
+  - Fixed the deployment of XYZ [#169]
+  - Refined the requirements [#177]
+  opeo-maven-plugin
+  - Removed XYZ class [#57]
+  - Refactored http module [#69]
 
-# Format dates for GitHub API query
-today_str = today.strftime('%Y-%m-%d')
-one_week_ago_str = one_week_ago.strftime('%Y-%m-%d')
+  Next week plans:
+  jeo-maven-plugin:
+  - <leave empty>
+  opeo-maven-plugin:
+  - <leave empty>
 
-# Retrieve pull requests for the specified user within the last week
-#pull_requests = client.search_issues('is:pr author:volodya-lombrozo created:>=2024-02-19 repo:objectionary/jeo-maven-plugin')
-#pull_requests = client.pull_requests('objectionary/jeo-maven-plugin', state: 'closed', direction: 'desc', since: one_week_ago_str, head: 'volodya-lombrozo:*')
-#pull_requests = client.pull_requests('objectionary/jeo-maven-plugin', state: 'all', sort: 'created', direction: 'desc')
-# Display pull requests
-puts "Pull requests for #{username} created in the last week:"
-
-prs = []
-
-pull_requests = client.search_issues('is:pr author:volodya-lombrozo created:>=2024-02-19 repo:objectionary/jeo-maven-plugin repo:objectionary/opeo-maven-plugin')
-pull_requests.items.each do |pr|
-  title = "#{pr.title}"
-  description = "#{pr.body}"
-  repository = pr.repository_url.split('/').last
-  puts "Found PR in #{repository}: #{title}"
-  # Create a new PullRequest object and add it to the list
-  pr = PullRequest.new(repository, title, description)
-  prs << pr
-end
-
-puts "\nNow lets test some aggregation using OpenAI\n\n"
-
-openai_client = OpenAI::Client.new(github_token: openai_token)
-
-example = "Last week achievements.
-jeo-meven-plugin:
-- Added 100 new files to the Dataset [#168]
-- Fixed the deployment of XYZ [#169]
-- Refined the requirements [#177]
-opeo-maven-plugin
-- Removed XYZ class [#57]
-- Refactored http module [#69]
-
-Next week plans:
-jeo-maven-plugin:
-- <leave empty>
-opeo-maven-plugin:
-- <leave empty>
-
-Risks:
+  Risks:
 jeo-maven-plugin:
 - <leave-empty>
 opeo-maven-plugin:
@@ -103,7 +94,20 @@ response = openai_client.chat(
 puts response.dig("choices", 0, "message", "content")
 end
 
-# Execute the function only if this script is run directly
+
+def date_one_week_ago(today)
+  # Convert today to a Date object if it's not already
+  today = Date.parse(today) unless today.is_a?(Date)
+  # Subtract 7 days to get the date one week ago
+  one_week_ago = today - 7
+  # Format the date as "YYYY-MM-DD"
+  formatted_date = one_week_ago.strftime("%Y-%m-%d")
+  # Return the formatted date
+  return formatted_date
+end
+
+
+# Execute the function only if this script is run directly like `./newsman.rb`
 if __FILE__ == $0
   generate()
 end
