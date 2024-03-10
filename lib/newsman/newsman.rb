@@ -1,22 +1,42 @@
 #!/usr/bin/env ruby
 
 require 'octokit'
-require "openai"
+require 'openai'
 require 'dotenv'
+require 'optparse'
 require_relative 'pull_request.rb'
 
 def generate
   # Load all required environment variables
-  Dotenv.load
-  Dotenv.require_keys("GITHUB_TOKEN", "OPENAI_TOKEN")
+#  Dotenv.load
+#  Dotenv.require_keys("GITHUB_TOKEN", "OPENAI_TOKEN")
+  # Load all options required
+  # Pay attention that some of them have default values.
+  options = {}
+  OptionParser.new do |opts|
+    opts.banner = "Usage: newsman [options]"
+    opts.on("-n", "--require NAME", "Reporter name. Human readable name that will be used in a report") do |n|
+      options[:name] = n 
+    end
+    opts.on("-p", "--position", "Reporter position in a company. Default value is a 'Software Developer'.") do |p|
+      options[:position] = p
+    end
+  end.parse!
+  options[:name] ||= "Vladimir Zakharov"
+  options[:position] ||= "Software Developer"
+
+  all_params = options.map { |key, value| "#{key}: #{value}" }.join(", ")
+  puts "Parsed parameters: #{all_params}"
+
+  exit
   # Init all required parameters
   # Reporter Info
-  reporter = "Vladimir Zakharov"
-  reporter_position = "R&D Software Developer"
+  reporter = options[:name]
+  reporter_position = options[:position]
   # GitHub 
   username = 'volodya-lombrozo'
   # Your GitHub personal access token
-  # Make sure it has the 'repo' scope
+  # Make sure it has the 'repo' 
   github_token = ENV['GITHUB_TOKEN']
   # Your OpenAI personal access token
   openai_token = ENV['OPENAI_TOKEN']
