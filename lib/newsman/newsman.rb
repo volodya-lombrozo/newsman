@@ -15,16 +15,25 @@ def generate
   options = {}
   OptionParser.new do |opts|
     opts.banner = "Usage: newsman [options]"
-    opts.on("-n", "--require NAME", "Reporter name. Human readable name that will be used in a report") do |n|
+    opts.on("-n", "--name NAME", "Reporter name. Human readable name that will be used in a report") do |n|
       options[:name] = n 
+    end
+    opts.on("-u", "--username USERNAME", "GitHub username. For example, 'volodya-lombrozo'") do |u|
+      options[:username] = u
     end
     opts.on("-p", "--position", "Reporter position in a company. Default value is a 'Software Developer'.") do |p|
       options[:position] = p
     end
   end.parse!
-  options[:name] ||= "Vladimir Zakharov"
-  options[:position] ||= "Software Developer"
+  # Custom method to raise exception with a human-readable message
+  def options.require_option(key, message)
+    raise OptionParser::MissingArgument, message if self[key].nil?
+  end
 
+  # Check for required options
+  options.require_option(:name, "Reporter name is required. Please specify using -n or --name.")
+  options.require_option(:username, "GitHub username is required. Please specify using -u or --username.")
+  options[:position] ||= "Software Developer"
   all_params = options.map { |key, value| "#{key}: #{value}" }.join(", ")
   puts "Parsed parameters: #{all_params}"
 
@@ -34,7 +43,7 @@ def generate
   reporter = options[:name]
   reporter_position = options[:position]
   # GitHub 
-  username = 'volodya-lombrozo'
+  github_username = options[:username]
   # Your GitHub personal access token
   # Make sure it has the 'repo' 
   github_token = ENV['GITHUB_TOKEN']
@@ -45,8 +54,8 @@ def generate
   # Calculate the date one week ago
   one_week_ago = date_one_week_ago(Date.today)
   # Display pull request
-  query = "is:pr author:#{username} created:>=#{one_week_ago} repo:objectionary/jeo-maven-plugin repo:objectionary/opeo-maven-plugin"
-  puts "Searching pull requests for #{username}."
+  query = "is:pr author:#{github_username} created:>=#{one_week_ago} repo:objectionary/jeo-maven-plugin repo:objectionary/opeo-maven-plugin"
+  puts "Searching pull requests for #{github_username}."
   puts "Newsman uses the following request to GitHub to gather the required information about user activity: '#{query}'"
   prs = []
   pull_requests = client.search_issues(query)
