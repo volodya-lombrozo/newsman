@@ -8,8 +8,8 @@ require_relative 'pull_request.rb'
 
 def generate
   # Load all required environment variables
-#  Dotenv.load
-#  Dotenv.require_keys("GITHUB_TOKEN", "OPENAI_TOKEN")
+  Dotenv.load
+  Dotenv.require_keys("GITHUB_TOKEN", "OPENAI_TOKEN")
   # Load all options required
   # Pay attention that some of them have default values.
   options = {}
@@ -57,6 +57,7 @@ def generate
   # Create a GitHub client instance with your access token
   client = Octokit::Client.new(github_token: github_token)
   # Calculate the date one week ago
+  report_date = Date.today
   one_week_ago = date_one_week_ago(Date.today)
   # Display pull request
   query = "is:pr author:#{github_username} created:>=#{one_week_ago} #{github_repositories}"
@@ -74,7 +75,7 @@ def generate
     prs << pr
   end
   puts "\nNow lets test some aggregation using OpenAI\n\n"
-  openai_client = OpenAI::Client.new(github_token: openai_token)
+  openai_client = OpenAI::Client.new(access_token: openai_token)
   example = "Last week achievements.
   jeo-meven-plugin:
   - Added 100 new files to the Dataset [#168]

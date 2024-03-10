@@ -6,9 +6,9 @@ Gem::Specification.new do |spec|
   spec.summary       = "GitHub user weekly news"
   spec.description   = "A simple gem that gathers GitHub statistics and creates human-readable report"
   spec.homepage      = "https://github.com/volodya-lombrozo/newsman"
-  spec.files         = Dir['lib/**/*.rb'] + Dir['bin/*']# Specify your main script here
+  spec.files         = Dir['lib/**/*.rb'] + Dir['bin/**/*.rb']# Specify your main script here
   spec.executables   = ["newsman"] # Specify the executable name
-  spec.require_paths = ["lib"]
+  spec.require_paths = ["lib", "bin"]
   spec.license       = "MIT"
 end
 
