@@ -21,6 +21,9 @@ def generate
     opts.on("-u", "--username USERNAME", "GitHub username. For example, 'volodya-lombrozo'") do |u|
       options[:username] = u
     end
+    opts.on("-r", "--repository REPOSITORIES", "Specify which repositories to include in a report. You can specify several repositories using a comma separator, for example: '-r objectionary/jeo-maven-plugin,objectionary/opeo-maven-plugin'") do |r|
+      options[:repositories] = r
+    end
     opts.on("-p", "--position", "Reporter position in a company. Default value is a 'Software Developer'.") do |p|
       options[:position] = p
     end
@@ -33,17 +36,19 @@ def generate
   # Check for required options
   options.require_option(:name, "Reporter name is required. Please specify using -n or --name.")
   options.require_option(:username, "GitHub username is required. Please specify using -u or --username.")
+  options.require_option(:repositories, "GitHub repository is required. Please specify one or several repositories using -r or --repositories.")
   options[:position] ||= "Software Developer"
   all_params = options.map { |key, value| "#{key}: #{value}" }.join(", ")
   puts "Parsed parameters: #{all_params}"
 
-  exit
   # Init all required parameters
   # Reporter Info
   reporter = options[:name]
   reporter_position = options[:position]
   # GitHub 
   github_username = options[:username]
+  github_repositories = options[:repositories].split(",").map { |repo| "repo:" + repo }.join(" ")
+  
   # Your GitHub personal access token
   # Make sure it has the 'repo' 
   github_token = ENV['GITHUB_TOKEN']
@@ -54,7 +59,7 @@ def generate
   # Calculate the date one week ago
   one_week_ago = date_one_week_ago(Date.today)
   # Display pull request
-  query = "is:pr author:#{github_username} created:>=#{one_week_ago} repo:objectionary/jeo-maven-plugin repo:objectionary/opeo-maven-plugin"
+  query = "is:pr author:#{github_username} created:>=#{one_week_ago} #{github_repositories}"
   puts "Searching pull requests for #{github_username}."
   puts "Newsman uses the following request to GitHub to gather the required information about user activity: '#{query}'"
   prs = []
