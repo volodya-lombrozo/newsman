@@ -2,6 +2,14 @@
 
 Newsman is a simple script that collects information about a developer's weekly activity on GitHub and creates a human-readable summary of the work done. To create the summary, Newsman asks ChatGPT to handle all the information about a developer's activity, including their pull requests and created issues.
 
+## Install
+
+To install [newsman](https://rubygems.org/gems/newsman) from RubyGems.org use the following command:
+```shell
+gem install newsman
+```
+The newest version of newsman will be installed on your system.
+
 ## How to Use
 
 To use newsman, you need to perfom several actions. 
@@ -27,13 +35,16 @@ Usage: newsman [options]
 ```
 
 ### Example
-
-You can download this repository and run the newsman script directly using the following command:
+To run `newsman` use the following command:
 ```shell
-./bin/newsman --name "Vladimir Zakharov" --username "volodya-lombrozo" --repository objectionary/jeo-maven-plugin,objectionary/opeo-maven-plugin
+newsman --name "Vladimir Zakharov" --username "volodya-lombrozo" --repository objectionary/jeo-maven-plugin,objectionary/opeo-maven-plugin
 ```
 
 Don't forget to set your own values for `name`, `username` and `repository` parameters.
+Also you can download this repository and run the newsman script directly using the following command:
+```shell
+./bin/newsman --name "Vladimir Zakharov" --username "volodya-lombrozo" --repository objectionary/jeo-maven-plugin,objectionary/opeo-maven-plugin
+```
 
 ## How to build a gem from sources
 
