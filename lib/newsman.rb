@@ -7,9 +7,6 @@ require 'optparse'
 require_relative 'newsman/pull_request.rb'
 
 def generate
-  # Load all required environment variables
-  Dotenv.load
-  Dotenv.require_keys("GITHUB_TOKEN", "OPENAI_TOKEN")
   # Load all options required
   # Pay attention that some of them have default values.
   options = {}
@@ -40,6 +37,10 @@ def generate
   options[:position] ||= "Software Developer"
   all_params = options.map { |key, value| "#{key}: #{value}" }.join(", ")
   puts "Parsed parameters: #{all_params}"
+
+  # Load all required environment variables
+  Dotenv.load
+  Dotenv.require_keys("GITHUB_TOKEN", "OPENAI_TOKEN")
 
   # Init all required parameters
   # Reporter Info

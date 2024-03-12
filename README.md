@@ -34,3 +34,20 @@ You can download this repository and run the newsman script directly using the f
 ```
 
 Don't forget to set your own values for `name`, `username` and `repository` parameters.
+
+## How to build a gem from sources
+
+To create a newsman gem from sources first of all you need to build it:
+```shell
+gem build newsman.gemspec
+```
+Then, in the folder you might find a newly created gem file, e.g `newsman-0.1.0.gem`.
+To use it in any place of your system you need to install it:
+```shell
+gem install newsman-0.1.0.gem
+```
+To check that everythis is fine, just run the following command:
+```
+newsman --help
+```
+Annd you should see a welcome message from newsman.
