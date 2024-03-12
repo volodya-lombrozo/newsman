@@ -10,5 +10,7 @@ Gem::Specification.new do |spec|
   spec.executables   = ["newsman"] # Specify the executable name
   spec.require_paths = ["lib", "bin"]
   spec.license       = "MIT"
+
+  spec.add_development_dependency "rspec", "~> 3.2"
 end
 

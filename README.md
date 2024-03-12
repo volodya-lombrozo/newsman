@@ -30,6 +30,7 @@ Usage: newsman [options]
 
 You can download this repository and run the newsman script directly using the following command:
 ```shell
-./bin/newsman/newsman.rb --name "Vladimir Zakharov" --username "volodya-lombrozo" --repository objectionary/jeo-maven-plugin,objectionary/opeo-maven-plugin
+./bin/newsman --name "Vladimir Zakharov" --username "volodya-lombrozo" --repository objectionary/jeo-maven-plugin,objectionary/opeo-maven-plugin
 ```
+
 Don't forget to set your own values for `name`, `username` and `repository` parameters.
