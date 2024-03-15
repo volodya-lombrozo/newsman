@@ -5,6 +5,7 @@ require 'openai'
 require 'dotenv'
 require 'optparse'
 require_relative 'newsman/pull_request.rb'
+require_relative 'newsman/stdout_output.rb'
 
 def generate
   # Load all options required
@@ -24,6 +25,9 @@ def generate
     opts.on("-p", "--position", "Reporter position in a company. Default value is a 'Software Developer'.") do |p|
       options[:position] = p
     end
+    opts.on("-o", "--output", "Output type. Newsman prints a report to a stdout by default. You can choose another options like '-o html' or '-o txt'") do |o|
+      options[:output] = o
+    end
   end.parse!
   # Custom method to raise exception with a human-readable message
   def options.require_option(key, message)
@@ -35,6 +39,7 @@ def generate
   options.require_option(:username, "GitHub username is required. Please specify using -u or --username.")
   options.require_option(:repositories, "GitHub repository is required. Please specify one or several repositories using -r or --repositories.")
   options[:position] ||= "Software Developer"
+  options[:output] ||= "stdout"
   all_params = options.map { |key, value| "#{key}: #{value}" }.join(", ")
   puts "Parsed parameters: #{all_params}"
 
@@ -113,7 +118,8 @@ response = openai_client.chat(
         ],
         temperature: 0.3,
     })
-puts response.dig("choices", 0, "message", "content")
+  output = Stdout.new
+  output.print(response.dig("choices", 0, "message", "content"))
 end
 
 
