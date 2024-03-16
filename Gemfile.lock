@@ -14,7 +14,7 @@ GEM
       net-http
     faraday-retry (2.2.0)
       faraday (~> 2.0)
-    minitest (5.22.2)
+    minitest (5.22.3)
     multipart-post (2.4.0)
     net-http (0.4.1)
       uri
