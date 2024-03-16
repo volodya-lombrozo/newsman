@@ -20,12 +20,15 @@
 # SOFTWARE.
 
 require 'minitest/autorun'
-require_relative '../../lib/newsman/newsman.rb'
+require_relative '../lib/newsman/txt_output.rb'
 
-class TestDateOneWeekAgo < Minitest::Test
-  def test_date_one_week_ago
-    assert_equal "2024-03-07", date_one_week_ago(Date.new(2024, 3, 14))
-    assert_equal "2024-02-29", date_one_week_ago(Date.new(2024, 3, 7))
+class TestTxtout < Minitest::Test
+  def test_writes_to_a_file
+    Dir.mktmpdir do |temp_dir| 
+      output = Txtout.new(temp_dir)
+      output.print("496")
+      assert(File.exist?(File.join(temp_dir, "output.txt")))
+      assert_equal("496\n", File.read(File.join(temp_dir, "output.txt")))
+    end
   end
 end
-

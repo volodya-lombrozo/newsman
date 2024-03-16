@@ -38,8 +38,14 @@ def generate
   options.require_option(:name, "Reporter name is required. Please specify using -n or --name.")
   options.require_option(:username, "GitHub username is required. Please specify using -u or --username.")
   options.require_option(:repositories, "GitHub repository is required. Please specify one or several repositories using -r or --repositories.")
-  options[:position] ||= "Software Developer"
-  options[:output] ||= "stdout"
+  default_options = {
+    position: "Software Developer",
+    output: "stdout"
+  }
+  options = default_options.merge(options){ |key, default_val, provided_val| provided_val || default_val }
+
+#  options[:position] ||= "Software Developer"
+#  options[:output] ||= "stdout"
   all_params = options.map { |key, value| "#{key}: #{value}" }.join(", ")
   puts "Parsed parameters: #{all_params}"
 
@@ -118,7 +124,13 @@ response = openai_client.chat(
         ],
         temperature: 0.3,
     })
-  output = Stdout.new
+  output_mode = options[:output]
+  puts "Output mode is '#{output_mode}'"
+  if output_mode.eql? "txt"
+    output = Txtout(".")
+  else
+    output = Stdout.new
+  end
   output.print(response.dig("choices", 0, "message", "content"))
 end
 
