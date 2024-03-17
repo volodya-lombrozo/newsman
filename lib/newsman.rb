@@ -22,10 +22,10 @@ def generate
     opts.on("-r", "--repository REPOSITORIES", "Specify which repositories to include in a report. You can specify several repositories using a comma separator, for example: '-r objectionary/jeo-maven-plugin,objectionary/opeo-maven-plugin'") do |r|
       options[:repositories] = r
     end
-    opts.on("-p", "--position", "Reporter position in a company. Default value is a 'Software Developer'.") do |p|
+    opts.on("-p", "--position POSITION", "Reporter position in a company. Default value is a 'Software Developer'.") do |p|
       options[:position] = p
     end
-    opts.on("-o", "--output", "Output type. Newsman prints a report to a stdout by default. You can choose another options like '-o html' or '-o txt'") do |o|
+    opts.on("-o", "--output OUTPUT", "Output type. Newsman prints a report to a stdout by default. You can choose another options like '-o html' or '-o txt'") do |o|
       options[:output] = o
     end
   end.parse!
@@ -38,14 +38,8 @@ def generate
   options.require_option(:name, "Reporter name is required. Please specify using -n or --name.")
   options.require_option(:username, "GitHub username is required. Please specify using -u or --username.")
   options.require_option(:repositories, "GitHub repository is required. Please specify one or several repositories using -r or --repositories.")
-  default_options = {
-    position: "Software Developer",
-    output: "stdout"
-  }
-  options = default_options.merge(options){ |key, default_val, provided_val| provided_val || default_val }
-
-#  options[:position] ||= "Software Developer"
-#  options[:output] ||= "stdout"
+  options[:position] ||= "Software Developer"
+  options[:output] ||= "stdout"
   all_params = options.map { |key, value| "#{key}: #{value}" }.join(", ")
   puts "Parsed parameters: #{all_params}"
 
