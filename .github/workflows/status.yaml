@@ -1,0 +1,29 @@
+---
+name: newsman-status
+on:
+  schedule:
+    - cron: "* 23 * * *"
+  push:
+    branches:
+      - master
+  workflow_dispatch
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  newsman-daily-status:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.2
+      - run: gem install newsman 
+      - run: newsman --help
+      - run: mkdir -p gh-pages/$(date +'%Y/%m/%d')
+      - run: cp gh-pages/*.txt gh-pages/$(date +'%Y/%m/%d')
+      - uses: JamesIves/github-pages-deploy-action@4.1.4
+        with:
+          branch: gh-pages
+          folder: gh-pages
+          clean: false
