@@ -122,7 +122,7 @@ response = openai_client.chat(
   output_mode = options[:output]
   puts "Output mode is '#{output_mode}'"
   if output_mode.eql? "txt"
-    output = Txtout.new(".")
+    output = Txtout.new(".", github_username)
   else
     output = Stdout.new
   end

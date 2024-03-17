@@ -26,9 +26,10 @@ class TestTxtout < Minitest::Test
   def test_writes_to_a_file
     Dir.mktmpdir do |temp_dir| 
       output = Txtout.new(temp_dir)
-      output.print("496")
-      assert(File.exist?(File.join(temp_dir, "output.txt")))
-      assert_equal("496\n", File.read(File.join(temp_dir, "output.txt")))
+      expected = '17.03.2024.volodya-lombrozo.txt'
+      output.print("496", "volodya-lombrozo")
+      assert(File.exist?(File.join(temp_dir, expected)))
+      assert_equal("496\n", File.read(File.join(temp_dir, expected)))
     end
   end
 end
