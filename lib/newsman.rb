@@ -6,6 +6,7 @@ require 'dotenv'
 require 'optparse'
 require_relative 'newsman/pull_request.rb'
 require_relative 'newsman/stdout_output.rb'
+require_relative 'newsman/txt_output.rb'
 
 def generate
   # Load all options required
@@ -121,7 +122,7 @@ response = openai_client.chat(
   output_mode = options[:output]
   puts "Output mode is '#{output_mode}'"
   if output_mode.eql? "txt"
-    output = Txtout(".")
+    output = Txtout.new(".")
   else
     output = Stdout.new
   end
