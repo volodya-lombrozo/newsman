@@ -5,8 +5,8 @@ on:
     - cron: "* 23 * * *"
   push:
     branches:
-      - master
-  workflow_dispatch
+      - main 
+  workflow_dispatch:
 concurrency:
   group: ${{ github.ref }}
   cancel-in-progress: true
