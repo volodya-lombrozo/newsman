@@ -25,7 +25,7 @@ jobs:
           OPENAI_TOKEN: ${{ secrets.OPENAI_TOKEN }}
         run: newsman --name "Vladimir Zakharov" --username "volodya-lombrozo" --repository objectionary/jeo-maven-plugin,objectionary/opeo-maven-plugin -o txt 
       - run: mkdir -p gh-pages/$(date +'%Y/%m/%d')
-      - run: cp gh-pages/*.txt gh-pages/$(date +'%Y/%m/%d')
+      - run: cp "*.txt" gh-pages/$(date +'%Y/%m/%d')
       - uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
           branch: gh-pages
