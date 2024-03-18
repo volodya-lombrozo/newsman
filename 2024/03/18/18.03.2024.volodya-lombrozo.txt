@@ -1,15 +1,15 @@
-Last week achievements.
+Last week achievements:
 jeo-maven-plugin:
 - Implemented disassembling of remaining instructions [#509]
-- Identified and addressed issues with switch statement disassembling [#488]
-- Updated Qulice version to 0.22.2 for improved code readability [#chore]
+- Identified the problem with switch statement disassembling [#488]
+- Updated Qulice version to 0.22.2 [#chore]
 - Handled all bytecode instructions and updated plugin version [#488]
-- Drastically improved integration test performance by optimizing cache handling [#499]
+- Drastically improved integration test performance by optimizing cache usage [#499]
 - Added method to retrieve label identifier in XmlLabel class [#497]
 
 opeo-maven-plugin:
-- Updated Jeo version to 0.3.4 for label identifier retrieval [#190]
-- Enabled all integration tests by handling hexadecimal identifiers and improving code readability [#189]
+- Updated Jeo version to 0.3.4 [#190]
+- Enabled all integration tests and improved label handling [#189]
 
 Next week plans:
 jeo-maven-plugin:
