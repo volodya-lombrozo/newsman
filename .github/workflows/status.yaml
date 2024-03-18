@@ -19,7 +19,11 @@ jobs:
         with:
           ruby-version: 3.2
       - run: gem install newsman 
-      - run: newsman --name "Vladimir Zakharov" --username "volodya-lombrozo" --repository objectionary/jeo-maven-plugin,objectionary/opeo-maven-plugin -o txt 
+      - name: Run newsman script
+        env:
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
+          OPENAI_TOKEN: ${{ secrets.OPENAI_TOKEN }}
+        run: newsman --name "Vladimir Zakharov" --username "volodya-lombrozo" --repository objectionary/jeo-maven-plugin,objectionary/opeo-maven-plugin -o txt 
       - run: mkdir -p gh-pages/$(date +'%Y/%m/%d')
       - run: cp gh-pages/*.txt gh-pages/$(date +'%Y/%m/%d')
       - uses: JamesIves/github-pages-deploy-action@4.1.4
