@@ -1,26 +1,27 @@
 Last week achievements:
-jeo-maven-plugin:
-- Implemented disassembling of remaining instructions [#509]
-- Identified and created a test for the problem with switch statement disassembling [#488]
-- Updated Qulice version to 0.22.2 for improved code readability [#chore]
-- Handled all bytecode instructions, exception classes, and updated plugin version [#488]
-- Drastically improved integration test performance by optimizing cache handling [#499]
+  jeo-maven-plugin:
+  - Implemented disassembling of remaining instructions [#509]
+  - Identified and fixed issues with switch statement disassembling [#488]
+  - Updated Qulice version to 0.22.2 for improved code readability [#chore]
+  - Handled all bytecode instructions and updated plugin version [#488]
+  - Optimized integration tests performance by utilizing `AllLabels` class [#499]
+  - Made label identifier accessible in XmlLabel class [#497]
 
-opeo-maven-plugin:
-- Updated jeo-maven-plugin version to 0.3.4, simplifying label identifier retrieval [#190]
-- Enabled all integration tests by updating the Label class [#189]
+  opeo-maven-plugin:
+  - Updated Jeo version to 0.3.4 for label identifier retrieval enhancement [#190]
+  - Enabled all previously disabled integration tests and improved label handling [#189]
 
 Next week plans:
-jeo-maven-plugin:
-- <leave empty>
-opeo-maven-plugin:
-- <leave empty>
+  jeo-maven-plugin:
+  - N/A
+  opeo-maven-plugin:
+  - N/A
 
 Risks:
-jeo-maven-plugin:
-- <leave empty>
-opeo-maven-plugin:
-- <leave empty>
+  jeo-maven-plugin:
+  - N/A
+  opeo-maven-plugin:
+  - N/A
 
 Best regards,
 Vladimir Zakharov  
