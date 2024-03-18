@@ -61,4 +61,8 @@ To check that everythis is fine, just run the following command:
 ```
 newsman --help
 ```
-Annd you should see a welcome message from newsman.
+And you should see a welcome message from newsman.
+
+## Examples
+
+You can find examples of generated reports [here](https://github.com/volodya-lombrozo/newsman/tree/gh-pages)
