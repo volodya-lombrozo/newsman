@@ -122,11 +122,12 @@ response = openai_client.chat(
   output_mode = options[:output]
   puts "Output mode is '#{output_mode}'"
   if output_mode.eql? "txt"
-    output = Txtout.new(".", github_username)
+    output = Txtout.new(".")
+    output.print(response.dig("choices", 0, "message", "content"), github_username)
   else
     output = Stdout.new
+    output.print(response.dig("choices", 0, "message", "content"))
   end
-  output.print(response.dig("choices", 0, "message", "content"))
 end
 
 
