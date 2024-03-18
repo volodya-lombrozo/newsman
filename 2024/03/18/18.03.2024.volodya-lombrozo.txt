@@ -1,0 +1,29 @@
+Last week achievements:
+jeo-maven-plugin:
+- Implemented disassembling of various instructions to XMIR, including TABLESWITCH, LOOKUPSWITCH, IINC, and MULTIANEWARRAY [#509].
+- Identified and created a test for a problem related to switch statement disassembling [#488].
+- Updated Qulice version to 0.22.2 for improved code readability and maintainability [#chore].
+- Enhanced bytecode instruction handling and exception classes, updated plugin version to 0.35.9 [#488].
+- Optimized integration tests performance by utilizing AllLabels to avoid cache sharing between methods [#499].
+- Added a method to retrieve label identifier in XmlLabel class and corresponding unit tests [#497].
+
+opeo-maven-plugin:
+- Updated Jeo version to 0.3.4, refactored operand method for simplified label identifier retrieval [#190].
+- Enabled all integration tests, handled hexadecimal identifiers in Label class, and replaced UUIDs with hexadecimal values in tests [#189].
+
+Next week plans:
+jeo-maven-plugin:
+- N/A
+opeo-maven-plugin:
+- N/A
+
+Risks:
+jeo-maven-plugin:
+- N/A
+opeo-maven-plugin:
+- N/A
+
+Best regards,
+Vladimir Zakharov  
+Software Developer  
+2024-03-18
