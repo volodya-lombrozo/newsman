@@ -1,25 +1,26 @@
 Last week achievements:
-jeo-maven-plugin:
-- Identified the issue with lambdas and added support for them [#488]
-- Implemented disassembly for various ASM instructions [#509]
-- Identified the problem with switch statements and made related code changes [#488]
-- Updated Qulice version to 0.22.2 for improved code quality [#chore]
-- Handled all bytecode instructions and updated exception classes [#488]
-opeo-maven-plugin:
-- Updated Jeo version to 0.3.4 for label identifier retrieval improvement [#190]
-- Enabled all integration tests and improved label handling [#189]
+  jeo-maven-plugin:
+  - Identified the issue with lambdas [#488]
+  - Implemented disassembly of various instructions [#509]
+  - Identified the problem with switch statements [#488]
+  - Updated Qulice version to 0.22.2 [#chore]
+  - Handled all bytecode instructions and updated exception classes [#488]
+  - Enabled all integration tests [#488]
+  opeo-maven-plugin:
+  - Updated Jeo version to 0.3.4 [#190]
+  - Enabled all integration tests [#189]
 
 Next week plans:
-jeo-maven-plugin:
-- <leave empty>
-opeo-maven-plugin:
-- <leave empty>
+  jeo-maven-plugin:
+  - <leave empty>
+  opeo-maven-plugin:
+  - <leave empty>
 
 Risks:
-jeo-maven-plugin:
-- <leave empty>
-opeo-maven-plugin:
-- <leave empty>
+  jeo-maven-plugin:
+  - <leave empty>
+  opeo-maven-plugin:
+  - <leave empty>
 
 Best regards,
 Vladimir Zakharov  
