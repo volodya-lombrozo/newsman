@@ -1,25 +1,26 @@
 Last week achievements:
   jeo-maven-plugin:
-  - Identified the issue related to lambdas assembling/disassembling [#488]
-  - Implemented IINC, MULTIANEWARRAY, LOOKUPSWITCH, TABLESWITCH instructions disassembly [#509]
-  - Identified the problem with the switch statement disassembling [#488]
-  - Updated Qulice version to 0.22.2 [#chore]
-  - Handled all bytecode instructions and updated plugin version to 0.35.9 [#488]
-opeo-maven-plugin:
-  - Updated Jeo version to 0.3.4 [#190]
-  - Enabled all integration tests and fixed related issues [#189]
+  - Identified the issue with lambdas and implemented support for them [#488]
+  - Implemented disassembly of IINC, MULTIANEWARRAY, LOOKUPSWITCH, and TABLESWITCH instructions [#509]
+  - Identified the problem with switch statements and made related code changes [#488]
+  - Updated Qulice version to 0.22.2 for improved code readability [#chore]
+  - Added handlers for all bytecode instructions and updated exception classes [#488]
+  
+  opeo-maven-plugin:
+  - Updated the Jeo version to 0.3.4, removing ad-hoc solutions for label identifier retrieval [#190]
+  - Enabled all integration tests by fixing label identifiers encoding/decoding and linter suggestions [#189]
 
 Next week plans:
   jeo-maven-plugin:
-  - <leave empty>
+  - N/A
   opeo-maven-plugin:
-  - <leave empty>
+  - N/A
 
 Risks:
   jeo-maven-plugin:
-  - <leave empty>
+  - N/A
   opeo-maven-plugin:
-  - <leave empty>
+  - N/A
 
 Best regards,
 Vladimir Zakharov  
