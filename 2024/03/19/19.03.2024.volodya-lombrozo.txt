@@ -1,9 +1,27 @@
 Last week achievements:
   jeo-maven-plugin:
-  - Implemented disassembling of remaining instructions [#509]
-  - Identified and created a test for a switch statement disassembling issue [#488]
+  - Identified the issue with lambdas [#488]
+  - Implemented disassembly of various instructions [#509]
+  - Identified the problem with switch statements [#488]
   - Updated Qulice version to 0.22.2 [#chore]
   - Handled all bytecode instructions and updated plugin version [#488]
-opeo-maven-plugin:
-  - Updated Jeo version to 0.3.4, simplifying label identifier retrieval [#190]
-  - Enabled all previously disabled integration tests, fixing label identifier issues [#189]
+  opeo-maven-plugin:
+  - Updated Jeo version to 0.3.4 [#190]
+  - Enabled all integration tests [#189]
+
+Next week plans:
+  jeo-maven-plugin:
+  - <leave empty>
+  opeo-maven-plugin:
+  - <leave empty>
+
+Risks:
+  jeo-maven-plugin:
+  - <leave empty>
+  opeo-maven-plugin:
+  - <leave empty>
+
+Best regards,
+Vladimir Zakharov  
+Software Developer  
+2024-03-19
