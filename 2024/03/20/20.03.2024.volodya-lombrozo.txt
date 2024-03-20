@@ -1,0 +1,20 @@
+Last week achievements:
+  jeo-maven-plugin:
+  - Identified the issue with Lambdas [#488]
+  - Implemented IINC, MULTIANEWARRAY, LOOKUPSWITCH, TABLESWITCH instructions disassembly [#509]
+  - Identified the problem with Switch statement [#488]
+  - Updated Qulice version to 0.22.2 [#chore]
+  - Handled all bytecode instructions and updated plugin version to 0.35.9 [#488]
+
+Next week plans:
+  jeo-maven-plugin:
+  - <leave empty>
+
+Risks:
+  jeo-maven-plugin:
+  - <leave empty>
+
+Best regards,
+Vladimir Zakharov  
+Software Developer  
+2024-03-20
