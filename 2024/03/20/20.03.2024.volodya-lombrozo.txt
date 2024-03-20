@@ -1,15 +1,11 @@
 Last week achievements:
   jeo-maven-plugin:
-  - Implemented disassembly of TABLESWITCH, LOOKUPSWITCH, IINC, and MULTIANEWARRAY instructions to XMIR [#509]
-  - Updated constructor in DirectivesMethod, error message in DataType, and implemented missing ASM instructions in DirectivesMethodVisitor [#509]
-  - Updated Qulice version to 0.22.2 for improved code readability and maintainability [#chore]
-  - Added handlers for all bytecode instructions, including method invocations for lambdas support [#488]
-  - Identified and created tests for issues related to lambdas and switch statement disassembling [#488]
+  - Added handlers for all bytecode instructions [#488]
+  - Implemented disassembling of IINC, MULTIANEWARRAY, LOOKUPSWITCH, TABLESWITCH instructions [#509]
+  - Implemented lambdas support [#515]
+  - Updated Qulice version to 0.22.2 [#chore]
 
-Next week plans:
-  jeo-maven-plugin:
-  - <leave empty>
-  
-Risks:
-  jeo-maven-plugin:
-  - <leave empty>
+Best regards,
+Vladimir Zakharov  
+Software Developer  
+2024-03-20
