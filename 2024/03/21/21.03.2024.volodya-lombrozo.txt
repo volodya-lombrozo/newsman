@@ -1,0 +1,19 @@
+Last week achievements:
+  jeo-maven-plugin:
+  - Implemented disassembly of IINC, MULTIANEWARRAY, LOOKUPSWITCH, and TABLESWITCH instructions to XMIR [#509]
+  - Identified the issue with lambdas and added support for disassembling/assembling labels [#515]
+  - Identified the problem with the switch statement and introduced code verification changes [#488]
+  - Updated Qulice version to 0.22.2 for improved code readability [#chore]
+
+Next week plans:
+  jeo-maven-plugin:
+  - N/A
+
+Risks:
+  jeo-maven-plugin:
+  - N/A
+
+Best regards,
+Vladimir Zakharov  
+Software Developer  
+2024-03-21
