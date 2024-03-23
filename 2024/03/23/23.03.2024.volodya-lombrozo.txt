@@ -1,0 +1,6 @@
+Last week achievements:
+jeo-maven-plugin:
+- Extended `DataType` class to handle default field values and null values [#518]
+- Fixed the issue with disassembling/assembling default field values [#488]
+- Added support for lambdas disassembling/assembling [#515]
+- Identified the problem with lambdas assembling/disassembling and left a puzzle for future implementation [#488]
