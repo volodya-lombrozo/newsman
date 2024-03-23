@@ -20,18 +20,12 @@
 # SOFTWARE.
 
 require 'minitest/autorun'
-require_relative '../lib/newsman/txt_output.rb'
+require_relative '../lib/newsman.rb'
 
-class TestTxtout < Minitest::Test
-  def test_writes_to_a_file
-    Dir.mktmpdir do |temp_dir| 
-      output = Txtout.new(temp_dir)
-      today = Date.today.strftime("%d.%m.%Y");
-      expected = "#{today}.volodya-lombrozo.txt"
-      output.print("496", "volodya-lombrozo")
-      puts "Expected #{expected}"
-      assert(File.exist?(File.join(temp_dir, expected)))
-      assert_equal("496\n", File.read(File.join(temp_dir, expected)))
-    end
+class TestWeekOfYear < Minitest::Test
+  def test_week_of_a_year()
+    assert_equal "WEEK 11 JEO", week_of_a_year("JEO", Date.new(2024, 3, 14))
+    assert_equal "WEEK 9 OPEO", week_of_a_year("OPEO", Date.new(2024, 2, 29))
   end
 end
+

@@ -29,6 +29,9 @@ def generate
     opts.on("-o", "--output OUTPUT", "Output type. Newsman prints a report to a stdout by default. You can choose another options like '-o html' or '-o txt'") do |o|
       options[:output] = o
     end
+    opts.on("-t", "--title TITLE", "Project Title. Empty by default") do |t|
+      options[:title] = t
+    end
   end.parse!
   # Custom method to raise exception with a human-readable message
   def options.require_option(key, message)
@@ -41,6 +44,7 @@ def generate
   options.require_option(:repositories, "GitHub repository is required. Please specify one or several repositories using -r or --repositories.")
   options[:position] ||= "Software Developer"
   options[:output] ||= "stdout"
+  options[:title] ||= ""
   all_params = options.map { |key, value| "#{key}: #{value}" }.join(", ")
   puts "Parsed parameters: #{all_params}"
 
@@ -83,7 +87,11 @@ def generate
   end
   puts "\nNow lets test some aggregation using OpenAI\n\n"
   openai_client = OpenAI::Client.new(access_token: openai_token)
-  example = "Last week achievements.
+
+  project_week = "#{week_of_a_year(options[:title], Date.today)}"
+
+  example = "
+  Last week achievements.
   jeo-meven-plugin:
   - Added 100 new files to the Dataset [#168]
   - Fixed the deployment of XYZ [#169]
@@ -121,12 +129,15 @@ response = openai_client.chat(
     })
   output_mode = options[:output]
   puts "Output mode is '#{output_mode}'"
+  project_week = "#{week_of_a_year(options[:title], Date.today)}"
+  answer = response.dig("choices", 0, "message", "content")
+  full_answer = "#{project_week}\n\n#{answer}"
   if output_mode.eql? "txt"
     output = Txtout.new(".")
-    output.print(response.dig("choices", 0, "message", "content"), github_username)
+    output.print(full_answer, github_username)
   else
     output = Stdout.new
-    output.print(response.dig("choices", 0, "message", "content"))
+    output.print(full_answer)
   end
 end
 
@@ -142,6 +153,10 @@ def date_one_week_ago(today)
   return formatted_date
 end
 
+def week_of_a_year(project, today)
+  number =  today.strftime('%U').to_i + 1
+  return "WEEK #{number} #{project}"
+end
 
 # Execute the function only if this script is run directly like `./newsman.rb`
 if __FILE__ == $0
