@@ -16,7 +16,7 @@ jobs:
   newsman-daily-status:
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.2
@@ -28,7 +28,7 @@ jobs:
         run: newsman --name "Vladimir Zakharov" --username "volodya-lombrozo" --repository objectionary/jeo-maven-plugin,objectionary/opeo-maven-plugin -o txt -t JavaDataflow
       - run: mkdir -p gh-pages/$(date +'%Y/%m/%d')
       - run: cp *.txt gh-pages/$(date +'%Y/%m/%d')
-      - uses: JamesIves/github-pages-deploy-action@4.1.4
+      - uses: JamesIves/github-pages-deploy-action@v4.5.0
         with:
           branch: gh-pages
           folder: gh-pages
