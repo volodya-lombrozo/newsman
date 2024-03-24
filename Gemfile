@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
-source "https://rubygems.org"
+source 'https://rubygems.org'
 
-gem "octokit", "~> 8.0"
-gem "ruby-openai"
-gem 'dotenv', groups: [:development, :test]
-gem 'minitest'
-gem 'optparse'
+gem 'dotenv', groups: %i[development test]
 gem 'faraday-retry'
+gem 'minitest'
+gem 'octokit', '~> 8.0'
+gem 'optparse'
+gem 'rubocop', require: false
+gem 'ruby-openai'

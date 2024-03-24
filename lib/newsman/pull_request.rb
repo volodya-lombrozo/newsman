@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PullRequest
   attr_accessor :repository, :title, :description
 

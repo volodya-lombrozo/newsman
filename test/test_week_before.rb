@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
-# Copyright (c) 2024 Volodya Lombrozo 
+# frozen_string_literal: true
+
+# Copyright (c) 2024 Volodya Lombrozo
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the 'Software'), to deal
@@ -20,12 +22,11 @@
 # SOFTWARE.
 
 require 'minitest/autorun'
-require_relative '../lib/newsman.rb'
+require_relative '../lib/newsman'
 
 class TestDateOneWeekAgo < Minitest::Test
   def test_date_one_week_ago
-    assert_equal "2024-03-07", date_one_week_ago(Date.new(2024, 3, 14))
-    assert_equal "2024-02-29", date_one_week_ago(Date.new(2024, 3, 7))
+    assert_equal '2024-03-07', date_one_week_ago(Date.new(2024, 3, 14))
+    assert_equal '2024-02-29', date_one_week_ago(Date.new(2024, 3, 7))
   end
 end
-

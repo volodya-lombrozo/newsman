@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
-# Copyright (c) 2024 Volodya Lombrozo 
+# frozen_string_literal: true
+
+# Copyright (c) 2024 Volodya Lombrozo
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the 'Software'), to deal
@@ -20,15 +22,15 @@
 # SOFTWARE.
 
 require 'minitest/autorun'
-require_relative '../lib/newsman/txt_output.rb'
+require_relative '../lib/newsman/txt_output'
 
 class TestTxtout < Minitest::Test
   def test_writes_to_a_file
-    Dir.mktmpdir do |temp_dir| 
+    Dir.mktmpdir do |temp_dir|
       output = Txtout.new(temp_dir)
-      today = Date.today.strftime("%d.%m.%Y");
+      today = Date.today.strftime('%d.%m.%Y')
       expected = "#{today}.volodya-lombrozo.txt"
-      output.print("496", "volodya-lombrozo")
+      output.print('496', 'volodya-lombrozo')
       puts "Expected #{expected}"
       assert(File.exist?(File.join(temp_dir, expected)))
       assert_equal("496\n", File.read(File.join(temp_dir, expected)))

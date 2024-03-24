@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
-# Copyright (c) 2024 Volodya Lombrozo 
+# frozen_string_literal: true
+
+# Copyright (c) 2024 Volodya Lombrozo
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the 'Software'), to deal
@@ -20,12 +22,11 @@
 # SOFTWARE.
 
 require 'minitest/autorun'
-require_relative '../lib/newsman.rb'
+require_relative '../lib/newsman'
 
 class TestWeekOfYear < Minitest::Test
-  def test_week_of_a_year()
-    assert_equal "WEEK 11 JEO", week_of_a_year("JEO", Date.new(2024, 3, 14))
-    assert_equal "WEEK 9 OPEO", week_of_a_year("OPEO", Date.new(2024, 2, 29))
+  def test_week_of_a_year
+    assert_equal 'WEEK 11 JEO', week_of_a_year('JEO', Date.new(2024, 3, 14))
+    assert_equal 'WEEK 9 OPEO', week_of_a_year('OPEO', Date.new(2024, 2, 29))
   end
 end
-
