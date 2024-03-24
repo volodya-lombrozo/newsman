@@ -22,12 +22,33 @@
 # SOFTWARE.
 
 require 'minitest/autorun'
-require_relative '../lib/newsman'
+require_relative '../lib/newsman/report.rb'
 
-class TestWeekOfYear < Minitest::Test
-  def test_week_of_a_year
-    assert_equal 'WEEK 11 JEO', week_of_a_year('JEO', Date.new(2024, 3, 14))
-    assert_equal 'WEEK 9 OPEO', week_of_a_year('OPEO', Date.new(2024, 2, 29))
+class TestReport < Minitest::Test
+  def test_report
+    expected = "From: User
+Subject: WEEK 11 Project
+
+Hi all,
+
+Last week achievements:
+repository-a:
+ - Did a lot of for (a) repository
+
+Next week plans:
+repository-b:
+ - I will do a lot for repository (b)
+
+Risks:
+- <todo>
+
+Best regards,
+User
+Developer
+2024-03-14"
+    report = Report.new('User', 'Developer', 'Project')
+    out = report.build("repository-a:\n - Did a lot of for (a) repository", "repository-b:\n - I will do a lot for repository (b)", Date.new(2024, 3, 14))
+    assert_equal expected, out
   end
 end
 
