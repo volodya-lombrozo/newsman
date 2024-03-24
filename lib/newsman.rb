@@ -8,6 +8,7 @@ require 'optparse'
 require_relative 'newsman/pull_request'
 require_relative 'newsman/stdout_output'
 require_relative 'newsman/txt_output'
+require_relative 'newsman/report'
 
 def generate
   # Load all options required
@@ -93,33 +94,13 @@ def generate
   puts "\nNow lets test some aggregation using OpenAI\n\n"
   openai_client = OpenAI::Client.new(access_token: openai_token)
 
-  example = "
-  Last week achievements.
-  jeo-meven-plugin:
+  example = "jeo-meven-plugin:
   - Added 100 new files to the Dataset [#168]
   - Fixed the deployment of XYZ [#169]
   - Refined the requirements [#177]
   opeo-maven-plugin
   - Removed XYZ class [#57]
-  - Refactored http module [#69]
-
-  Next week plans:
-  jeo-maven-plugin:
-  - <leave empty>
-  opeo-maven-plugin:
-  - <leave empty>
-
-  Risks:
-jeo-maven-plugin:
-- <leave-empty>
-opeo-maven-plugin:
-- <leave-empty>
-
-Best regards,
-#{reporter}
-#{reporter_position}
-#{report_date}
-"
+  - Refactored http module [#69]"
 
   response = openai_client.chat(
     parameters: {
@@ -135,9 +116,8 @@ Best regards,
   )
   output_mode = options[:output]
   puts "Output mode is '#{output_mode}'"
-  project_week = week_of_a_year(options[:title], Date.today).to_s
   answer = response.dig('choices', 0, 'message', 'content')
-  full_answer = "#{project_week}\n\n#{answer}"
+  full_answer = Report.new(reporter, reporter_position, options[:title]).build(answer, '', Date.today)
   if output_mode.eql? 'txt'
     output = Txtout.new('.')
     output.print(full_answer, github_username)
