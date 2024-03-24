@@ -78,6 +78,7 @@ def generate
   one_week_ago = date_one_week_ago(Date.today)
   # Display pull request
   query = "is:pr author:#{github_username} created:>=#{one_week_ago} #{github_repositories}"
+  issues_query = "is:issue is:open author:#{github_username} author:0pdd created:>=#{one_week_ago} #{github_repositories}"
   puts "Searching pull requests for #{github_username}."
   puts "Newsman uses the following request to GitHub to gather the required information about user activity: '#{query}'"
   prs = []
