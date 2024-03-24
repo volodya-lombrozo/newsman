@@ -98,9 +98,15 @@ def generate
   - Added 100 new files to the Dataset [#168]
   - Fixed the deployment of XYZ [#169]
   - Refined the requirements [#177]
-  opeo-maven-plugin
+  opeo-maven-plugin:
   - Removed XYZ class [#57]
   - Refactored http module [#69]"
+
+  example_plans = "jeo-maven-plugin:
+  - To publish ABC package draft [#27]
+  - To review first draft of the report [#56]
+  opeo-maven-plugin:
+  - To implement optimization for the class X [#125]"
 
   response = openai_client.chat(
     parameters: {
