@@ -6,6 +6,7 @@ require 'openai'
 require 'dotenv'
 require 'optparse'
 require_relative 'newsman/pull_request'
+require_relative 'newsman/issues'
 require_relative 'newsman/stdout_output'
 require_relative 'newsman/txt_output'
 require_relative 'newsman/report'
@@ -76,9 +77,10 @@ def generate
   # Calculate the date one week ago
   report_date = Date.today
   one_week_ago = date_one_week_ago(Date.today)
+  one_month_ago = Date.today.prev_month.strftime('%Y-%m-%d')
   # Display pull request
   query = "is:pr author:#{github_username} created:>=#{one_week_ago} #{github_repositories}"
-  issues_query = "is:issue is:open author:#{github_username} author:0pdd created:>=#{one_week_ago} #{github_repositories}"
+  issues_query = "is:issue is:open author:#{github_username} author:0pdd created:>=#{one_month_ago} #{github_repositories}"
   puts "Searching pull requests for #{github_username}."
   puts "Newsman uses the following request to GitHub to gather the required information about user activity: '#{query}'"
   prs = []
@@ -92,6 +94,21 @@ def generate
     pr = PullRequest.new(repository, title, description)
     prs << pr
   end
+  prs = prs.map(&:to_s).join("\n\n\n")
+  
+  puts "Searching issues using the following query: '#{issues_query}'"
+  issues = []
+  client.search_issues(issues_query).items.each do |issue|
+    title = issue.title.to_s
+    body = issue.body.to_s
+    repository = issue.repository_url.split('/').last
+    number = issue.number.to_s
+    puts "Found issue in #{repository}:[##{number}] #{title}"
+    issues << Issue.new(title, body, repository, number)
+  end
+  issues = issues.map(&:to_s).join("\n\n\n")
+  puts "Found issues:\n #{issues}"
+    
   puts "\nNow lets test some aggregation using OpenAI\n\n"
   openai_client = OpenAI::Client.new(access_token: openai_token)
 
@@ -121,10 +138,23 @@ def generate
       temperature: 0.3
     }
   )
+  answer = response.dig('choices', 0, 'message', 'content')
+  issues_response = openai_client.chat(
+    parameters: {
+      model: 'gpt-3.5-turbo',
+      messages: [
+        { role: 'system',
+          content: 'You are a developer tasked with composing a concise report detailing your activities and progress for the previous week, intended for submission to your supervisor.' },
+        { role: 'user',
+          content: "Please compile a summary of the plans for the next week using the following GitHub Issues descriptions. Each issue should be summarized in a single sentence, focusing more on the issue title and less on implementation details. Group the sentences by repositories, each identified by its name mentioned in the 'repository:[name]' attribute of the issue. The grouping is important an should be precise. Ensure that each sentence includes the corresponding issue number as an integer value. If an issue doesn't mention an issue number, just print [#chore]. Combine all the information from each Issue into a concise and fluent sentences, as if you were a developer reporting on your work. Please strictly adhere to the example template provided: #{example_plans}. List of GitHub issues to aggregate: [#{issues}]. Use the same formatting as here \n```#{answer}```\n" }
+      ],
+      temperature: 0.3
+    }
+)
+  issues_full_answer = issues_response.dig('choices', 0, 'message', 'content')
   output_mode = options[:output]
   puts "Output mode is '#{output_mode}'"
-  answer = response.dig('choices', 0, 'message', 'content')
-  full_answer = Report.new(reporter, reporter_position, options[:title]).build(answer, '', Date.today)
+  full_answer = Report.new(reporter, reporter_position, options[:title]).build(answer, issues_full_answer, Date.today)
   if output_mode.eql? 'txt'
     output = Txtout.new('.')
     output.print(full_answer, github_username)

@@ -10,6 +10,7 @@ class PullRequest
   end
 
   def to_s
-    "title: ```#{@title}```\n, description: ```#{@description}```\n, repo: ```#{@repository}```\n"
+    "title: ```#{@title}```,\ndescription: ```#{@description}```,\nrepo: ```#{@repository}```\n"
   end
 end
+

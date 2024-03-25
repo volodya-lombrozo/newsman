@@ -15,3 +15,4 @@ def week_of_a_year(project, today)
   number = today.strftime('%U').to_i + 1
   "WEEK #{number} #{project}"
 end
+
