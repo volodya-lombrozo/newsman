@@ -1,0 +1,8 @@
+WEEK 13 JavaDataflow
+
+Last week achievements:
+jeo-maven-plugin:
+- Extended `DataType` class to handle default field values and `null` values [#518]
+- Fixed the issue with disassembling/assembling default field values known at compile time [#488]
+- Added support for lambdas in labels disassembling/assembling [#515]
+- Identified and prepared for implementing lambdas support [#488]
