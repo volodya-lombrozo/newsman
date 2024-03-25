@@ -107,7 +107,7 @@ def generate
     issues << Issue.new(title, body, repository, number)
   end
   issues = issues.map(&:to_s).join("\n\n\n")
-  puts "Found issues:\n #{issues}"
+  #puts "Found issues:\n #{issues}"
     
   puts "\nNow lets test some aggregation using OpenAI\n\n"
   openai_client = OpenAI::Client.new(access_token: openai_token)
