@@ -1,8 +1,28 @@
-WEEK 13 JavaDataflow
+From: Vladimir Zakharov
+Subject: WEEK 13 JavaDataflow
+
+Hi all,
 
 Last week achievements:
 jeo-maven-plugin:
-- Extended `DataType` class to handle default field values and `null` values [#518]
-- Fixed the issue with disassembling/assembling default field values known at compile time [#488]
-- Added support for lambdas in labels disassembling/assembling [#515]
-- Identified and prepared for implementing lambdas support [#488]
+  - Extended `DataType` class to handle default field values and `null` values [#518]
+  - Fixed disassembling/assembling issue with default field values known at compile time [#488]
+  - Added support for labels disassembling/assembling to work with lambdas [#515]
+  - Identified and fixed the problem with lambdas assembling/disassembling [#488]
+
+Next week plans:
+jeo-maven-plugin:
+  - Refactor DataType, HexData and... [#520]
+  - Enable the execution of the `xmir-to-phi`... [#506]
+  - Use AllLabels properly to avoid... [#501]
+  - Enable 'spring-fat' Integration Test.... [#488]
+opeo-maven-plugin:
+  - Remove code duplication... [#177]
+
+Risks:
+- <todo>
+
+Best regards,
+Vladimir Zakharov
+Software Developer
+2024-03-25
