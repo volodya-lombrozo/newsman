@@ -1,0 +1,25 @@
+From: Vladimir Zakharov
+Subject: WEEK 13 JavaDataflow
+
+Hi all,
+
+Last week achievements:
+jeo-maven-plugin:
+- Fixed bugs with incorrect disassembly and assembly of annotations instructions [#531]
+- Extended annotations support by enhancing annotation handling and testing [#488]
+- Fixed the bug of incorrect invocation parameters by updating bytecode handling in Java classes [#488]
+- Implemented disassembling and assembling of bytecode versions for each class [#488]
+- Disabled automatic frames computation to avoid missing classes at build time [#524]
+- Implemented support for max stack and max locals method attributes [#488]
+
+Next week plans:
+jeo-maven-plugin:
+- Check default values in AnnotationsApplication.java to resolve puzzle [#534], BytecodeAnnotation.java to refactor annotations [#532], CustomClassWriter.java to disable automatic frame computation [#528], DataType.java to refactor data types [#520], pom.xml to enable 'eo-to-bytecode' integration [#526], enable 'xmir-to-phi' execution in pom.xml [#506], use AllLabels properly in Disassemble.java to avoid issues [#501], and enable 'spring-fat' integration test in pom.xml [#488].
+
+Risks:
+- <todo>
+
+Best regards,
+Vladimir Zakharov
+Software Developer
+2024-03-30
