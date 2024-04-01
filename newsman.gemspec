@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |spec|
   spec.name          = 'newsman'
-  spec.version       = '0.1.7'
+  spec.version       = '0.1.8'
   spec.authors       = ['Volodya Lombrozo']
   spec.email         = ['volodya.lombrozo@gmail.com']
   spec.summary       = 'GitHub user weekly news'
@@ -21,4 +21,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'octokit', '~> 8.0'
   spec.add_dependency 'optparse', '~> 0.4.0'
   spec.add_dependency 'ruby-openai', '~> 6.3'
+  spec.add_dependency 'net-http' '~> 0.4'
 end
