@@ -104,7 +104,11 @@ def generate
     repository = issue.repository_url.split('/').last
     number = issue.number.to_s
     puts "Found issue in #{repository}:[##{number}] #{title}"
-    issues << Issue.new(title, body, repository, number)
+    if issue.user.login == "0pdd"
+      issues << PddIssue.new(title, body, repository, number)
+    else
+      issues << Issue.new(title, body, repository, number)
+    end
   end
   issues = issues.map(&:to_s).join("\n\n\n")
   #puts "Found issues:\n #{issues}"
