@@ -5,23 +5,23 @@ Hi all,
 
 Last week achievements:
 jeo-maven-plugin:
-  - Fixed bugs with incorrect disassembly and assembly of annotations instructions [#531]
-  - Extended annotations support by enhancing annotation handling and testing [#488]
-  - Fixed the bug of incorrect invocation parameters [#488]
-  - Implemented disassembling and assembling of bytecode versions for each class [#488]
-  - Disabled automatic frames computation to avoid missing classes at build time [#524]
-  - Implemented support for max stack and max locals method attributes [#488]
+- Fixed bugs with incorrect disassembly and assembly of annotations instructions [#531]
+- Extended annotations support by enhancing annotation handling and testing [#488]
+- Fixed the bug of incorrect invocation parameters by updating bytecode handling in Java classes and test files [#488]
+- Implemented disassembling and assembling of bytecode versions for each class [#488]
+- Disabled automatic frames computation to avoid missing classes at build time [#524]
+- Implemented max stack and max locals disassembly/assembly to specify sizes for methods [#488]
 
 Next week plans:
 jeo-maven-plugin:
-  - Check default values in AnnotationsApplication.java to resolve puzzle from #531 [#534]
-  - Refactor Annotations in BytecodeAnnotation.java to resolve puzzle from #488 [#532]
-  - Disable automatic frame computation in CustomClassWriter.java to resolve puzzle from #488 [#528]
-  - Enable 'eo-to-bytecode' integration in pom.xml to resolve puzzle from #488 [#526]
-  - Refactor DataType, HexData, and others in DataType.java to resolve puzzle from #518 [#520]
-  - Enable the execution of the 'xmir-to-phi' in pom.xml to resolve puzzle from #488 [#506]
-  - Use AllLabels properly in Disassemble.java to resolve puzzle from #499 [#501]
-  - Enable 'spring-fat' Integration Test in pom.xml to resolve puzzle from #464 [#488]
+- Check default values for annotation properties in AnnotationsApplication.java to resolve processing issues [#534]
+- Refactor Annotations Implementation in BytecodeAnnotation.java for simplification and readability [#532]
+- Investigate and fix the issue of automatic frame computation in CustomClassWriter to prevent test failures [#528]
+- Enable 'eo-to-bytecode' integration test in pom.xml by addressing backward compatibility issues [#526]
+- Refactor DataType, HexData, and HexString classes for clearer responsibilities [#520]
+- Enable the execution of the `xmir-to-phi` goal in pom.xml after resolving existing bugs [#506]
+- Use AllLabels properly in Disassemble.java to optimize performance and avoid cache clearing [#501]
+- Enable 'spring-fat' Integration Test in pom.xml by adding support for various Java features [#488]
 
 Risks:
 - <todo>
