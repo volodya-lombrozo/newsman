@@ -67,6 +67,7 @@ DEPENDENCIES
   dotenv
   faraday-retry
   minitest
+  net-http
   octokit (~> 8.0)
   optparse
   rubocop
