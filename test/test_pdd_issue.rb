@@ -37,10 +37,12 @@ class TestPddIssue < Minitest::Test
     If you have any technical questions, don't ask me, submit new tickets instead. The task will be \"done\" when the problem is fixed and the text of the puzzle is _removed_ from the source code. Here is more about [PDD](http://www.yegor256.com/2009/03/04/pdd.html) and [about me](http://www.yegor256.com/2017/04/05/pdd-in-action.html). 
       "
 
+  EXPECTED_DESCRIPTION = "     * @todo #531:90min Check default values for annotation properties.\n", "     *  We still encounter some problems with annotation processing.\n", "     *  Especially with Autowired annotation from Spring Framework.\n", "     *  It's relatively simple annotation, but it's not processed correctly.\n", "     */\n"
+
   def test_parses_pdd_issue
     issue = PddIssue.new('AnnotationsApplication.java:32-35: Check default values...',
                          TEST_BODY, 
                          'jeo-maven-plugin', 531)
-    puts issue.to_s
+    assert_equal(EXPECTED_DESCRIPTION, issue.extract_real_body)
   end
 end
