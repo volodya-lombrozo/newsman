@@ -30,10 +30,10 @@ class TestHtmlout < Minitest::Test
 <html lang=\"en\">
 <head>
   <meta charset=\"UTF-8\">
-  <title>volodya-lombrozo 04.04.2024</title>
+  <title>volodya-lombrozo #{Time.new.strftime('%d.%m.%Y')}</title>
 </head>
 <body>
-  <h1>volodya-lombrozo 04.04.2024</h1>
+  <h1>volodya-lombrozo #{Time.new.strftime('%d.%m.%Y')}</h1>
   <p>Issue description</p>
 </body>
 </html>

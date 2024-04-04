@@ -9,6 +9,7 @@ require_relative 'newsman/pull_request'
 require_relative 'newsman/issues'
 require_relative 'newsman/stdout_output'
 require_relative 'newsman/txt_output'
+require_relative 'newsman/html_output'
 require_relative 'newsman/report'
 
 def generate
@@ -32,7 +33,7 @@ def generate
       options[:position] = p
     end
     opts.on('-o', '--output OUTPUT',
-            "Output type. Newsman prints a report to a stdout by default. You can choose another options like '-o html' or '-o txt'") do |o|
+            "Output type. Newsman prints a report to a stdout by default. You can choose another options like '-o html', '-o txt' or even '-o html'") do |o|
       options[:output] = o
     end
     opts.on('-t', '--title TITLE', 'Project Title. Empty by default') do |t|
@@ -160,9 +161,15 @@ def generate
   puts "Output mode is '#{output_mode}'"
   full_answer = Report.new(reporter, reporter_position, options[:title]).build(answer, issues_full_answer, Date.today)
   if output_mode.eql? 'txt'
+    puts "Print result to txy file"
     output = Txtout.new('.')
     output.print(full_answer, github_username)
+  elsif output_mode.eql? 'html'
+    puts "Print result to html file"
+    output = Htmlout.new('.')
+    output.print(full_answer, github_username)
   else
+    puts "Print result to stdout"
     output = Stdout.new
     output.print(full_answer)
   end
