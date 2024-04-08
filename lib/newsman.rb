@@ -117,18 +117,18 @@ def generate
   puts "\nNow lets test some aggregation using OpenAI\n\n"
   openai_client = OpenAI::Client.new(access_token: openai_token)
 
-  example = "jeo-meven-plugin:
+  example = "some-repository-name-x:
   - Added 100 new files to the Dataset [#168]
   - Fixed the deployment of XYZ [#169]
   - Refined the requirements [#177]
-  opeo-maven-plugin:
+  some-repository-name-y:
   - Removed XYZ class [#57]
   - Refactored http module [#69]"
 
-  example_plans = "jeo-maven-plugin:
+  example_plans = "some-repository-name-x:
   - To publish ABC package draft [#27]
   - To review first draft of the report [#56]
-  opeo-maven-plugin:
+  some-repository-name-y:
   - To implement optimization for the class X [#125]"
 
   response = openai_client.chat(
@@ -138,7 +138,7 @@ def generate
         { role: 'system',
           content: 'You are a developer tasked with composing a concise report detailing your activities and progress for the previous week, intended for submission to your supervisor.' },
         { role: 'user',
-          content: "Please compile a summary of the work completed in the following Pull Requests (PRs). Each PR should be summarized in a single sentence, focusing more on the PR title and less on implementation details. Group the sentences by repositories, each identified by its name mentioned in the 'repository:[name]' attribute of the PR. The grouping is important an should be precise. Ensure that each sentence includes the corresponding issue number as an integer value. If a PR doesn't mention an issue number, just print [#chore]. Combine all the information from each PR into a concise and fluent sentence, as if you were a developer reporting on your work. Please strictly adhere to the example template provided. Example of a report: #{example}. List of Pull Requests: [#{prs}]" }
+          content: "Please compile a summary of the work completed in the following Pull Requests (PRs). Each PR should be summarized in a single sentence, focusing more on the PR title and less on implementation details. Group the sentences by repositories, each identified by its name mentioned in the 'repository:[name]' attribute of the PR. Pay attention, that you don't lose any PR. The grouping is important an should be precise. Ensure that each sentence includes the corresponding issue number as an integer value. If a PR doesn't mention an issue number, just print [#chore]. Combine all the information from each PR into a concise and fluent sentence, as if you were a developer reporting on your work. Please strictly adhere to the example template provided. Example of a report: #{example}. List of Pull Requests: [#{prs}]" }
       ],
       temperature: 0.3
     }
@@ -151,7 +151,7 @@ def generate
         { role: 'system',
           content: 'You are a developer tasked with composing a concise report detailing your activities and progress for the previous week, intended for submission to your supervisor.' },
         { role: 'user',
-          content: "Please compile a summary of the plans for the next week using the following GitHub Issues descriptions. Each issue should be summarized in a single sentence, focusing more on the issue title and less on implementation details. Group the sentences by repositories, each identified by its name mentioned in the 'repository:[name]' attribute of the issue. The grouping is important an should be precise. Ensure that each sentence includes the corresponding issue number as an integer value. If an issue doesn't mention an issue number, just print [#chore]. Combine all the information from each Issue into a concise and fluent sentences, as if you were a developer reporting on your work. Please strictly adhere to the example template provided: #{example_plans}. List of GitHub issues to aggregate: [#{issues}]. Use the same formatting as here \n```#{answer}```\n" }
+          content: "Please compile a summary of the plans for the next week using the following GitHub Issues descriptions. Each issue should be summarized in a single sentence, focusing more on the issue title and less on implementation details. Group the sentences by repositories, each identified by its name mentioned in the 'repository:[name]' attribute of the issue. Pat attention, that you din't loose any issue. The grouping is important an should be precise. Ensure that each sentence includes the corresponding issue number as an integer value. If an issue doesn't mention an issue number, just print [#chore]. Combine all the information from each Issue into a concise and fluent sentences, as if you were a developer reporting on your work. Please strictly adhere to the example template provided: #{example_plans}. List of GitHub issues to aggregate: [#{issues}]. Use the same formatting as here \n```#{answer}```\n" }
       ],
       temperature: 0.3
     }
