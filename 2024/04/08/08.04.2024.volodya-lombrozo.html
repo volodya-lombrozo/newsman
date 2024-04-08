@@ -1,47 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>volodya-lombrozo 08.04.2024</title>
-</head>
-<body>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+  <head>
+    <title>volodya-lombrozo 08.04.2024</title>
+  </head>
+  <body>
   <h1>volodya-lombrozo 08.04.2024</h1>
-  <p>From: Vladimir Zakharov
-Subject: WEEK 15 Objectionary
+  <p>From: Vladimir Zakharov<br/>
+Subject: WEEK 15 Objectionary</p>
 
-Hi all,
+<p>Hi all,</p>
 
-Last week achievements:
-jeo-maven-plugin:
-- Updated Docker image to `lombrozo/rultor-image-java:pr-3` in `.rultor.yml` [#chore]
-- Improved code readability by updating dependencies and preventing `NullPointerExceptions` in string comparisons [#199]
-- Enabled 'eo-to-bytecode' integration test and updated README with test information [#526]
-- Refactored bytecode generation by introducing `CustomClassWriter` and improving method writing logic [#528]
-- Added support for annotation default values, refactored code, and updated coverage ratios [#534]
-opeo-maven-plugin:
-- Enabled full 'spring-fat' integration test and provided detailed instructions for running the test suite [#488]
+<p>Last week achievements:<br/>
+opeo-maven-plugin:<br/>
+- Updated Docker image to <code class="prettyprint">lombrozo/rultor-image-java:pr-3</code> in <code class="prettyprint">.rultor.yml</code> [#chore]<br/>
+- Updated dependencies and enhanced code readability [#199]<br/>
+- Enabled 'spring-fat' integration tests with detailed instructions [#488]</p>
 
-Next week plans:
-jeo-maven-plugin:
-- To incorporate a large integration test for the `opeo-maven-plugin` mimicking a realistic scenario [#200]
-- To apply XSL transformations for XMIR to bytecode conversion instead of manual parsing [#549]
-- To enhance the `spring-fat` integration test by adding HTTP support for a more realistic scenario [#548]
-- To replace `org.w3c.dom` usages with `com.jcabi.xml` for improved XML parsing [#546]
-- To enable bytecode verification for the Spring Fat integration test [#543]
-- To remove ad-hoc solutions for method frames computation in `CustomClassWriter.java` [#540]
-- To refactor the `DirectivesMethod` class for improved code readability [#537]
-- To refactor the `DirectivesAnnotationVisitor` class to reduce complexity and remove null values [#536]
-- To refactor the annotations implementation for simplification and readability [#532]
-- To refactor the `DataType`, `HexData`, and `HexString` classes for clearer responsibilities [#520]
-- To enable the execution of the `xmir-to-phi` goal after fixing a bug [#506]
-- To use `AllLabels` properly in `Disassemble.java` to avoid cache clearing [#501]
+<p>jeo-maven-plugin:<br/>
+- Enabled 'eo-to-bytecode' integration test with updated instructions [#526]<br/>
+- Refactored bytecode generation with <code class="prettyprint">CustomClassWriter</code> [#528]<br/>
+- Added annotation default values support and refactored code [#534]</p>
 
-Risks:
-- <todo>
+<p>Next week plans:<br/>
+```opeo-maven-plugin:<br/>
+- To incorporate a large integration test mimicking a realistic scenario with Spring Boot and HTTP server [#200]<br/>
+- To enhance the 'spring-fat' integration test by adding HTTP support to the application [#548]</p>
 
-Best regards,
-Vladimir Zakharov
-Software Developer
+<p>jeo-maven-plugin:<br/>
+- To apply XSL transformations for XMIR to bytecode conversion [#549]<br/>
+- To replace <code class="prettyprint">org.w3c.dom</code> usages with <code class="prettyprint">com.jcabi.xml</code> for XML parsing [#546]<br/>
+- To enable bytecode verification for Spring Fat integration test [#543]<br/>
+- To remove ad-hoc solution for method frames computation in <code class="prettyprint">CustomClassWriter.java</code> [#540]<br/>
+- To refactor <code class="prettyprint">DirectivesMethod</code> class for code simplification [#537]<br/>
+- To refactor <code class="prettyprint">DirectivesAnnotationVisitor</code> class to reduce complexity and remove null values [#536]<br/>
+- To refactor annotations implementation for simplicity and readability [#532]<br/>
+- To refactor <code class="prettyprint">DataType</code>, <code class="prettyprint">HexData</code>, and <code class="prettyprint">HexString</code> classes for clearer responsibilities [#520]<br/>
+- To enable the execution of the <code class="prettyprint">xmir-to-phi</code> goal after fixing bugs [#506]<br/>
+- To use <code class="prettyprint">AllLabels</code> properly to avoid cache clearing in <code class="prettyprint">Disassemble.java</code> [#501]```</p>
+
+<p>Risks:<br/>
+jeo-maven-plugin:<br/>
+- In PR <code class="prettyprint">Update .rultor.yml</code>, there are no identified risks or issues.<br/>
+- In PR <code class="prettyprint">Update All Project Dependencies</code>, there is a risk related to strange decompiled object values with <code class="prettyprint">--</code> default values that may need attention in the future [#199].<br/>
+- In PR <code class="prettyprint">Enable 'spring-fat' Integration Tests</code>, there are no identified risks or issues.<br/>
+- In PR <code class="prettyprint">Enable 'eo-to-bytecode' Integration Test</code>, there are no identified risks or issues.<br/>
+- In PR <code class="prettyprint">Smart Max Stack, Max Locals, and Frames Computation</code>, there are risks related to using reflection for automatic computation of max stack, max locals, and frames per method basis, which may lead to incorrect behavior in a concurrent environment and performance issues [#528].<br/>
+- In PR <code class="prettyprint">Annotation Default Values Support</code>, there are no identified risks or issues.</p>
+
+<p>Best regards,<br/>
+Vladimir Zakharov<br/>
+Software Developer<br/>
 2024-04-08</p>
+
 </body>
 </html>
