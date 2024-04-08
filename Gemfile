@@ -10,3 +10,5 @@ gem 'optparse'
 gem 'rubocop', require: false
 gem 'ruby-openai'
 gem 'net-http'
+gem 'redcarpet'
+gem 'nokogiri'

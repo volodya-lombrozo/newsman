@@ -26,15 +26,22 @@ require_relative '../lib/newsman/html_output'
 
 class TestHtmlout < Minitest::Test
 
-  EXPECTED = "<!DOCTYPE html>
-<html lang=\"en\">
-<head>
-  <meta charset=\"UTF-8\">
-  <title>volodya-lombrozo #{Time.new.strftime('%d.%m.%Y')}</title>
-</head>
-<body>
+
+EXPECTED = "<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.0 Transitional//EN\" \"http://www.w3.org/TR/REC-html40/loose.dtd\">
+<html>
+  <head>
+    <title>volodya-lombrozo #{Time.new.strftime('%d.%m.%Y')}</title>
+  </head>
+  <body>
   <h1>volodya-lombrozo #{Time.new.strftime('%d.%m.%Y')}</h1>
   <p>Issue description</p>
+
+<p>Here is a new paragraph<br/>
+List is here:<br/>
+ - one<br/>
+ - two<br/>
+ - three</p>
+
 </body>
 </html>
 "
@@ -44,7 +51,7 @@ class TestHtmlout < Minitest::Test
       output = Htmlout.new(temp_dir)
       today = Date.today.strftime('%d.%m.%Y')
       expected = "#{today}.volodya-lombrozo.html"
-      output.print("Issue description", 'volodya-lombrozo')
+      output.print("Issue description\n\nHere is a new paragraph\nList is here:\n - one\n - two\n - three", 'volodya-lombrozo')
       assert(File.exist?(File.join(temp_dir, expected)))
       assert_equal(EXPECTED, File.read(File.join(temp_dir, expected)))
     end
