@@ -12,35 +12,38 @@ Subject: WEEK 16 Objectionary</p>
 
 <p>Last week achievements:<br/>
 jeo-maven-plugin:<br/>
-- Use direct xpath instead of global in XmlMethod implementation [#557]<br/>
-- Update opeo-maven-plugin to use the newest version of jeo-maven-plugin [#201]<br/>
-- Alter <code class="prettyprint">XmlProgram</code> and <code class="prettyprint">XmlClass</code> classes [#555]<br/>
-- Remove Mutable Methods [#352]<br/>
-- Clean Max Stack and Max Locals [#550]</p>
+  - Use direct xpath instead of global in XmlMethod implementation [#557]<br/>
+  - Update opeo-maven-plugin to use the newest version of jeo-maven-plugin [#201]<br/>
+  - Alter <code class="prettyprint">XmlProgram</code> and <code class="prettyprint">XmlClass</code> classes [#555]<br/>
+  - Remove Mutable Methods [#352]<br/>
+  - Clean Max Stack and Max Locals [#550]</p>
 
 <p>Next week plans:<br/>
 ```opeo-maven-plugin:<br/>
-- Add Attributes to the Super class [#209]<br/>
-- Remove the 'appendInterfaced' method from Opcode [#208]<br/>
-- Fix 'staticize' optimization [#207]<br/>
-- Large test with Spring Boot, Http and Factorial [#200]</p>
+  - Add Attributes to the Super class [#209]<br/>
+  - Remove the 'appendInterfaced' method from Opcode [#208]<br/>
+  - Fix 'staticize' optimization [#207]<br/>
+  - Large test with Spring Boot, Http and Factorial [#200]</p>
 
 <p>jeo-maven-plugin:<br/>
-- XMIR to Bytecode transformation via XSL [#549]<br/>
-- Add <code class="prettyprint">http</code> support to the <code class="prettyprint">spring-fat</code> integration test [#548]<br/>
-- Replace <code class="prettyprint">org.w3c.dom</code> usages with <code class="prettyprint">com.jcabi.xml</code> [#546]<br/>
-- Enable Bytecode Verification For Spring Fat Integration Test [#543]<br/>
-- Remove ad-hoc solution for method frames, stack and locals computation [#540]<br/>
-- Refactor DirectivesMethod class to simplify the code [#537]<br/>
-- Refactor the code to reduce complexity and remove null values [#536]<br/>
-- Refactor Annotations Implementation [#532]<br/>
-- Refactor DataType, HexData and HexString classes [#520]<br/>
+  - XMIR to Bytecode transformation via XSL [#549]<br/>
+  - Add <code class="prettyprint">http</code> support to the <code class="prettyprint">spring-fat</code> integration test [#548]<br/>
+  - Replace <code class="prettyprint">org.w3c.dom</code> usages with  <code class="prettyprint">com.jcabi.xml</code> [#546]<br/>
+  - Enable Bytecode Verification For Spring Fat Integration Test [#543]<br/>
+  - Remove ad-hoc solution for method frames, stack and locals computation [#540]<br/>
+  - Refactor DirectivesMethod class to simplify the code [#537]<br/>
+  - Refactor the code to reduce complexity and remove null values [#536]<br/>
+  - Refactor Annotations Implementation [#532]<br/>
+  - Refactor DataType, HexData and HexString classes [#520]<br/>
 ```</p>
 
 <p>Risks:<br/>
 jeo-maven-plugin:<br/>
-- The removal of mutable methods in <code class="prettyprint">XmlMethod</code> enhances safety by preventing changes to the inner state of the object, allowing only for the creation of modified copies [#352].<br/>
-- The addition of max stack and locals support in XML method representation improves functionality and flexibility in <code class="prettyprint">XmlMethod</code> [#550].</p>
+- Removed mutable methods from <code class="prettyprint">XmlMethod</code> in PR #352, ensuring safer object state handling [#352].<br/>
+- Updated XPath expressions in <code class="prettyprint">XmlMethod.java</code> to target elements relative to the current node in PR #557, improving targeting accuracy [#557].<br/>
+- Enhanced <code class="prettyprint">XmlClass</code> and <code class="prettyprint">XmlMethod</code> classes by adding manipulation and conversion methods in PR #555, increasing flexibility and functionality [#555].<br/>
+- Added max stack and locals support to XML method representation in PR #550, improving method instruction handling [#550].<br/>
+- Updated versions, added <code class="prettyprint">interfaced</code> attribute, and refactored method names and instructions in PR #201, enhancing codebase maintainability [#201].</p>
 
 <p>Best regards,<br/>
 Vladimir Zakharov<br/>
