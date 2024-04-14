@@ -76,7 +76,6 @@ def generate
   # Create a GitHub client instance with your access token
   client = Octokit::Client.new(github_token: github_token)
   # Calculate the date one week ago
-  report_date = Date.today
   one_week_ago = date_one_week_ago(Date.today)
   one_month_ago = Date.today.prev_month.strftime('%Y-%m-%d')
   # Display pull request
@@ -96,7 +95,7 @@ def generate
     prs << pr
   end
   prs = prs.map(&:to_s).join("\n\n\n")
-  
+
   puts "Searching issues using the following query: '#{issues_query}'"
   issues = []
   client.search_issues(issues_query).items.each do |issue|
@@ -105,15 +104,15 @@ def generate
     repository = issue.repository_url.split('/').last
     number = issue.number.to_s
     puts "Found issue in #{repository}:[##{number}] #{title}"
-    if issue.user.login == "0pdd"
-      issues << PddIssue.new(title, body, repository, number)
-    else
-      issues << Issue.new(title, body, repository, number)
-    end
+    issues << if issue.user.login == '0pdd'
+                PddIssue.new(title, body, repository, number)
+              else
+                Issue.new(title, body, repository, number)
+              end
   end
   issues = issues.map(&:to_s).join("\n\n\n")
-  #puts "Found issues:\n #{issues}"
-    
+  # puts "Found issues:\n #{issues}"
+
   puts "\nNow lets test some aggregation using OpenAI\n\n"
   openai_client = OpenAI::Client.new(access_token: openai_token)
 
@@ -162,9 +161,8 @@ some-repository-name-y:
       ],
       temperature: 0.3
     }
-)
+  )
   issues_full_answer = issues_response.dig('choices', 0, 'message', 'content')
-
 
   risks_full_answer = openai_client.chat(
     parameters: {
@@ -173,26 +171,26 @@ some-repository-name-y:
         { role: 'system',
           content: 'You are a developer tasked with composing a concise report detailing your activities and progress for the previous week, intended for submission to your supervisor.' },
         { role: 'user',
-          content: "Please compile a summary of the risks identified in some repositories. If you can't find anything, just leave answer empty. Add some entries to a report only if you are sure it's a risk. Developers usually mention some risks in pull request descriptions. They either mention 'risk' or 'issue'. I will give you a list of pull requests. Each risk should be summarized in a single sentence. Ensure that each sentence includes the corresponding issue number or PR number as an integer value. If a PR or an issue doesn't mention an issue number, just print [#chore]. Combine all the information from each PR into a concise and fluent sentence, as if you were a developer reporting on your work. Please strictly adhere to the example template provided. Example of a report: #{example_risks}. List of Pull Requests: ```#{prs}```.]"}
+          content: "Please compile a summary of the risks identified in some repositories. If you can't find anything, just leave answer empty. Add some entries to a report only if you are sure it's a risk. Developers usually mention some risks in pull request descriptions. They either mention 'risk' or 'issue'. I will give you a list of pull requests. Each risk should be summarized in a single sentence. Ensure that each sentence includes the corresponding issue number or PR number as an integer value. If a PR or an issue doesn't mention an issue number, just print [#chore]. Combine all the information from each PR into a concise and fluent sentence, as if you were a developer reporting on your work. Please strictly adhere to the example template provided. Example of a report: #{example_risks}. List of Pull Requests: ```#{prs}```.]" }
       ],
       temperature: 0.3
     }
   ).dig('choices', 0, 'message', 'content')
 
-
   output_mode = options[:output]
   puts "Output mode is '#{output_mode}'"
-  full_answer = Report.new(reporter, reporter_position, options[:title]).build(answer, issues_full_answer, risks_full_answer, Date.today)
+  full_answer = Report.new(reporter, reporter_position, options[:title]).build(answer, issues_full_answer,
+                                                                               risks_full_answer, Date.today)
   if output_mode.eql? 'txt'
-    puts "Print result to txy file"
+    puts 'Print result to txy file'
     output = Txtout.new('.')
     output.print(full_answer, github_username)
   elsif output_mode.eql? 'html'
-    puts "Print result to html file"
+    puts 'Print result to html file'
     output = Htmlout.new('.')
     output.print(full_answer, github_username)
   else
-    puts "Print result to stdout"
+    puts 'Print result to stdout'
     output = Stdout.new
     output.print(full_answer)
   end

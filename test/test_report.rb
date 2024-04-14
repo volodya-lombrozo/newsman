@@ -22,7 +22,7 @@
 # SOFTWARE.
 
 require 'minitest/autorun'
-require_relative '../lib/newsman/report.rb'
+require_relative '../lib/newsman/report'
 
 class TestReport < Minitest::Test
   def test_report
@@ -47,8 +47,8 @@ User
 Developer
 2024-03-14"
     report = Report.new('User', 'Developer', 'Project')
-    out = report.build("repository-a:\n - Did a lot of for (a) repository", "repository-b:\n - I will do a lot for repository (b)", "- <todo>", Date.new(2024, 3, 14))
+    out = report.build("repository-a:\n - Did a lot of for (a) repository",
+                       "repository-b:\n - I will do a lot for repository (b)", '- <todo>', Date.new(2024, 3, 14))
     assert_equal expected, out
   end
 end
-

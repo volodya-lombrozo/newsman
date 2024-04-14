@@ -1,10 +1,11 @@
+# frozen_string_literal: true
+
 require 'erb'
 require 'redcarpet'
 require 'nokogiri'
 # frozen_string_literal: true
 
 class Htmlout
-
   TEMPLATE = "
 <head>
   <title><%= title %></title>
@@ -18,9 +19,9 @@ class Htmlout
   def initialize(root = '.')
     @root = root
   end
-  
+
   def print(report, reporter)
-    title = title(reporter) 
+    title = title(reporter)
     renderer = Redcarpet::Render::HTML.new(no_links: true, hard_wrap: true, prettify: true)
     markdown = Redcarpet::Markdown.new(renderer, autolink: true, tables: true)
     body = markdown.render(report)

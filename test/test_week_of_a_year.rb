@@ -30,4 +30,3 @@ class TestWeekOfYear < Minitest::Test
     assert_equal 'WEEK 9 OPEO', week_of_a_year('OPEO', Date.new(2024, 2, 29))
   end
 end
-

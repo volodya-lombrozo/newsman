@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require 'net/http'
 # frozen_string_literal: true
 
-class Issue 
+class Issue
   attr_accessor :title, :body, :repo, :number
 
   def initialize(title, body, repo, number)
@@ -17,7 +19,6 @@ class Issue
 end
 
 class PddIssue
-
   def initialize(title, body, repo, number)
     @title = title
     @body = body
@@ -26,18 +27,19 @@ class PddIssue
   end
 
   def extract_real_body
-    address = issue_link()
+    address = issue_link
     line_numbers = address.scan(/#L(\d+)-L(\d+)/).flatten.map(&:to_i)
     uri = URI(address)
-    return Net::HTTP.get(uri).lines[line_numbers[0]-1..line_numbers[1]]
+    Net::HTTP.get(uri).lines[line_numbers[0] - 1..line_numbers[1]]
   end
 
-  def issue_link 
-    return @body[/https:\/\/github\.com\/[\w\-\/]+\/blob\/[\w\d]+\/[\w\/\.\-]+#\w+-\w+/, 0].gsub('https://github.com','https://raw.githubusercontent.com').gsub('blob/', '')
+  def issue_link
+    @body[%r{https://github\.com/[\w\-/]+/blob/[\w\d]+/[\w/.-]+#\w+-\w+}, 0].gsub('https://github.com', 'https://raw.githubusercontent.com').gsub(
+      'blob/', ''
+    )
   end
 
   def to_s
     "title: ```#{@title}```,\ndescription: ```#{extract_real_body}```,\nrepo: ```#{@repo}```,\nissue number: \##{@number}\n"
   end
 end
-

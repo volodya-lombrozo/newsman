@@ -13,4 +13,3 @@ class PullRequest
     "title: ```#{@title}```,\ndescription: ```#{@description}```,\nrepo: ```#{@repository}```\n"
   end
 end
-

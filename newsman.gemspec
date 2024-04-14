@@ -18,10 +18,10 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rspec', '~> 3.2'
   spec.add_dependency 'dotenv', '~> 3.1'
   spec.add_dependency 'faraday-retry', '~> 2.2'
+  spec.add_dependency 'net-http', '~> 0.4'
+  spec.add_dependency 'nokogiri', '~> 1.16'
   spec.add_dependency 'octokit', '~> 8.0'
   spec.add_dependency 'optparse', '~> 0.4.0'
-  spec.add_dependency 'ruby-openai', '~> 6.3'
-  spec.add_dependency 'net-http', '~> 0.4'
   spec.add_dependency 'redcarpet', '~> 3.6'
-  spec.add_dependency 'nokogiri', '~> 1.16'
+  spec.add_dependency 'ruby-openai', '~> 6.3'
 end
