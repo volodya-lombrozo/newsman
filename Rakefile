@@ -23,8 +23,14 @@ desc 'Push the latest gem version to RubyGems.org'
 task :publish => [:install] do
   gem_file = find_latest_gem 
   sh "gem push #{gem_file}" if gem_file
+  Rake::Task['clean'].invoke
 end
 
+desc 'Remove latest gem'
+task :clean do
+  gem_file = find_latest_gem
+  File.delete(gem_file)
+end
 
 def find_latest_gem
   Dir['*.gem'].max_by { |file| File.mtime(file) }
