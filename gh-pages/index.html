@@ -13,7 +13,7 @@ title: Newsman Reports
         {% assign sitepages = site.pages | sort: 'order' %}
         {% for sitepage in sitepages %}
         <li>
-          <a href="{{ sitepage.url }}">{{ sitepage.title }}</a>
+          <a href="{{ sitepage.url }}">{{{site.canonical_domain}}{{site.baseurl}}{ sitepage.title }}</a>
         </li>
         {% endfor %}
    </ul>
