@@ -1,16 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Newsman</title>
-</head>
-<body>
+---
+title: Newsman Reports 
+---
+
+<div>
     <h1>Newsman</h1>
     <p>
         Newsman is a simple script that collects information about a developer's weekly activity on GitHub and creates a human-readable summary of the work done. To create the summary, Newsman asks ChatGPT to handle all the information about a developer's activity, including their pull requests and created issues.
     </p>
     <p>GitHub Repository: <a href="https://github.com/volodya-lombrozo/newsman">https://github.com/volodya-lombrozo/newsman</a></p>
-</body>
-</html>
+
+    <ul>
+        {% assign sitepages = site.pages | sort: 'order' %}
+        {% for sitepage in sitepages %}
+        <li>
+          <a href="{{ sitepage.url }}">{{ sitepage.title }}</a>
+        </li>
+        {% endfor %}
+   </ul>
+</div>
 
