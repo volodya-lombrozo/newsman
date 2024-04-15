@@ -34,16 +34,18 @@ jeo-maven-plugin:<br/>
   - Refactor DirectivesMethod class to simplify the code [#537]<br/>
   - Refactor the code to reduce complexity and remove null values [#536]<br/>
   - Refactor Annotations Implementation [#532]<br/>
-  - Refactor DataType, HexData and HexString classes [#520]<br/>
-```</p>
+  - Refactor DataType, HexData and HexString classes [#520]```</p>
 
 <p>Risks:<br/>
 jeo-maven-plugin:<br/>
-- Removed mutable methods from <code class="prettyprint">XmlMethod</code> to ensure safety in object state manipulation [#352].<br/>
-- Updated XPath expressions in <code class="prettyprint">XmlMethod.java</code> to target elements relative to the current node [#557].<br/>
-- Enhanced <code class="prettyprint">XmlClass</code> and <code class="prettyprint">XmlMethod</code> classes by adding methods for manipulation and conversion to XML [#555].<br/>
-- Added max stack and locals support to XML method representation [#550].<br/>
-- Updated versions, added <code class="prettyprint">interfaced</code> attribute, and refactored method names and instructions in the codebase [#201].</p>
+- The code in the repository is suboptimal, which may lead to future maintainability problems [#44].<br/>
+- The server is weak, potentially risking the failure of dataset delivery and missing the report milestone [#487].<br/>
+- Mutable methods were removed from <code class="prettyprint">XmlMethod</code>, enhancing safety by disallowing changes to the inner state of the object [#352].<br/>
+- The PR to clean max stack and locals added the ability to modify <code class="prettyprint">XmlMethod</code> instructions, max stack, and max locals, closing issue #550.</p>
+
+<p>opeo-maven-plugin:<br/>
+- The update to the newest version of jeo-maven-plugin in integration tests up to version 0.4.1 involved significant changes to handle additional opcode arguments for different invocations, related to issue #201.<br/>
+- The alteration of <code class="prettyprint">XmlProgram</code> and <code class="prettyprint">XmlClass</code> classes allows for modifying these objects and converting <code class="prettyprint">XmlClass</code> back to XML, closing issue #555.</p>
 
 <p>Best regards,<br/>
 Vladimir Zakharov<br/>
