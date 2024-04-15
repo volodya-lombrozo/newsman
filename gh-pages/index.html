@@ -8,14 +8,26 @@ title: Newsman Reports
         Newsman is a simple script that collects information about a developer's weekly activity on GitHub and creates a human-readable summary of the work done. To create the summary, Newsman asks ChatGPT to handle all the information about a developer's activity, including their pull requests and created issues.
     </p>
     <p>GitHub Repository: <a href="https://github.com/volodya-lombrozo/newsman">https://github.com/volodya-lombrozo/newsman</a></p>
-
+    <p>Pages:</p>
     <ul>
         {% assign sitepages = site.pages | sort: 'order' %}
         {% for sitepage in sitepages %}
         <li>
-          <a href="{{ sitepage.url }}">{{{site.canonical_domain}}{{site.baseurl}}{ sitepage.title }}</a>
+		<a href="{{site.canonical_domain}}{{site.baseurl}}{{ sitepage.url }}">{{ sitepage.title }}</a>
         </li>
         {% endfor %}
    </ul>
+
+
+   <p>Static Files:</p>
+   <ul>
+        {% assign sf = site.static_files | sort: 'order' %}
+        {% for file in sf %}
+        <li>
+          <a href="{{site.canonical_domain}}{{site.baseurl}}{{ file.path }}">{{ file.name }}</a>
+        </li>
+        {% endfor %}
+   </ul>
+
 </div>
 
