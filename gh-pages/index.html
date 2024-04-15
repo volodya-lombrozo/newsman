@@ -12,7 +12,7 @@ title: Newsman Reports
    <p>Latest report examples:</p>
    <ul>
         {% assign sf = site.static_files | sort: 'modified_time' %}
-        {% for file in sf %}
+        {% for file in sf reversed %}
         <li>
           <a href="{{site.canonical_domain}}{{site.baseurl}}{{ file.path }}">{{ file.name }}</a>
         </li>
