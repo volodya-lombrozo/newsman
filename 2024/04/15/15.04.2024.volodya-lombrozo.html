@@ -12,40 +12,37 @@ Subject: WEEK 16 Objectionary</p>
 
 <p>Last week achievements:<br/>
 jeo-maven-plugin:<br/>
-  - Use direct xpath instead of global in XmlMethod implementation [#557]<br/>
-  - Update opeo-maven-plugin to use the newest version of jeo-maven-plugin [#201]<br/>
-  - Alter <code class="prettyprint">XmlProgram</code> and <code class="prettyprint">XmlClass</code> classes [#555]<br/>
-  - Clean Max Stack and Max Locals [#550]<br/>
-  - Remove Mutable Methods [#352]</p>
+- Use direct xpath instead of global in XmlMethod implementation [#557]<br/>
+- Update opeo-maven-plugin to use the newest version of jeo-maven-plugin [#201]<br/>
+- Alter <code class="prettyprint">XmlProgram</code> and <code class="prettyprint">XmlClass</code> classes [#555]<br/>
+- Remove Mutable Methods [#352]<br/>
+- Clean Max Stack and Max Locals [#550]</p>
 
 <p>Next week plans:<br/>
 ```opeo-maven-plugin:<br/>
-  - Add Attributes to the Super class [#209]<br/>
-  - Remove the 'appendInterfaced' method from Opcode [#208]<br/>
-  - Fix 'staticize' optimization [#207]<br/>
-  - Large test with Spring Boot, Http and Factorial [#200]</p>
+- Add Attributes to the Super class [#209]<br/>
+- Remove the 'appendInterfaced' method from Opcode [#208]<br/>
+- Fix 'staticize' optimization [#207]<br/>
+- Create a large integration test with Spring Boot, Http, and Factorial [#200]</p>
 
 <p>jeo-maven-plugin:<br/>
-  - XMIR to Bytecode transformation via XSL [#549]<br/>
-  - Add <code class="prettyprint">http</code> support to the <code class="prettyprint">spring-fat</code> integration test [#548]<br/>
-  - Replace <code class="prettyprint">org.w3c.dom</code> usages with <code class="prettyprint">com.jcabi.xml</code> [#546]<br/>
-  - Enable Bytecode Verification For Spring Fat Integration Test [#543]<br/>
-  - Remove ad-hoc solution for method frames, stack and locals computation [#540]<br/>
-  - Refactor DirectivesMethod class to simplify the code [#537]<br/>
-  - Refactor the code to reduce complexity and remove null values [#536]<br/>
-  - Refactor Annotations Implementation [#532]<br/>
-  - Refactor DataType, HexData and HexString classes [#520]```</p>
+- Transform XMIR to Bytecode via XSL [#549]<br/>
+- Add <code class="prettyprint">http</code> support to the <code class="prettyprint">spring-fat</code> integration test [#548]<br/>
+- Replace <code class="prettyprint">org.w3c.dom</code> usages with <code class="prettyprint">com.jcabi.xml</code> [#546]<br/>
+- Enable Bytecode Verification For Spring Fat Integration Test [#543]<br/>
+- Remove ad-hoc solution for method frames, stack, and locals computation [#540]<br/>
+- Refactor DirectivesMethod class to simplify the code [#537]<br/>
+- Refactor the code to reduce complexity and remove null values [#536]<br/>
+- Refactor Annotations Implementation [#532]<br/>
+- Refactor DataType, HexData, and HexString classes [#520]```</p>
 
 <p>Risks:<br/>
 jeo-maven-plugin:<br/>
-- The code in the repository is suboptimal, which may lead to future maintainability problems [#44].<br/>
-- The server is weak, potentially risking the failure of dataset delivery and missing the report milestone [#487].<br/>
-- Mutable methods were removed from <code class="prettyprint">XmlMethod</code>, enhancing safety by disallowing changes to the inner state of the object [#352].<br/>
-- The PR to clean max stack and locals added the ability to modify <code class="prettyprint">XmlMethod</code> instructions, max stack, and max locals, closing issue #550.</p>
-
-<p>opeo-maven-plugin:<br/>
-- The update to the newest version of jeo-maven-plugin in integration tests up to version 0.4.1 involved significant changes to handle additional opcode arguments for different invocations, related to issue #201.<br/>
-- The alteration of <code class="prettyprint">XmlProgram</code> and <code class="prettyprint">XmlClass</code> classes allows for modifying these objects and converting <code class="prettyprint">XmlClass</code> back to XML, closing issue #555.</p>
+  - The server is weak, we may fail the delivery of the dataset, report milestone will be missed [#557].<br/>
+  - The code in repository is suboptimal, we might have some problems for the future maintainability [#201].<br/>
+  - The code in repository is suboptimal, we might have some problems for the future maintainability [#555].<br/>
+  - The server is weak, we may fail the delivery of the dataset, report milestone will be missed [#352].<br/>
+  - The server is weak, we may fail the delivery of the dataset, report milestone will be missed [#550].</p>
 
 <p>Best regards,<br/>
 Vladimir Zakharov<br/>
