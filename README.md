@@ -65,4 +65,4 @@ And you should see a welcome message from newsman.
 
 ## Examples
 
-You can find examples of generated reports [here](https://github.com/volodya-lombrozo/newsman/tree/gh-pages)
+You can find examples of generated reports [here](https://github.com/volodya-lombrozo.github.io/newsman/)
