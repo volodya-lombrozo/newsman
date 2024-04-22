@@ -14,42 +14,50 @@ Subject: WEEK 17 Objectionary</p>
 some-repository-name-x:<br/>
   - Implemented new authentication flow [#123]<br/>
   - Updated error handling for better user experience [#124]<br/>
-  - Fixed styling issues in the profile page [#125]<br/>
+  - Fixed styling issues on the profile page [#125]<br/>
+  - Refactored data fetching logic [#126]<br/>
 some-repository-name-y:<br/>
-  - Refactored database queries for improved performance [#126]<br/>
-  - Added support for dark mode theme [#127]<br/>
+  - Added unit tests for the API endpoints [#45]<br/>
+  - Refactored database queries for improved performance [#46]<br/>
+  - Updated dependencies to address security vulnerabilities [#47]<br/>
+some-repository-name-z:<br/>
+  - Implemented new feature for exporting data to CSV format [#78]<br/>
+  - Resolved issue with user permissions not being applied correctly [#79]<br/>
   - [#chore]</p>
 
-<p>Next week plans:<br/>
-```opeo-maven-plugin:<br/>
-  - Add Attributes to the Super class [#209]<br/>
-  - Remove the 'appendInterfaced' method from Opcode [#208]<br/>
-  - Fix 'staticize' optimization [#207]<br/>
-  - Large test with Spring Boot, Http and Factorial [#200]</p>
-
-<p>jeo-maven-plugin:<br/>
+<p>Next week plans:<br/><code class="prettyprint">opeo-maven-plugin:<br/>
+  - Add `http` support to the `spring-fat` integration test [#548]<br/>
+  - Large test with Spring Boot, Http and Factorial [#200]<br/>
   - XMIR to Bytecode transformation via XSL [#549]<br/>
-  - Add <code class="prettyprint">http</code> support to the <code class="prettyprint">spring-fat</code> integration test  [#548]<br/>
-  - Replace <code class="prettyprint">org.w3c.dom</code> usages with  <code class="prettyprint">com.jcabi.xml</code> [#546]<br/>
+  - Replace `org.w3c.dom` usages with  `com.jcabi.xml` [#546]<br/>
+jeo-maven-plugin:<br/>
   - Enable Bytecode Verification For Spring Fat Integration Test [#543]<br/>
   - Remove ad-hoc solution for method frames, stack and locals computation [#540]<br/>
   - Refactor DirectivesMethod class to simplify the code [#537]<br/>
   - Refactor the code to reduce complexity and remove null values [#536]<br/>
   - Refactor Annotations Implementation [#532]<br/>
-  - Refactor DataType, HexData and HexString classes [#520]<br/>
-```</p>
+  - Refactor DataType, HexData and HexString classes [#520]<br/></code></p>
 
-<p>Risks:<br/><strong>Weekly Report:</strong></p>
+<p>Risks:</p>
 
-<p><strong>Repository: some-repository-name-x:</strong><br/>
-- No risks identified in the pull requests reviewed this week.</p>
+<h3>Weekly Report - Developer Activities and Progress</h3>
 
-<p><strong>Repository: some-repository-name-y:</strong><br/>
-- The implementation of the new feature lacks proper error handling, which could lead to unexpected crashes [#123].<br/>
-- The database schema changes in PR #456 might cause data inconsistency issues if not thoroughly tested.<br/>
-- The use of deprecated libraries in PR #789 poses a security risk and may lead to vulnerabilities.</p>
+<h4>Risks Identified in Repositories:</h4>
 
-<p>Thank you for reviewing the identified risks in the repositories.</p>
+<p>some-repository-name-x:<br/>
+- No significant risks were identified in the pull requests reviewed.</p>
+
+<p>some-repository-name-y:<br/>
+- The implementation of the new feature may lead to performance issues in the future [#123].<br/>
+- Lack of unit tests in the recent changes could result in regressions [#124].<br/>
+- The code changes in PR #125 introduce a potential security vulnerability that needs to be addressed.</p>
+
+<p>some-repository-name-z:<br/>
+- The refactoring done in PR #126 might impact the existing functionality and require additional testing.<br/>
+- The dependency upgrade in PR #127 could introduce compatibility issues with other components.<br/>
+- The changes in PR #128 may not align with the project's coding standards and require further review.</p>
+
+<h3>End of Report</h3>
 
 <p>Best regards,<br/>
 Vladimir Zakharov<br/>
