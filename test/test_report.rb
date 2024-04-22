@@ -55,10 +55,12 @@ Developer
   end
 
   def test_report_items
-    expected = "Something"
-    issues = [ Issue::new('title', 'body', 'repo', '#123', url: 'http://googel.com')]
-    prs = [ PullRequest::new('title', 'body', 'repo', url: 'http://some.url.com') ]
-    actual = ReportItems.new(issues, prs).to_s
+    expected = "Closed Pull Requests:\n - title: title, repo: repo, url: http://some.url.com\n\nOpen Issues:\n - title: title, repo: repo, number: #123, url: http://google.com\n"
+    issues = [ Issue::new('title', 'body', 'repo', '123', url: 'http://google.com')]
+    prs = [ PullRequest::new('repo', 'title', 'body', url: 'http://some.url.com') ]
+    actual = ReportItems.new(prs, issues).to_s
+
+    puts actual 
     assert_equal expected, actual
   end
 

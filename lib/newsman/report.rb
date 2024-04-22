@@ -21,12 +21,14 @@ end
 
 
 class ReportItems
-  def initialize(issues, prs)
-    @issues = issues
+  def initialize(prs, issues)
     @prs = prs
+    @issues = issues
   end
 
   def to_s
-    "Something"
+    prs_list = @prs.map(&:detailed_title).map { |obj| " - #{obj}\n" }.join
+    issues_list = @issues.map(&:detailed_title).map { |obj| " - #{obj}\n" }.join 
+    return "Closed Pull Requests:\n#{prs_list}\nOpen Issues:\n#{issues_list}"
   end
 end

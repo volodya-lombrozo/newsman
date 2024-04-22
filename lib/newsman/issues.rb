@@ -20,7 +20,7 @@ class Issue
   end
 
   def detailed_title 
-    "title: #{@title}, repo: #{@repo}, issue number: \##{@number}, url: #{@url}"
+    "title: #{@title}, repo: #{@repo}, number: \##{@number}, url: #{@url}"
   end
     
 end
