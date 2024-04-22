@@ -5,25 +5,33 @@ require 'net/http'
 
 class Issue
   attr_accessor :title, :body, :repo, :number
+  attr_reader :url
 
-  def initialize(title, body, repo, number)
+  def initialize(title, body, repo, number, url: 'undefined')
     @title = title
     @body = body
     @repo = repo
     @number = number
+    @url = url
   end
 
   def to_s
     "title: ```#{@title}```,\ndescription: ```#{@body}```,\nrepo: ```#{@repo}```,\nissue number: \##{@number}\n"
   end
+
+  def detailed_title 
+    "title: #{@title}, repo: #{@repo}, issue number: \##{@number}, url: #{@url}"
+  end
+    
 end
 
 class PddIssue
-  def initialize(title, body, repo, number)
+  def initialize(title, body, repo, number, url: 'undefined')
     @title = title
     @body = body
     @repo = repo
     @number = number
+    @url = url 
   end
 
   def extract_real_body
@@ -42,4 +50,9 @@ class PddIssue
   def to_s
     "title: ```#{@title}```,\ndescription: ```#{extract_real_body}```,\nrepo: ```#{@repo}```,\nissue number: \##{@number}\n"
   end
+
+  def detailed_title
+    "title: #{@title}, repo: #{@repo}, issue number: \##{@number}, url: #{@url}"
+  end
+
 end

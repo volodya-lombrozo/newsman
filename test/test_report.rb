@@ -23,6 +23,8 @@
 
 require 'minitest/autorun'
 require_relative '../lib/newsman/report'
+require_relative '../lib/newsman/issues'
+require_relative '../lib/newsman/pull_request'
 
 class TestReport < Minitest::Test
   def test_report
@@ -51,4 +53,14 @@ Developer
                        "repository-b:\n - I will do a lot for repository (b)", '- <todo>', Date.new(2024, 3, 14))
     assert_equal expected, out
   end
+
+  def test_report_items
+    expected = "Something"
+    issues = [ Issue::new('title', 'body', 'repo', '#123', url: 'http://googel.com')]
+    prs = [ PullRequest::new('title', 'body', 'repo', url: 'http://some.url.com') ]
+    actual = ReportItems.new(issues, prs).to_s
+    assert_equal expected, actual
+  end
+
+
 end
