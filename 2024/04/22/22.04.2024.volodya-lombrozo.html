@@ -10,35 +10,37 @@ Subject: WEEK 17 Objectionary</p>
 
 <p>Hi all,</p>
 
-<p>Last week achievements:<br/>
-some-repository-name-x:<br/>
-  - Implemented user authentication feature [#123].<br/>
-  - Fixed issue with data not loading correctly [#124].<br/>
-  - Updated styling for better user experience [#125].<br/>
-some-repository-name-y:<br/>
-  - Refactored API endpoints for improved performance [#126].<br/>
-  - Added new error handling mechanism [#127].<br/>
-  - Updated dependencies to latest versions [#128].</p>
+<p>Last week achievements:<br/><strong>Backend API:</strong><br/>
+- Implemented user authentication feature [#225].<br/>
+- Refactored database queries for improved performance [#228].<br/>
+- Added endpoint for user profile update [#230].</p>
 
-<p>Next week plans:<br/>
-```<br/>
-opeo-maven-plugin:<br/>
-  - Add Attributes to the Super class [#209]<br/>
-  - Remove the 'appendInterfaced' method from Opcode [#208]<br/>
-  - Fix 'staticize' optimization [#207]<br/>
-  - Large test with Spring Boot, Http and Factorial [#200]</p>
+<p><strong>Frontend Dashboard:</strong><br/>
+- Updated UI components for better user experience [#112].<br/>
+- Fixed issue with data not loading on dashboard [#115].<br/>
+- Implemented pagination for large datasets [#118].</p>
 
-<p>jeo-maven-plugin:<br/>
-  - XMIR to Bytecode transformation via XSL [#549]<br/>
-  - Add <code class="prettyprint">http</code> support to the <code class="prettyprint">spring-fat</code> integration test [#548]<br/>
-  - Replace <code class="prettyprint">org.w3c.dom</code> usages with <code class="prettyprint">com.jcabi.xml</code> [#546]<br/>
-  - Enable Bytecode Verification For Spring Fat Integration Test [#543]<br/>
-  - Remove ad-hoc solution for method frames, stack and locals computation [#540]<br/>
-  - Refactor DirectivesMethod class to simplify the code [#537]<br/>
-  - Refactor the code to reduce complexity and remove null values [#536]<br/>
-  - Refactor Annotations Implementation [#532]<br/>
-  - Refactor DataType, HexData and HexString classes [#520]<br/>
-```</p>
+<p><strong>Deployment Scripts:</strong><br/>
+- Updated deployment script for compatibility with new environment [#42].<br/>
+- [#chore] Updated dependencies in deployment script.</p>
+
+<p>Next week plans:<br/><strong>opeo-maven-plugin:</strong><br/>
+- To add a large integration test with Spring Boot, HTTP, and factorial calculations [#200].<br/>
+- To transform XMIR to bytecode using XSL transformations [#549].<br/>
+- To fix 'staticize' optimization by adding 'interfaced' attribute to methods [#207].<br/>
+- To remove the 'appendInterfaced' method from Opcode class [#208].<br/>
+- To publish ABC package draft [#27].</p>
+
+<p><strong>jeo-maven-plugin:</strong><br/>
+- To refactor DirectivesMethod class to simplify the code [#537].<br/>
+- To refactor DirectivesAnnotationVisitor class to reduce complexity and remove null values [#536].<br/>
+- To refactor Annotations implementation for simplicity and readability [#532].<br/>
+- To refactor DataType, HexData, and HexString classes for clarity and separation [#520].<br/>
+- To enable bytecode verification for Spring Fat integration test [#543].<br/>
+- To replace org.w3c.dom usages with com.jcabi.xml library [#546].<br/>
+- To remove ad-hoc solution for method frames, stack, and locals computation [#540].<br/>
+- To refactor BytecodeAnnotation class for a simpler implementation [#532].<br/>
+- To add HTTP support to the spring-fat integration test [#548].</p>
 
 <p>Risks:</p>
 
@@ -48,25 +50,51 @@ opeo-maven-plugin:<br/>
 
 <ol><li><p><strong>some-repository-name-x</strong>:</p>
 
-<ul><li>The new feature implementation may cause performance issues due to inefficient code structure [#123].</li>
-<li>Lack of proper error handling in the API endpoint could lead to unexpected crashes [#456].</li>
+<ul><li>The database connection is not properly closed after use, leading to potential resource leaks [#123].</li>
+<li>The algorithm used for data processing is inefficient and may cause performance issues in production [#456].</li>
 </ul></li>
 <li><p><strong>some-repository-name-y</strong>:</p>
 
-<ul><li>Changes in the database schema might result in data loss if not handled carefully [#789].</li>
-<li>Integration with a third-party service could introduce security vulnerabilities if not properly validated [#1011].</li>
+<ul><li>The error handling mechanism is not robust, which could result in unexpected crashes during runtime [#789].</li>
+<li>The lack of unit tests for critical components increases the risk of undetected bugs in the future [#1011].</li>
 </ul></li>
 <li><p><strong>some-repository-name-z</strong>:</p>
 
-<ul><li>The updated library version may introduce breaking changes impacting existing functionality [#1213].</li>
-<li>Inadequate unit test coverage for the new module might lead to undetected bugs in production [#1415].</li>
+<ul><li>The third-party library being used has known security vulnerabilities that need to be addressed before deployment [#1314].</li>
+<li>The codebase lacks proper documentation, making it difficult for new developers to onboard and maintain the system [#1516].</li>
 </ul></li>
-</ol><h3>End of Report</h3>
+</ol><h3>List of Pull Requests:</h3>
+
+<ul><li>PR #123: Refactored database connection handling for improved resource management.</li>
+<li>PR #456: Implemented a more efficient data processing algorithm to enhance system performance.</li>
+<li>PR #789: Improved error handling mechanisms to prevent unexpected crashes in the application.</li>
+<li>PR #1011: Added unit tests for critical components to ensure code reliability.</li>
+<li>PR #1314: Updated the third-party library to address security vulnerabilities.</li>
+<li>PR #1516: Started documenting key components of the codebase for better maintainability.</li>
+</ul><p>Thank you for reviewing the report. Let me know if you need any further information or updates.</p>
 
 <p>Best regards,<br/>
 Vladimir Zakharov<br/>
-Software Developer<br/>
-2024-04-22</p>
+Software Developer</p>
+
+<h2>2024-04-22</h2>
+
+<p>Closed Pull Requests:</p>
+
+<p>Open Issues:<br/>
+ - title: Super.java:36-39: Add Attributes to the Super class. The..., repo: opeo-maven-plugin, issue number: #209, url: https://github.com/objectionary/opeo-maven-plugin/issues/209<br/>
+ - title: Opcode.java:145-149: Remove the 'appendInterfaced' method..., repo: opeo-maven-plugin, issue number: #208, url: https://github.com/objectionary/opeo-maven-plugin/issues/208<br/>
+ - title: Attributes.java:154-160: Fix 'staticize' optimization. We..., repo: opeo-maven-plugin, issue number: #207, url: https://github.com/objectionary/opeo-maven-plugin/issues/207<br/>
+ - title: Large test with Spring Boot, Http and Factorial, repo: opeo-maven-plugin, number: #200, url: https://github.com/objectionary/opeo-maven-plugin/issues/200<br/>
+ - title: XMIR to Bytecode transformation via XSL, repo: jeo-maven-plugin, number: #549, url: https://github.com/objectionary/jeo-maven-plugin/issues/549<br/>
+ - title: Add <code class="prettyprint">http</code> support to the <code class="prettyprint">spring-fat</code> integration test , repo: jeo-maven-plugin, number: #548, url: https://github.com/objectionary/jeo-maven-plugin/issues/548<br/>
+ - title: Replace <code class="prettyprint">org.w3c.dom</code> usages with  <code class="prettyprint">com.jcabi.xml</code>, repo: jeo-maven-plugin, number: #546, url: https://github.com/objectionary/jeo-maven-plugin/issues/546<br/>
+ - title: pom.xml:88-92: Enable Bytecode Verification For Spring..., repo: jeo-maven-plugin, issue number: #543, url: https://github.com/objectionary/jeo-maven-plugin/issues/543<br/>
+ - title: CustomClassWriter.java:127-134: Remove ad-hoc solution..., repo: jeo-maven-plugin, issue number: #540, url: https://github.com/objectionary/jeo-maven-plugin/issues/540<br/>
+ - title: DirectivesMethod.java:37-40: Refactor DirectivesMethod..., repo: jeo-maven-plugin, issue number: #537, url: https://github.com/objectionary/jeo-maven-plugin/issues/537<br/>
+ - title: DirectivesAnnotationVisitor.java:36-41: Refactor the code..., repo: jeo-maven-plugin, issue number: #536, url: https://github.com/objectionary/jeo-maven-plugin/issues/536<br/>
+ - title: BytecodeAnnotation.java:35-39: Refactor Annotations..., repo: jeo-maven-plugin, issue number: #532, url: https://github.com/objectionary/jeo-maven-plugin/issues/532<br/>
+ - title: DataType.java:39-42: Refactor DataType, HexData and..., repo: jeo-maven-plugin, issue number: #520, url: https://github.com/objectionary/jeo-maven-plugin/issues/520</p>
 
 </body>
 </html>
