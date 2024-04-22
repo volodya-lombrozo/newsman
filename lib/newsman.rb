@@ -91,9 +91,10 @@ def generate
     repository = pr.repository_url.split('/').last
     puts "Found PR in #{repository}: #{title}"
     # Create a new PullRequest object and add it to the list
-    pr = PullRequest.new(repository, title, description)
+    pr = PullRequest.new(repository, title, description, url: pr.html_url)
     prs << pr
   end
+  raw_prs = prs
   prs = prs.map(&:to_s).join("\n\n\n")
 
   puts "Searching issues using the following query: '#{issues_query}'"
@@ -105,11 +106,12 @@ def generate
     number = issue.number.to_s
     puts "Found issue in #{repository}:[##{number}] #{title}"
     issues << if issue.user.login == '0pdd'
-                PddIssue.new(title, body, repository, number)
+                PddIssue.new(title, body, repository, number, url: issue.html_url)
               else
-                Issue.new(title, body, repository, number)
+                Issue.new(title, body, repository, number, url: issue.html_url)
               end
   end
+  raw_issues = issues
   issues = issues.map(&:to_s).join("\n\n\n")
   # puts "Found issues:\n #{issues}"
 
@@ -179,7 +181,7 @@ some-repository-name-y:
 
   output_mode = options[:output]
   puts "Output mode is '#{output_mode}'"
-  full_answer = Report.new(reporter, reporter_position, options[:title]).build(answer, issues_full_answer,
+  full_answer = Report.new(reporter, reporter_position, options[:title], additional: ReportItems.new(raw_prs, raw_issues)).build(answer, issues_full_answer,
                                                                                risks_full_answer, Date.today)
   if output_mode.eql? 'txt'
     puts 'Print result to txy file'
