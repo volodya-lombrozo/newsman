@@ -7,4 +7,8 @@ class Assistant
     @temperature = temperature
     @client = OpenAI::Client.new(access_token: token)
   end
+
+  def say_hello
+    "I'm an assistant that can work with OpenAI client. Please, use me, if you need any help. I'm using #{@model}, with #{@temperature} temperature."
+  end
 end
