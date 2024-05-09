@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+  <head>
+    <title>volodya-lombrozo 09.05.2024</title>
+  </head>
+  <body>
+  <h1>volodya-lombrozo 09.05.2024</h1>
+  <p>From: Vladimir Zakharov<br/>
+Subject: WEEK 19 Objectionary</p>
+
+<p>Hi all,</p>
+
+<p>Last week achievements:<br/>
+jeo-maven-plugin:<br/>
+- Added concurrency support for <code class="prettyprint">disassembly/assembly</code> goals to speed up integration test by 2 times [#578]<br/>
+- First attempt to localize <code class="prettyprint">AllLabels</code> usage by introducing a centralized class to manage method labels efficiently [#244]<br/>
+- Optimized <code class="prettyprint">bytesToHex</code> method for efficient byte to hexadecimal conversion [#578]<br/>
+- Fixed bug related to handling <code class="prettyprint">char</code> values in annotations and added support for <code class="prettyprint">char</code> data type conversion [#576]<br/>
+- Simplified XML comparison in 'disabled' integration test by updating comparison logic to directly compare XML files [#228]</p>
+
+<p>opeo-maven-plugin:<br/>
+- Added 'disabled' configuration to switch 'spring-fat' test and introduced <code class="prettyprint">Storage</code> abstraction to separate decompilation/compilation logic from working with the file system [#219]</p>
+
+<p>Next week plans:<br/>
+jeo-maven-plugin:<br/>
+- To solve the performance issue causing OutOfMemoryError during the <code class="prettyprint">disassemble</code> phase in the <code class="prettyprint">spring-fat</code> integration test [#578]<br/>
+opeo-maven-plugin:<br/>
+- To enable the Opeo Spring Fat Integration Test by fixing failing test steps and adding it to the merge workflow [#229]<br/>
+- To add PHI printing to the 'spring-fat' integration test using the <code class="prettyprint">xmir-to-phi</code> goal of the <code class="prettyprint">eo-maven-plugin</code> [#226]<br/>
+- To enable Bytecode Verification for the Spring Fat Integration Test to ensure correctness of transformation [#220]<br/>
+- To add attributes to the Super class for defining 'descriptor' and 'interfaced' operands of the INVOKESPECIAL opcode [#209]<br/>
+- To remove the 'appendInterfaced' method from Opcode to address optimization implementation issues [#208]<br/>
+- To fix the 'staticize' optimization by ensuring the 'interfaced' attribute is added to specific methods [#207]</p>
+
+<p>Risks:<br/>
+jeo-maven-plugin:<br/>
+- The code in the repository is suboptimal, leading to potential future maintainability issues [#44].<br/>
+- The server may fail to deliver the dataset, risking missing the report milestone [#487].</p>
+
+<p>opeo-maven-plugin:<br/>
+- The XML file comparison logic was simplified in the 'disabled' integration test, improving test accuracy [#228].<br/>
+- There is a risk of failing to deliver the dataset, potentially impacting the report milestone [#487].</p>
+
+<p>Best regards,<br/>
+Vladimir Zakharov<br/>
+Software Developer</p>
+
+<h2>2024-05-09</h2>
+
+<p>Closed Pull Requests:<br/>
+ - title: feat(#578): Run Disassembly/Assembly Goals In Parallel, repo: jeo-maven-plugin, url: https://github.com/objectionary/jeo-maven-plugin/pull/581<br/>
+ - title: feat(#244): The First Attempt To Localize Labels, repo: jeo-maven-plugin, url: https://github.com/objectionary/jeo-maven-plugin/pull/580<br/>
+ - title: feat(#578): Optimize Bytes to String Convertion, repo: jeo-maven-plugin, url: https://github.com/objectionary/jeo-maven-plugin/pull/579<br/>
+ - title: feat(#576): Handle Char Values Correctly, repo: jeo-maven-plugin, url: https://github.com/objectionary/jeo-maven-plugin/pull/577<br/>
+ - title: feat(#228): Simplify XML Comparision in 'disabled' Integration Test", repo: opeo-maven-plugin, url: https://github.com/objectionary/opeo-maven-plugin/pull/231<br/>
+ - title: feat(#219): Add 'disabled' configuration, repo: opeo-maven-plugin, url: https://github.com/objectionary/opeo-maven-plugin/pull/227</p>
+
+<p>Open Issues:<br/>
+ - title: Disassembling. OutOfMemoryError: Java heap space, repo: jeo-maven-plugin, number: #578, url: https://github.com/objectionary/jeo-maven-plugin/issues/578<br/>
+ - title: pom.xml:109-114: Enable Opeo Spring Fat Integration Test...., repo: opeo-maven-plugin, issue number: #229, url: https://github.com/objectionary/opeo-maven-plugin/issues/229<br/>
+ - title: Add PHI codes to 'spring-fat' integration test, repo: opeo-maven-plugin, number: #226, url: https://github.com/objectionary/opeo-maven-plugin/issues/226<br/>
+ - title: pom.xml:176-180: Enable Bytecode Verification For Spring..., repo: opeo-maven-plugin, issue number: #220, url: https://github.com/objectionary/opeo-maven-plugin/issues/220<br/>
+ - title: Super.java:36-39: Add Attributes to the Super class. The..., repo: opeo-maven-plugin, issue number: #209, url: https://github.com/objectionary/opeo-maven-plugin/issues/209<br/>
+ - title: Opcode.java:145-149: Remove the 'appendInterfaced' method..., repo: opeo-maven-plugin, issue number: #208, url: https://github.com/objectionary/opeo-maven-plugin/issues/208<br/>
+ - title: Attributes.java:154-160: Fix 'staticize' optimization. We..., repo: opeo-maven-plugin, issue number: #207, url: https://github.com/objectionary/opeo-maven-plugin/issues/207</p>
+
+</body>
+</html>
