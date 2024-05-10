@@ -113,7 +113,6 @@ def generate
   end
   raw_issues = issues
   issues = issues.map(&:to_s).join("\n\n\n")
-  # puts "Found issues:\n #{issues}"
 
   puts "\nNow lets test some aggregation using OpenAI\n\n"
   openai_client = OpenAI::Client.new(access_token: openai_token)
@@ -181,8 +180,17 @@ some-repository-name-y:
 
   output_mode = options[:output]
   puts "Output mode is '#{output_mode}'"
-  full_answer = Report.new(reporter, reporter_position, options[:title], additional: ReportItems.new(raw_prs, raw_issues)).build(answer, issues_full_answer,
-                                                                               risks_full_answer, Date.today)
+  full_answer = Report.new(
+    reporter, 
+    reporter_position, 
+    options[:title],
+    additional: ReportItems.new(raw_prs, raw_issues)
+  ).build(
+    answer, 
+    issues_full_answer,
+    risks_full_answer, 
+    Date.today
+  )
   if output_mode.eql? 'txt'
     puts 'Print result to txy file'
     output = Txtout.new('.')
