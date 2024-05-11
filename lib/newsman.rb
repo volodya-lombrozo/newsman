@@ -11,6 +11,7 @@ require_relative 'newsman/stdout_output'
 require_relative 'newsman/txt_output'
 require_relative 'newsman/html_output'
 require_relative 'newsman/report'
+require_relative 'newsman/assistant'
 
 def generate
   # Load all options required
@@ -116,14 +117,16 @@ def generate
 
   puts "\nNow lets test some aggregation using OpenAI\n\n"
   openai_client = OpenAI::Client.new(access_token: openai_token)
+  
+  assistant = Assistant.new(openai_token)
 
-  example = "some-repository-name-x:
-  - Added 100 new files to the Dataset [#168]
-  - Fixed the deployment of XYZ [#169]
-  - Refined the requirements [#177]
-  some-repository-name-y:
-  - Removed XYZ class [#57]
-  - Refactored http module [#69]"
+#  example = "some-repository-name-x:
+#  - Added 100 new files to the Dataset [#168]
+#  - Fixed the deployment of XYZ [#169]
+#  - Refined the requirements [#177]
+#  some-repository-name-y:
+#  - Removed XYZ class [#57]
+#  - Refactored http module [#69]"
 
   example_plans = "some-repository-name-x:
   - To publish ABC package draft [#27]
@@ -138,19 +141,19 @@ some-repository-name-y:
   - The code in repository is suboptimal, we might have some problems for the future maintainability [#44].
   "
 
-  response = openai_client.chat(
-    parameters: {
-      model: 'gpt-3.5-turbo',
-      messages: [
-        { role: 'system',
-          content: 'You are a developer tasked with composing a concise report detailing your activities and progress for the previous week, intended for submission to your supervisor.' },
-        { role: 'user',
-          content: "Please compile a summary of the work completed in the following Pull Requests (PRs). Each PR should be summarized in a single sentence, focusing more on the PR title and less on implementation details. Group the sentences by repositories, each identified by its name mentioned in the 'repository:[name]' attribute of the PR. Pay attention, that you don't lose any PR. The grouping is important an should be precise. Ensure that each sentence includes the corresponding issue number as an integer value. If a PR doesn't mention an issue number, just print [#chore]. Combine all the information from each PR into a concise and fluent sentence, as if you were a developer reporting on your work. Please strictly adhere to the example template provided. Example of a report: #{example}. List of Pull Requests: [#{prs}]" }
-      ],
-      temperature: 0.3
-    }
-  )
-  answer = response.dig('choices', 0, 'message', 'content')
+#  response = openai_client.chat(
+#    parameters: {
+#      model: 'gpt-3.5-turbo',
+#      messages: [
+#        { role: 'system',
+#          content: 'You are a developer tasked with composing a concise report detailing your activities and progress for the previous week, intended for submission to your supervisor.' },
+#        { role: 'user',
+#          content: "Please compile a summary of the work completed in the following Pull Requests (PRs). Each PR should be summarized in a single sentence, focusing more on the PR title and less on implementation details. Group the sentences by repositories, each identified by its name mentioned in the 'repository:[name]' attribute of the PR. Pay attention, that you don't lose any PR. The grouping is important an should be precise. Ensure that each sentence includes the corresponding issue number as an integer value. If a PR doesn't mention an issue number, just print [#chore]. Combine all the information from each PR into a concise and fluent sentence, as if you were a developer reporting on your work. Please strictly adhere to the example template provided. Example of a report: #{example}. List of Pull Requests: [#{prs}]" }
+#      ],
+#      temperature: 0.3
+#    }
+#  )
+#  answer = response.dig('choices', 0, 'message', 'content')
   issues_response = openai_client.chat(
     parameters: {
       model: 'gpt-3.5-turbo',
