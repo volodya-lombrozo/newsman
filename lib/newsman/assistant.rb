@@ -71,7 +71,7 @@ class Assistant
     - To review first draft of the report [#56]
     some-repository-name-y:
     - To implement optimization for the class X [#125]"
-    issues_response = openai_client.chat(
+    issues_response = @client.chat(
       parameters: {
         model: 'gpt-3.5-turbo',
         messages: [
@@ -94,7 +94,7 @@ class Assistant
   of the dataset, report milestone will be missed [#487].
 some-repository-name-y:
   - The code in repository is suboptimal, we might have some problems for the future maintainability [#44]."
-    return openai_client.chat(
+    return @client.chat(
         parameters: {
           model: 'gpt-3.5-turbo',
           messages: [
@@ -126,9 +126,6 @@ some-repository-name-y:
   def deprecated(method)
     warn "Warning! '#{method}' is deprecated and will be removed in future versions."
   end
-
-end
-
 
   def send(request)
     return @client.chat(
