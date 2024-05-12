@@ -119,24 +119,29 @@ def generate
   openai_client = OpenAI::Client.new(access_token: openai_token)
   
   assistant = Assistant.new(openai_token)
-
-  answer = assistant.old_prev_results(prs)
-  issues_full_answer = assistant.old_next_plans(issues) 
-  risks_full_answer = assistant.old_risks(prs)
+  
+  old_way = true
+  if old_way?
+    answer = assistant.old_prev_results(prs)
+    issues_full_answer = assistant.old_next_plans(issues) 
+    risks_full_answer = assistant.old_risks(prs)
+    full_answer = Report.new(
+      reporter, 
+      reporter_position, 
+      options[:title],
+      additional: ReportItems.new(raw_prs, raw_issues)
+    ).build(
+      answer, 
+      issues_full_answer,
+      risks_full_answer, 
+      Date.today
+    )
+  else
+    puts "new way"
+  end
 
   output_mode = options[:output]
   puts "Output mode is '#{output_mode}'"
-  full_answer = Report.new(
-    reporter, 
-    reporter_position, 
-    options[:title],
-    additional: ReportItems.new(raw_prs, raw_issues)
-  ).build(
-    answer, 
-    issues_full_answer,
-    risks_full_answer, 
-    Date.today
-  )
   if output_mode.eql? 'txt'
     puts 'Print result to txy file'
     output = Txtout.new('.')
