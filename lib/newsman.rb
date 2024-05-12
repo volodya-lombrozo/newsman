@@ -97,6 +97,7 @@ def generate
   end
   raw_prs = prs
   prs = prs.map(&:to_s).join("\n\n\n")
+  grouped_prs = raw_prs.group_by { |pr| pr.repository }
 
   puts "Searching issues using the following query: '#{issues_query}'"
   issues = []
@@ -114,6 +115,7 @@ def generate
   end
   raw_issues = issues
   issues = issues.map(&:to_s).join("\n\n\n")
+  grouped_issues = raw_issues.group_by { |iss| iss.repo }
 
   puts "\nNow lets test some aggregation using OpenAI\n\n"
   openai_client = OpenAI::Client.new(access_token: openai_token)
@@ -125,20 +127,35 @@ def generate
     answer = assistant.old_prev_results(prs)
     issues_full_answer = assistant.old_next_plans(issues) 
     risks_full_answer = assistant.old_risks(prs)
-    full_answer = Report.new(
-      reporter, 
-      reporter_position, 
-      options[:title],
-      additional: ReportItems.new(raw_prs, raw_issues)
-    ).build(
-      answer, 
-      issues_full_answer,
-      risks_full_answer, 
-      Date.today
-    )
-  else
-    puts "new way"
+ else
+    puts "Assistant builds a report using a new approach, using groupping"
+    # Build previous results
+    answer = "" 
+    grouped_prs.each do |repository, rprs|
+      puts "Building a results report for the repository: #{repository}"
+      answer = answer + assistant.prev_results(rprs.map(&:to_s).join("\n\n\n"))
+    end
+    # Build next plans 
+    issues_full_answer = "" 
+    grouped_issues.each do |repository, rissues|
+      puts "Building a future plans report for the repository: #{repository}"
+      issues_full_answer = issues_full_answer + assistant.next_plans(rissues.map(&:to_s).join("\n\n\n"))
+    end
+    # Find risks
+    risks_full_answer = assistant.risks(prs)
   end
+
+  full_answer = Report.new(
+    reporter, 
+    reporter_position, 
+    options[:title],
+    additional: ReportItems.new(raw_prs, raw_issues)
+  ).build(
+    answer, 
+    issues_full_answer,
+    risks_full_answer, 
+    Date.today
+  )
 
   output_mode = options[:output]
   puts "Output mode is '#{output_mode}'"
