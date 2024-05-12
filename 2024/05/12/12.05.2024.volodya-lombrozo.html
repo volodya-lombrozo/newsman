@@ -11,35 +11,27 @@ Subject: WEEK 20 Objectionary</p>
 <p>Hi all,</p>
 
 <p>Last week achievements:<br/>
-jeo-maven-plugin:<br/>
-- Parallelized disassembly/assembly goals for faster integration tests [#578]<br/>
-- Refactored code to localize AllLabels usage and introduced a centralized class for managing method labels [#244]<br/>
-- Optimized byte to hex string conversion for memory and CPU efficiency [#578]<br/>
-- Handled char values correctly to prevent ClassCastException in annotations handling [#576]</p>
+jeo-maven-plugin:</p>
 
-<p>Next week plans:<br/>
-```jeo-maven-plugin:<br/>
-- Parallelized disassembly/assembly goals for faster integration tests [#578]<br/>
-- Refactored code to localize AllLabels usage and introduced a centralized class for managing method labels [#244]<br/>
-- Optimized byte to hex string conversion for memory and CPU efficiency [#578]<br/>
-- Handled char values correctly to prevent ClassCastException in annotations handling [#576]</p>
+<ul><li>Run Disassembly/Assembly Goals In Parallel [#578]: Added concurrency support for <code class="prettyprint">disassembly/assembly</code> goals to speed up integration tests.</li>
+<li>The First Attempt To Localize Labels [#244]: Refactored codebase by introducing a centralized <code class="prettyprint">AllLabels</code> class for managing method labels efficiently.</li>
+<li>Optimize Bytes to String Convertion [#578]: Optimized the <code class="prettyprint">bytesToHex</code> method for efficient byte to hexadecimal conversion.</li>
+<li>Handle Char Values Correctly [#576]: Enhanced the <code class="prettyprint">DataType</code> class to handle <code class="prettyprint">char</code> data type conversion and introduced a new custom annotation <code class="prettyprint">FixedWidth</code>.</li>
+</ul><p>Next week plans:<br/>
+jeo-maven-plugin:</p>
 
-<p>opeo-maven-plugin:<br/>
-- To enable Opeo Spring Fat Integration Test [#229]<br/>
-- To add PHI codes to 'spring-fat' integration test [#226]<br/>
-- To enable Bytecode Verification For Spring Fat Integration Test [#220]<br/>
-- To add attributes to the Super class [#209]<br/>
-- To remove the 'appendInterfaced' method from Opcode [#208]<br/>
-- To fix 'staticize' optimization by adding 'interfaced' attribute to specific methods [#207]```</p>
+<ul><li><p>Disassembling. OutOfMemoryError: Java heap space [#578]: Investigate and resolve the Java heap space issue during the <code class="prettyprint">disassemble</code> phase in the <code class="prettyprint">spring-fat</code> integration test of the <code class="prettyprint">opeo-maven-plugin</code>.opeo-maven-plugin:</p></li>
+<li><p>Enable Opeo Spring Fat Integration Test in pom.xml:109-114 [#229]</p></li>
+<li><p>Add PHI codes to 'spring-fat' integration test [#226]</p></li>
+<li><p>Enable Bytecode Verification For Spring Fat Integration Test in pom.xml:176-180 [#220]</p></li>
+<li><p>Add Attributes to the Super class in Super.java:36-39 [#209]</p></li>
+<li><p>Remove the 'appendInterfaced' method from Opcode.java:145-149 [#208]</p></li>
+<li><p>Fix 'staticize' optimization in Attributes.java:154-160 [#207]</p></li>
+</ul><p>Risks:<br/>
+jeo-maven-plugin:</p>
 
-<p>Risks:<br/>
-jeo-maven-plugin:<br/>
-- The code in the repository is suboptimal, leading to potential future maintainability issues [#44].<br/>
-- The server is weak, risking failure in the delivery of the dataset, potentially causing a missed milestone [#487].<br/>
-- There is a risk of inefficient memory and CPU usage due to a suboptimal solution for converting raw byte arrays to hex strings [#578].<br/>
-- <code class="prettyprint">jeo</code> previously produced <code class="prettyprint">ClassCastException</code>s when handling annotations with default values that use chars, which has been fixed [#576].</p>
-
-<p>Best regards,<br/>
+<ul><li>No risks identified.</li>
+</ul><p>Best regards,<br/>
 Vladimir Zakharov<br/>
 Software Developer</p>
 
