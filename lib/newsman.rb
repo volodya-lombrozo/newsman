@@ -123,7 +123,7 @@ def generate
   assistant = Assistant.new(openai_token)
   
   old_way = true
-  if old_way?
+  if old_way
     answer = assistant.old_prev_results(prs)
     issues_full_answer = assistant.old_next_plans(issues) 
     risks_full_answer = assistant.old_risks(prs)

@@ -26,6 +26,8 @@ class Issue
 end
 
 class PddIssue
+  attr_accessor :repo
+
   def initialize(title, body, repo, number, url: 'undefined')
     @title = title
     @body = body
