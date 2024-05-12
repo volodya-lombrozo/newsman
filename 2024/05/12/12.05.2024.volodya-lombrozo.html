@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+  <head>
+    <title>volodya-lombrozo 12.05.2024</title>
+  </head>
+  <body>
+  <h1>volodya-lombrozo 12.05.2024</h1>
+  <p>From: Vladimir Zakharov<br/>
+Subject: WEEK 20 Objectionary</p>
+
+<p>Hi all,</p>
+
+<p>Last week achievements:<br/>
+jeo-maven-plugin:<br/>
+- Parallelized disassembly/assembly goals for faster integration tests [#578]<br/>
+- Refactored code to localize AllLabels usage and introduced a centralized class for managing method labels [#244]<br/>
+- Optimized byte to hex string conversion for memory and CPU efficiency [#578]<br/>
+- Handled char values correctly to prevent ClassCastException in annotations handling [#576]</p>
+
+<p>Next week plans:<br/>
+```jeo-maven-plugin:<br/>
+- Parallelized disassembly/assembly goals for faster integration tests [#578]<br/>
+- Refactored code to localize AllLabels usage and introduced a centralized class for managing method labels [#244]<br/>
+- Optimized byte to hex string conversion for memory and CPU efficiency [#578]<br/>
+- Handled char values correctly to prevent ClassCastException in annotations handling [#576]</p>
+
+<p>opeo-maven-plugin:<br/>
+- To enable Opeo Spring Fat Integration Test [#229]<br/>
+- To add PHI codes to 'spring-fat' integration test [#226]<br/>
+- To enable Bytecode Verification For Spring Fat Integration Test [#220]<br/>
+- To add attributes to the Super class [#209]<br/>
+- To remove the 'appendInterfaced' method from Opcode [#208]<br/>
+- To fix 'staticize' optimization by adding 'interfaced' attribute to specific methods [#207]```</p>
+
+<p>Risks:<br/>
+jeo-maven-plugin:<br/>
+- The code in the repository is suboptimal, leading to potential future maintainability issues [#44].<br/>
+- The server is weak, risking failure in the delivery of the dataset, potentially causing a missed milestone [#487].<br/>
+- There is a risk of inefficient memory and CPU usage due to a suboptimal solution for converting raw byte arrays to hex strings [#578].<br/>
+- <code class="prettyprint">jeo</code> previously produced <code class="prettyprint">ClassCastException</code>s when handling annotations with default values that use chars, which has been fixed [#576].</p>
+
+<p>Best regards,<br/>
+Vladimir Zakharov<br/>
+Software Developer</p>
+
+<h2>2024-05-12</h2>
+
+<p>Closed Pull Requests:<br/>
+ - title: feat(#578): Run Disassembly/Assembly Goals In Parallel, repo: jeo-maven-plugin, url: https://github.com/objectionary/jeo-maven-plugin/pull/581<br/>
+ - title: feat(#244): The First Attempt To Localize Labels, repo: jeo-maven-plugin, url: https://github.com/objectionary/jeo-maven-plugin/pull/580<br/>
+ - title: feat(#578): Optimize Bytes to String Convertion, repo: jeo-maven-plugin, url: https://github.com/objectionary/jeo-maven-plugin/pull/579<br/>
+ - title: feat(#576): Handle Char Values Correctly, repo: jeo-maven-plugin, url: https://github.com/objectionary/jeo-maven-plugin/pull/577</p>
+
+<p>Open Issues:<br/>
+ - title: Disassembling. OutOfMemoryError: Java heap space, repo: jeo-maven-plugin, number: #578, url: https://github.com/objectionary/jeo-maven-plugin/issues/578<br/>
+ - title: pom.xml:109-114: Enable Opeo Spring Fat Integration Test...., repo: opeo-maven-plugin, issue number: #229, url: https://github.com/objectionary/opeo-maven-plugin/issues/229<br/>
+ - title: Add PHI codes to 'spring-fat' integration test, repo: opeo-maven-plugin, number: #226, url: https://github.com/objectionary/opeo-maven-plugin/issues/226<br/>
+ - title: pom.xml:176-180: Enable Bytecode Verification For Spring..., repo: opeo-maven-plugin, issue number: #220, url: https://github.com/objectionary/opeo-maven-plugin/issues/220<br/>
+ - title: Super.java:36-39: Add Attributes to the Super class. The..., repo: opeo-maven-plugin, issue number: #209, url: https://github.com/objectionary/opeo-maven-plugin/issues/209<br/>
+ - title: Opcode.java:145-149: Remove the 'appendInterfaced' method..., repo: opeo-maven-plugin, issue number: #208, url: https://github.com/objectionary/opeo-maven-plugin/issues/208<br/>
+ - title: Attributes.java:154-160: Fix 'staticize' optimization. We..., repo: opeo-maven-plugin, issue number: #207, url: https://github.com/objectionary/opeo-maven-plugin/issues/207</p>
+
+</body>
+</html>
