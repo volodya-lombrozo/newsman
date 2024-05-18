@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+  <head>
+    <title>volodya-lombrozo 18.05.2024</title>
+  </head>
+  <body>
+  <h1>volodya-lombrozo 18.05.2024</h1>
+  <p>From: Vladimir Zakharov<br/>
+Subject: WEEK 20 Objectionary</p>
+
+<p>Hi all,</p>
+
+<p>Last week achievements:<br/>
+opeo-maven-plugin:</p>
+
+<ul><li>Fixed the bug with super call in constructors [#229]</li>
+<li>Added short spring integration test and updated project files [#229]</li>
+<li>Decompile only files with supported opcodes and updated project to Java 11 [#226]</li>
+<li>Made 'spring-fat' integration test pass successfully and updated Java compiler version [#229]</li>
+<li><p>Optimized memory consumption and updated Maven dependencies [#229]jeo-maven-plugin:</p></li>
+<li><p>Added support of method parameters annotations [#596]</p></li>
+<li><p>Added 'InnerClasses' Attribute to Bytecode [#589]</p></li>
+<li><p>Optimized Memory Consumption [#578]</p></li>
+</ul><p>Next week plans:<br/>
+opeo-maven-plugin:</p>
+
+<ul><li>Do we need ClassName node? It seems... [#249]</li>
+<li>Refactor SelectiveDecompilerTest.java:43-47: Refactor... [#247]</li>
+<li>Inefficient RawXml#toXmir() Method... [#246]</li>
+<li>Refactor AstNode#opcodes() Method... [#245]</li>
+<li>Handle module-info.class files correctly.... [#242]</li>
+<li>Enable Opeo Spring Fat Integration Test.... [#229]</li>
+<li>Add PHI codes to 'spring-fat' integration test [#226]</li>
+<li><p>Enable Bytecode Verification For Spring... [#220]jeo-maven-plugin:</p></li>
+<li><p>Add unit tests for the XmlParam class [#598], XmlAttributes class [#595], XmlAttribute class [#594], DirectivesNullable class [#593], DirectivesAttributes class [#592], and DirectivesAttribute class [#591] to improve code coverage and code quality.</p></li>
+</ul><p>Risks:<br/>
+```opeo-maven-plugin:</p>
+
+<ul><li>Risk 1: When downloading dependencies for 'spring-fat' integration test, excluding 'module-info.class' files may lead to failure in supporting Java 9 modules feature [#229].</li>
+<li>Risk 2: High code complexity and number of classes may result in hardly-supported unmaintainable code; simplifying the solution is recommended [#229].</li>
+</ul><p>jeo-maven-plugin:</p>
+
+<ul><li>Risk 1: In previous PRs, adding untested code may lead to unmaintainable code; ensuring test coverage is crucial [#596].</li>
+<li>Risk 2: High code complexity and boilerplate code for new features may hinder future additions; simplifying the solution is necessary [#596].</li>
+</ul><p>No risks identified.<br/>
+```</p>
+
+<p>Best regards,<br/>
+Vladimir Zakharov<br/>
+Software Developer</p>
+
+<h2>2024-05-18</h2>
+
+<p>Closed Pull Requests:<br/>
+ - title: feat(#229): Fix The Bug With Super Call in Constructors, repo: opeo-maven-plugin, url: https://github.com/objectionary/opeo-maven-plugin/pull/251<br/>
+ - title: feat(#229): Add Short Spring Integration Test, repo: opeo-maven-plugin, url: https://github.com/objectionary/opeo-maven-plugin/pull/248<br/>
+ - title: feat(#226): Decompile Only Files With Supported Opcodes", repo: opeo-maven-plugin, url: https://github.com/objectionary/opeo-maven-plugin/pull/244<br/>
+ - title: feat(#229): Make 'spring-fat' Integration Test Pass Successfully, repo: opeo-maven-plugin, url: https://github.com/objectionary/opeo-maven-plugin/pull/241<br/>
+ - title: feat(#596): Add Support of Prameters Annotations, repo: jeo-maven-plugin, url: https://github.com/objectionary/jeo-maven-plugin/pull/597<br/>
+ - title: feat(#589): Add 'InnerClasses' Attribute to Bytecode, repo: jeo-maven-plugin, url: https://github.com/objectionary/jeo-maven-plugin/pull/590<br/>
+ - title: feat(#229): Optimize Memory Consumption, repo: opeo-maven-plugin, url: https://github.com/objectionary/opeo-maven-plugin/pull/239<br/>
+ - title: feat(#578): Optimize Memory Consumption, repo: jeo-maven-plugin, url: https://github.com/objectionary/jeo-maven-plugin/pull/587</p>
+
+<p>Open Issues:<br/>
+ - title: ClassName.java:38-42: Do we need ClassName node? It seems..., repo: opeo-maven-plugin, issue number: #249, url: https://github.com/objectionary/opeo-maven-plugin/issues/249<br/>
+ - title: SelectiveDecompilerTest.java:43-47: Refactor..., repo: opeo-maven-plugin, issue number: #247, url: https://github.com/objectionary/opeo-maven-plugin/issues/247<br/>
+ - title: RawXml.java:68-71: Inefficient RawXml#toXmir() Method..., repo: opeo-maven-plugin, issue number: #246, url: https://github.com/objectionary/opeo-maven-plugin/issues/246<br/>
+ - title: RawXml.java:57-61: Refactor AstNode#opcodes() Method..., repo: opeo-maven-plugin, issue number: #245, url: https://github.com/objectionary/opeo-maven-plugin/issues/245<br/>
+ - title: pom.xml:84-88: Handle module-info.class files correctly...., repo: opeo-maven-plugin, issue number: #242, url: https://github.com/objectionary/opeo-maven-plugin/issues/242<br/>
+ - title: XmlParam.java:33-36: Add unit tests for the XmlParam..., repo: jeo-maven-plugin, issue number: #598, url: https://github.com/objectionary/jeo-maven-plugin/issues/598<br/>
+ - title: XmlAttributes.java:31-34: Add Unit Tests for..., repo: jeo-maven-plugin, issue number: #595, url: https://github.com/objectionary/jeo-maven-plugin/issues/595<br/>
+ - title: XmlAttribute.java:32-35: Add Unit Tests for XmlAttribute..., repo: jeo-maven-plugin, issue number: #594, url: https://github.com/objectionary/jeo-maven-plugin/issues/594<br/>
+ - title: DirectivesNullable.java:34-37: Add Unit Tests for..., repo: jeo-maven-plugin, issue number: #593, url: https://github.com/objectionary/jeo-maven-plugin/issues/593<br/>
+ - title: DirectivesAttributes.java:36-39: Add Unit Tests for..., repo: jeo-maven-plugin, issue number: #592, url: https://github.com/objectionary/jeo-maven-plugin/issues/592<br/>
+ - title: DirectivesAttribute.java:35-38: Add Unit Tests for..., repo: jeo-maven-plugin, issue number: #591, url: https://github.com/objectionary/jeo-maven-plugin/issues/591<br/>
+ - title: pom.xml:109-114: Enable Opeo Spring Fat Integration Test...., repo: opeo-maven-plugin, issue number: #229, url: https://github.com/objectionary/opeo-maven-plugin/issues/229<br/>
+ - title: Add PHI codes to 'spring-fat' integration test, repo: opeo-maven-plugin, number: #226, url: https://github.com/objectionary/opeo-maven-plugin/issues/226<br/>
+ - title: pom.xml:176-180: Enable Bytecode Verification For Spring..., repo: opeo-maven-plugin, issue number: #220, url: https://github.com/objectionary/opeo-maven-plugin/issues/220</p>
+
+</body>
+</html>
