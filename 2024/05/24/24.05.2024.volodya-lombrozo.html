@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+  <head>
+    <title>volodya-lombrozo 24.05.2024</title>
+  </head>
+  <body>
+  <h1>volodya-lombrozo 24.05.2024</h1>
+  <p>From: Vladimir Zakharov<br/>
+Subject: WEEK 21 Objectionary</p>
+
+<p>Hi all,</p>
+
+<p>Last week achievements:<br/>
+```opeo-maven-plugin:</p>
+
+<ul><li>Successful Run of Spring Application Integration Test [#229]</li>
+<li>Print PHI Expressions For a Spring App [#226]</li>
+<li>Fix The Bug With Parsing Integer Values From Decompiled XMIR [#229]</li>
+<li>Add Type for ClassName [#229]</li>
+<li>Avoid Using Labels on Stack [#229]</li>
+<li>Implement Correct Decompilation and Compilation of 'INVOKESPECIAL' [#229]</li>
+<li>Print 'PHI' Expressions in 'spring' Integration Test [#226]</li>
+<li>Fix The Bug With Super Call in Constructors [#229]</li>
+<li>Add Short Spring Integration Test [#229]
+```</li>
+</ul><p>Next week plans:<br/>
+opeo-maven-plugin:</p>
+
+<ul><li>Remove the crutch related to InnerClass [#268], abstract attribute [#256], line numbers [#255].</li>
+<li>Is Labeled Class an Abstraction Failure? [#260].</li>
+<li>Do we need ClassName node? It seems... [#249].</li>
+<li>Refactor SelectiveDecompilerTest [#247].</li>
+<li>Inefficient RawXml#toXmir() Method Implementation [#246].</li>
+<li>Refactor AstNode#opcodes() Method Usage [#245].</li>
+<li>Handle module-info.class files correctly [#242].</li>
+<li><p>Enable Opeo Spring Fat Integration Test [#229].jeo-maven-plugin:</p></li>
+<li><p>Fix "InnerClasses" Xmir Representation [#605]</p></li>
+<li><p>Add "abstract" or "base" for "max" [#602]</p></li>
+<li><p>XmlParam.java:33-36: Add unit tests for the XmlParam... [#598]</p></li>
+<li><p>XmlAttributes.java:31-34: Add Unit Tests for... [#595]</p></li>
+<li><p>XmlAttribute.java:32-35: Add Unit Tests for XmlAttribute... [#594]</p></li>
+<li><p>DirectivesNullable.java:34-37: Add Unit Tests for... [#593]</p></li>
+<li><p>DirectivesAttributes.java:36-39: Add Unit Tests for... [#592]</p></li>
+<li><p>DirectivesAttribute.java:35-38: Add Unit Tests for... [#591]</p></li>
+</ul><p>Risks:<br/>
+```opeo-maven-plugin:</p>
+
+<ul><li>Risk: Labels are decompiled in a different way as any other nodes. This inconsistency might cause some problems in the future. In order to find a proper solution, I added one more issue [#229].</li>
+<li>Risk: <code class="prettyprint">opeo-maven-plugin</code> changes XMIRs before printing PHI expressions. It might cause some inconsistencies between XMIR transformations. It's better to remove all the crutches from <code class="prettyprint">opeo-maven-plugin</code> and solve the original problems. To do so, I added a few new puzzles [#226].</li>
+<li>No risks identified [#229].</li>
+<li>No risks identified [#229].</li>
+<li>No risks identified [#229].</li>
+<li>No risks identified [#229].</li>
+<li>No risks identified [#229].
+```</li>
+</ul><p>Best regards,<br/>
+Vladimir Zakharov<br/>
+Software Developer</p>
+
+<h2>2024-05-24</h2>
+
+<p>Closed Pull Requests:<br/>
+ - title: feat(#229): Successful Run of Spring Application Integration Test (With Dependencies), repo: opeo-maven-plugin, url: https://github.com/objectionary/opeo-maven-plugin/pull/265<br/>
+ - title: feat(#226): Print PHI Expressions For a Spring App, repo: opeo-maven-plugin, url: https://github.com/objectionary/opeo-maven-plugin/pull/264<br/>
+ - title: feat(#229): Fix The Bug With Parsing Integer Values From Decompiled XMIR, repo: opeo-maven-plugin, url: https://github.com/objectionary/opeo-maven-plugin/pull/262<br/>
+ - title: feat(#229): Add Type for ClassName, repo: opeo-maven-plugin, url: https://github.com/objectionary/opeo-maven-plugin/pull/261<br/>
+ - title: feat(#229): Avoid Using Labels on Stack, repo: opeo-maven-plugin, url: https://github.com/objectionary/opeo-maven-plugin/pull/259<br/>
+ - title: feat(#229): Implement Correct Decompilation and Compilation of 'INVOKESPECIAL'", repo: opeo-maven-plugin, url: https://github.com/objectionary/opeo-maven-plugin/pull/257<br/>
+ - title: feat(#226): Print 'PHI' Expressions in 'spring' Integration Test, repo: opeo-maven-plugin, url: https://github.com/objectionary/opeo-maven-plugin/pull/254<br/>
+ - title: feat(#229): Fix The Bug With Super Call in Constructors, repo: opeo-maven-plugin, url: https://github.com/objectionary/opeo-maven-plugin/pull/251<br/>
+ - title: feat(#229): Add Short Spring Integration Test, repo: opeo-maven-plugin, url: https://github.com/objectionary/opeo-maven-plugin/pull/248</p>
+
+<p>Open Issues:<br/>
+ - title: FormattingDecompiler.java:123-127: Remove the crutch..., repo: opeo-maven-plugin, issue number: #268, url: https://github.com/objectionary/opeo-maven-plugin/issues/268<br/>
+ - title: Fix "InnerClasses" Xmir Representation, repo: jeo-maven-plugin, number: #605, url: https://github.com/objectionary/jeo-maven-plugin/issues/605<br/>
+ - title: InvokespecialHandler.java:43-47: Is Labeled Class an..., repo: opeo-maven-plugin, issue number: #260, url: https://github.com/objectionary/opeo-maven-plugin/issues/260<br/>
+ - title: FormattingDecompiler.java:116-122: Remove the crutch..., repo: opeo-maven-plugin, issue number: #256, url: https://github.com/objectionary/opeo-maven-plugin/issues/256<br/>
+ - title: FormattingDecompiler.java:110-115: Remove the crutch..., repo: opeo-maven-plugin, issue number: #255, url: https://github.com/objectionary/opeo-maven-plugin/issues/255<br/>
+ - title: Add "abstract" or "base" for "max", repo: jeo-maven-plugin, number: #602, url: https://github.com/objectionary/jeo-maven-plugin/issues/602<br/>
+ - title: ClassName.java:38-42: Do we need ClassName node? It seems..., repo: opeo-maven-plugin, issue number: #249, url: https://github.com/objectionary/opeo-maven-plugin/issues/249<br/>
+ - title: SelectiveDecompilerTest.java:43-47: Refactor..., repo: opeo-maven-plugin, issue number: #247, url: https://github.com/objectionary/opeo-maven-plugin/issues/247<br/>
+ - title: RawXml.java:68-71: Inefficient RawXml#toXmir() Method..., repo: opeo-maven-plugin, issue number: #246, url: https://github.com/objectionary/opeo-maven-plugin/issues/246<br/>
+ - title: RawXml.java:57-61: Refactor AstNode#opcodes() Method..., repo: opeo-maven-plugin, issue number: #245, url: https://github.com/objectionary/opeo-maven-plugin/issues/245<br/>
+ - title: pom.xml:84-88: Handle module-info.class files correctly...., repo: opeo-maven-plugin, issue number: #242, url: https://github.com/objectionary/opeo-maven-plugin/issues/242<br/>
+ - title: XmlParam.java:33-36: Add unit tests for the XmlParam..., repo: jeo-maven-plugin, issue number: #598, url: https://github.com/objectionary/jeo-maven-plugin/issues/598<br/>
+ - title: XmlAttributes.java:31-34: Add Unit Tests for..., repo: jeo-maven-plugin, issue number: #595, url: https://github.com/objectionary/jeo-maven-plugin/issues/595<br/>
+ - title: XmlAttribute.java:32-35: Add Unit Tests for XmlAttribute..., repo: jeo-maven-plugin, issue number: #594, url: https://github.com/objectionary/jeo-maven-plugin/issues/594<br/>
+ - title: DirectivesNullable.java:34-37: Add Unit Tests for..., repo: jeo-maven-plugin, issue number: #593, url: https://github.com/objectionary/jeo-maven-plugin/issues/593<br/>
+ - title: DirectivesAttributes.java:36-39: Add Unit Tests for..., repo: jeo-maven-plugin, issue number: #592, url: https://github.com/objectionary/jeo-maven-plugin/issues/592<br/>
+ - title: DirectivesAttribute.java:35-38: Add Unit Tests for..., repo: jeo-maven-plugin, issue number: #591, url: https://github.com/objectionary/jeo-maven-plugin/issues/591<br/>
+ - title: pom.xml:109-114: Enable Opeo Spring Fat Integration Test...., repo: opeo-maven-plugin, issue number: #229, url: https://github.com/objectionary/opeo-maven-plugin/issues/229</p>
+
+</body>
+</html>
