@@ -28,7 +28,17 @@ class Assistant
       - Added 100 new files to the Dataset [#168]\n
       - Fixed the deployment of XYZ [#169]\n
       - Refined the requirements [#177]\n"
-    return send("Please compile a summary of the work completed in the following Pull Requests (PRs). Each PR should be summarized in a single sentence, focusing more on the PR title and less on implementation details. Pay attention, that you don't lose any PR. Ensure that each sentence includes the corresponding issue number as an integer value. If a PR doesn't mention an issue number, just print [#chore]. Combine all the information from each PR into a concise and fluent sentence, as if you were a developer reporting on your work. Please strictly adhere to the example template provided: ```#{example}```. List of Pull Requests: [#{prs}]")
+    prompt = <<~PROMPT
+    Please compile a summary of the work completed in the following Pull Requests (PRs).
+    Each PR should be summarized in a single sentence, focusing on the PR title rather than the implementation details.
+    Ensure no PR is omitted.
+    Each sentence must include the corresponding issue number as an integer value. If a PR does not mention an issue number, use [#chore].
+    If several PRs have the same number, combine them into a single row.
+    Combine the information from each PR into a concise and fluent sentence.
+    Follow the provided example template strictly: "#{example}".
+    List of Pull Requests in JSON format: ```json#{prs}```.
+    PROMPT
+    return send(prompt)
   end
 
   def risks(all)

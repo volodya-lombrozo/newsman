@@ -46,4 +46,15 @@ class TestPddIssue < Minitest::Test
                          'jeo-maven-plugin', 531)
     assert_equal(EXPECTED_DESCRIPTION, issue.extract_real_body)
   end
+
+  def test_converts_to_json
+    issue = PddIssue.new('AnnotationsApplication.java:32-35: Check default values...',
+                         'TEST_BODY',
+                         'jeo-maven-plugin', 531)
+    assert_equal(
+      '{"number":531,"title":"AnnotationsApplication.java:32-35: Check default values...","description":"TEST_BODY","repository":"jeo-maven-plugin","url":"undefined"}',
+      issue.to_json
+    )
+  end
+
 end
