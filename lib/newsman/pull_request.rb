@@ -12,12 +12,11 @@ class PullRequest
     @url = url
   end
 
-  
   def to_json
     {
-      repository: @repository,
       title: @title,
       description: @description,
+      repository: @repository,
       url: @url
     }.to_json
   end
