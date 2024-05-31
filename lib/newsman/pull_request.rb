@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+require 'json'
 
 class PullRequest
   attr_accessor :repository, :title, :description
@@ -9,6 +10,15 @@ class PullRequest
     @title = title
     @description = description
     @url = url
+  end
+
+  def to_json
+    {
+      title: @title,
+      description: @description,
+      repository: @repository,
+      url: @url
+    }.to_json
   end
 
   def to_s

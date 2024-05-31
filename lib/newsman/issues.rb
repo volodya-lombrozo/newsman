@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'net/http'
-# frozen_string_literal: true
+require 'json'
 
 class Issue
   attr_accessor :title, :body, :repo, :number
@@ -21,6 +21,16 @@ class Issue
 
   def detailed_title 
     "title: #{@title}, repo: #{@repo}, number: \##{@number}, url: #{@url}"
+  end
+
+  def to_json
+    {
+      number: @number,
+      title: @title,
+      description: @body,
+      repository: @repo,
+      url: @url
+    }.to_json
   end
     
 end
@@ -44,9 +54,9 @@ class PddIssue
   end
 
   def issue_link
-    @body[%r{https://github\.com/[\w\-/]+/blob/[\w\d]+/[\w/.-]+#\w+-\w+}, 0].gsub('https://github.com', 'https://raw.githubusercontent.com').gsub(
-      'blob/', ''
-    )
+    @body[%r{https://github\.com/[\w\-/]+/blob/[\w\d]+/[\w/.-]+#\w+-\w+}, 0]
+      .gsub('https://github.com', 'https://raw.githubusercontent.com')
+      .gsub('blob/', '')
   end
 
   def to_s
@@ -55,6 +65,16 @@ class PddIssue
 
   def detailed_title
     "title: #{@title}, repo: #{@repo}, issue number: \##{@number}, url: #{@url}"
+  end
+
+  def to_json
+    {
+      number: @number,
+      title: @title,
+      description: @body,
+      repository: @repo,
+      url: @url
+    }.to_json
   end
 
 end
