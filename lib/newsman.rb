@@ -26,7 +26,9 @@ def generate
       options[:username] = u
     end
     opts.on('-r', '--repository REPOSITORIES',
-            "Specify which repositories to include in a report. You can specify several repositories using a comma separator, for example: '-r objectionary/jeo-maven-plugin,objectionary/opeo-maven-plugin'") do |r|
+            'Specify which repositories to include in a report.'\
+            'You can specify several repositories using a comma separator,'\
+            "for example: '-r objectionary/jeo-maven-plugin,objectionary/opeo-maven-plugin'") do |r|
       options[:repositories] = r
     end
     opts.on('-p', '--position POSITION',
@@ -34,7 +36,8 @@ def generate
       options[:position] = p
     end
     opts.on('-o', '--output OUTPUT',
-            "Output type. Newsman prints a report to a stdout by default. You can choose another options like '-o html', '-o txt' or even '-o html'") do |o|
+            'Output type. Newsman prints a report to a stdout by default.'\
+            "You can choose another options like '-o html', '-o txt' or even '-o html'") do |o|
       options[:output] = o
     end
     opts.on('-t', '--title TITLE', 'Project Title. Empty by default') do |t|
@@ -50,7 +53,8 @@ def generate
   options.require_option(:name, 'Reporter name is required. Please specify using -n or --name.')
   options.require_option(:username, 'GitHub username is required. Please specify using -u or --username.')
   options.require_option(:repositories,
-                         'GitHub repository is required. Please specify one or several repositories using -r or --repositories.')
+                         'GitHub repository is required.'\
+                         ' Please specify one or several repositories using -r or --repositories.')
   options[:position] ||= 'Software Developer'
   options[:output] ||= 'stdout'
   options[:title] ||= ''
@@ -81,9 +85,11 @@ def generate
   one_month_ago = Date.today.prev_month.strftime('%Y-%m-%d')
   # Display pull request
   query = "is:pr author:#{github_username} created:>=#{one_week_ago} #{github_repositories}"
-  issues_query = "is:issue is:open author:#{github_username} author:0pdd created:>=#{one_month_ago} #{github_repositories}"
+  issues_query = "is:issue is:open author:#{github_username}"\
+    " author:0pdd created:>=#{one_month_ago} #{github_repositories}"
   puts "Searching pull requests for #{github_username}."
-  puts "Newsman uses the following request to GitHub to gather the required information about user activity: '#{query}'"
+  puts 'Newsman uses the following request to GitHub to gather the'\
+    " required information about user activity: '#{query}'"
   prs = []
   pull_requests = client.search_issues(query)
   pull_requests.items.each do |pr|
