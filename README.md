@@ -31,7 +31,9 @@ Usage: newsman [options]
     -n, --name NAME                  Reporter name. Human readable name that will be used in a report
     -u, --username USERNAME          GitHub username. For example, 'volodya-lombrozo'
     -r, --repository REPOSITORIES    Specify which repositories to include in a report. You can specify several repositories using a comma separator, for example: '-r objectionary/jeo-maven-plugin,objectionary/opeo-maven-plugin'
-    -p, --position                   Reporter position in a company. Default value is a 'Software Developer'.
+    -p, --position POSITION          Reporter position in a company. Default value is a 'Software Developer'.
+    -o, --output OUTPUT              Output type. Newsman prints a report to a stdout by default. You can choose another options like '-o html', '-o txt' or even '-o html'
+    -t, --title TITLE                Project Title. Empty by default
 ```
 
 ### Example
