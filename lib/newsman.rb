@@ -133,13 +133,13 @@ def generate
     answer = "" 
     grouped_prs.each do |repository, rprs|
       puts "Building a results report for the repository: #{repository}"
-      answer = answer + assistant.prev_results(join(rprs))
+      answer = answer + "\n" + assistant.prev_results(join(rprs))
     end
     # Build next plans 
     issues_full_answer = "" 
     grouped_issues.each do |repository, rissues|
       puts "Building a future plans report for the repository: #{repository}"
-      issues_full_answer = issues_full_answer + assistant.next_plans(join(rissues))
+      issues_full_answer = issues_full_answer + "\n" + assistant.next_plans(join(rissues))
     end
     # Find risks
     risks_full_answer = assistant.risks(prs)
