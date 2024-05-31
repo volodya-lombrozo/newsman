@@ -54,9 +54,9 @@ class PddIssue
   end
 
   def issue_link
-    @body[%r{https://github\.com/[\w\-/]+/blob/[\w\d]+/[\w/.-]+#\w+-\w+}, 0].gsub('https://github.com', 'https://raw.githubusercontent.com').gsub(
-      'blob/', ''
-    )
+    @body[%r{https://github\.com/[\w\-/]+/blob/[\w\d]+/[\w/.-]+#\w+-\w+}, 0]
+      .gsub('https://github.com', 'https://raw.githubusercontent.com')
+      .gsub('blob/', '')
   end
 
   def to_s

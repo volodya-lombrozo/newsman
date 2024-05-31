@@ -28,26 +28,28 @@ require_relative '../lib/newsman/pull_request'
 
 class TestReport < Minitest::Test
   def test_report
-    expected = "From: User
-Subject: WEEK 11 Project
+    expected = <<~EXPECTED
+    From: User
+    Subject: WEEK 11 Project
 
-Hi all,
+    Hi all,
 
-Last week achievements:
-repository-a:
- - Did a lot of for (a) repository
+    Last week achievements:
+    repository-a:
+     - Did a lot of for (a) repository
 
-Next week plans:
-repository-b:
- - I will do a lot for repository (b)
+    Next week plans:
+    repository-b:
+     - I will do a lot for repository (b)
 
-Risks:
-- <todo>
+    Risks:
+    - <todo>
 
-Best regards,
-User
-Developer
-2024-03-14"
+    Best regards,
+    User
+    Developer
+    2024-03-14
+    EXPECTED
     report = Report.new('User', 'Developer', 'Project')
     out = report.build("repository-a:\n - Did a lot of for (a) repository",
                        "repository-b:\n - I will do a lot for repository (b)", '- <todo>', Date.new(2024, 3, 14))

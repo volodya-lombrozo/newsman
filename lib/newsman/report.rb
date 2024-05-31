@@ -10,9 +10,26 @@ class Report
   end
 
   def build(achievements, plans, risks, date)
-    start = "From: #{@user}\nSubject: #{week_of_a_year(@title,
-                                               date)}\n\nHi all,\n\nLast week achievements:\n#{achievements}\n\nNext week plans:\n#{plans}\n\nRisks:\n#{risks}\n\nBest regards,\n#{@user}\n#{@position}\n#{date}"
+    start = <<~TEMPLATE
+    From: #{@user}
+    Subject: #{week_of_a_year(@title, date)}
 
+    Hi all,
+
+    Last week achievements:
+    #{achievements}
+
+    Next week plans:
+    #{plans}
+    
+    Risks:
+    #{risks}
+
+    Best regards,
+    #{@user}
+    #{@position}
+    #{date}
+    TEMPLATE
     finish = ''
     if !@additional.empty?
       finish = "\n------\n" + @additional.to_s
