@@ -21,3 +21,4 @@ jobs:
         with:
           ruby-version: ${{ matrix.ruby }}
       - run: rake test 
+      - run: rake install 
