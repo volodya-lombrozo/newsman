@@ -45,11 +45,7 @@ class Github
       prs << pr
     end
     prs
-    # raw_prs = prs
-    # prs = join(prs)
-    # grouped_prs = raw_prs.group_by(&:repository)
   end
-
 
   def issues(username, repositories)
     one_month_ago = Date.today.prev_month.strftime('%Y-%m-%d')
@@ -70,13 +66,11 @@ class Github
                 end
     end
     issues
-    # raw_issues = issues
-    # issues = join(issues)
-    # grouped_issues = raw_issues.group_by(&:repo)
   end
 
+ end
 
-  def date_one_week_ago(today)
+def date_one_week_ago(today)
     # Convert today to a Date object if it's not already
     today = Date.parse(today) unless today.is_a?(Date)
     # Subtract 7 days to get the date one week ago
@@ -84,8 +78,6 @@ class Github
     # Format the date as "YYYY-MM-DD"
     one_week_ago.strftime('%Y-%m-%d')
     # Return the formatted date
-  end
-
-
 end
+
 

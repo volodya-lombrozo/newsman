@@ -88,7 +88,6 @@ def generate
   # GitHub
   github_username = options[:username]
   github_repositories = options[:repositories].split(',').map { |repo| "repo:#{repo}" }.join(' ')
-
   # Your GitHub personal access token
   # Make sure it has the 'repo'
   github_token = ENV['GITHUB_TOKEN']
@@ -97,56 +96,15 @@ def generate
   # Create a GitHub client instance with your access token
   client = Octokit::Client.new(github_token: github_token)
   github = Github.new(github_token)
-  # Calculate the date one week ago
-  # one_week_ago = date_one_week_ago(Date.today)
-  # one_month_ago = Date.today.prev_month.strftime('%Y-%m-%d')
-  # Display pull request
-  #query = "is:pr author:#{github_username} created:>=#{one_week_ago} #{github_repositories}"
-  #issues_query = "is:issue is:open author:#{github_username}"\
-  #  " author:0pdd created:>=#{one_month_ago} #{github_repositories}"
-  #puts "Searching pull requests for #{github_username}."
-  #puts 'Newsman uses the following request to GitHub to gather the'\
-  #  " required information about user activity: '#{query}'"
-  #prs = []
-  #pull_requests = client.search_issues(query)
-  #pull_requests.items.each do |pr|
-  #  title = pr.title.to_s
-  #  description = pr.body.to_s
-  #  repository = pr.repository_url.split('/').last
-  #  puts "Found PR in #{repository}: #{title}"
-  #  # Create a new PullRequest object and add it to the list
-  #  pr = PullRequest.new(repository, title, description, url: pr.html_url)
-  #  prs << pr
-  #end
-  #raw_prs = prs
- 
   raw_prs = github.pull_requests(github_username, github_repositories)
   prs = join(raw_prs)
   grouped_prs = raw_prs.group_by(&:repository)
- 
-  # puts "Searching issues using the following query: '#{issues_query}'"
-  # issues = []
-  # client.search_issues(issues_query).items.each do |issue|
-  #   title = issue.title.to_s
-  #   body = issue.body.to_s
-  #   repository = issue.repository_url.split('/').last
-  #   number = issue.number.to_s
-  #   puts "Found issue in #{repository}:[##{number}] #{title}"
-  #   issues << if issue.user.login == '0pdd'
-  #               PddIssue.new(title, body, repository, number, url: issue.html_url)
-  #             else
-  #               Issue.new(title, body, repository, number, url: issue.html_url)
-  #             end
-  # end
-
   issues = github.issues(github_username, github_repositories)
   raw_issues = issues
   issues = join(issues)
   grouped_issues = raw_issues.group_by(&:repo)
-
   puts "\nNow lets test some aggregation using OpenAI\n\n"
   assistant = Assistant.new(openai_token)
-
   puts 'Assistant builds a report using a new approach, using groupping'
   # Build previous results
   answer = ''
@@ -201,20 +159,20 @@ def join(items)
   "[#{items.map(&:to_json).join(',')}]"
 end
 
-def date_one_week_ago(today)
-  # Convert today to a Date object if it's not already
-  today = Date.parse(today) unless today.is_a?(Date)
-  # Subtract 7 days to get the date one week ago
-  one_week_ago = today - 7
-  # Format the date as "YYYY-MM-DD"
-  one_week_ago.strftime('%Y-%m-%d')
-  # Return the formatted date
-end
-
-def week_of_a_year(project, today)
-  number = today.strftime('%U').to_i + 1
-  "WEEK #{number} #{project}"
-end
+# def date_one_week_ago(today)
+#   # Convert today to a Date object if it's not already
+#   today = Date.parse(today) unless today.is_a?(Date)
+#   # Subtract 7 days to get the date one week ago
+#   one_week_ago = today - 7
+#   # Format the date as "YYYY-MM-DD"
+#   one_week_ago.strftime('%Y-%m-%d')
+#   # Return the formatted date
+# end
+# 
+# def week_of_a_year(project, today)
+#   number = today.strftime('%U').to_i + 1
+#   "WEEK #{number} #{project}"
+# end
 
 # Execute the function only if this script is run directly like `./newsman.rb`
 generate if __FILE__ == $PROGRAM_NAME
