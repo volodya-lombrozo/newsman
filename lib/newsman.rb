@@ -32,6 +32,7 @@ require_relative 'newsman/txt_output'
 require_relative 'newsman/html_output'
 require_relative 'newsman/report'
 require_relative 'newsman/assistant'
+require_relative 'newsman/github'
 
 def generate
   # Load all options required
@@ -95,45 +96,50 @@ def generate
   openai_token = ENV['OPENAI_TOKEN']
   # Create a GitHub client instance with your access token
   client = Octokit::Client.new(github_token: github_token)
+  github = Github.new(github_token)
   # Calculate the date one week ago
-  one_week_ago = date_one_week_ago(Date.today)
-  one_month_ago = Date.today.prev_month.strftime('%Y-%m-%d')
+  # one_week_ago = date_one_week_ago(Date.today)
+  # one_month_ago = Date.today.prev_month.strftime('%Y-%m-%d')
   # Display pull request
-  query = "is:pr author:#{github_username} created:>=#{one_week_ago} #{github_repositories}"
-  issues_query = "is:issue is:open author:#{github_username}"\
-    " author:0pdd created:>=#{one_month_ago} #{github_repositories}"
-  puts "Searching pull requests for #{github_username}."
-  puts 'Newsman uses the following request to GitHub to gather the'\
-    " required information about user activity: '#{query}'"
-  prs = []
-  pull_requests = client.search_issues(query)
-  pull_requests.items.each do |pr|
-    title = pr.title.to_s
-    description = pr.body.to_s
-    repository = pr.repository_url.split('/').last
-    puts "Found PR in #{repository}: #{title}"
-    # Create a new PullRequest object and add it to the list
-    pr = PullRequest.new(repository, title, description, url: pr.html_url)
-    prs << pr
-  end
-  raw_prs = prs
-  prs = join(prs)
+  #query = "is:pr author:#{github_username} created:>=#{one_week_ago} #{github_repositories}"
+  #issues_query = "is:issue is:open author:#{github_username}"\
+  #  " author:0pdd created:>=#{one_month_ago} #{github_repositories}"
+  #puts "Searching pull requests for #{github_username}."
+  #puts 'Newsman uses the following request to GitHub to gather the'\
+  #  " required information about user activity: '#{query}'"
+  #prs = []
+  #pull_requests = client.search_issues(query)
+  #pull_requests.items.each do |pr|
+  #  title = pr.title.to_s
+  #  description = pr.body.to_s
+  #  repository = pr.repository_url.split('/').last
+  #  puts "Found PR in #{repository}: #{title}"
+  #  # Create a new PullRequest object and add it to the list
+  #  pr = PullRequest.new(repository, title, description, url: pr.html_url)
+  #  prs << pr
+  #end
+  #raw_prs = prs
+ 
+  raw_prs = github.pull_requests(github_username, github_repositories)
+  prs = join(raw_prs)
   grouped_prs = raw_prs.group_by(&:repository)
+ 
+  # puts "Searching issues using the following query: '#{issues_query}'"
+  # issues = []
+  # client.search_issues(issues_query).items.each do |issue|
+  #   title = issue.title.to_s
+  #   body = issue.body.to_s
+  #   repository = issue.repository_url.split('/').last
+  #   number = issue.number.to_s
+  #   puts "Found issue in #{repository}:[##{number}] #{title}"
+  #   issues << if issue.user.login == '0pdd'
+  #               PddIssue.new(title, body, repository, number, url: issue.html_url)
+  #             else
+  #               Issue.new(title, body, repository, number, url: issue.html_url)
+  #             end
+  # end
 
-  puts "Searching issues using the following query: '#{issues_query}'"
-  issues = []
-  client.search_issues(issues_query).items.each do |issue|
-    title = issue.title.to_s
-    body = issue.body.to_s
-    repository = issue.repository_url.split('/').last
-    number = issue.number.to_s
-    puts "Found issue in #{repository}:[##{number}] #{title}"
-    issues << if issue.user.login == '0pdd'
-                PddIssue.new(title, body, repository, number, url: issue.html_url)
-              else
-                Issue.new(title, body, repository, number, url: issue.html_url)
-              end
-  end
+  issues = github.issues(github_username, github_repositories)
   raw_issues = issues
   issues = join(issues)
   grouped_issues = raw_issues.group_by(&:repo)
@@ -141,29 +147,22 @@ def generate
   puts "\nNow lets test some aggregation using OpenAI\n\n"
   assistant = Assistant.new(openai_token)
 
-  old_way = false
-  if old_way
-    answer = assistant.old_prev_results(prs)
-    issues_full_answer = assistant.old_next_plans(issues)
-    risks_full_answer = assistant.old_risks(prs)
-  else
-    puts 'Assistant builds a report using a new approach, using groupping'
-    # Build previous results
-    answer = ''
-    grouped_prs.each do |repository, rprs|
-      puts "Building a results report for the repository: #{repository}"
-      answer = "#{answer}\n#{assistant.prev_results(join(rprs))}"
-    end
-    # Build next plans
-    issues_full_answer = ''
-    grouped_issues.each do |repository, rissues|
-      puts "Building a future plans report for the repository: #{repository}"
-      issues_full_answer = "#{issues_full_answer}\n#{assistant.next_plans(join(rissues))}"
-    end
-    # Find risks
-    risks_full_answer = assistant.risks(prs)
+  puts 'Assistant builds a report using a new approach, using groupping'
+  # Build previous results
+  answer = ''
+  grouped_prs.each do |repository, rprs|
+    puts "Building a results report for the repository: #{repository}"
+    answer = "#{answer}\n#{assistant.prev_results(join(rprs))}"
   end
-
+  # Build next plans
+  issues_full_answer = ''
+  grouped_issues.each do |repository, rissues|
+    puts "Building a future plans report for the repository: #{repository}"
+    issues_full_answer = "#{issues_full_answer}\n#{assistant.next_plans(join(rissues))}"
+  end
+  # Find risks
+  risks_full_answer = assistant.risks(prs)
+  # Build report
   full_answer = Report.new(
     reporter,
     reporter_position,
@@ -175,7 +174,6 @@ def generate
     risks_full_answer,
     Date.today
   )
-
   output_mode = options[:output]
   puts "Output mode is '#{output_mode}'"
   if output_mode.eql? 'txt'
