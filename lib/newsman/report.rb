@@ -2,7 +2,7 @@
 # frozen_string_literal: true
 
 class Report
-  def initialize(user, position, title, additional: ReportItems.new([],[]))
+  def initialize(user, position, title, additional: ReportItems.new([], []))
     @user = user
     @position = position
     @title = title
@@ -11,30 +11,28 @@ class Report
 
   def build(achievements, plans, risks, date)
     start = <<~TEMPLATE
-    From: #{@user}
-    Subject: #{week_of_a_year(@title, date)}
+      From: #{@user}
+      Subject: #{week_of_a_year(@title, date)}
 
-    Hi all,
+      Hi all,
 
-    Last week achievements:
-    #{achievements}
+      Last week achievements:
+      #{achievements}
 
-    Next week plans:
-    #{plans}
-    
-    Risks:
-    #{risks}
+      Next week plans:
+      #{plans}
 
-    Best regards,
-    #{@user}
-    #{@position}
-    #{date}
+      Risks:
+      #{risks}
+
+      Best regards,
+      #{@user}
+      #{@position}
+      #{date}
     TEMPLATE
     finish = ''
-    if !@additional.empty?
-      finish = "\n------\n" + @additional.to_s
-    end
-    return start + finish;
+    finish = "\n------\n#{@additional}" unless @additional.empty?
+    start + finish
   end
 end
 
@@ -43,9 +41,7 @@ def week_of_a_year(project, today)
   "WEEK #{number} #{project}"
 end
 
-
 class ReportItems
-  
   def initialize(prs, issues)
     @prs = prs || []
     @issues = issues || []
@@ -58,7 +54,7 @@ class ReportItems
 
   def to_s
     prs_list = @prs.map(&:detailed_title).map { |obj| " - #{obj}\n" }.join
-    issues_list = @issues.map(&:detailed_title).map { |obj| " - #{obj}\n" }.join 
-    return "Closed Pull Requests:\n#{prs_list}\nOpen Issues:\n#{issues_list}"
+    issues_list = @issues.map(&:detailed_title).map { |obj| " - #{obj}\n" }.join
+    "Closed Pull Requests:\n#{prs_list}\nOpen Issues:\n#{issues_list}"
   end
 end

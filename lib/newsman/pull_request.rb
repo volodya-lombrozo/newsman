@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'json'
 
 class PullRequest
@@ -12,7 +13,7 @@ class PullRequest
     @url = url
   end
 
-  def to_json
+  def to_json(*_args)
     {
       title: @title,
       description: @description,
@@ -28,5 +29,4 @@ class PullRequest
   def detailed_title
     "title: #{@title}, repo: #{@repository}, url: #{@url}"
   end
-
 end

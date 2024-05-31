@@ -29,26 +29,26 @@ require_relative '../lib/newsman/pull_request'
 class TestReport < Minitest::Test
   def test_report
     expected = <<~EXPECTED
-    From: User
-    Subject: WEEK 11 Project
+      From: User
+      Subject: WEEK 11 Project
 
-    Hi all,
+      Hi all,
 
-    Last week achievements:
-    repository-a:
-     - Did a lot of for (a) repository
+      Last week achievements:
+      repository-a:
+       - Did a lot of for (a) repository
 
-    Next week plans:
-    repository-b:
-     - I will do a lot for repository (b)
+      Next week plans:
+      repository-b:
+       - I will do a lot for repository (b)
 
-    Risks:
-    - <todo>
+      Risks:
+      - <todo>
 
-    Best regards,
-    User
-    Developer
-    2024-03-14
+      Best regards,
+      User
+      Developer
+      2024-03-14
     EXPECTED
     report = Report.new('User', 'Developer', 'Project')
     out = report.build("repository-a:\n - Did a lot of for (a) repository",
@@ -58,13 +58,11 @@ class TestReport < Minitest::Test
 
   def test_report_items
     expected = "Closed Pull Requests:\n - title: title, repo: repo, url: http://some.url.com\n\nOpen Issues:\n - title: title, repo: repo, number: #123, url: http://google.com\n"
-    issues = [ Issue::new('title', 'body', 'repo', '123', url: 'http://google.com')]
-    prs = [ PullRequest::new('repo', 'title', 'body', url: 'http://some.url.com') ]
+    issues = [Issue.new('title', 'body', 'repo', '123', url: 'http://google.com')]
+    prs = [PullRequest.new('repo', 'title', 'body', url: 'http://some.url.com')]
     actual = ReportItems.new(prs, issues).to_s
 
-    puts actual 
+    puts actual
     assert_equal expected, actual
   end
-
-
 end

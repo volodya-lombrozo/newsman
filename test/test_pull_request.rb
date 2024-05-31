@@ -25,12 +25,11 @@ require 'minitest/autorun'
 require_relative '../lib/newsman/pull_request'
 
 class TestPullRequest < Minitest::Test
-  
   def test_converts_pr_to_json
     pr = PullRequest.new(
       'jeo-maven-plugin',
       'Interesting Title',
-      'Pr description',
+      'Pr description'
     )
     assert_equal(
       '{"title":"Interesting Title","description":"Pr description","repository":"jeo-maven-plugin","url":"undefined"}',
@@ -38,4 +37,3 @@ class TestPullRequest < Minitest::Test
     )
   end
 end
-

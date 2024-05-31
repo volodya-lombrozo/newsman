@@ -6,10 +6,9 @@ gem 'dotenv', groups: %i[development test]
 gem 'faraday-retry'
 gem 'minitest'
 gem 'net-http'
+gem 'nokogiri', '~> 1.16'
 gem 'octokit', '~> 8.0'
 gem 'optparse'
+gem 'redcarpet', '~> 3.6'
 gem 'rubocop', require: false
 gem 'ruby-openai', '~> 6.3'
-gem 'nokogiri', '~> 1.16'
-gem 'redcarpet', '~> 3.6'
-

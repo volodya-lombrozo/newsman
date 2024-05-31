@@ -56,5 +56,4 @@ class TestPddIssue < Minitest::Test
       issue.to_json
     )
   end
-
 end

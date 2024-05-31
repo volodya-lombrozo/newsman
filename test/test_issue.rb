@@ -25,7 +25,6 @@ require 'minitest/autorun'
 require_relative '../lib/newsman/issues'
 
 class TestIssue < Minitest::Test
-  
   def test_converts_issue_to_json
     issue = Issue.new(
       'AnnotationsApplication.java:32-35: Check default values...',
@@ -39,4 +38,3 @@ class TestIssue < Minitest::Test
     )
   end
 end
-

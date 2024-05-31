@@ -19,11 +19,11 @@ class Issue
     "title: ```#{@title}```,\ndescription: ```#{@body}```,\nrepo: ```#{@repo}```,\nissue number: \##{@number}\n"
   end
 
-  def detailed_title 
+  def detailed_title
     "title: #{@title}, repo: #{@repo}, number: \##{@number}, url: #{@url}"
   end
 
-  def to_json
+  def to_json(*_args)
     {
       number: @number,
       title: @title,
@@ -32,7 +32,6 @@ class Issue
       url: @url
     }.to_json
   end
-    
 end
 
 class PddIssue
@@ -43,7 +42,7 @@ class PddIssue
     @body = body
     @repo = repo
     @number = number
-    @url = url 
+    @url = url
   end
 
   def extract_real_body
@@ -67,7 +66,7 @@ class PddIssue
     "title: #{@title}, repo: #{@repo}, issue number: \##{@number}, url: #{@url}"
   end
 
-  def to_json
+  def to_json(*_args)
     {
       number: @number,
       title: @title,
@@ -76,5 +75,4 @@ class PddIssue
       url: @url
     }.to_json
   end
-
 end

@@ -96,8 +96,8 @@ def generate
     prs << pr
   end
   raw_prs = prs
-  prs = join(prs) 
-  grouped_prs = raw_prs.group_by { |pr| pr.repository }
+  prs = join(prs)
+  grouped_prs = raw_prs.group_by(&:repository)
 
   puts "Searching issues using the following query: '#{issues_query}'"
   issues = []
@@ -115,45 +115,43 @@ def generate
   end
   raw_issues = issues
   issues = join(issues)
-  grouped_issues = raw_issues.group_by { |iss| iss.repo }
+  grouped_issues = raw_issues.group_by(&:repo)
 
   puts "\nNow lets test some aggregation using OpenAI\n\n"
-  openai_client = OpenAI::Client.new(access_token: openai_token)
-  
   assistant = Assistant.new(openai_token)
-  
+
   old_way = false
   if old_way
     answer = assistant.old_prev_results(prs)
-    issues_full_answer = assistant.old_next_plans(issues) 
+    issues_full_answer = assistant.old_next_plans(issues)
     risks_full_answer = assistant.old_risks(prs)
- else
-    puts "Assistant builds a report using a new approach, using groupping"
+  else
+    puts 'Assistant builds a report using a new approach, using groupping'
     # Build previous results
-    answer = "" 
+    answer = ''
     grouped_prs.each do |repository, rprs|
       puts "Building a results report for the repository: #{repository}"
-      answer = answer + "\n" + assistant.prev_results(join(rprs))
+      answer = "#{answer}\n#{assistant.prev_results(join(rprs))}"
     end
-    # Build next plans 
-    issues_full_answer = "" 
+    # Build next plans
+    issues_full_answer = ''
     grouped_issues.each do |repository, rissues|
       puts "Building a future plans report for the repository: #{repository}"
-      issues_full_answer = issues_full_answer + "\n" + assistant.next_plans(join(rissues))
+      issues_full_answer = "#{issues_full_answer}\n#{assistant.next_plans(join(rissues))}"
     end
     # Find risks
     risks_full_answer = assistant.risks(prs)
   end
 
   full_answer = Report.new(
-    reporter, 
-    reporter_position, 
+    reporter,
+    reporter_position,
     options[:title],
     additional: ReportItems.new(raw_prs, raw_issues)
   ).build(
-    answer, 
+    answer,
     issues_full_answer,
-    risks_full_answer, 
+    risks_full_answer,
     Date.today
   )
 
@@ -175,7 +173,7 @@ def generate
 end
 
 def join(items)
-  items = "[#{items.map(&:to_json).join(',')}]"
+  "[#{items.map(&:to_json).join(',')}]"
 end
 
 def date_one_week_ago(today)
