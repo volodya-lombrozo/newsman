@@ -14,8 +14,11 @@ Gem::Specification.new do |spec|
   spec.require_paths = %w[lib bin]
   spec.license       = 'MIT'
 
+  spec.required_ruby_version = '>=3'
+
   spec.add_development_dependency 'minitest', '~> 5.22'
   spec.add_development_dependency 'rspec', '~> 3.2'
+  spec.add_runtime_dependency 'json', '~> 2.6'
   spec.add_dependency 'dotenv', '~> 3.1'
   spec.add_dependency 'faraday-retry', '~> 2.2'
   spec.add_dependency 'net-http', '~> 0.4'
