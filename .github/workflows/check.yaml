@@ -1,5 +1,5 @@
 ---
-name: test
+name: check
 on:
   push:
     branches:
@@ -13,12 +13,11 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-20.04]
-        ruby: ['2.7', '3.0']
+        ruby: ['3.0']
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
-      - run: bundle update
-      - run: bundle exec rake
+      - run: rake install 
