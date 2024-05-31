@@ -1,5 +1,9 @@
 # Newsman 
 
+
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE.txt)
+[![Gem Version](https://img.shields.io/gem/v/newsman.svg)](https://rubygems.org/gems/newsman)
+
 Newsman is a simple script that collects information about a developer's weekly activity on GitHub and creates a human-readable summary of the work done. To create the summary, Newsman asks ChatGPT to handle all the information about a developer's activity, including their pull requests and created issues.
 
 ## Install
