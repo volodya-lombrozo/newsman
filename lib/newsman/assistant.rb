@@ -20,7 +20,17 @@ class Assistant
       - To publish ABC package draft [#27]\n
       - To review first draft of the report [#56]\n
       - To implement optimization for the class X [#125]"
-    return send("Please compile a summary of the plans for the next week using the following GitHub Issues descriptions. Each issue should be summarized in a single sentence, focusing more on the issue title and less on implementation details. Pay attention, that you didn't loose any issue. Ensure that each sentence includes the corresponding issue number as an integer value. If an issue doesn't mention an issue number, just print [#chore]. Combine all the information from each Issue into a concise and fluent sentences, as if you were a developer reporting on your work. Please strictly adhere to the example template provided: ```#{example}```. List of GitHub issues to aggregate: [#{issues}].")
+    prompt = <<~PROMPT
+    Please compile a summary of the plans for the next week using the GitHub Issues.
+    Each issue should be summarized in a single sentence, focusing more on the issue title and less on implementation details.
+    Combine all the information from each Issue into a concise and fluent sentence.
+    Pay attention, that you didn't loose any issue.
+    Ensure that each sentence includes the corresponding issue number as an integer value. If an issue doesn't mention an issue number, just print [#chore].
+    If several issues have the same number, combine them into a single sentence.
+    Please strictly adhere to the example template provided: "#{example}".
+    List of GitHub Issues in JSON format: ```json #{issues}```.
+    PROMPT
+    return send(prompt)
   end
 
   def prev_results(prs)
@@ -33,10 +43,10 @@ class Assistant
     Each PR should be summarized in a single sentence, focusing on the PR title rather than the implementation details.
     Ensure no PR is omitted.
     Each sentence must include the corresponding issue number as an integer value. If a PR does not mention an issue number, use [#chore].
-    If several PRs have the same number, combine them into a single row.
+    If several PRs have the same number, combine them into a single sentence.
     Combine the information from each PR into a concise and fluent sentence.
     Follow the provided example template strictly: "#{example}".
-    List of Pull Requests in JSON format: ```json#{prs}```.
+    List of Pull Requests in JSON format: ```json #{prs}```.
     PROMPT
     return send(prompt)
   end
@@ -46,7 +56,16 @@ class Assistant
       - The server is weak, we may fail the delivery\n
       of the dataset, report milestone will be missed [#487].\n
       - The code in repository is suboptimal, we might have some problems for the future maintainability [#44].\n"
-    return send("Please compile a summary of the risks identified in the repository. If you can't find anything, just answer 'No risks identified'. Developers usually mention some risks in pull request descriptions. They either mention 'risk' or 'issue'. I will give you a list of pull requests. Each risk should be summarized in a single sentence. Ensure that each sentence includes the corresponding PR number as an integer value. If a PR doesn't mention an issue number, just print [#chore]. Combine all the information from each PR into a concise and fluent sentence, as if you were a developer reporting on your work. Please strictly adhere to the example template provided: ```#{example}```. List of Pull Requests: [#{all}]") 
+    prompt = <<~PROMPT
+    Please compile a summary of the risks identified in the repository from the list of pull requests provided.
+    If no risks are identified in a pull request, just answer 'No risks identified' for that PR.
+    Each risk should be summarized in a concise and fluent single sentence.
+    Developers usually mention some risks in pull request descriptions, either as 'risk' or 'issue'. 
+    Ensure that each sentence includes the corresponding PR number as an integer value. If a PR doesn't mention an issue number, just print [#chore].
+    Please strictly adhere to the example template provided: "#{example}".
+    List of Pull Requests: ```json #{all}```.
+    PROMPT
+    return send(prompt) 
   end
 
   def old_prev_results(prs)
