@@ -96,7 +96,7 @@ def generate
     prs << pr
   end
   raw_prs = prs
-  prs = prs.map(&:to_s).join("\n\n\n")
+  prs = join(prs) 
   grouped_prs = raw_prs.group_by { |pr| pr.repository }
 
   puts "Searching issues using the following query: '#{issues_query}'"
@@ -114,7 +114,7 @@ def generate
               end
   end
   raw_issues = issues
-  issues = issues.map(&:to_s).join("\n\n\n")
+  issues = join(issues)
   grouped_issues = raw_issues.group_by { |iss| iss.repo }
 
   puts "\nNow lets test some aggregation using OpenAI\n\n"
@@ -133,13 +133,13 @@ def generate
     answer = "" 
     grouped_prs.each do |repository, rprs|
       puts "Building a results report for the repository: #{repository}"
-      answer = answer + assistant.prev_results(rprs.map(&:to_s).join("\n\n\n"))
+      answer = answer + assistant.prev_results(join(rprs))
     end
     # Build next plans 
     issues_full_answer = "" 
     grouped_issues.each do |repository, rissues|
       puts "Building a future plans report for the repository: #{repository}"
-      issues_full_answer = issues_full_answer + assistant.next_plans(rissues.map(&:to_s).join("\n\n\n"))
+      issues_full_answer = issues_full_answer + assistant.next_plans(join(rissues))
     end
     # Find risks
     risks_full_answer = assistant.risks(prs)
@@ -172,6 +172,10 @@ def generate
     output = Stdout.new
     output.print(full_answer)
   end
+end
+
+def join(items)
+  items = "[#{items.map(&:to_json).join(',')}]"
 end
 
 def date_one_week_ago(today)
