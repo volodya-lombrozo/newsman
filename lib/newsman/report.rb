@@ -31,7 +31,7 @@ class Report
   end
 
   def build(achievements, plans, risks, date)
-    <<~TEMPLATE.chomp
+    <<~TEMPLATE
       From: #{@user}
       Subject: #{week_of_a_year(@title, date)}
 
@@ -50,8 +50,11 @@ class Report
       #{@user}
       #{@position}
       #{date}
-      #{"------\n#{@additional}" unless @additional.empty?}
     TEMPLATE
+  end
+
+  def append_additional(report)
+    "#{report}\n#{"------\n#{@additional}" unless @additional.empty?}"
   end
 end
 

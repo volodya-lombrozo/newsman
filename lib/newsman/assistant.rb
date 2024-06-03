@@ -53,7 +53,7 @@ class Assistant
       - To implement optimization for the class X [#125]"
     prompt = <<~PROMPT
       Please compile a summary of the plans for the next week using the GitHub Issues.
-      Each issue should be summarized in a single sentence, focusing more on the issue title and less on implementation details.
+      Each issue should be summarized in a single sentence.
       Combine all the information from each Issue into a concise and fluent sentence.
       Pay attention, that you didn't loose any issue.
       Ensure that each sentence includes the corresponding issue number as an integer value. If an issue doesn't mention an issue number, just print [#chore].
@@ -103,6 +103,19 @@ class Assistant
     send(prompt)
   end
   # rubocop:enable Metrics/MethodLength
+
+  def format(report)
+    prompt = <<~PROMPT
+      I have a weekly report with different parts that use various formatting styles.
+      Please format the entire report into a single cohesive format while preserving the original text without any changes.
+      Ensure that the formatting is consistent throughout the document.
+
+      Here is the report:
+
+      #{report}
+    PROMPT
+    send(prompt)
+  end
 
   def send(request)
     @client.chat(
