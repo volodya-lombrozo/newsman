@@ -124,6 +124,7 @@ def generate
     assistant.risks(join(prs)),
     Date.today
   )
+  full_answer = assistant.format(full_answer)
   output_mode = options[:output]
   puts "Output mode is '#{output_mode}'"
   if output_mode.eql? 'txt'
