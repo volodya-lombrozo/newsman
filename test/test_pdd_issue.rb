@@ -66,4 +66,14 @@ class TestPddIssue < Minitest::Test
       issue.to_json
     )
   end
+
+  def test_important_issue
+    issue = PddIssue.new('Title', 'Body', 'jeo-maven-plugin', 531, labels: ['soon'])
+    assert issue.important?
+  end
+
+  def test_unimportant_issue
+    issue = PddIssue.new('Title', 'Body', 'jeo-maven-plugin', 531)
+    assert !issue.important?
+  end
 end

@@ -45,7 +45,7 @@ class Github
     puts "Searching issues using the following query: '#{query}'"
     @client.search_issues(query).items.map do |issue|
       parse_issue(issue)
-    end
+    end.select(&:important?)
   end
 
   def parse_pr(pull_request)
@@ -58,9 +58,9 @@ class Github
   def parse_issue(issue)
     title, repository, number = issue_details(issue)
     if issue.user.login == '0pdd'
-      PddIssue.new(title, issue.body.to_s, repository, number, url: issue.html_url)
+      PddIssue.new(title, issue.body.to_s, repository, number, url: issue.html_url, labels: issue.labels.map(&:name))
     else
-      Issue.new(title, issue.body.to_s, repository, number, url: issue.html_url)
+      Issue.new(title, issue.body.to_s, repository, number, url: issue.html_url, labels: issue.labels.map(&:name))
     end
   end
 

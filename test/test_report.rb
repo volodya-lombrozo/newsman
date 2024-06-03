@@ -66,7 +66,7 @@ class TestReport < Minitest::Test
        - title: title, repo: repo, url: http://some.url.com
 
       Open Issues:
-       - title: title, repo: repo, number: #123, url: http://google.com
+       - title: title, repo: repo, number: #123, url: http://google.com, labels: []
     EXPECTED
     issues = [Issue.new('title', 'body', 'repo', '123', url: 'http://google.com')]
     prs = [PullRequest.new('repo', 'title', 'body', url: 'http://some.url.com')]

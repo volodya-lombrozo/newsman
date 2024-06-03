@@ -26,14 +26,14 @@ require 'json'
 # This class represents a GitHub Issue abstraction created by a user.
 class Issue
   attr_accessor :title, :body, :repo, :number
-  attr_reader :url
 
-  def initialize(title, body, repo, number, url: 'undefined')
+  def initialize(title, body, repo, number, **additional)
+    defaults = { url: 'undefined', labels: [] }
     @title = title
     @body = body
     @repo = repo
     @number = number
-    @url = url
+    @additional = defaults.merge(additional)
   end
 
   def to_s
@@ -41,12 +41,21 @@ class Issue
       title: ```#{@title}```,
       description: ```#{@body}```,
       repo: ```#{@repo}```,
-      issue number: \##{@number}
+      issue number: \##{@number},
+      additional: #{@additional}
     MARKDOWN
   end
 
   def detailed_title
-    "title: #{@title}, repo: #{@repo}, number: \##{@number}, url: #{@url}"
+    "title: #{@title}, repo: #{@repo}, number: \##{@number}, url: #{url}, labels: #{labels}"
+  end
+
+  def url
+    @additional[:url]
+  end
+
+  def labels
+    @additional[:labels]
   end
 
   def to_json(*_args)
@@ -55,8 +64,12 @@ class Issue
       title: @title,
       description: @body,
       repository: @repo,
-      url: @url
+      url: url.to_s
     }.to_json
+  end
+
+  def important?
+    labels.include? 'soon'
   end
 end
 
@@ -64,12 +77,13 @@ end
 class PddIssue
   attr_accessor :repo
 
-  def initialize(title, body, repo, number, url: 'undefined')
+  def initialize(title, body, repo, number, **additional)
+    defaults = { url: 'undefined', labels: [] }
     @title = title
     @body = body
     @repo = repo
     @number = number
-    @url = url
+    @additional = defaults.merge(additional)
   end
 
   def extract_real_body
@@ -90,12 +104,13 @@ class PddIssue
       title: ```#{@title}```,
       description: ```#{extract_real_body}```,
       repo: ```#{@repo}```,
-      issue number: \##{@number}
+      issue number: \##{@number},
+      additional: #{@additional}
     MARKDOWN
   end
 
   def detailed_title
-    "title: #{@title}, repo: #{@repo}, issue number: \##{@number}, url: #{@url}"
+    "title: #{@title}, repo: #{@repo}, issue number: \##{@number}, url: #{url}, labels: #{labels}"
   end
 
   def to_json(*_args)
@@ -104,7 +119,19 @@ class PddIssue
       title: @title,
       description: @body,
       repository: @repo,
-      url: @url
+      url: url.to_s
     }.to_json
+  end
+
+  def important?
+    labels.include? 'soon'
+  end
+
+  def url
+    @additional[:url]
+  end
+
+  def labels
+    @additional[:labels]
   end
 end
