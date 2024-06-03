@@ -113,18 +113,19 @@ def generate
     issues_full_answer = "#{issues_full_answer}\n#{assistant.next_plans(join(rissues))}"
   end
   # Build report
-  full_answer = Report.new(
+  report = Report.new(
     reporter,
     reporter_position,
     options[:title],
     additional: ReportItems.new(prs, issues)
-  ).build(
+  )
+  full_answer = assistant.format(report.build(
     answer,
     issues_full_answer,
     assistant.risks(join(prs)),
     Date.today
-  )
-  full_answer = assistant.format(full_answer)
+  ))
+  full_answer = report.append_additional(full_answer)
   output_mode = options[:output]
   puts "Output mode is '#{output_mode}'"
   if output_mode.eql? 'txt'
