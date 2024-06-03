@@ -103,13 +103,13 @@ class Assistant
     send(prompt)
   end
   # rubocop:enable Metrics/MethodLength
-  
+
   def format(report)
     prompt = <<~PROMPT
       I have a weekly report with different parts that use various formatting styles.
       Please format the entire report into a single cohesive format while preserving the original text without any changes.
       Ensure that the formatting is consistent throughout the document.
-      
+
       Here is the report:
 
       #{report}

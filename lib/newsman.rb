@@ -120,11 +120,11 @@ def generate
     additional: ReportItems.new(prs, issues)
   )
   full_answer = assistant.format(report.build(
-    answer,
-    issues_full_answer,
-    assistant.risks(join(prs)),
-    Date.today
-  ))
+                                   answer,
+                                   issues_full_answer,
+                                   assistant.risks(join(prs)),
+                                   Date.today
+                                 ))
   full_answer = report.append_additional(full_answer)
   output_mode = options[:output]
   puts "Output mode is '#{output_mode}'"
