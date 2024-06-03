@@ -82,7 +82,8 @@ def generate
   all_params = options.map { |key, value| "#{key}: #{value}" }.join(', ')
   puts "Parsed parameters: #{all_params}"
   load_environment_variables
-  # Init all required parameters Reporter Info reporter = options[:name]
+  # Init all required parameters Reporter Info 
+  reporter = options[:name]
   reporter_position = options[:position]
   # GitHub
   github_username = options[:username]
