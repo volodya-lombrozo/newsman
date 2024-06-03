@@ -22,58 +22,59 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+# This class represents a useful abstraction over Github API.
 class Github
   def initialize(token)
     @client = Octokit::Client.new(github_token: token)
   end
 
   def pull_requests(username, repositories)
-    one_week_ago = date_one_week_ago(Date.today)
-    query = "is:pr author:#{username} created:>=#{one_week_ago} #{repositories}"
+    query = "is:pr author:#{username} created:>=#{date_one_week_ago(Date.today)} #{repositories}"
     puts "Searching pull requests for #{username}."
     puts 'Newsman uses the following request to GitHub to gather the'\
       " required information about user activity: '#{query}'"
-    prs = []
-    pull_requests = @client.search_issues(query)
-    pull_requests.items.each do |pr|
-      title = pr.title.to_s
-      description = pr.body.to_s
-      repository = pr.repository_url.split('/').last
-      puts "Found PR in #{repository}: #{title}"
-      pr = PullRequest.new(repository, title, description, url: pr.html_url)
-      prs << pr
+    @client.search_issues(query).items.map do |pull_request|
+      parse_pr(pull_request)
     end
-    prs
   end
 
   def issues(username, repositories)
     one_month_ago = Date.today.prev_month.strftime('%Y-%m-%d')
-    issues_query = "is:issue is:open author:#{username}"\
+    query = "is:issue is:open author:#{username}"\
       " author:0pdd created:>=#{one_month_ago} #{repositories}"
-    puts "Searching issues using the following query: '#{issues_query}'"
-    issues = []
-    @client.search_issues(issues_query).items.each do |issue|
-      title = issue.title.to_s
-      body = issue.body.to_s
-      repository = issue.repository_url.split('/').last
-      number = issue.number.to_s
-      puts "Found issue in #{repository}:[##{number}] #{title}"
-      issues << if issue.user.login == '0pdd'
-                  PddIssue.new(title, body, repository, number, url: issue.html_url)
-                else
-                  Issue.new(title, body, repository, number, url: issue.html_url)
-                end
+    puts "Searching issues using the following query: '#{query}'"
+    @client.search_issues(query).items.map do |issue|
+      parse_issue(issue)
     end
-    issues
+  end
+
+  def parse_pr(pull_request)
+    title = pull_request.title.to_s
+    repository = pull_request.repository_url.split('/').last
+    puts "Found PR in #{repository}: #{title}"
+    PullRequest.new(repository, title, pull_request.body.to_s, url: pull_request.html_url)
+  end
+
+  def parse_issue(issue)
+    title, repository, number = issue_details(issue)
+    if issue.user.login == '0pdd'
+      PddIssue.new(title, issue.body.to_s, repository, number, url: issue.html_url)
+    else
+      Issue.new(title, issue.body.to_s, repository, number, url: issue.html_url)
+    end
+  end
+
+  def issue_details(issue)
+    title = issue.title.to_s
+    repository = issue.repository_url.split('/').last
+    number = issue.number.to_s
+    puts "Found issue in #{repository}:[##{number}] #{title}"
+    [title, repository, number]
   end
 end
 
 def date_one_week_ago(today)
-  # Convert today to a Date object if it's not already
   today = Date.parse(today) unless today.is_a?(Date)
-  # Subtract 7 days to get the date one week ago
   one_week_ago = today - 7
-  # Format the date as "YYYY-MM-DD"
   one_week_ago.strftime('%Y-%m-%d')
-  # Return the formatted date
 end
