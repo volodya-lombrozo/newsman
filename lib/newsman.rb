@@ -140,6 +140,7 @@ def generate
     output.print(full_answer)
   end
 end
+# rubocop:enable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/MethodLength, Metrics/PerceivedComplexity
 
 def load_environment_variables
   Dotenv.load

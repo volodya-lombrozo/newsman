@@ -51,6 +51,7 @@ class Htmlout
     puts "Report was successfully printed to a #{file.path}"
     file.close
   end
+  # rubocop:enable Metrics/AbcSize
 
   def title(reporter)
     date = Time.new.strftime('%d.%m.%Y')

@@ -63,7 +63,9 @@ class Assistant
     PROMPT
     send(prompt)
   end
+  # rubocop:enable Metrics/MethodLength
 
+  # rubocop:disable Metrics/MethodLength
   def prev_results(prs)
     example = "repository-name:\n
       - Added 100 new files to the Dataset [#168]\n
@@ -81,7 +83,9 @@ class Assistant
     PROMPT
     send(prompt)
   end
+  # rubocop:enable Metrics/MethodLength
 
+  # rubocop:disable Metrics/MethodLength
   def risks(all)
     example = "repository-name:\n
       - The server is weak, we may fail the delivery\n
@@ -98,6 +102,7 @@ class Assistant
     PROMPT
     send(prompt)
   end
+  # rubocop:enable Metrics/MethodLength
 
   def send(request)
     @client.chat(
