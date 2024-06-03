@@ -41,12 +41,13 @@ class Issue
       title: ```#{@title}```,
       description: ```#{@body}```,
       repo: ```#{@repo}```,
-      issue number: \##{@number}
+      issue number: \##{@number},
+      additional: #{@additional}
     MARKDOWN
   end
 
   def detailed_title
-    "title: #{@title}, repo: #{@repo}, number: \##{@number}, url: #{url}"
+    "title: #{@title}, repo: #{@repo}, number: \##{@number}, url: #{url}, labels: #{labels}"
   end
 
   def to_json(*_args)
@@ -55,7 +56,7 @@ class Issue
       title: @title,
       description: @body,
       repository: @repo,
-      url:
+      url: url
     }.to_json
   end
 
@@ -103,12 +104,13 @@ class PddIssue
       title: ```#{@title}```,
       description: ```#{extract_real_body}```,
       repo: ```#{@repo}```,
-      issue number: \##{@number}
+      issue number: \##{@number},
+      additional: #{@additional}
     MARKDOWN
   end
 
   def detailed_title
-    "title: #{@title}, repo: #{@repo}, issue number: \##{@number}, url: #{url}"
+    "title: #{@title}, repo: #{@repo}, issue number: \##{@number}, url: #{url}, labels: #{labels}"
   end
 
   def to_json(*_args)
