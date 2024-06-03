@@ -32,9 +32,9 @@ class TestIssue < Minitest::Test
       'jeo-maven-plugin',
       531
     )
-    assert_equal(
-      '{"number":531,"title":"AnnotationsApplication.java:32-35: Check default values...","description":"TEST_BODY","repository":"jeo-maven-plugin","url":"undefined"}',
-      issue.to_json
-    )
+    expected = <<~JSON.chomp
+      {"number":531,"title":"AnnotationsApplication.java:32-35: Check default values...","description":"TEST_BODY","repository":"jeo-maven-plugin","url":"undefined"}
+    JSON
+    assert_equal expected, issue.to_json
   end
 end
