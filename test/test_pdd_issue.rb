@@ -25,7 +25,7 @@ require 'minitest/autorun'
 require_relative '../lib/newsman/issues'
 
 class TestPddIssue < Minitest::Test
-  TEST_BODY = "
+  TEST_BODY = <<~BODY
     The puzzle `531-462261de` from #531 has to be resolved:
 
     https://github.com/objectionary/jeo-maven-plugin/blob/5a42b2c9f7e0ff01cbb2c4626e1dc5dc3f8aa7b8/src/it/annotations/src/main/java/org/eolang/jeo/annotations/AnnotationsApplication.java#L32-L35
@@ -34,11 +34,18 @@ class TestPddIssue < Minitest::Test
 
     Estimate: 90 minutes,  role: DEV.
 
-    If you have any technical questions, don't ask me, submit new tickets instead. The task will be \"done\" when the problem is fixed and the text of the puzzle is _removed_ from the source code. Here is more about [PDD](http://www.yegor256.com/2009/03/04/pdd.html) and [about me](http://www.yegor256.com/2017/04/05/pdd-in-action.html).
-      "
+    If you have any technical questions, don't ask me, submit new tickets instead.
+    The task will be "done" when the problem is fixed and the text of the puzzle is _removed_ from the source code.
+    Here is more about [PDD](http://www.yegor256.com/2009/03/04/pdd.html) and [about me](http://www.yegor256.com/2017/04/05/pdd-in-action.html).
+  BODY
 
-  EXPECTED_DESCRIPTION = ["     * @todo #531:90min Check default values for annotation properties.\n",
-                          "     *  We still encounter some problems with annotation processing.\n", "     *  Especially with Autowired annotation from Spring Framework.\n", "     *  It's relatively simple annotation, but it's not processed correctly.\n", "     */\n"].freeze
+  EXPECTED_DESCRIPTION = [
+    "     * @todo #531:90min Check default values for annotation properties.\n",
+    "     *  We still encounter some problems with annotation processing.\n",
+    "     *  Especially with Autowired annotation from Spring Framework.\n",
+    "     *  It's relatively simple annotation, but it's not processed correctly.\n",
+    "     */\n"
+  ].freeze
 
   def test_parses_pdd_issue
     issue = PddIssue.new('AnnotationsApplication.java:32-35: Check default values...',
@@ -51,8 +58,11 @@ class TestPddIssue < Minitest::Test
     issue = PddIssue.new('AnnotationsApplication.java:32-35: Check default values...',
                          'TEST_BODY',
                          'jeo-maven-plugin', 531)
+    expected = <<~JSON.chomp
+      {"number":531,"title":"AnnotationsApplication.java:32-35: Check default values...","description":"TEST_BODY","repository":"jeo-maven-plugin","url":"undefined"}
+    JSON
     assert_equal(
-      '{"number":531,"title":"AnnotationsApplication.java:32-35: Check default values...","description":"TEST_BODY","repository":"jeo-maven-plugin","url":"undefined"}',
+      expected,
       issue.to_json
     )
   end
