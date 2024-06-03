@@ -11,56 +11,73 @@ Subject: WEEK 23 Objectionary</p>
 <p>Hi all,</p>
 
 <p>Last week achievements:<br/>
-```opeo-maven-plugin:</p>
+opeo-maven-plugin:</p>
 
-<pre><code class="prettyprint">  - Added maven opts to avoid problem with java modules [#chore]
+<pre><code class="prettyprint">  - Added Maven opts to avoid problem with releasing a new version of `opeo-maven-plugin` [#chore]
 
   - Add Support of IF_ICMPGT Instruction [#284]
 
   - Fix Doc Mistake in PHI Printing [#272]
 </code></pre>
 
-<p>```</p>
-
 <p>Next week plans:<br/>
-opeo-maven-plugin:</p>
-
-<ul><li>Enable {@link #decompilesAndCompilesTryCatchBlocks(String)} test in JeoAndOpeoTest.java:70-74 [#289]</li>
-<li>Add types for Multiplication in Mul.java:38-41 [#288]</li>
-<li>Decompile try-catch blocks in SelectiveDecompiler.java:176-179 [#287]</li>
-<li>Calculate the Max Stack Size in JeoCompiler.java:87-95 [#286]</li>
-<li>Refactor JeoAndOpeoTest in JeoAndOpeoTest.java:64-69 [#283]</li>
-<li>Optimize Labels Generation in JeoCompiler.java:79-82 [#281]</li>
-<li>Refactor {@link #compile} method to handle exceptions appropriately in JeoCompiler.java:75-78 [#280]</li>
-<li>Do we need to implement the <code class="prettyprint">Popped</code> node in Popped.java:38-42 [#279]</li>
-<li>Avoid using the owner from the attributes in Invocation.java:166-169 [#278]</li>
-<li>Do we need {@link Duplicate} class in Duplicate.java:41-45 [#277]</li>
-<li>Generalize ConstructorDescriptor to be used in all cases in ConstructorDescriptor.java:33-37 [#276]</li>
-<li>Do we need {@link Constant} class in Constant.java:40-44 [#275]</li>
-<li>Enable the fuse integration test in pom.xml:212-215 [#274]</li>
-<li>Remove the crutch related to InnerClass in FormattingDecompiler.java:123-127 [#268]</li>
-<li>Is Labeled Class an Abstraction Failure? in InvokespecialHandler.java:43-47 [#260]</li>
-<li>Remove the crutch related to abstract attribute in FormattingDecompiler.java:110-115 [#255]</li>
-<li>Do we need ClassName node? It seems in ClassName.java:38-42 [#249]</li>
-<li>Refactor SelectiveDecompilerTest in SelectiveDecompilerTest.java:43-47 [#247]</li>
-<li>Inefficient RawXml#toXmir() Method Implementation in RawXml.java:68-71 [#246]</li>
-<li>Refactor AstNode#opcodes() Method Usage in RawXml.java:57-61 [#245]</li>
-<li><p>Handle module-info.class files correctly in pom.xml:84-88 [#242]jeo-maven-plugin:</p></li>
-<li><p>Fix "InnerClasses" Xmir Representation [#605]</p></li>
-<li><p>Add "abstract" or "base" for "max" [#602]</p></li>
-<li><p>XmlParam.java:33-36: Add unit tests for the XmlParam... [#598]</p></li>
-<li><p>XmlAttributes.java:31-34: Add Unit Tests for... [#595]</p></li>
-<li><p>XmlAttribute.java:32-35: Add Unit Tests for XmlAttribute... [#594]</p></li>
-<li><p>DirectivesNullable.java:34-37: Add Unit Tests for... [#593]</p></li>
-<li><p>DirectivesAttributes.java:36-39: Add Unit Tests for... [#592]</p></li>
-<li><p>DirectivesAttribute.java:35-38: Add Unit Tests for... [#591]</p></li>
-</ul><p>Risks:<br/>
 ```opeo-maven-plugin:</p>
 
-<ul><li><p>No risks identified [#chore].</p></li>
-<li><p>No risks identified [#chore].</p></li>
-<li><p>No risks identified [#chore].<br/>
-```</p></li>
+<pre><code class="prettyprint">  - Enable {@link #decompilesAndCompilesTryCatchBlocks(String)} test in JeoAndOpeoTest.java:70-74 [#289]
+
+  - Add types for Multiplication in Mul.java:38-41 [#288]
+
+  - Decompile try-catch blocks in SelectiveDecompiler.java:176-179 [#287]
+
+  - Calculate the Max Stack Size in JeoCompiler.java:87-95 [#286]
+
+  - Refactor JeoAndOpeoTest in JeoAndOpeoTest.java:64-69 [#283]
+
+  - Optimize Labels Generation in JeoCompiler.java:79-82 [#281]
+
+  - Refactor {@link #compile} method to handle exceptions appropriately in JeoCompiler.java:75-78 [#280]
+
+  - Do we need to implement the `Popped` node in Popped.java:38-42 [#279]
+
+  - Avoid using the owner from the attributes in Invocation.java:166-169 [#278]
+
+  - Do we need {@link Duplicate} class? in Duplicate.java:41-45 [#277]
+
+  - Generalize ConstructorDescriptor to be used in all cases in ConstructorDescriptor.java:33-37 [#276]
+
+  - Do we need {@link Constant} class? in Constant.java:40-44 [#275]
+
+  - Enable the fuse integration test in pom.xml:212-215 [#274]
+
+  - Remove the crutch related to InnerClass in FormattingDecompiler.java:123-127 [#268]
+
+  - Is Labeled Class an Abstraction Failure? in InvokespecialHandler.java:43-47 [#260]
+
+  - Remove the crutch related to abstract attribute in FormattingDecompiler.java:110-115 [#255]
+
+  - Do we need ClassName node? It seems in ClassName.java:38-42 [#249]
+
+  - Refactor SelectiveDecompilerTest in SelectiveDecompilerTest.java:43-47 [#247]
+
+  - Inefficient RawXml#toXmir() Method Implementation in RawXml.java:68-71 [#246]
+
+  - Refactor AstNode#opcodes() Method Usage in RawXml.java:57-61 [#245]
+
+  - Handle module-info.class files correctly in pom.xml:84-88 [#242]```jeo-maven-plugin:
+</code></pre>
+
+<ul><li>Fix "InnerClasses" Xmir Representation [#605]</li>
+<li>Add "abstract" or "base" for "max" [#602]</li>
+<li>XmlParam.java:33-36: Add unit tests for the XmlParam... [#598]</li>
+<li>XmlAttributes.java:31-34: Add Unit Tests for... [#595]</li>
+<li>XmlAttribute.java:32-35: Add Unit Tests for XmlAttribute... [#594]</li>
+<li>DirectivesNullable.java:34-37: Add Unit Tests for... [#593]</li>
+<li>DirectivesAttributes.java:36-39: Add Unit Tests for... [#592]</li>
+<li>DirectivesAttribute.java:35-38: Add Unit Tests for... [#591]</li>
+</ul><p>Risks:<br/>
+opeo-maven-plugin:</p>
+
+<ul><li>No risks identified.</li>
 </ul><p>Best regards,<br/>
 Vladimir Zakharov<br/>
 Software Developer</p>
