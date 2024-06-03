@@ -59,13 +59,12 @@ class Issue
   end
 
   def to_json(*_args)
-    url = url()
     {
       number: @number,
       title: @title,
       description: @body,
       repository: @repo,
-      url:
+      url: url.to_s
     }.to_json
   end
 
@@ -115,13 +114,12 @@ class PddIssue
   end
 
   def to_json(*_args)
-    url = url()
     {
       number: @number,
       title: @title,
       description: @body,
       repository: @repo,
-      url:
+      url: url.to_s
     }.to_json
   end
 
