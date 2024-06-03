@@ -14,7 +14,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = %w[lib bin]
   spec.license       = 'MIT'
 
-  spec.required_ruby_version = '>=3'
+  spec.required_ruby_version = '=3.3'
 
   spec.add_development_dependency 'minitest', '~> 5.22'
   spec.add_development_dependency 'rspec', '~> 3.2'
