@@ -1,7 +1,8 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
+
 #
-#Copyright (c) 2024 Volodya Lombrozo
+# Copyright (c) 2024 Volodya Lombrozo
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the 'Software'), to deal
@@ -81,9 +82,7 @@ def generate
   all_params = options.map { |key, value| "#{key}: #{value}" }.join(', ')
   puts "Parsed parameters: #{all_params}"
   load_environment_variables
-  # Init all required parameters
-  # Reporter Info
-  reporter = options[:name]
+  # Init all required parameters Reporter Info reporter = options[:name]
   reporter_position = options[:position]
   # GitHub
   github_username = options[:username]
@@ -94,42 +93,33 @@ def generate
   # Your OpenAI personal access token
   openai_token = ENV['OPENAI_TOKEN']
   # Create a GitHub client instance with your access token
-  client = Octokit::Client.new(github_token: github_token)
   github = Github.new(github_token)
-  raw_prs = github.pull_requests(github_username, github_repositories)
-  prs = join(raw_prs)
-  grouped_prs = raw_prs.group_by(&:repository)
+  prs = github.pull_requests(github_username, github_repositories)
   issues = github.issues(github_username, github_repositories)
-  raw_issues = issues
-  issues = join(issues)
-  grouped_issues = raw_issues.group_by(&:repo)
   puts "\nNow lets test some aggregation using OpenAI\n\n"
   assistant = Assistant.new(openai_token)
-  puts 'Assistant builds a report using a new approach, using groupping'
   # Build previous results
   answer = ''
-  grouped_prs.each do |repository, rprs|
+  prs.group_by(&:repository).each do |repository, rprs|
     puts "Building a results report for the repository: #{repository}"
     answer = "#{answer}\n#{assistant.prev_results(join(rprs))}"
   end
   # Build next plans
   issues_full_answer = ''
-  grouped_issues.each do |repository, rissues|
+  issues.group_by(&:repo).each do |repository, rissues|
     puts "Building a future plans report for the repository: #{repository}"
     issues_full_answer = "#{issues_full_answer}\n#{assistant.next_plans(join(rissues))}"
   end
-  # Find risks
-  risks_full_answer = assistant.risks(prs)
   # Build report
   full_answer = Report.new(
     reporter,
     reporter_position,
     options[:title],
-    additional: ReportItems.new(raw_prs, raw_issues)
+    additional: ReportItems.new(prs, issues)
   ).build(
     answer,
     issues_full_answer,
-    risks_full_answer,
+    assistant.risks(join(prs)),
     Date.today
   )
   output_mode = options[:output]
@@ -149,7 +139,6 @@ def generate
   end
 end
 
-
 def load_environment_variables
   Dotenv.load
   Dotenv.require_keys('GITHUB_TOKEN', 'OPENAI_TOKEN')
@@ -158,21 +147,6 @@ end
 def join(items)
   "[#{items.map(&:to_json).join(',')}]"
 end
-
-# def date_one_week_ago(today)
-#   # Convert today to a Date object if it's not already
-#   today = Date.parse(today) unless today.is_a?(Date)
-#   # Subtract 7 days to get the date one week ago
-#   one_week_ago = today - 7
-#   # Format the date as "YYYY-MM-DD"
-#   one_week_ago.strftime('%Y-%m-%d')
-#   # Return the formatted date
-# end
-# 
-# def week_of_a_year(project, today)
-#   number = today.strftime('%U').to_i + 1
-#   "WEEK #{number} #{project}"
-# end
 
 # Execute the function only if this script is run directly like `./newsman.rb`
 generate if __FILE__ == $PROGRAM_NAME

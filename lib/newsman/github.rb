@@ -1,7 +1,8 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
+
 #
-#Copyright (c) 2024 Volodya Lombrozo
+# Copyright (c) 2024 Volodya Lombrozo
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the 'Software'), to deal
@@ -21,9 +22,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-
 class Github
-
   def initialize(token)
     @client = Octokit::Client.new(github_token: token)
   end
@@ -31,7 +30,7 @@ class Github
   def pull_requests(username, repositories)
     one_week_ago = date_one_week_ago(Date.today)
     query = "is:pr author:#{username} created:>=#{one_week_ago} #{repositories}"
-        puts "Searching pull requests for #{username}."
+    puts "Searching pull requests for #{username}."
     puts 'Newsman uses the following request to GitHub to gather the'\
       " required information about user activity: '#{query}'"
     prs = []
@@ -67,17 +66,14 @@ class Github
     end
     issues
   end
-
- end
-
-def date_one_week_ago(today)
-    # Convert today to a Date object if it's not already
-    today = Date.parse(today) unless today.is_a?(Date)
-    # Subtract 7 days to get the date one week ago
-    one_week_ago = today - 7
-    # Format the date as "YYYY-MM-DD"
-    one_week_ago.strftime('%Y-%m-%d')
-    # Return the formatted date
 end
 
-
+def date_one_week_ago(today)
+  # Convert today to a Date object if it's not already
+  today = Date.parse(today) unless today.is_a?(Date)
+  # Subtract 7 days to get the date one week ago
+  one_week_ago = today - 7
+  # Format the date as "YYYY-MM-DD"
+  one_week_ago.strftime('%Y-%m-%d')
+  # Return the formatted date
+end
