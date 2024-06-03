@@ -27,42 +27,50 @@ require_relative '../lib/newsman/issues'
 require_relative '../lib/newsman/pull_request'
 
 class TestReport < Minitest::Test
+  REPORT_EXAMPLE = <<~EXPECTED
+    From: User
+    Subject: WEEK 11 Project
+
+    Hi all,
+
+    Last week achievements:
+    repository-a:
+     - Did a lot of for (a) repository
+
+    Next week plans:
+    repository-b:
+     - I will do a lot for repository (b)
+
+    Risks:
+    - <todo>
+
+    Best regards,
+    User
+    Developer
+    2024-03-14
+  EXPECTED
+
   def test_report
-    expected = <<~EXPECTED
-      From: User
-      Subject: WEEK 11 Project
-
-      Hi all,
-
-      Last week achievements:
-      repository-a:
-       - Did a lot of for (a) repository
-
-      Next week plans:
-      repository-b:
-       - I will do a lot for repository (b)
-
-      Risks:
-      - <todo>
-
-      Best regards,
-      User
-      Developer
-      2024-03-14
-    EXPECTED
+    expected = REPORT_EXAMPLE
     report = Report.new('User', 'Developer', 'Project')
     out = report.build("repository-a:\n - Did a lot of for (a) repository",
-                       "repository-b:\n - I will do a lot for repository (b)", '- <todo>', Date.new(2024, 3, 14))
+                       "repository-b:\n - I will do a lot for repository (b)",
+                       '- <todo>',
+                       Date.new(2024, 3, 14))
     assert_equal expected, out
   end
 
   def test_report_items
-    expected = "Closed Pull Requests:\n - title: title, repo: repo, url: http://some.url.com\n\nOpen Issues:\n - title: title, repo: repo, number: #123, url: http://google.com\n"
+    expected = <<~EXPECTED
+      Closed Pull Requests:
+       - title: title, repo: repo, url: http://some.url.com
+
+      Open Issues:
+       - title: title, repo: repo, number: #123, url: http://google.com
+    EXPECTED
     issues = [Issue.new('title', 'body', 'repo', '123', url: 'http://google.com')]
     prs = [PullRequest.new('repo', 'title', 'body', url: 'http://some.url.com')]
     actual = ReportItems.new(prs, issues).to_s
-
-    puts actual
     assert_equal expected, actual
   end
 end
