@@ -22,8 +22,13 @@
 
 require 'openai'
 
+# This class mimics a robot that can analyse a developer activity.
+# The assistant uses OpenAI API to analyze.
 class Assistant
-  CONTEXT = 'You are a developer tasked with composing a concise report detailing your activities and progress for the previous week, intended for submission to your supervisor.'
+  CONTEXT = 'You are a developer tasked'\
+  ' with composing a concise report detailing your activities'\
+  ' and progress for the previous week,'\
+  ' intended for submission to your supervisor.'
 
   def initialize(token, model: 'gpt-3.5-turbo', temperature: 0.3)
     @token = token
@@ -33,9 +38,14 @@ class Assistant
   end
 
   def say_hello
-    "I'm an assistant that can work with OpenAI client. Please, use me, if you need any help. I'm using #{@model}, with #{@temperature} temperature."
+    <<~HELLO
+      I'm an assistant that can work with OpenAI client.
+      Please, use me, if you need any help.
+      I'm using #{@model}, with #{@temperature} temperature.
+    HELLO
   end
 
+  # rubocop:disable Metrics/MethodLength
   def next_plans(issues)
     example = "repository-name:\n
       - To publish ABC package draft [#27]\n
@@ -94,10 +104,8 @@ class Assistant
       parameters: {
         model: @model,
         messages: [
-          { role: 'system',
-            content: CONTEXT },
-          { role: 'user',
-            content: request.to_s }
+          { role: 'system', content: CONTEXT },
+          { role: 'user', content: request.to_s }
         ],
         temperature: @temperature
       }

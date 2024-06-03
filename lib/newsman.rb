@@ -35,6 +35,7 @@ require_relative 'newsman/report'
 require_relative 'newsman/assistant'
 require_relative 'newsman/github'
 
+# rubocop:disable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/MethodLength, Metrics/PerceivedComplexity
 def generate
   # Load all options required
   # Pay attention that some of them have default values.
@@ -82,7 +83,7 @@ def generate
   all_params = options.map { |key, value| "#{key}: #{value}" }.join(', ')
   puts "Parsed parameters: #{all_params}"
   load_environment_variables
-  # Init all required parameters Reporter Info 
+  # Init all required parameters Reporter Info
   reporter = options[:name]
   reporter_position = options[:position]
   # GitHub

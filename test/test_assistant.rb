@@ -27,8 +27,10 @@ require_relative '../lib/newsman/assistant'
 class TestAssistant < Minitest::Test
   def test_creates_default_assistant
     assistant = Assistant.new('test-token')
-    expected = <<~EXPECTED.chomp
-      I'm an assistant that can work with OpenAI client. Please, use me, if you need any help. I'm using gpt-3.5-turbo, with 0.3 temperature.
+    expected = <<~EXPECTED
+      I'm an assistant that can work with OpenAI client.
+      Please, use me, if you need any help.
+      I'm using gpt-3.5-turbo, with 0.3 temperature.
     EXPECTED
     assert_equal expected,
                  assistant.say_hello
