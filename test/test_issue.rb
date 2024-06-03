@@ -37,4 +37,26 @@ class TestIssue < Minitest::Test
     JSON
     assert_equal expected, issue.to_json
   end
+
+  def test_important_issue
+    issue = Issue.new(
+      'Important Issue Title',
+      'Important Issue Body',
+      'jeo-maven-plugin',
+      531,
+      labels: ['soon']
+    )
+    assert issue.important?
+  end
+
+  def test_unimportant_issue
+    issue = Issue.new(
+      'Unimportant Issue Title',
+      'Unimportant Issue Body',
+      'jeo-maven-plugin',
+      531,
+      labels: ['not-soon']
+    )
+    assert !issue.important?
+  end
 end
