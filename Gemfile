@@ -11,4 +11,4 @@ gem 'octokit', '~> 8.0'
 gem 'optparse'
 gem 'redcarpet', '~> 3.6'
 gem 'rubocop', require: false
-gem 'ruby-openai', '~> 6.3'
+gem 'ruby-openai', '~> 7.0'
