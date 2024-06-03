@@ -22,7 +22,7 @@
 # SOFTWARE.
 
 require 'minitest/autorun'
-require_relative '../lib/newsman'
+require_relative '../lib/newsman/github'
 
 class TestDateOneWeekAgo < Minitest::Test
   def test_date_one_week_ago

@@ -32,6 +32,12 @@ task :clean do
   File.delete(gem_file)
 end
 
+require 'rubocop/rake_task'
+desc 'Run RuboCop on all directories'
+RuboCop::RakeTask.new(:rubocop) do |task|
+  task.fail_on_error = true
+end
+
 def find_latest_gem
   Dir['*.gem'].max_by { |file| File.mtime(file) }
 end

@@ -42,7 +42,7 @@ List is here:<br/>
 
 </body>
 </html>
-"
+".freeze
 
   def test_writes_to_a_html_file
     Dir.mktmpdir do |temp_dir|
