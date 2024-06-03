@@ -26,9 +26,8 @@ require 'json'
 # This class represents a GitHub Issue abstraction created by a user.
 class Issue
   attr_accessor :title, :body, :repo, :number
-  attr_reader :url
 
-  def initialize(title, body, repo, number, **additional) 
+  def initialize(title, body, repo, number, **additional)
     defaults = { url: 'undefined', labels: [] }
     @title = title
     @body = body
@@ -56,7 +55,7 @@ class Issue
       title: @title,
       description: @body,
       repository: @repo,
-      url: url 
+      url:
     }.to_json
   end
 
@@ -77,7 +76,7 @@ end
 class PddIssue
   attr_accessor :repo
 
-  def initialize(title, body, repo, number, **additional) 
+  def initialize(title, body, repo, number, **additional)
     defaults = { url: 'undefined', labels: [] }
     @title = title
     @body = body
@@ -118,7 +117,7 @@ class PddIssue
       title: @title,
       description: @body,
       repository: @repo,
-      url: url
+      url:
     }.to_json
   end
 
