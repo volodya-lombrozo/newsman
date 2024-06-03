@@ -50,26 +50,27 @@ class Issue
     "title: #{@title}, repo: #{@repo}, number: \##{@number}, url: #{url}, labels: #{labels}"
   end
 
-  def to_json(*_args)
-    {
-      number: @number,
-      title: @title,
-      description: @body,
-      repository: @repo,
-      url: url
-    }.to_json
-  end
-
-  def important?
-    labels.include? 'soon'
-  end
-
   def url
     @additional[:url]
   end
 
   def labels
     @additional[:labels]
+  end
+
+  def to_json(*_args)
+    url = url()
+    {
+      number: @number,
+      title: @title,
+      description: @body,
+      repository: @repo,
+      url:
+    }.to_json
+  end
+
+  def important?
+    labels.include? 'soon'
   end
 end
 
@@ -114,6 +115,7 @@ class PddIssue
   end
 
   def to_json(*_args)
+    url = url()
     {
       number: @number,
       title: @title,
