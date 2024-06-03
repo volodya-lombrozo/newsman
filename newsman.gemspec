@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |spec|
   spec.name          = 'newsman'
-  spec.version       = '0.1.14'
+  spec.version       = '0.2.0'
   spec.authors       = ['Volodya Lombrozo']
   spec.email         = ['volodya.lombrozo@gmail.com']
   spec.summary       = 'GitHub user weekly news'
@@ -14,7 +14,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = %w[lib bin]
   spec.license       = 'MIT'
 
-  spec.required_ruby_version = '=3.3'
+  spec.required_ruby_version = '>=3.0'
 
   spec.add_development_dependency 'minitest', '~> 5.22'
   spec.add_development_dependency 'rspec', '~> 3.2'
