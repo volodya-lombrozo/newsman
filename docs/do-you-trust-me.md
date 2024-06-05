@@ -81,7 +81,36 @@ After this attempt, I checked the report, added some missing points, fixed sever
 
 ## Next week. Let's talk about the future?
 
+The next week I did the same, but with Issues. 
+Since we don't have any special boards, backlog, scrum and similar, we use only plain issues. 
+Yes, most of them won't be solved during the next week.
+So at the beggining I used all Issues for the last month, formatted them with AI tool and then manually remove the Items which I won't solve.
+By doing this I added some sort of fitering.
+Which reduced costs on API.
 
+So the prompt was like the following:
+```txt
+Please compile a summary of the plans for the next week using the following GitHub Issues descriptions. 
+Each issue should be summarized in a single sentence, focusing more on the issue title and less on implementation details. 
+Group the sentences by repositories, each identified by its name mentioned in the 'repository:[name]' attribute of the issue.
+Pay attention, that you din't loose any issue. 
+The grouping is important an should be precise.
+Ensure that each sentence includes the corresponding issue number as an integer value.
+If an issue doesn't mention an issue number, just print [#chore]. 
+Combine all the information from each Issue into a concise and fluent sentences, as if you were a developer reporting on your work.
+Please strictly adhere to the example template provided: #{example_plans}. List of GitHub issues to aggregate: [#{issues}].
+```
 
+Afain, I didn't wrote this prompt myself. Ifter I got exactly the same problem with the structure, formatting and wrong groupping.
+Ok, at least we have something.
+I checked issue titles, fixed some of them, then removed all the issues which I won't solve during this week.
+Later, of course, I added labels for the issues which I will solve soon. So the label name is "soon". 
+By doing this I solved the problem with issues which I won't and will solve.
+Moreover, I started labeling those issues which I will solve soon.
 
+## What about meaning extraction from the text?
+
+I mean our last point in the text. Let's imagine, that in the PR description you added the following text:
+```
+```
 
