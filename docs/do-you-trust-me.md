@@ -114,3 +114,23 @@ I mean our last point in the text. Let's imagine, that in the PR description you
 ```
 ```
 
+It was a problem, because not all changes in the code carried any risks.
+So GPT tried to "invent" new risks where they were absent, sometimes it printed just a PR description without finding any problems. 
+So it was problematic and still remains. 
+Most probably, the key problem was with my prompt:
+```txt
+Please compile a summary of the risks identified in some repositories. If you can't find anything, just leave answer empty. Add some entries to a report only if you are sure it's a risk. Developers usually mention some risks in pull request descriptions. They either mention 'risk' or 'issue'. I will give you a list of pull requests. Each risk should be summarized in a single sentence. Ensure that each sentence includes the corresponding issue number or PR number as an integer value. If a PR or an issue doesn't mention an issue number, just print [#chore]. Combine all the information from each PR into a concise and fluent sentence, as if you were a developer reporting on your work. Please strictly adhere to the example template provided. Example of a report: #{example_risks}. List of Pull Requests: ```#{all}```.]
+```
+
+In order to avoid this problem, I had to mention risks directly in a PR descriptions:
+Risk with the word "Risk" https://github.com/objectionary/opeo-maven-plugin/pull/259
+
+As you can see, it's what I didn't want to do at all - structure my text. 
+
+
+## Let's improve it?
+
+Despite implementing all these parts, I still needed to do much of the work - structure, format, check that each generated sentence has valid meaning, or has meaning at all.
+I decided to go using small steps.
+
+
