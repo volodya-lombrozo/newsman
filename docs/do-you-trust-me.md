@@ -64,7 +64,15 @@ You are a developer tasked with composing a concise report detailing your activi
 Prompt (don't read it entirely, it's boring):
 
 ```txt
-Please compile a summary of the work completed in the following Pull Requests (PRs). Each PR should be summarized in a single sentence, focusing more on the PR title and less on implementation details. Group the sentences by repositories, each identified by its name mentioned in the 'repository:[name]' attribute of the PR. The grouping is important an should be precise. Ensure that each sentence includes the corresponding issue number as an integer value. If a PR doesn't mention an issue number, just print [#chore]. Combine all the information from each PR into a concise and fluent sentence, as if you were a developer reporting on your work. Please strictly adhere to the example template provided. Example of a report: #{example}. List of Pull Requests: [#{prs}]"}
+Please compile a summary of the work completed in the following Pull Requests (PRs). 
+Each PR should be summarized in a single sentence, focusing more on the PR title and less on implementation details.
+Group the sentences by repositories, each identified by its name mentioned in the 'repository:[name]' attribute of the PR.
+The grouping is important an should be precise. 
+Ensure that each sentence includes the corresponding issue number as an integer value.
+If a PR doesn't mention an issue number, just print [#chore]. 
+Combine all the information from each PR into a concise and fluent sentence, as if you were a developer reporting on your work.
+Please strictly adhere to the example template provided.
+Example of a report: #{example}. List of Pull Requests: [#{prs}]"}
 ```
 
 I was lazy to do groupping programmatically, to prepare data, I just concat them using empty lines as delimeters between items.
@@ -119,7 +127,18 @@ So GPT tried to "invent" new risks where they were absent, sometimes it printed 
 So it was problematic and still remains. 
 Most probably, the key problem was with my prompt:
 ```txt
-Please compile a summary of the risks identified in some repositories. If you can't find anything, just leave answer empty. Add some entries to a report only if you are sure it's a risk. Developers usually mention some risks in pull request descriptions. They either mention 'risk' or 'issue'. I will give you a list of pull requests. Each risk should be summarized in a single sentence. Ensure that each sentence includes the corresponding issue number or PR number as an integer value. If a PR or an issue doesn't mention an issue number, just print [#chore]. Combine all the information from each PR into a concise and fluent sentence, as if you were a developer reporting on your work. Please strictly adhere to the example template provided. Example of a report: #{example_risks}. List of Pull Requests: ```#{all}```.]
+Please compile a summary of the risks identified in some repositories. 
+If you can't find anything, just leave answer empty.
+Add some entries to a report only if you are sure it's a risk.
+Developers usually mention some risks in pull request descriptions. 
+They either mention 'risk' or 'issue'. 
+I will give you a list of pull requests. 
+Each risk should be summarized in a single sentence.
+Ensure that each sentence includes the corresponding issue number or PR number as an integer value. 
+If a PR or an issue doesn't mention an issue number, just print [#chore].
+Combine all the information from each PR into a concise and fluent sentence, as if you were a developer reporting on your work.
+Please strictly adhere to the example template provided. 
+Example of a report: #{example_risks}. List of Pull Requests: ```#{all}```.]
 ```
 
 In order to avoid this problem, I had to mention risks directly in a PR descriptions:
@@ -131,6 +150,53 @@ As you can see, it's what I didn't want to do at all - structure my text.
 ## Let's improve it?
 
 Despite implementing all these parts, I still needed to do much of the work - structure, format, check that each generated sentence has valid meaning, or has meaning at all.
-I decided to go using small steps.
+Since I did 3 separate requests, all the responses were differently formatted, as you can guess. Something like the following:
+
+```txt
+Example?
+```
+
+But how can I fix this problem? Of course, GPT:
+
+```
+I have a weekly report with different parts that use various formatting styles.
+Please format the entire report into a single cohesive format while preserving the original text without any changes.
+Ensure that the formatting is consistent throughout the document.
+
+Here is the report:
+
+#{report}
+```
+
+And it works like a charm. Hoevewer I all the time have different formating style. 
+Which is OK in my case, though looks a bit strange, sine each week I have differently formatted reports.
+Maybe I need to provide an example? 
+
+## How long?
+
+Current situation is following. I open auto-generated report, read them, format small parts, fix problems with meanings. 
+Then I open list of issues and pull requests and validate the report.
+Wait, wait... What I'm doing? I wanted not to do this type of work at all. 
+So I spend significant time to develop this scripts, configure them and did some chore around it.
+But I'm still have to do a lot of work. Which I inidially wanted to avoid at all.
+Dissapointment.
+Of course, I have to do less, but still.
+
+#### 
+
+## High view?
+
+Ok let's take a look on the developement way from the high perspective.
+- start with simple
+- clarification on each step
+- We retrieve precise system
 
 
+## All this sound around AI?
+
+- PR reviewers 
+- Code Generation
+- Report Generation
+- Improvement suggestions
+I don't see them at all.
+Some conclusions
