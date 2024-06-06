@@ -186,16 +186,49 @@ Of course, I have to do less, but still.
 
 ## High view?
 
-Ok let's take a look on the developement way from the high perspective.
-- start with simple
-- clarification on each step
-- We retrieve precise system
+Of course, I'm a bit sceptical and things are not so bad. Let's take a look at wat we got. 
+We started the development very fast. Very.
+I didn't need to do any formating, data preparation for AI analysis.
+It understood what was necessary as is.
+Just a simple prompt with data and you get a raw, full of mistakes results.
+But you get a result! In a few hours of work. 
+
+Later, when you need to make your system more "precise", you just add more code to it.
+You split requests. Add meta-information. Build chain of requests and so on. You continue develop
+the system.
+
+If you continue to make the system more "precise", you suddenly, realize that you don't need AI at some point at all.
+And it's fine to remove it, I belive.
+
+So, I didn't clearly realized how I can express my feelings about this developemnt process, but it can be illustrated 
+as follows:
+
+```picture```
+
+As you can see, we get the required functionality very fast, but with low precision. 
+Later, when we start focusing on the precision, we increase developement time and reduce or specify the use of AI.
+So, we have two extreems - the first one - fully AI system with a low precision and fully programmed system with high precision.
+The distance bewtween them is a developement process.
+
+So maybe in the future we will create systems exactly this way. Since for some systems we can tolerate low precision, for some others
+like medicine, we cannot.
 
 
 ## All this sound around AI?
 
+This days we experiense a large growth of AI tools. Most of them we are already adapted in our work process.
+I mean ChatGPT, ..., ..., which can generate some code which you don't remember (which you don't want to learn), for
+example I use it for small bash scripts, or for generation XSL transformations.
+
+Also modern tools do unit test generation wery well. And of course documentation generation.
+For example, you can generate README files based on the code in your repository, you can generate
+well-understandable and well-written code comments, thank you, CoPilot. 
+
+So, there is definetly the progress in many places. However I should admit that not all things are perfect.
+
+
 - PR reviewers 
-- Code Generation
+- Code Generation, bash scripts, xslt transformations, and so on.
 - Report Generation
 - Improvement suggestions
 I don't see them at all.
