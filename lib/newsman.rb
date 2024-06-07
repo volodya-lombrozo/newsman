@@ -63,12 +63,8 @@ def generate
             "You can choose another options like '-o html', '-o txt' or even '-o html'") do |o|
       options[:output] = o
     end
-    opts.on('-t', '--title TITLE', 'Project Title. Empty by default') do |t|
-      options[:title] = t
-    end
-    opts.on('-m', '--model MODEL', 'AI model to use. gpt-3.5-turbo by default') do |m|
-      options[:model] = m
-    end
+    opts.on('-t', '--title TITLE', 'Project Title. Empty by default') { |t| options[:title] = t }
+    opts.on('-m', '--model MODEL', 'AI model to use. gpt-3.5-turbo by default') { |m| options[:model] = m }
   end.parse!
   # Custom method to raise exception with a human-readable message
   def options.require_option(key, message)

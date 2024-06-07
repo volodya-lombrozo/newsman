@@ -60,7 +60,7 @@ class Htmlout
 
   def filename(reporter, model)
     date = Time.new.strftime('%d.%m.%Y')
-    model = model.gsub('.', '-') 
+    model = model.gsub('.', '-')
     "#{date}.#{reporter}.#{model}.html"
   end
 
