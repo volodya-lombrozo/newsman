@@ -38,6 +38,7 @@ Usage: newsman [options]
     -p, --position POSITION          Reporter position in a company. Default value is a 'Software Developer'.
     -o, --output OUTPUT              Output type. Newsman prints a report to a stdout by default. You can choose another options like '-o html', '-o txt' or even '-o html'
     -t, --title TITLE                Project Title. Empty by default
+    -m, --model MODEL                AI model to use. gpt-3.5-turbo by default
 ```
 
 ### Example
