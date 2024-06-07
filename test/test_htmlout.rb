@@ -48,9 +48,10 @@ List is here:<br/>
     Dir.mktmpdir do |temp_dir|
       output = Htmlout.new(temp_dir)
       today = Date.today.strftime('%d.%m.%Y')
-      expected = "#{today}.volodya-lombrozo.html"
+      expected = "#{today}.volodya-lombrozo.gpt-3-5-turbo.html"
       output.print("Issue description\n\nHere is a new paragraph\nList is here:\n - one\n - two\n - three",
-                   'volodya-lombrozo')
+                   'volodya-lombrozo',
+                   'gpt-3.5-turbo')
       assert(File.exist?(File.join(temp_dir, expected)))
       assert_equal(EXPECTED, File.read(File.join(temp_dir, expected)))
     end
