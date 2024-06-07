@@ -66,6 +66,9 @@ def generate
     opts.on('-t', '--title TITLE', 'Project Title. Empty by default') do |t|
       options[:title] = t
     end
+    opts.on('-m', '--model MODEL', 'AI model to use. gpt-3.5-turbo by default') do |m|
+      options[:model] = m
+    end
   end.parse!
   # Custom method to raise exception with a human-readable message
   def options.require_option(key, message)
@@ -80,6 +83,7 @@ def generate
   options[:position] ||= 'Software Developer'
   options[:output] ||= 'stdout'
   options[:title] ||= ''
+  options[:model] ||= 'gpt-3.5-turbo'
   all_params = options.map { |key, value| "#{key}: #{value}" }.join(', ')
   puts "Parsed parameters: #{all_params}"
   load_environment_variables
@@ -99,7 +103,7 @@ def generate
   prs = github.pull_requests(github_username, github_repositories)
   issues = github.issues(github_username, github_repositories)
   puts "\nNow lets test some aggregation using OpenAI\n\n"
-  assistant = Assistant.new(openai_token)
+  assistant = Assistant.new(openai_token, model: options[:model])
   # Build previous results
   answer = ''
   prs.group_by(&:repository).each do |repository, rprs|
@@ -135,7 +139,7 @@ def generate
   elsif output_mode.eql? 'html'
     puts 'Print result to html file'
     output = Htmlout.new('.')
-    output.print(full_answer, github_username)
+    output.print(full_answer, github_username, options[:model])
   else
     puts 'Print result to stdout'
     output = Stdout.new
