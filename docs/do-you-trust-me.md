@@ -226,6 +226,10 @@ Don’t put numbers on it.
 Be precise in labels' grammar, and don’t make mistakes in word spelling.
 ```
 
+```txt
+Could you create a cartoon-style hand-drawn sketch of a plot? The Y-axis should be labeled ‘Trust’ and the X-axis should be labeled 'Development Effort.' The plot should depict a nearly linear relationship between the two variables. Please ensure that the labels are grammatically correct and spelled accurately. Do not include any numerical values on the plot.
+```
+
 Functionality of the application (number of implemented use cases remains constant.)
 As you can see, we get the required functionality very fast, but with low precision. 
 Later, when we start focusing on the precision, we increase developement time and reduce or specify the use of AI.
