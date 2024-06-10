@@ -21,14 +21,19 @@ jobs:
         with:
           ruby-version: 3.2
       - run: gem install newsman 
-      - name: Run newsman script
+      - name: Run newsman script with gpt-3.5-turbo
         env:
           GITHUB_TOKEN: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
           OPENAI_TOKEN: ${{ secrets.OPENAI_TOKEN }}
-        run: newsman --name "Vladimir Zakharov" --username "volodya-lombrozo" --repository objectionary/jeo-maven-plugin,objectionary/opeo-maven-plugin -o html -t Objectionary 
+        run: newsman --name "Vladimir Zakharov" --username "volodya-lombrozo" --model gpt-3.5-turbo --repository objectionary/jeo-maven-plugin,objectionary/opeo-maven-plugin -o html -t Objectionary 
+      - name: Run newsman script with gpt-4o
+        env:
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
+          OPENAI_TOKEN: ${{ secrets.OPENAI_TOKEN }}
+        run: newsman --name "Vladimir Zakharov" --username "volodya-lombrozo" --model gpt-4o --repository objectionary/jeo-maven-plugin,objectionary/opeo-maven-plugin -o html -t Objectionary
       - run: mkdir -p gh-pages/$(date +'%Y/%m/%d')
       - run: cp *.html gh-pages/$(date +'%Y/%m/%d')
-      - uses: JamesIves/github-pages-deploy-action@v4.6.0
+      - uses: JamesIves/github-pages-deploy-action@v4.6.1
         with:
           branch: gh-pages
           folder: gh-pages

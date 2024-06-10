@@ -41,11 +41,11 @@ class Htmlout
   end
 
   # rubocop:disable Metrics/AbcSize
-  def print(report, reporter)
+  def print(report, reporter, model)
     title = title(reporter)
     body = to_html(report)
     puts "Create a html file in a directory #{@root}"
-    file = File.new(File.join(@root, filename(reporter)), 'w')
+    file = File.new(File.join(@root, filename(reporter, model)), 'w')
     puts "File #{file.path} was successfully created"
     file.puts Nokogiri::HTML(ERB.new(TEMPLATE).result(binding), &:noblanks).to_xhtml(indent: 2)
     puts "Report was successfully printed to a #{file.path}"
@@ -58,9 +58,10 @@ class Htmlout
     "#{reporter} #{date}"
   end
 
-  def filename(reporter)
+  def filename(reporter, model)
     date = Time.new.strftime('%d.%m.%Y')
-    "#{date}.#{reporter}.html"
+    model = model.gsub('.', '-')
+    "#{date}.#{reporter}.#{model}.html"
   end
 
   def to_html(report)
