@@ -217,6 +217,16 @@ as follows:
 
 ```picture```
 
+```txt
+Could you draw a hand-drawn sketch of a plot? 
+On the Y-axis, put 'Precision', and on the X-axis, put 'Development effort'. 
+It should show a close to linear dependency. 
+It should look like a cartoon-like image, similar to a hand-drawn sketch. 
+Don’t put numbers on it.
+Be precise in labels' grammar, and don’t make mistakes in word spelling.
+```
+
+Functionality of the application (number of implemented use cases remains constant.)
 As you can see, we get the required functionality very fast, but with low precision. 
 Later, when we start focusing on the precision, we increase developement time and reduce or specify the use of AI.
 So, we have two extreems - the first one - fully AI system with a low precision and fully programmed system with high precision.
@@ -249,3 +259,16 @@ them.
 I don't trust them and required all the time check their results since it's still many errors. 
 Hope it will changes in the future. 
 
+
+One more thing which I noticed is how I changed the content of my Issues and Pull Requests.
+I started adding more human-readable messages and titles even for small tasks.
+I started adding more labels to tasks. 
+In much cases I don't use them, but here they are useful since they are used by another machine and finally you see
+this text in a report.
+I started identify risks and possible issues on my way and write their influense right into an issue description.
+So, it seems, AI and this reports make me (my repository) better.
+
+
+And yes. This post was written with help of AI as well. I fixed many grammar and spelling mistakes.
+Structured this text and even drow an image in this article. 
+So, it seems I trust them.
