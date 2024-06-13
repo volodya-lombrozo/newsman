@@ -1,10 +1,21 @@
 # Do you trust me?
 
-We live all these last years in a periof of AI boom. AI is everywhere: searching, learning, text processing, code review, code writing assistance, and many other systems araised in the last few years. Seems everybody is trying to apply an AI where it's possible and impossible. I'm not an exception. Under the influense of this wibe I decided to try to write something my own which would help me in everyday life and used AI somehow. So here I will tell you my own story of wrtiting an application with the use of AI. And some thoughts about it, of course, which a rather contradictory.
+We have lived in a period of AI shift for the past few years.
+AI is everywhere: searching, learning, text processing, code review, code writing assistance, and many other systems have arisen in recent years. 
+It seems everybody is trying to apply AI where it's possible and impossible. 
+I'm not an exception. 
+Under the influence of this wave, I decided to try to create something on my own that would help me in everyday life. 
+So here I will tell you my own story of writing an application with the use of AI, along with some thoughts about it, of course, which are rather contradictory.
 
 ## Where to apply?
 
-I'm working with a distributed team of developers and as any other team member I need to explain what I was doing in the last week (or didn't do) to my colegues and team mates. Our team actually prefere text-based reports instead of face-to-face communication, because many reasons (all the benifits were already mention many-many times.) So after a while we come up with a particular document format and structure which our report has to have. It has name [SIMBA](https://www.yegor256.com/2021/09/09/simba.html). Actually this format is extremly simple:
+I'm a developer in a distributed team, and like any other member, I sometimes need to explain what I did in the last week to my colleagues. 
+Our team actually prefers text-based reports instead of face-to-face communication for many reasons. 
+I know that for some it might look contradictory, but all the benefits of this approach have been mentioned many times already, and it’s just how we prefer to do it.
+So, after a while, we came up with a particular document format and structure for our weekly reports. 
+It is called [SIMBA](https://www.yegor256.com/2021/09/09/simba.html). 
+This format is extremely simple:
+
 
 ```md
 From: Team Coordinator
@@ -28,25 +39,23 @@ Risks:
 Bye.
 ```
 
-As you can see - there are three distinguishing parts which should be summarazied based on the results which you achived (or not) during the previous week.
+As you can see, there are three distinguishing parts that should be summarized based on the results you achieved during the previous week.
 This report is usually short and very simple. 
-But, if you need to create this report every week - it might be tedious. 
-Extremly tedious. 
-Sometimes it's just hard to remeber what you were doing at the beggining of the previous week. 
-Moreover, guys with lot's of projects suffer, because the switch they context almost each day and easily forget things.
-Things that should be noticed.
-So why we don't generate this report autmatically? 
-Since we have an access to the activity of a developer. 
-We use GitHub for our projects now, but the source of activity might be any other system.
-Let's say that in out case GitHub is just a provider of a developer activity. 
+However, if you need to create this report every week, it might become tedious. 
+Extremely tedious. 
+Sometimes it's just hard to remember what you were doing at the beginning of the previous week.
+Moreover, people with lots of projects suffer because they switch their context almost every day and easily forget things. 
+Things that should be noted. 
+So why don't we generate this report automatically?
+Since we use GitHub for our projects, we have access to developer activity. 
+And since we have access to the activity, we can utilize that information.
 
-However all this activity usually is bed formatted since we don't have any rigid conventions of Commits, Issue and Pull Request formatting.
-Moreover, this formatting might change between projects.
-And to be honest, we doesn't want to invent this rigid rules, restrictions and style guidelienes.
-It's boring.
-We have AI which will extract and format all this parts of this report for us.
+However, all this activity is usually poorly formatted since we don't have any rigid conventions for commits, issues, and pull request formatting. 
+Moreover, if this formatting existed, it could differ between projects. 
+To be honest, we don't want to invent these rigid rules, restrictions, and style guidelines. 
+It's boring. 
+We have AI that will extract and format all these parts of the report for us.
 Great, we have a suitable task.
-Do you belive if AI will help us? I do.
 
 ## I'm lazy. Can you generate it for me?
 
