@@ -58,14 +58,14 @@ We have AI that will extract and format all these parts of the report for us.
 
 ## Can you generate it for me?
 
-I don't have much time on writing a complex script or an application to perform this task.
-I just don't have time on it.
-So the first attempt to generate a report is the most straightforward.
-We will delegate all the work to AI.
-For the first part I also decided to concentrate on the "Last Week Achievements" part only.
-All the rest parst I left empty.
-We need only merged PRs for it. So I got GitHub API, retrieved banch of my closed Pull Requests for the previous week and
-send them altogether with the following prompt.
+I don't have much time to write a complex script or an application to perform this task. 
+I just don't have time for it.
+So let's take the first naive attempt to generate a report in the most straightforward way.
+
+At first, we will concentrate on the 'Last Week Achievements' part only and delegate as much work as possible to AI.
+In most cases, we can measure the work done by a developer by finished Pull Requests - the real code provided. 
+
+So, long story short, I got a list of closed Pull Requests for the previous week by using the GitHub API, converted their titles and bodies to a simple string, joined by a '____' delimiter, and sent them to AI altogether with the following prompt.
 
 Context:
 ```txt
@@ -85,17 +85,22 @@ Please strictly adhere to the example template provided.
 Example of a report: #{example}. List of Pull Requests: [#{prs}]"}
 ```
 
-I was lazy to do groupping programmatically, to prepare data, I just concat them using empty lines as delimeters between items.
-I was lazy to even write this prompt myself. I asked ChatGPT to genere it for me. (By the way, it seems that Prompt Engeneer profession will die as fast as it was invented.)
-And, surprisingly, I got great results despite using only gpt-3.5 version. 
+That is all. I didn't do any groupping programmatically, I didn't prepare date, I didn't even wrote the prompt myself. I asked AI to generate it for me, of course.
+Am I prompt engeeneer?
+(By the way, it seems that Prompt Engeneer profession will die as fast as it was invented.)
+And... I got great results despite using only gpt-3.5 version.
 
 Of course, it confused groupping by repositories, mixing Pull Requests between several projects.
 And It lost several items. 
-But the result looked human readable, and what is the most important, it correctly combined different parts (title and PR description) into a consise short sentences.
+But the result looked human readable. 
+And what is the most important, it correctly combined different parts (title and PR description) into a consise short sentences.
 Just what we need.
-I won't put direct results here, because they will only confuse you, but if you are really interested, I published all the [history](https://volodya-lombrozo.github.io/newsman/), so you can check starting from the old one and moving to the newest - you will see the history of results I got on my way.
+I won't put all results here, because they will only confuse you. 
+but if you are really interested, I published all the [history](https://volodya-lombrozo.github.io/newsman/) of results.
+So you can check starting from the old one and moving to the newest
+and you will see the history of results I got on my way.
 
-After this attempt, I checked the report, added some missing points, fixed several sentences to restore their meaning and sent the report. Profit.
+After this attempt, I checked the report, added some missing points, fixed several sentences to restore their meaning and sent the report.
 
 ## Next week. Let's talk about the future?
 
