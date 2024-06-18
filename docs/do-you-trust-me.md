@@ -48,19 +48,20 @@ Moreover, people with lots of projects suffer because they switch their context 
 Things that should be noted. 
 So why don't we generate this report automatically?
 Since we use GitHub for our projects, we have access to developer activity. 
-And since we have access to the activity, we can utilize that information.
+And since we have access to the activity, we can utilize that information to build a report.
 
-However, all this activity is usually poorly formatted since we don't have any rigid conventions for commits, issues, and pull request formatting. 
-Moreover, if this formatting existed, it could differ between projects. 
-To be honest, we don't want to invent these rigid rules, restrictions, and style guidelines. 
+However, all this activity is usually poorly formatted: we don't have any rigid conventions for commits, issues, and pull request formatting. 
+Moreover, if this formatting existed, it might differ between projects. 
+And, to be honest, we don't want to invent these rigid rules, restrictions, and style guidelines. 
 It's boring. 
 We have AI that will extract and format all these parts of the report for us.
-Great, we have a suitable task.
 
-## I'm lazy. Can you generate it for me?
+## Can you generate it for me?
 
-I'm lazy and I don't have much time on writing a large script or an application to perform this task.
-So the first attempt to generate a report was the most straightforward.
+I don't have much time on writing a complex script or an application to perform this task.
+I just don't have time on it.
+So the first attempt to generate a report is the most straightforward.
+We will delegate all the work to AI.
 For the first part I also decided to concentrate on the "Last Week Achievements" part only.
 All the rest parst I left empty.
 We need only merged PRs for it. So I got GitHub API, retrieved banch of my closed Pull Requests for the previous week and
@@ -285,3 +286,6 @@ So, it seems, AI and this reports make me (my repository) better.
 And yes. This post was written with help of AI as well. I fixed many grammar and spelling mistakes.
 Structured this text and even drow an image in this article. 
 So, it seems I trust them.
+
+
+We will read more, a write less? More refactoring?
