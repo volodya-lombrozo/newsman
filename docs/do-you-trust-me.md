@@ -113,16 +113,18 @@ Further in this article, I won't include all the results because they would make
 However, if you are really interested, 
 I have published the complete [history](https://volodya-lombrozo.github.io/newsman/) of the results I obtained along the way.
 
-## Next week. Let's talk about the future?
+## What about the future?
 
-The next week I did the same, but with Issues. 
-Since we don't have any special boards, backlog, scrum and similar, we use only plain issues. 
-Yes, most of them won't be solved during the next week.
-So at the beggining I used all Issues for the last month, formatted them with AI tool and then manually remove the Items which I won't solve.
-By doing this I added some sort of fitering.
-Which reduced costs on API.
+For the 'Next Week Plans' section I did almost the same. 
+Since we don't have any special software to track tasks, or boards, backlog, and similar, we can use only plain GitHub issues. 
+We are interested in issues created in the last month, because they are issues which we probably will solve sooner. 
+Of course, most of them won't be solved during the next week.
+And some plans will be missing and we will need to add them manually, however it is a rare case.
 
-So the prompt was like the following:
+So I get a list of issues assigned or opened by a developer for the last month,
+joined their titles and bodies,
+then added delimiter and send send them together with the following prompt.
+
 ```txt
 Please compile a summary of the plans for the next week using the following GitHub Issues descriptions. 
 Each issue should be summarized in a single sentence, focusing more on the issue title and less on implementation details. 
@@ -135,12 +137,9 @@ Combine all the information from each Issue into a concise and fluent sentences,
 Please strictly adhere to the example template provided: #{example_plans}. List of GitHub issues to aggregate: [#{issues}].
 ```
 
-Afain, I didn't wrote this prompt myself. Ifter I got exactly the same problem with the structure, formatting and wrong groupping.
-Ok, at least we have something.
-I checked issue titles, fixed some of them, then removed all the issues which I won't solve during this week.
-Later, of course, I added labels for the issues which I will solve soon. So the label name is "soon". 
-By doing this I solved the problem with issues which I won't and will solve.
-Moreover, I started labeling those issues which I will solve soon.
+After all, I got similar results with exactly the same problems with the structure, formatting and wrong groupping.
+But with human-readable format and almost ready to be presented. Ok, at least we have something.
+I checked issue titles, fixed and formatted some of them, then removed all the issues which I won't solve during this week and send the report.
 
 ## What about meaning extraction from the text?
 
@@ -196,7 +195,14 @@ Here is the report:
 
 And it works like a charm. Hoevewer I all the time have different formating style. 
 Which is OK in my case, though looks a bit strange, sine each week I have differently formatted reports.
-Maybe I need to provide an example? 
+Maybe I need to provide an example?
+
+
+// Later, of course, I added labels for the issues which I will solve soon. So the label name is "soon". 
+By doing this I solved the problem with issues which I won't and will solve.
+Moreover, I started labeling those issues which I will solve soon.
+
+// formatted them with AI tool
 
 ## Let's spend more moneny?
 
