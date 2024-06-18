@@ -85,22 +85,33 @@ Please strictly adhere to the example template provided.
 Example of a report: #{example}. List of Pull Requests: [#{prs}]"}
 ```
 
-That is all. I didn't do any groupping programmatically, I didn't prepare date, I didn't even wrote the prompt myself. I asked AI to generate it for me, of course.
-Am I prompt engeeneer?
-(By the way, it seems that Prompt Engeneer profession will die as fast as it was invented.)
-And... I got great results despite using only gpt-3.5 version.
+That is all. I didn't do any grouping programmatically, I didn't prepare data, I didn't even write the prompt myself.
+I asked AI to generate it for me, of course.
+Am I a prompt engineer?
+And... I got great results despite using only the cheapest GPT-3.5.
 
-Of course, it confused groupping by repositories, mixing Pull Requests between several projects.
-And It lost several items. 
-But the result looked human readable. 
-And what is the most important, it correctly combined different parts (title and PR description) into a consise short sentences.
-Just what we need.
-I won't put all results here, because they will only confuse you. 
-but if you are really interested, I published all the [history](https://volodya-lombrozo.github.io/newsman/) of results.
-So you can check starting from the old one and moving to the newest
-and you will see the history of results I got on my way.
+```txt
+Last week achievements.
+  jeo-maven-plugin:
+  - Implemented disassembling of remaining instructions [#509]
+  - Identified the problem with switch statement disassembling [#488]
+  - Updated Qulice version to 0.22.2 [#chore]
+  - Handled all bytecode instructions and updated plugin version [#488]
+  - Improved performance of integration tests by optimizing cache usage [#499]
+  - Made label identifier accessible in XmlLabel class [#497]
 
-After this attempt, I checked the report, added some missing points, fixed several sentences to restore their meaning and sent the report.
+  opeo-maven-plugin:
+  - Updated Jeo version to 0.3.4 [#190]
+  - Enabled all integration tests and improved label handling [#189]
+```
+
+Of course, the AI confused grouping by repositories, mixed pull requests between several projects, and lost several items from the report.
+Most importantly, it correctly combined different parts of each PR (title and body) into concise, short sentences, and the result looks human-readable—just what we need. 
+So, I checked the final report, added some missing points, fixed several sentences to restore their meaning, and sent the report.
+
+Further in this article, I won't include all the results because they would make the text excessively long and potentially confusing. 
+However, if you are really interested, 
+I have published the complete [history](https://volodya-lombrozo.github.io/newsman/) of the results I obtained along the way.
 
 ## Next week. Let's talk about the future?
 
