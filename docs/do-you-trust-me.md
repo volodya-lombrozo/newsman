@@ -150,16 +150,14 @@ jeo-maven-plugin:
 Here, I also encountered the same problems with the structure, formatting, and incorrect grouping as in the 'Last week achievements' section.
 So, I checked the issue titles, fixed and formatted some of them, then removed all the issues that I won't solve during this week and sent the report.
 
-## Can you understand the meaning?
+## Risks 
 
-I mean our last point in the text. Let's imagine, that in the PR description you added the following text:
-```
-```
+Now let's move to a most exiting part. Risk identification.
+I mean our last 'Risks' section in the report.
+Usually depelovers mention some risks and problems in PR descriptions.
+Actually, they can be mentioned everywhere, but I decided to start from something simple.
+I generated the following prompt to identify risks from this descriptions.
 
-It was a problem, because not all changes in the code carried any risks.
-So GPT tried to "invent" new risks where they were absent, sometimes it printed just a PR description without finding any problems. 
-So it was problematic and still remains. 
-Most probably, the key problem was with my prompt:
 ```txt
 Please compile a summary of the risks identified in some repositories. 
 If you can't find anything, just leave answer empty.
@@ -174,6 +172,28 @@ Combine all the information from each PR into a concise and fluent sentence, as 
 Please strictly adhere to the example template provided. 
 Example of a report: #{example_risks}. List of Pull Requests: ```#{all}```.]
 ```
+
+And it didn't work. Almost at all. Almost. Once I wrote the following part in my PR description:  
+
+```txt
+During the implementation of this issue, I identified some problems which might cause issues in the future:
+Some of the decompiled object values look rather strange, especially the field default values - they have the '--' value.
+We need to pay attention to the mapping of these values and fix the problem. 
+For now, it doesn't create any issues, but it's better to deal with it somehow.
+```
+
+And it found it! 
+
+```txt
+Risks:
+jeo-maven-plugin:
+- In PR Update All Project Dependencies, there is a risk related to strange decompiled object values with -- default values that may need attention in the future [#199].
+```
+
+It was a problem, because not all changes in the code carried any risks.
+So GPT tried to "invent" new risks where they were absent, sometimes it printed just a PR description without finding any problems. 
+So it was problematic and still remains. 
+Most probably, the key problem was with my prompt:
 
 In order to avoid this problem, I had to mention risks directly in a PR descriptions:
 Risk with the word "Risk" https://github.com/objectionary/opeo-maven-plugin/pull/259
