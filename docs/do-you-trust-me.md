@@ -115,15 +115,15 @@ I have published the complete [history](https://volodya-lombrozo.github.io/newsm
 
 ## What about the future?
 
-For the 'Next Week Plans' section I did almost the same. 
-Since we don't have any special software to track tasks, or boards, backlog, and similar, we can use only plain GitHub issues. 
-We are interested in issues created in the last month, because they are issues which we probably will solve sooner. 
-Of course, most of them won't be solved during the next week.
-And some plans will be missing and we will need to add them manually, however it is a rare case.
+For the 'Next Week Plans' section, I followed a similar approach since there is nothing special. 
+The only difference is the source of data.
+In our team, we don't have any special software to track tasks like boards, backlog, and similar; 
+we use plain GitHub issues, as many other open-source projects do. 
+Hence, I focused on issues created by a developer in the last month, as these are the ones we will likely address sooner. 
+Of course, most of them won't be resolved during the next week, so the developer will need to remove the ones they won't solve during the following week.
 
-So I get a list of issues assigned or opened by a developer for the last month,
-joined their titles and bodies,
-then added delimiter and send send them together with the following prompt.
+In other words, I get a list of issues created by a developer for the last month, join them using '____' delimeter and send them with the following 
+prompt.
 
 ```txt
 Please compile a summary of the plans for the next week using the following GitHub Issues descriptions. 
@@ -137,11 +137,20 @@ Combine all the information from each Issue into a concise and fluent sentences,
 Please strictly adhere to the example template provided: #{example_plans}. List of GitHub issues to aggregate: [#{issues}].
 ```
 
-After all, I got similar results with exactly the same problems with the structure, formatting and wrong groupping.
-But with human-readable format and almost ready to be presented. Ok, at least we have something.
-I checked issue titles, fixed and formatted some of them, then removed all the issues which I won't solve during this week and send the report.
+And I got more or less appropriate results in a human-readable format that are almost ready to be presented to the team.
 
-## What about meaning extraction from the text?
+```txt
+Next week plans:
+jeo-maven-plugin:
+- Refactor Annotations Implementation in BytecodeAnnotation.java for simplification and readability [#532]
+- Investigate and fix the issue of automatic frame computation in CustomClassWriter to prevent test failures [#528]
+- Enable 'spring' Integration Test in pom.xml by adding support for various Java features [#488]
+```
+
+Here, I also encountered the same problems with the structure, formatting, and incorrect grouping as in the 'Last week achievements' section.
+So, I checked the issue titles, fixed and formatted some of them, then removed all the issues that I won't solve during this week and sent the report.
+
+## Can you understand the meaning?
 
 I mean our last point in the text. Let's imagine, that in the PR description you added the following text:
 ```
