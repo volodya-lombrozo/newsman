@@ -206,15 +206,14 @@ One side effect I've noticed is that I have become more disciplined and descript
 The more human-readable messages I leave, the easier it is for AI to analyze results.
 While this might seem obvious, I've now developed much better-styled, grammatically correct, and descriptive messages that are more understandable.
 It's like explaining to someone who will read the message out of context and this 'someone' should be able to grasp the idea of the message without additional information. 
-This improvement benefits not only AI processing but also the team and the project's history.
+This improvement benefits not only AI processing but also the communication within a team and a project's history.
 
+However, I should admit that I went beyond that, and now I add additional markers, like 'Risk 1: ...,' 'Risk 2: ...' in the text 
+(as I did [here](https://github.com/objectionary/opeo-maven-plugin/pull/259)) to get more precise answers from the AI. 
+By doing this, the AI almost didn't make any mistakes. But do we really need the AI in this case at all?
+As you can see, it's what I initially didn't want to do at all - structure my text and add meta information.
 
-However, I should admit that I go beyond of it, and now I put additional markers, like "Risk 1: ...", "Risk 2: ..." in the text.
-Like I did it [here](https://github.com/objectionary/opeo-maven-plugin/pull/259)
-By doing this AI almost doesn't do any mistakes, but I wonder if I need AI in this case at all.
-As you can see, it's what I initially didn't want to do at all - structure my text and add meta information. 
-
-Finally, we still have same issues with formatting as we had in all the previous parts.
+Finally, we still have the same issues with formatting as we had in all the previous parts.
 
 ## Let's improve it?
 
