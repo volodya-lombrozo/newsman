@@ -173,17 +173,16 @@ Please strictly adhere to the example template provided.
 Example of a report: #{example_risks}. List of Pull Requests: ```#{all}```.
 ```
 
-And it didn't work in most cases. 
-Not all changes in the code carried any risks, so AI constantly tried to "invent" new risks where they were absent. 
-Sometimes it printed just a PR description without finding any problems. 
-Sometimes it printed risks from the example provided.
-And we still have problems with formatting and gropupping (sometimes it confused PRs where it found risks.)
+And it didn't work in most cases.
+Not all changes in the code carried any risks, so the AI constantly tried to 'invent' new risks where there were none.
+Sometimes it simply printed a PR description without identifying any problems. 
+Other times, it printed risks from the example provided but not from real data. 
+Several times it confused PR numbers where it found risks.
 
-Most probably, the key problem was with my prompt, of course.
-Hence, I tried several modifications of this propmt, but the results were more or less similar.
-So it was problematic and I decided to give some clue to AI. 
-The clue is to be as descriptive as possible in PR messages.
-And it starded work like a charm.
+Most likely, the key problem was with my prompt. 
+I tried several modifications, but the results were more or less the same. 
+So, I decided to give some clues to the AI. 
+I started writing all PR descriptions as descriptively as possible, and it started working like a charm.
 
 For example, for the following description:
 
@@ -202,16 +201,20 @@ jeo-maven-plugin:
 - In PR Update All Project Dependencies, there is a risk related to strange decompiled object values with -- default values that may need attention in the future [#199].
 ```
 
-Exiting! And one side effect which I noticed, I become more disciplined and discriptive myself in my PRs.
-The more human-readable the descriptions, the easier AI analyses results.
-It might look obvious, I know. 
-But now I have much better styled, grammatically correct and descriptive messages.
-Which is good not only for AI processing, but for the team in general and for the project history.
+Success!
+One side effect I've noticed is that I have become more disciplined and descriptive in my pull requests.
+The more human-readable messages I leave, the easier it is for AI to analyze results.
+While this might seem obvious, I've now developed much better-styled, grammatically correct, and descriptive messages that are more understandable.
+It's like explaining to someone who will read the message out of context and this 'someone' should be able to grasp the idea of the message without additional information. 
+This improvement benefits not only AI processing but also the team and the project's history.
+
 
 However, I should admit that I go beyond of it, and now I put additional markers, like "Risk 1: ...", "Risk 2: ..." in the text.
 Like I did it [here](https://github.com/objectionary/opeo-maven-plugin/pull/259)
 By doing this AI almost doesn't do any mistakes, but I wonder if I need AI in this case at all.
 As you can see, it's what I initially didn't want to do at all - structure my text and add meta information. 
+
+Finally, we still have same issues with formatting as we had in all the previous parts.
 
 ## Let's improve it?
 
