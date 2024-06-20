@@ -152,11 +152,11 @@ So, I checked the issue titles, fixed and formatted some of them, then removed a
 
 ## Risks 
 
-Now let's move to a most exiting part. Risk identification.
+Now let's move to the most exciting part: risk identification.
 I mean our last 'Risks' section in the report.
-Usually depelovers mention some risks and problems in PR descriptions.
-Actually, they can be mentioned everywhere, but I decided to start from something simple.
-I generated the following prompt to identify risks from this descriptions.
+Usually, developers mention some risks and possible problems in PR descriptions.
+Actually, they can be mentioned everywhere, but let's start with something simple.
+I generated the following prompt to identify risks from these descriptions.
 
 ```txt
 Please compile a summary of the risks identified in some repositories. 
@@ -170,10 +170,22 @@ Ensure that each sentence includes the corresponding issue number or PR number a
 If a PR or an issue doesn't mention an issue number, just print [#chore].
 Combine all the information from each PR into a concise and fluent sentence, as if you were a developer reporting on your work.
 Please strictly adhere to the example template provided. 
-Example of a report: #{example_risks}. List of Pull Requests: ```#{all}```.]
+Example of a report: #{example_risks}. List of Pull Requests: ```#{all}```.
 ```
 
-And it didn't work. Almost at all. Almost. Once I wrote the following part in my PR description:  
+And it didn't work in most cases. 
+Not all changes in the code carried any risks, so AI constantly tried to "invent" new risks where they were absent. 
+Sometimes it printed just a PR description without finding any problems. 
+Sometimes it printed risks from the example provided.
+And we still have problems with formatting and gropupping (sometimes it confused PRs where it found risks.)
+
+Most probably, the key problem was with my prompt, of course.
+Hence, I tried several modifications of this propmt, but the results were more or less similar.
+So it was problematic and I decided to give some clue to AI. 
+The clue is to be as descriptive as possible in PR messages.
+And it starded work like a charm.
+
+For example, for the following description:
 
 ```txt
 During the implementation of this issue, I identified some problems which might cause issues in the future:
@@ -182,7 +194,7 @@ We need to pay attention to the mapping of these values and fix the problem.
 For now, it doesn't create any issues, but it's better to deal with it somehow.
 ```
 
-And it found it! 
+I got the following result:
 
 ```txt
 Risks:
@@ -190,16 +202,16 @@ jeo-maven-plugin:
 - In PR Update All Project Dependencies, there is a risk related to strange decompiled object values with -- default values that may need attention in the future [#199].
 ```
 
-It was a problem, because not all changes in the code carried any risks.
-So GPT tried to "invent" new risks where they were absent, sometimes it printed just a PR description without finding any problems. 
-So it was problematic and still remains. 
-Most probably, the key problem was with my prompt:
+Exiting! And one side effect which I noticed, I become more disciplined and discriptive myself in my PRs.
+The more human-readable the descriptions, the easier AI analyses results.
+It might look obvious, I know. 
+But now I have much better styled, grammatically correct and descriptive messages.
+Which is good not only for AI processing, but for the team in general and for the project history.
 
-In order to avoid this problem, I had to mention risks directly in a PR descriptions:
-Risk with the word "Risk" https://github.com/objectionary/opeo-maven-plugin/pull/259
-
-As you can see, it's what I didn't want to do at all - structure my text. 
-
+However, I should admit that I go beyond of it, and now I put additional markers, like "Risk 1: ...", "Risk 2: ..." in the text.
+Like I did it [here](https://github.com/objectionary/opeo-maven-plugin/pull/259)
+By doing this AI almost doesn't do any mistakes, but I wonder if I need AI in this case at all.
+As you can see, it's what I initially didn't want to do at all - structure my text and add meta information. 
 
 ## Let's improve it?
 
