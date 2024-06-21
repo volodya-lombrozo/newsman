@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+  <head>
+    <title>volodya-lombrozo 21.06.2024</title>
+  </head>
+  <body>
+  <h1>volodya-lombrozo 21.06.2024</h1>
+  <p>From: Vladimir Zakharov<br/>
+Subject: WEEK 25 Objectionary</p>
+
+<p>Hi all,</p>
+
+<p><strong>Last week achievements:</strong></p>
+
+<ul><li>Refactored attribute extraction methods and introduced a new <code class="prettyprint">Parser</code> interface for XML to AST node transformation [#322]</li>
+<li>Removed <code class="prettyprint">JeoLabel</code> class and replaced its usages with <code class="prettyprint">LabelInstruction</code>, adding unit tests for the latter [#321]</li>
+<li>Enhanced the <code class="prettyprint">checksPack</code> method in <code class="prettyprint">TrasformationPacksTest.java</code> by removing outdated comments and improving test assertions [#320]</li>
+<li>Significantly refactored and simplified the <code class="prettyprint">SelectiveDecompilerTest</code>, added <code class="prettyprint">InMemoryStorage</code>, and removed redundant fields [#319]</li>
+<li>Fixed the compilation of the Spring Boot application, enabling it to run directly from the <code class="prettyprint">jar</code> file without issues [#315]</li>
+</ul><p><strong>Next week plans:</strong></p>
+
+<ul><li>Enable PHI printing for most cases [#317]</li>
+<li>Don't use 'scope' attribute [#316]</li>
+<li>Calculate the Max Stack Size in JeoCompiler.java:87-95 and resolve puzzle <code class="prettyprint">229-ddf067cd</code> from #229 [#286]</li>
+</ul><p><strong>Risks:</strong></p>
+
+<p><strong>Weekly Report: Activities and Progress</strong></p>
+
+<p><strong>Summary of Risks Identified in Pull Requests:</strong></p>
+
+<p><strong>opeo-maven-plugin:</strong></p>
+
+<ul><li>No risks identified in this pull request [#322].</li>
+<li>No risks identified in this pull request [#321].</li>
+<li>No risks identified in this pull request [#320].</li>
+<li><strong>Risk:</strong> Potential problems with <code class="prettyprint">InMemoryStorage</code> functionality due to its implicit queue-like behavior [#319].</li>
+<li>No risks identified in this pull request [#315].</li>
+</ul><p><strong>General Progress:</strong></p>
+
+<ul><li>Reviewed and analyzed risks in pull requests for the <code class="prettyprint">opeo-maven-plugin</code> repository.</li>
+<li>No critical risks identified, with most pull requests having no risks mentioned.</li>
+<li>Addressed any potential concerns related to the <code class="prettyprint">InMemoryStorage</code> functionality in PR #319.</li>
+</ul><p><strong>Upcoming Tasks:</strong></p>
+
+<ul><li>Continue monitoring pull requests for risks and issues.</li>
+<li>Collaborate with the team to address any identified risks promptly.</li>
+<li>Plan for code reviews and testing activities for upcoming features.</li>
+</ul><p><strong>Challenges Faced:</strong></p>
+
+<ul><li>Limited risks identified in the pull requests, making risk assessment challenging.</li>
+<li>Ensuring thorough risk assessment for all future pull requests.</li>
+</ul><p><strong>Next Week's Focus:</strong></p>
+
+<ul><li>Enhance risk identification processes for pull requests.</li>
+<li>Collaborate with the team to improve risk mitigation strategies.</li>
+</ul><p>Thank you for your attention to this report. Please let me know if you need any further information or clarification.</p>
+
+<p>Best regards,<br/>
+Vladimir Zakharov<br/>
+Software Developer</p>
+
+<h2>2024-06-21</h2>
+
+<p>Closed Pull Requests:<br/>
+ - title: feat(#316): Refactor Parsing of Attributes and Arguments, repo: opeo-maven-plugin, url: https://github.com/objectionary/opeo-maven-plugin/pull/322<br/>
+ - title: feat(#128): Remove Duplication Between JeoLabel and LabelInstruction", repo: opeo-maven-plugin, url: https://github.com/objectionary/opeo-maven-plugin/pull/321<br/>
+ - title: feat(#18): remove outdated puzzle, repo: opeo-maven-plugin, url: https://github.com/objectionary/opeo-maven-plugin/pull/320<br/>
+ - title: feat(#247): Refactor SelectiveDecompilerTest and Add InMemoryStorage, repo: opeo-maven-plugin, url: https://github.com/objectionary/opeo-maven-plugin/pull/319<br/>
+ - title: fix: Compile Spring Boot Application Correctly, repo: opeo-maven-plugin, url: https://github.com/objectionary/opeo-maven-plugin/pull/315</p>
+
+<p>Open Issues:<br/>
+ - title: Enable PHI printing for most cases, repo: opeo-maven-plugin, number: #317, url: https://github.com/objectionary/opeo-maven-plugin/issues/317, labels: ["bug", "soon"]<br/>
+ - title: Don't use 'scope' attribute, repo: opeo-maven-plugin, number: #316, url: https://github.com/objectionary/opeo-maven-plugin/issues/316, labels: ["bug", "soon"]<br/>
+ - title: JeoCompiler.java:87-95: Calculate the Max Stack Size. We..., repo: opeo-maven-plugin, issue number: #286, url: https://github.com/objectionary/opeo-maven-plugin/issues/286, labels: ["soon"]</p>
+
+</body>
+</html>
