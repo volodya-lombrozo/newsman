@@ -224,9 +224,12 @@ How ironic.
 
 ## Let's improve it?
 
-Current situation is following. I open auto-generated report, read them, format small parts, fix problems with meanings. 
-Despite implementing all these parts, I still needed to do much of the work - structure, format, check that each generated sentence has valid meaning, or has meaning at all.
-Since I did 3 separate requests, all the responses were differently formatted, as you can guess. Something like the following:
+Even though we've implemented all these parts, 
+I still had to do a lot of the work—structuring, formatting, and making sure each generated sentence actually made sense. 
+I'm not sure if we can fix the report verification issue somehow.
+It's just easier to do it manually. At least for now.
+So, we're left with some structural and formatting problems. 
+Since we made three separate requests, the responses came back in different formats, as you might guess.
 
 ```txt
 Last week achievements:
@@ -242,7 +245,7 @@ Risks:
        - The server is weak, we may fail the delivery of the dataset, report milestone will be missed [#557].
 ```
 
-But how can we fix this problem? Of course, AI:
+But how can we fix this problem? Of course, with the use of AI.
 
 ```
 I have a weekly report with different parts that use various formatting styles.
@@ -254,8 +257,7 @@ Here is the report:
 #{report}
 ```
 
-And it works like a charm. 
-
+And it works. 
 
 ```txt
 Last week achievements:
@@ -271,21 +273,23 @@ jeo-maven-plugin:
 - The server is weak, we may fail the delivery of the dataset, report milestone will be missed [#557].
 ```
 
-Hoevewer I all the time have different formating style between reports. 
-Which is OK in my case, though looks a bit strange, sine each week I have differently formatted reports.
-But may be it make the impression of a real person. 
+However, I always have different formatting styles between reports.
+Which is OK in my case, though it looks a bit strange since each week I have differently formatted reports.
+But maybe it makes the impression of a real person.
 
-I haven't mentioned it yet.
-I didn't mentioned it, but for all the previous requirests I made with an old, but cheap, model `gpt-3.5-turbo`.
-So, to be honest, I decided to spend more money to check the newest `gpt-4o` model.
+And one more thing I haven't mentioned yet is the AI model itself that can help us improve the report. 
+All the previous requests I made were with an old, but relatively cheap model, gpt-3.5-turbo.
+So, to be honest, I decided to spend more money to check the newest gpt-4 model.
 
-And it works much better. It is subjectively of course. But my perseption tells me, that it looks better for most cases.
-Again you can check it here. Recently I added suffixes to reports, so you can easily identify with which model the report 
-was generated and compare  yourself.
+And it works much better. 
+It is subjective, of course, but my perception tells me that it looks better in most cases.
+Again, you can check it here. Recently, I added suffixes to reports, so you can easily identify which model generated the report and compare for yourself.
 
-Of course, I can build more pipelines and pay more money to fix grammar errors, format the text, make it more "natural" and so on.
-And it will probably give some gain. But, to be honest, I don't want spend much money for these task, which might be 
-solved much easely and for free programmatically. Moreover, the current precision if enough for me.
+To drow a bottomline. 
+Of course, I can build more pipelines and pay more money to fix grammar errors, format the text, make it more "natural," and so on.
+And it will probably give some gain. 
+But, to be honest, I don't want to spend much money on these tasks, which might be solved much more easily and for free programmatically. 
+Moreover, the current precision is enough for me.
 
 ## High view?
 
