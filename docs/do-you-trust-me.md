@@ -225,15 +225,24 @@ How ironic.
 ## Let's improve it?
 
 Current situation is following. I open auto-generated report, read them, format small parts, fix problems with meanings. 
-
 Despite implementing all these parts, I still needed to do much of the work - structure, format, check that each generated sentence has valid meaning, or has meaning at all.
 Since I did 3 separate requests, all the responses were differently formatted, as you can guess. Something like the following:
 
 ```txt
-Example?
+Last week achievements:
+jeo-maven-plugin:
+* Remove Mutable Methods [#352]
+
+Next week plans:
+opeo-maven-plugin:
+- Fix 'staticize' optimization [#207]
+
+Risks:
+    jeo-maven-plugin:
+       - The server is weak, we may fail the delivery of the dataset, report milestone will be missed [#557].
 ```
 
-But how can I fix this problem? Of course, GPT:
+But how can we fix this problem? Of course, AI:
 
 ```
 I have a weekly report with different parts that use various formatting styles.
@@ -245,22 +254,38 @@ Here is the report:
 #{report}
 ```
 
-And it works like a charm. Hoevewer I all the time have different formating style. 
+And it works like a charm. 
+
+
+```txt
+Last week achievements:
+jeo-maven-plugin:
+- Remove Mutable Methods [#352]
+
+Next week plans:
+opeo-maven-plugin:
+- Fix 'staticize' optimization [#207]
+
+Risks:
+jeo-maven-plugin:
+- The server is weak, we may fail the delivery of the dataset, report milestone will be missed [#557].
+```
+
+Hoevewer I all the time have different formating style between reports. 
 Which is OK in my case, though looks a bit strange, sine each week I have differently formatted reports.
-Maybe I need to provide an example?
+But may be it make the impression of a real person. 
 
-
-### Let's spend more moneny?
-
+I haven't mentioned it yet.
 I didn't mentioned it, but for all the previous requirests I made with an old, but cheap, model `gpt-3.5-turbo`.
 So, to be honest, I decided to spend more money to check the newest `gpt-4o` model.
-And here is the difference:
-```
-```
 
-Of course, I can build more pipelines, to fix grammar errors, format the text, make it more "natural" and so on.
+And it works much better. It is subjectively of course. But my perseption tells me, that it looks better for most cases.
+Again you can check it here. Recently I added suffixes to reports, so you can easily identify with which model the report 
+was generated and compare  yourself.
+
+Of course, I can build more pipelines and pay more money to fix grammar errors, format the text, make it more "natural" and so on.
 And it will probably give some gain. But, to be honest, I don't want spend much money for these task, which might be 
-solved much easely and for free programmatically.
+solved much easely and for free programmatically. Moreover, the current precision if enough for me.
 
 ## High view?
 
