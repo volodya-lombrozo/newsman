@@ -117,10 +117,10 @@ I have published the complete [history](https://volodya-lombrozo.github.io/newsm
 
 For the 'Next Week Plans' section, I followed a similar approach since there is nothing special. 
 The only difference is the source of data.
-In our team, we don't have any special software to track tasks like boards, backlog, and similar; 
-we use plain GitHub issues, as many other open-source projects do. 
-Hence, I focused on issues created by a developer in the last month, as these are the ones we will likely address sooner. 
-Of course, most of them won't be resolved during the next week, so the developer will need to remove the ones they won't solve during the following week.
+In our team, we don't have any special software to track tasks like boards, backlog, and similar. 
+We use plain GitHub issues, as many other open-source projects do. 
+Hence, I focused on issues opened by a developer in the last month, as these are the ones we will likely address sooner. 
+Of course, most of them won't be resolved during the next week, so the developer will need to remove the ones they won't solve during the following week manually.
 
 In other words, I get a list of issues created by a developer for the last month, join them using '____' delimeter and send them with the following 
 prompt.
@@ -152,11 +152,11 @@ So, I checked the issue titles, fixed and formatted some of them, then removed a
 
 ## Risks 
 
-Now let's move to the most exciting part: risk identification.
-I mean our last 'Risks' section in the report.
-Usually, developers mention some risks and possible problems in PR descriptions.
-Actually, they can be mentioned everywhere, but let's start with something simple.
-I generated the following prompt to identify risks from these descriptions.
+Now let's move to the most exciting part: risk identification, specifically our last 'Risks' section in the report.
+Typically, developers mention some risks and possible problems in PR descriptions. 
+Actually, they can be mentioned anywhere, but let's start with something simple.
+
+I generated the following prompt to identify risks from these descriptions:
 
 ```txt
 Please compile a summary of the risks identified in some repositories. 
@@ -173,18 +173,20 @@ Please strictly adhere to the example template provided.
 Example of a report: #{example_risks}. List of Pull Requests: ```#{all}```.
 ```
 
-And it didn't work in most cases.
-Not all changes in the code carried any risks, so the AI constantly tried to 'invent' new risks where there were none.
-Sometimes it simply printed a PR description without identifying any problems. 
-Other times, it printed risks from the example provided but not from real data. 
-Several times it confused PR numbers where it found risks.
+Unfortunately, it didn't work as expected.
+Not all code changes carried risks, so the AI often tried to invent new risks where there were none.
+Sometimes it simply repeated the PR description without identifying any problems. 
+Other times, it printed risks from the example provided instead of from the real data. 
+It also frequently confused PR numbers when it found risks.
+In other words, it was a mess.
 
 Most likely, the key problem was with my prompt. 
-I tried several modifications, but the results were more or less the same. 
-So, I decided to give some clues to the AI. 
-I started writing all PR descriptions as descriptively as possible, and it started working like a charm.
+I tried several modifications, but the results remained more or less the same.
 
-For example, for the following description:
+So, I decided to give some clues to the AI. 
+I started writing all PR descriptions as clearly as possible. 
+And... surprise, surprise, it started working like a charm. 
+For this PR description:
 
 ```txt
 During the implementation of this issue, I identified some problems which might cause issues in the future:
@@ -201,19 +203,18 @@ jeo-maven-plugin:
 - In PR Update All Project Dependencies, there is a risk related to strange decompiled object values with -- default values that may need attention in the future [#199].
 ```
 
-Success!
-One side effect I've noticed is that I have become more disciplined and descriptive in my pull requests.
 The more human-readable messages I leave, the easier it is for AI to analyze results.
-While this might seem obvious, I've now developed much better-styled, grammatically correct, and descriptive messages that are more understandable.
-It's like explaining to someone who will read the message out of context and this 'someone' should be able to grasp the idea of the message without additional information. 
-This improvement benefits not only AI processing but also the communication within a team and a project's history.
+(Who would've thought, right? 🤔)
+As a result, I have become more disciplined in my pull requests.
+I've now developed much better-styled, grammatically correct, and descriptive messages that are more understandable.
+So, it’s a nice improvement for people who read my PRs, not just for AI processing.
 
-However, I should admit that I went beyond that, and now I add additional markers, like 'Risk 1: ...,' 'Risk 2: ...' in the text 
+However, I should admit that in some cases I went beyond that, and now I sometimes add additional markers like 'Risk 1: ...,' 'Risk 2: ...' in the text
 (as I did [here](https://github.com/objectionary/opeo-maven-plugin/pull/259)) to get more precise answers from the AI. 
-By doing this, the AI almost didn't make any mistakes. But do we really need the AI in this case at all?
-As you can see, it's what I initially didn't want to do at all - structure my text and add meta information.
-
-Finally, we still have the same issues with formatting as we had in all the previous parts.
+By doing this, the AI almost didn't make any mistakes. 
+But do we really need the AI in this case at all? 
+As you can see, it's exactly what I initially didn't want to do – structure my text and add meta information. 
+How ironic.
 
 ## Let's improve it?
 
