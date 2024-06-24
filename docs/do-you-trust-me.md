@@ -150,6 +150,12 @@ jeo-maven-plugin:
 Here, I also encountered the same problems with the structure, formatting, and incorrect grouping as in the 'Last week achievements' section.
 So, I checked the issue titles, fixed and formatted some of them, then removed all the issues that I won't solve during this week and sent the report.
 
+!!!!!todo:
+// Later, of course, I added labels for the issues which I will solve soon. So the label name is "soon". 
+By doing this I solved the problem with issues which I won't and will solve.
+Moreover, I started labeling those issues which I will solve soon.
+!!!!!
+
 ## Risks 
 
 Now let's move to the most exciting part: risk identification, specifically our last 'Risks' section in the report.
@@ -218,6 +224,8 @@ How ironic.
 
 ## Let's improve it?
 
+Current situation is following. I open auto-generated report, read them, format small parts, fix problems with meanings. 
+
 Despite implementing all these parts, I still needed to do much of the work - structure, format, check that each generated sentence has valid meaning, or has meaning at all.
 Since I did 3 separate requests, all the responses were differently formatted, as you can guess. Something like the following:
 
@@ -242,13 +250,7 @@ Which is OK in my case, though looks a bit strange, sine each week I have differ
 Maybe I need to provide an example?
 
 
-// Later, of course, I added labels for the issues which I will solve soon. So the label name is "soon". 
-By doing this I solved the problem with issues which I won't and will solve.
-Moreover, I started labeling those issues which I will solve soon.
-
-// formatted them with AI tool
-
-## Let's spend more moneny?
+### Let's spend more moneny?
 
 I didn't mentioned it, but for all the previous requirests I made with an old, but cheap, model `gpt-3.5-turbo`.
 So, to be honest, I decided to spend more money to check the newest `gpt-4o` model.
@@ -256,23 +258,18 @@ And here is the difference:
 ```
 ```
 
-Do you see it? I don't. I used exactly the same Pull Requests and Issues. And haven't found the difference yet. 
-Only the price. 
 Of course, I can build more pipelines, to fix grammar errors, format the text, make it more "natural" and so on.
 And it will probably give some gain. But, to be honest, I don't want spend much money for these task, which might be 
 solved much easely and for free programmatically.
 
-## How long?
+## High view?
 
-Current situation is following. I open auto-generated report, read them, format small parts, fix problems with meanings. 
 Then I open list of issues and pull requests and validate the report.
 Wait, wait... What I'm doing? I wanted not to do this type of work at all. 
 So I spend significant time to develop this scripts, configure them and did some chore around it.
 But I'm still have to do a lot of work. Which I inidially wanted to avoid at all.
 Dissapointment.
 Of course, I have to do less, but still.
-
-## High view?
 
 Of course, I'm a bit sceptical and things are not so bad. Let's take a look at wat we got. 
 We started the development very fast. Very.
