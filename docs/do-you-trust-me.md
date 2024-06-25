@@ -120,7 +120,7 @@ The only difference is the source of data.
 In our team, we don't have any special software to track tasks like boards, backlog, and similar. 
 We use plain GitHub issues, as many other open-source projects do. 
 Hence, I focused on issues opened by a developer in the last month, as these are the ones we will likely address sooner. 
-Of course, most of them won't be resolved during the next week, so the developer will need to remove the ones they won't solve during the following week manually.
+Of course, most of them won't be resolved during the next week, so the developer will need to remove the ones they won't solve during the following week.
 
 In other words, I get a list of issues created by a developer for the last month, join them using '____' delimeter and send them with the following 
 prompt.
@@ -150,11 +150,13 @@ jeo-maven-plugin:
 Here, I also encountered the same problems with the structure, formatting, and incorrect grouping as in the 'Last week achievements' section.
 So, I checked the issue titles, fixed and formatted some of them, then removed all the issues that I won't solve during this week and sent the report.
 
-!!!!!todo:
-// Later, of course, I added labels for the issues which I will solve soon. So the label name is "soon". 
-By doing this I solved the problem with issues which I won't and will solve.
-Moreover, I started labeling those issues which I will solve soon.
-!!!!!
+P.S.
+After several weeks, removing plans that I didn't want to address soon became extremely tedious. 
+To simplify this task, I added a label for the issues I plan to solve in the near future. 
+The label name is 'soon.' 
+Yes, I know, my imagination is quite vivid. 
+Anyway, I no longer need to spend much time on this section. 
+Now, my script, along with AI, analyzes future plans quite well.
 
 ## Risks 
 
