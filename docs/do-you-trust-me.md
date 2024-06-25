@@ -287,20 +287,29 @@ And it works much better.
 It is subjective, of course, but my perception tells me that it looks better in most cases.
 Again, you can check it here. Recently, I added suffixes to reports, so you can easily identify which model generated the report and compare for yourself.
 
+// Also I changed the raw data format which I send to AI. unstructured text -> json
+
 To drow a bottomline. 
 Of course, I can build more pipelines and pay more money to fix grammar errors, format the text, make it more "natural," and so on.
 And it will probably give some gain. 
 But, to be honest, I don't want to spend much money on these tasks, which might be solved much more easily and for free programmatically. 
 Moreover, the current precision is enough for me.
 
-## High view?
+## Bird's-eye View
 
-Then I open list of issues and pull requests and validate the report.
-Wait, wait... What I'm doing? I wanted not to do this type of work at all. 
-So I spend significant time to develop this scripts, configure them and did some chore around it.
-But I'm still have to do a lot of work. Which I inidially wanted to avoid at all.
+As you can see, I completly changed the original task. 
+I didn't want to change the data (PR and Issue descriptions).
+I didn't want to add meta information ('soon' label)
+I didn't want to add direct hints like 'Risk 1'.
+I didn't want to prepare and handle data programatically ('json' data and different representations of the report)
+
+So I failed and did all of this to solve the task, I know.
+So I spend significant time to develop this scripts, configure data and adjust prompts.
+In other words I developed enough code for such a simple task.
+Which I inidially wanted to avoid at all.
 Dissapointment.
 Of course, I have to do less, but still.
+And I still need to validate the report myself, I can't directly trust it.
 
 Of course, I'm a bit sceptical and things are not so bad. Let's take a look at wat we got. 
 We started the development very fast. Very.
