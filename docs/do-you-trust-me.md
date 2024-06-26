@@ -227,11 +227,12 @@ How ironic.
 ## Let's improve it?
 
 Even though we've implemented all these parts, 
-I still had to do a lot of the work—structuring, formatting, and making sure each generated sentence actually made sense. 
-I'm not sure if we can fix the report verification issue somehow.
-It's just easier to do it manually. At least for now.
+I still had to handle much of the work, including structuring, formatting, and making sure each generated sentence actually made sense.
+I'm not sure if we can fix the problem related to meaning verification. 
+It's just easier to do it manually, at least for now. 
 So, we're left with some structural and formatting problems. 
-Since we made three separate requests, the responses came back in different formats, as you might guess.
+To illustrate, just take a look at the report we generated.
+
 
 ```txt
 Last week achievements:
@@ -247,7 +248,12 @@ Risks:
        - The server is weak, we may fail the delivery of the dataset, report milestone will be missed [#557].
 ```
 
-But how can we fix this problem? Of course, with the use of AI.
+Since we made three separate requests, the responses predictably came back in different formats. 
+I've identified at least three possible solutions to this problem. 
+Can you guess the simplest one? 
+That's right, let's throw even more AI at it. More and more AI!
+Alright, let's not get carried away. 
+For now, we can just add one more request.
 
 ```
 I have a weekly report with different parts that use various formatting styles.
@@ -275,25 +281,29 @@ jeo-maven-plugin:
 - The server is weak, we may fail the delivery of the dataset, report milestone will be missed [#557].
 ```
 
-However, I always have different formatting styles between reports.
-Which is OK in my case, though it looks a bit strange since each week I have differently formatted reports.
-But maybe it makes the impression of a real person.
+However, I have different formatting styles between reports now, which is okay in my case. 
+Though it looks a bit strange since each week I have differently formatted reports.
+Maybe it gives the impression of a real person.
 
-And one more thing I haven't mentioned yet is the AI model itself that can help us improve the report. 
-All the previous requests I made were with an old, but relatively cheap model, gpt-3.5-turbo.
-So, to be honest, I decided to spend more money to check the newest gpt-4 model.
-
+The second improvement we can apply is to improve the AI model itself. 
+I haven't mentioned this yet; all the previous requests I made were with an old but relatively cheap model, GPT-3.5-turbo. 
+So, to be honest, I decided to spend more money to check out the newest GPT-4 model. 
 And it works much better. 
-It is subjective, of course, but my perception tells me that it looks better in most cases.
-Again, you can check it here. Recently, I added suffixes to reports, so you can easily identify which model generated the report and compare for yourself.
+It is subjective, of course, but my perception tells me that the results look better in most cases. 
+Again, you can check the difference here.
 
-// Also I changed the raw data format which I send to AI. unstructured text -> json
+The last solution involved the format of the input data for the pull requests and issues I submitted to the AI. 
+Initially, I didn't spend much time preparing the data.
+However, I later switched from unstructured text with delimiters to JSON, which seemed to help. 
+Yes, it seems to help. 
+Although I don't have concrete proof, it appears that the AI makes fewer mistakes and avoids confusion with this structured format.
 
-To drow a bottomline. 
-Of course, I can build more pipelines and pay more money to fix grammar errors, format the text, make it more "natural," and so on.
-And it will probably give some gain. 
-But, to be honest, I don't want to spend much money on these tasks, which might be solved much more easily and for free programmatically. 
-Moreover, the current precision is enough for me.
+To draw a bottom line:
+Of course, I can build more pipelines with chained requests, pay more money, format the input data, and so on.
+And it will probably yield some gains.
+But, to be honest, I don't want to spend much on these tasks anymore.
+Moreover, I have a feeling that all these problems might be solved much more easily programmatically even without the use of AI.
+So, the current solution is enough for me.
 
 ## Bird's-eye View
 
