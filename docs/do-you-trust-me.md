@@ -249,7 +249,7 @@ Risks:
 ```
 
 Since we made three separate requests, the responses predictably came back in different formats. 
-I've identified at least three possible solutions to this problem. 
+We have at least three possible solutions to this problem. 
 Can you guess the simplest one? 
 That's right, let's throw even more AI at it. More and more AI!
 Alright, let's not get carried away. 
@@ -281,7 +281,7 @@ jeo-maven-plugin:
 - The server is weak, we may fail the delivery of the dataset, report milestone will be missed [#557].
 ```
 
-However, I have different formatting styles between reports now, which is okay in my case. 
+However, we have different formatting styles between reports now, which is okay in this case. 
 Though it looks a bit strange since each week I have differently formatted reports.
 Maybe it gives the impression of a real person.
 
@@ -292,14 +292,12 @@ And it works much better.
 It is subjective, of course, but my perception tells me that the results look better in most cases. 
 Again, you can check the difference here.
 
-The last solution involved the format of the input data for the pull requests and issues I submitted to the AI. 
+The final improvement involved the format of the input data for the pull requests and issues I submitted to the AI.
 Initially, I didn't spend much time preparing the data.
-However, I later switched from unstructured text with delimiters to JSON, which seemed to help. 
-Yes, it seems to help. 
-Although I don't have concrete proof, it appears that the AI makes fewer mistakes and avoids confusion with this structured format.
+However, I later switched from unstructured text with delimiters to JSON, which seemed to help.
+Although I don't have concrete proof, it appears that the AI makes fewer mistakes.
 
-To draw a bottom line:
-Of course, I can build more pipelines with chained requests, pay more money, format the input data, and so on.
+In summary, I can build more pipelines with chained requests, pay more money, format the input data, and so on.
 And it will probably yield some gains.
 But, to be honest, I don't want to spend much on these tasks anymore.
 Moreover, I have a feeling that all these problems might be solved much more easily programmatically even without the use of AI.
@@ -307,61 +305,40 @@ So, the current solution is enough for me.
 
 ## Bird's-eye View
 
-As you can see, I completly changed the original task. 
-I didn't want to change the data (PR and Issue descriptions).
-I didn't want to add meta information ('soon' label)
-I didn't want to add direct hints like 'Risk 1'.
-I didn't want to prepare and handle data programatically ('json' data and different representations of the report)
+Let's agree, I completely changed the original task.
+I format the pull request and issue descriptions, 
+add meta information like the 'soon' label and 'Risk' markers,
+prepare and handle some parts programmatically. 
+So I would say that we failed with the direct application of AI, I know.
+Moreover, I spent significant time developing these scripts, configuring data, and adjusting prompts, which I initially wanted to avoid altogether.
+And I still need to validate the report myself; I still can't blindly trust it.
+I wonder if, after all these changes, I need an AI at all.
 
-So I failed and did all of this to solve the task, I know.
-So I spend significant time to develop this scripts, configure data and adjust prompts.
-In other words I developed enough code for such a simple task.
-Which I inidially wanted to avoid at all.
-Dissapointment.
-Of course, I have to do less, but still.
-And I still need to validate the report myself, I can't directly trust it.
+Of course, I'm exaggerating a bit here, and things are not so dramatically bad.
+Let's take a look at what we got.
+We started the development very quickly. Very.
+Initially, I didn't do anything special to do any formatting or data preparation for AI analysis.
+Just a simple prompt with data, and you get raw, full-of-mistakes results.
+But you get results! In a few minutes.
 
-Of course, I'm a bit sceptical and things are not so bad. Let's take a look at wat we got. 
-We started the development very fast. Very.
-I didn't need to do any formating, data preparation for AI analysis.
-It understood what was necessary as is.
-Just a simple prompt with data and you get a raw, full of mistakes results.
-But you get a result! In a few hours of work. 
+Later, when we needed to make our system more precise, we gradually added more code to it.
+We specified the solution, added meta-information, improved prompts, built a chain of requests, and so on. 
+I bet if you continue to make the system more precise, you will suddenly realize that you don't need AI at some point. 
+And it's fine to remove the AI usage in this case, I believe.
 
-Later, when you need to make your system more "precise", you just add more code to it.
-You split requests. Add meta-information. Build chain of requests and so on. You continue develop
-the system.
-
-If you continue to make the system more "precise", you suddenly, realize that you don't need AI at some point at all.
-And it's fine to remove it, I belive.
-
-So, I didn't clearly realized how I can express my feelings about this developemnt process, but it can be illustrated 
-as follows:
+So, I didn't clearly realize how I can express my feelings about this development process, but it can be illustrated as follows:
 
 ```picture```
 
-```txt
-Could you draw a hand-drawn sketch of a plot? 
-On the Y-axis, put 'Precision', and on the X-axis, put 'Development effort'. 
-It should show a close to linear dependency. 
-It should look like a cartoon-like image, similar to a hand-drawn sketch. 
-Don’t put numbers on it.
-Be precise in labels' grammar, and don’t make mistakes in word spelling.
-```
+We can quickly achieve full functionality, but initially with low precision. 
+Later, as we focus on increasing precision, development time extends, and the use of AI becomes more targeted or reduced.
 
-```txt
-Could you create a cartoon-style hand-drawn sketch of a plot? The Y-axis should be labeled ‘Trust’ and the X-axis should be labeled 'Development Effort.' The plot should depict a nearly linear relationship between the two variables. Please ensure that the labels are grammatically correct and spelled accurately. Do not include any numerical values on the plot.
-```
+This creates two extremes: a fully AI-driven system with low precision and a fully programmed system with high precision. 
+The development process bridges the gap between these extremes.
 
-Functionality of the application (number of implemented use cases remains constant.)
-As you can see, we get the required functionality very fast, but with low precision. 
-Later, when we start focusing on the precision, we increase developement time and reduce or specify the use of AI.
-So, we have two extreems - the first one - fully AI system with a low precision and fully programmed system with high precision.
-The distance bewtween them is a developement process.
-
-So maybe in the future we will create systems exactly this way. Since for some systems we can tolerate low precision, for some others
-like medicine, we cannot.
-
+Given our broad range of applications, we will likely continue to create most systems in this way in the near future.
+For some systems, low precision is acceptable, such as in our current task. 
+However, for critical applications like those in medicine, finances, robotics, high precision is essential, and we will continue to code them as we do now.
 
 ## All this sound around AI?
 
