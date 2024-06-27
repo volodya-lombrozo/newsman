@@ -305,40 +305,38 @@ So, the current solution is enough for me.
 
 ## Bird's-eye View
 
-Let's agree, I completely changed the original task.
-I format the pull request and issue descriptions, 
-add meta information like the 'soon' label and 'Risk' markers,
-prepare and handle some parts programmatically. 
-So I would say that we failed with the direct application of AI, I know.
-Moreover, I spent significant time developing these scripts, configuring data, and adjusting prompts, which I initially wanted to avoid altogether.
-And I still need to validate the report myself; I still can't blindly trust it.
-I wonder if, after all these changes, I need an AI at all.
+Let's agree; we completely changed the original task. 
+We formatted the pull request and issue descriptions, 
+added meta information like the 'soon' label and 'Risk' markers, 
+and handled some parts programmatically. 
+Moreover, we spent significant time developing these scripts, configuring data, and adjusting prompts, which we initially wanted to avoid altogether.
+We still need to validate the report; we can't blindly trust it. 
+And I wonder if, after all these changes, we still need an AI at all.
 
-Of course, I'm exaggerating a bit here, and things are not so dramatically bad.
-Let's take a look at what we got.
-We started the development very quickly. Very.
-Initially, I didn't do anything special to do any formatting or data preparation for AI analysis.
-Just a simple prompt with data, and you get raw, full-of-mistakes results.
-But you get results! In a few minutes.
+Did we fail in our attempt to build an AI-based application? 
+I can't say that.
+Things are not so dramatically bad.
+Let's take a look at what we have.
+We started the development very quickly. Very quickly.
+Initially, we didn't do anything special in terms of formatting or data preparation for AI analysis.
+Just a simple prompt with data, and we got raw, full-of-mistakes results.
+But we got results! In a few minutes.
 
-Later, when we needed to make our system more precise, we gradually added more code to it.
+Later, when we needed to make our system more precise, we gradually added more code to it. 
 We specified the solution, added meta-information, improved prompts, built a chain of requests, and so on. 
 I bet if you continue to make the system more precise, you will suddenly realize that you don't need AI at some point. 
-And it's fine to remove the AI usage in this case, I believe.
-
-So, I didn't clearly realize how I can express my feelings about this development process, but it can be illustrated as follows:
+And it's fine to remove the AI usage in this case, I believe. 
+So, I can illustrate my observations about this development process as follows:
 
 ```picture```
 
 We can quickly achieve full functionality, but initially with low precision. 
-Later, as we focus on increasing precision, development time extends, and the use of AI becomes more targeted or reduced.
-
+Later, as we focus on increasing precision, development time extends, and the use of AI becomes more targeted or reduced. 
 This creates two extremes: a fully AI-driven system with low precision and a fully programmed system with high precision. 
-The development process bridges the gap between these extremes.
-
-Given our broad range of applications, we will likely continue to create most systems in this way in the near future.
-For some systems, low precision is acceptable, such as in our current task. 
-However, for critical applications like those in medicine, finances, robotics, high precision is essential, and we will continue to code them as we do now.
+The development process bridges the gap between these extremes. 
+For some systems, low precision is acceptable, such as in our current task.
+And we will likely start creating some systems in this way.
+However, for critical applications like those in medicine, finance, and robotics, high precision is essential, and we will continue to code them as we do now.
 
 ## All this sound around AI?
 
