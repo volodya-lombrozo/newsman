@@ -328,10 +328,11 @@ I bet if you continue to make the system more precise, you will suddenly realize
 And it's fine to remove the AI usage in this case, I believe. 
 So, I can illustrate my observations about this development process as follows:
 
-```picture```
+![trust-third.webp](trust-third.webp "The more you develop the system, the more you trust it")
 
 We can quickly achieve full functionality, but initially with low precision. 
 Later, as we focus on increasing precision, development time extends, and the use of AI becomes more targeted or reduced. 
+And we start to trust our system more.
 This creates two extremes: a fully AI-driven system with low precision and a fully programmed system with high precision. 
 The development process bridges the gap between these extremes. 
 For some systems, low precision is acceptable, such as in our current task.
