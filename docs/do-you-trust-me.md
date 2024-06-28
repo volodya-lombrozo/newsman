@@ -58,17 +58,15 @@ We have AI that will extract and format all these parts of the report for us.
 
 ## Can you just generate it for us?
 
-We don't have much time to write a complex script or an application to perform this task. 
-We have many other tasks to solve at our lovely job.
-So, we just don't have time for it.
-So let's take the first naive attempt to generate a report in the most straightforward way.
+We don't have much time to write a complex script or application for this task. 
+We have many other responsibilities at our job, so we simply can't allocate time for it. 
+Let's start with a straightforward, initial attempt to generate the report.
+We'll focus on the 'Last Week Achievements' section now and delegate as much work as possible to AI.
 
-At first, we will concentrate on the 'Last Week Achievements' part only and delegate as much work as possible to AI.
-In most cases, we can measure the work done by a developer by finished pull requests - the real code provided. 
-
-So, long story short, we will get a list of closed pull requests for the previous week by using the GitHub API,
-convert their titles and bodies to a simple string, 
-join them  by a '____' delimiter, and sent them to AI altogether with the following prompt.
+Typically, we can assess a developer's work by reviewing completed pull requests—the actual code provided.
+So, we'll fetch a list of closed pull requests from the previous week using the GitHub API,
+convert their titles and bodies to simple strings, 
+join them with a '____' delimiter, and send them to the AI with the following prompt:
 
 Context:
 ```txt
@@ -88,10 +86,10 @@ Please strictly adhere to the example template provided.
 Example of a report: #{example}. List of Pull Requests: [#{prs}]"}
 ```
 
-That is all. We didn't do any grouping programmatically, we didn't prepare data, we didn't even write the prompt ourselves.
-I asked AI to generate it for us, of course.
-Am I a prompt engineer?
-And... we got great results.
+That is it. We didn't do any grouping programmatically; we didn't prepare data; we didn't even write the prompt ourselves. 
+I asked AI to generate it for us, of course. 
+So, am I a prompt engineer now?
+And... we have great results.
 
 ```txt
 Last week achievements.
@@ -108,24 +106,26 @@ Last week achievements.
   - Enabled all integration tests and improved label handling [#189]
 ```
 
-Of course, the AI confused grouping by repositories, mixed pull requests between several projects, and lost several items from the report.
-Most importantly, it correctly combined different parts of each PR (title and body) into concise, short sentences, and the result looks human-readable—just what we need. 
-So, I checked the final report, added some missing points, fixed several sentences to restore their meaning, and sent the report.
+What I can't show you here is that the AI got confused and mixed up several pull requests across different repositories, losing some items from the report in the process. 
+However, it did manage to combine parts of each PR into concise, readable sentences — exactly what we need. 
+Now, we can review the final report, add any missing points, and fix a few sentences to restore their meaning. 
+Once that's done, we'll be ready to send the report.
 
 Further in this article, I won't include all the results because they would make the text excessively long and potentially confusing. 
 However, if you are really interested, 
 I have published the complete [history](https://volodya-lombrozo.github.io/newsman/) of the results I obtained along the way.
+Additionally, I have the [repository](https://github.com/volodya-lombrozo/newsman) with all the code, so you can check it as well.
 
 ## What about the future?
 
-For the 'Next Week Plans' section, I followed a similar approach since there is nothing special. 
+For the 'Next Week Plans' section, we can follow a similar approach since there is nothing special. 
 The only difference is the source of data.
 In our team, we don't have any special software to track tasks like boards, backlog, and similar. 
 We use plain GitHub issues, as many other open-source projects do. 
-Hence, I focused on issues opened by a developer in the last month, as these are the ones we will likely address sooner. 
+Hence, we can focus on issues opened by a developer in the last month, as these are the ones we will likely address sooner. 
 Of course, most of them won't be resolved during the next week, so the developer will need to remove the ones they won't solve during the following week.
 
-In other words, I get a list of issues created by a developer for the last month, join them using '____' delimeter and send them with the following 
+In other words, we get a list of issues created by a developer for the last month, join them using '____' delimeter and send them with the following 
 prompt.
 
 ```txt
@@ -140,7 +140,7 @@ Combine all the information from each Issue into a concise and fluent sentences,
 Please strictly adhere to the example template provided: #{example_plans}. List of GitHub issues to aggregate: [#{issues}].
 ```
 
-And I got more or less appropriate results in a human-readable format that are almost ready to be presented to the team.
+And we got more or less appropriate results in a human-readable format that are almost ready to be presented to the team.
 
 ```txt
 Next week plans:
@@ -150,7 +150,7 @@ jeo-maven-plugin:
 - Enable 'spring' Integration Test in pom.xml by adding support for various Java features [#488]
 ```
 
-Here, I also encountered the same problems with the structure, formatting, and incorrect grouping as in the 'Last week achievements' section.
+However, here we also encountered the same problems with the structure, formatting, and confusing as in the 'Last Week Achievements' section.
 So, I checked the issue titles, fixed and formatted some of them, then removed all the issues that I won't solve during this week and sent the report.
 
 P.S.
