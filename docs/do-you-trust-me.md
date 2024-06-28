@@ -7,7 +7,7 @@ I'm not an exception.
 Under the influence of this wave, I decided to try to create something on my own that would help me in everyday life. 
 So here I will tell you my own story of writing an application with the use of AI, along with some thoughts about it, of course, which are rather contradictory.
 
-## Where to apply?
+## What is the task?
 
 I'm a developer in a distributed team, and like any other member, I sometimes need to explain what I did in the last week to my colleagues. 
 Our team actually prefers text-based reports instead of face-to-face communication for many reasons. 
@@ -56,16 +56,19 @@ And, to be honest, we don't want to invent these rigid rules, restrictions, and 
 It's boring. 
 We have AI that will extract and format all these parts of the report for us.
 
-## Can you generate it for me?
+## Can you just generate it for us?
 
-I don't have much time to write a complex script or an application to perform this task. 
-I just don't have time for it.
+We don't have much time to write a complex script or an application to perform this task. 
+We have many other tasks to solve at our lovely job.
+So, we just don't have time for it.
 So let's take the first naive attempt to generate a report in the most straightforward way.
 
 At first, we will concentrate on the 'Last Week Achievements' part only and delegate as much work as possible to AI.
-In most cases, we can measure the work done by a developer by finished Pull Requests - the real code provided. 
+In most cases, we can measure the work done by a developer by finished pull requests - the real code provided. 
 
-So, long story short, I got a list of closed Pull Requests for the previous week by using the GitHub API, converted their titles and bodies to a simple string, joined by a '____' delimiter, and sent them to AI altogether with the following prompt.
+So, long story short, we will get a list of closed pull requests for the previous week by using the GitHub API,
+convert their titles and bodies to a simple string, 
+join them  by a '____' delimiter, and sent them to AI altogether with the following prompt.
 
 Context:
 ```txt
@@ -85,10 +88,10 @@ Please strictly adhere to the example template provided.
 Example of a report: #{example}. List of Pull Requests: [#{prs}]"}
 ```
 
-That is all. I didn't do any grouping programmatically, I didn't prepare data, I didn't even write the prompt myself.
-I asked AI to generate it for me, of course.
+That is all. We didn't do any grouping programmatically, we didn't prepare data, we didn't even write the prompt ourselves.
+I asked AI to generate it for us, of course.
 Am I a prompt engineer?
-And... I got great results despite using only the cheapest GPT-3.5.
+And... we got great results.
 
 ```txt
 Last week achievements.
