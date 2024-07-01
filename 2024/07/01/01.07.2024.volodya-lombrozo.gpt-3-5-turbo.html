@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+  <head>
+    <title>volodya-lombrozo 01.07.2024</title>
+  </head>
+  <body>
+  <h1>volodya-lombrozo 01.07.2024</h1>
+  <p><strong>Weekly Report: Week 27 Objectionary</strong></p>
+
+<p><strong>Activities and Progress:</strong><br/>
+- Last week achievements:<br/>
+  - opeo-maven-plugin:<br/>
+    - Refactor XmirParser, remove outdated puzzle, and update class annotations [#134, #229]<br/>
+    - Remove <code class="prettyprint">appendIntefaced()</code> method and unused opcode cases in <code class="prettyprint">Opcode.java</code> [#208]<br/>
+    - Use Attributes in <code class="prettyprint">Super</code> class and enable Opeo Spring Fat Integration Test [#209]<br/>
+    - Enable 'spring' and 'staticize' Integration Tests by updating <code class="prettyprint">ineo.version</code> [#305]<br/>
+    - Replace 'scope' attribute with data objects in various AST nodes [#316]</p>
+
+<ul><li>Reviewed and analyzed the following pull requests in the <code class="prettyprint">opeo-maven-plugin</code> repository:
+
+<ul><li><strong>PR #334:</strong></li>
+<li>No risks identified.</li>
+<li><strong>PR #333:</strong></li>
+<li>No risks identified.</li>
+<li><strong>PR #332:</strong></li>
+<li>No risks identified.</li>
+<li><strong>PR #331:</strong></li>
+<li>No risks identified.</li>
+<li><strong>PR #330:</strong></li>
+<li>No risks identified.</li>
+<li><strong>PR #325:</strong></li>
+<li>Identified a potential risk in PR #325: "The current implementation of 'attributes' looks a bit inconvenient and not so flexible. This might cause problems in the future if changes to 'attributes' representation are required, leading to significant efforts for modification."</li>
+</ul></li>
+</ul><p><strong>Next Steps:</strong><br/>
+- Follow up on the identified risk in PR #325 to assess the impact and discuss potential mitigation strategies with the development team.</p>
+
+<p><strong>Challenges Faced:</strong><br/>
+- No significant challenges were encountered during the review process this week.</p>
+
+<p><strong>Next week plans:</strong><br/>
+- opeo-maven-plugin:<br/>
+  - Enable PHI printing for most cases [#317] - We need to enable PHI printing for all possible cases, starting with <code class="prettyprint">spring</code> and <code class="prettyprint">spring-fat</code> integration tests and then covering all integration tests with PHI printing to ensure correct EO representation of decompiled bytecode.</p>
+
+<p><strong>Acknowledgments:</strong><br/>
+- Appreciation to the development team for their continuous efforts in improving the codebase and addressing project requirements promptly.</p>
+
+<p>Thank you for your attention to this report. If you require further details or have any specific requests, please feel free to reach out.</p>
+
+<p>Best regards,<br/>
+Vladimir Zakharov<br/>
+Software Developer</p>
+
+<h2>2024-07-01</h2>
+
+<p>Closed Pull Requests:<br/>
+ - title: feat(#134): Refactor XmirParser, repo: opeo-maven-plugin, url: https://github.com/objectionary/opeo-maven-plugin/pull/334<br/>
+ - title: feat(#208): Remove <code class="prettyprint">appendIntefaced()</code> Method, repo: opeo-maven-plugin, url: https://github.com/objectionary/opeo-maven-plugin/pull/333<br/>
+ - title: feat(#209): Use Attributes in <code class="prettyprint">Super</code> Class, repo: opeo-maven-plugin, url: https://github.com/objectionary/opeo-maven-plugin/pull/332<br/>
+ - title: feat(#229): remove outdated puzzle, repo: opeo-maven-plugin, url: https://github.com/objectionary/opeo-maven-plugin/pull/331<br/>
+ - title: feat(#305): Enable 'spring' and 'staticize' Integration Tests, repo: opeo-maven-plugin, url: https://github.com/objectionary/opeo-maven-plugin/pull/330<br/>
+ - title: feat(#316): Replace 'scope' attribute with an appropriate object for all the usages, repo: opeo-maven-plugin, url: https://github.com/objectionary/opeo-maven-plugin/pull/325</p>
+
+<p>Open Issues:<br/>
+ - title: Enable PHI printing for most cases, repo: opeo-maven-plugin, number: #317, url: https://github.com/objectionary/opeo-maven-plugin/issues/317, labels: ["bug", "soon"]</p>
+
+</body>
+</html>
