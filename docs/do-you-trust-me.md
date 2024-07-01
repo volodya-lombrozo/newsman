@@ -125,7 +125,7 @@ We use plain GitHub issues, as many other open-source projects do.
 Hence, we can focus on issues opened by a developer in the last month, as these are the ones we will likely address sooner. 
 Of course, most of them won't be resolved during the next week, so the developer will need to remove the ones they won't solve during the following week.
 
-In other words, we get a list of issues created by a developer for the last month, join them using '____' delimeter and send them with the following 
+In other words, we can get a list of issues created by a developer for the last month, join them using '____' delimeter and send them with the following 
 prompt.
 
 ```txt
@@ -149,17 +149,21 @@ jeo-maven-plugin:
 - Investigate and fix the issue of automatic frame computation in CustomClassWriter to prevent test failures [#528]
 - Enable 'spring' Integration Test in pom.xml by adding support for various Java features [#488]
 ```
+Moreover, sometimes AI can be smart enough to improve a report.
+For example, once it was wise enough to group a list of separate issues with similar content and purpose without any special instructions from us.
+
+```txt
+opeo-maven-plugin:
+ - Add unit tests for the XmlParam class [#598], XmlAttributes class [#595], XmlAttribute class [#594], DirectivesNullable class [#593], DirectivesAttributes class [#592], and DirectivesAttribute class [#591] to improve code coverage and code quality.
+```
 
 However, here we also encountered the same problems with the structure, formatting, and confusing as in the 'Last Week Achievements' section.
-So, I checked the issue titles, fixed and formatted some of them, then removed all the issues that I won't solve during this week and sent the report.
+So, we still need to perform some editing.
 
 P.S.
-After several weeks, removing plans that I didn't want to address soon became extremely tedious. 
-To simplify this task, I added a label for the issues I plan to solve in the near future. 
-The label name is 'soon.' 
-Yes, I know, my imagination is quite vivid. 
-Anyway, I no longer need to spend much time on this section. 
-Now, my script, along with AI, analyzes future plans quite well.
+After several weeks, removing plans that I didn't want to address soon became extremely tedious.
+To simplify this task, we might add (I did exactly this) a [label](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels) for the issues we plan to solve in the near future.
+By doing this, we no longer need to spend much time on this section.
 
 ## Risks 
 
@@ -167,7 +171,7 @@ Now let's move to the most exciting part: risk identification, specifically our 
 Typically, developers mention some risks and possible problems in PR descriptions. 
 Actually, they can be mentioned anywhere, but let's start with something simple.
 
-I generated the following prompt to identify risks from these descriptions:
+I asked AI to generate the following prompt to identify risks from these descriptions:
 
 ```txt
 Please compile a summary of the risks identified in some repositories. 
@@ -184,7 +188,7 @@ Please strictly adhere to the example template provided.
 Example of a report: #{example_risks}. List of Pull Requests: ```#{all}```.
 ```
 
-Unfortunately, it didn't work as expected.
+Unfortunately, it didn't work as expected this time.
 Not all code changes carried risks, so the AI often tried to invent new risks where there were none.
 Sometimes it simply repeated the PR description without identifying any problems. 
 Other times, it printed risks from the example provided instead of from the real data. 
@@ -194,8 +198,7 @@ In other words, it was a mess.
 Most likely, the key problem was with my prompt. 
 I tried several modifications, but the results remained more or less the same.
 
-So, I decided to give some clues to the AI. 
-I started writing all PR descriptions as clearly as possible. 
+So, I decided to give some clues to the AI and started writing all PR descriptions as clearly as possible. 
 And... surprise, surprise, it started working like a charm. 
 For this PR description:
 
@@ -216,7 +219,7 @@ jeo-maven-plugin:
 
 The more human-readable messages I leave, the easier it is for AI to analyze results.
 (Who would've thought, right? 🤔)
-As a result, I have become more disciplined in my pull requests.
+As a result, I have becoming more disciplined in my pull requests.
 I've now developed much better-styled, grammatically correct, and descriptive messages that are more understandable.
 So, it’s a nice improvement for people who read my PRs, not just for AI processing.
 
@@ -230,12 +233,11 @@ How ironic.
 ## Let's improve it?
 
 Even though we've implemented all these parts, 
-I still had to handle much of the work, including structuring, formatting, and making sure each generated sentence actually made sense.
+We still had to handle much of the work, including structuring, formatting, and making sure each generated sentence actually made sense.
 I'm not sure if we can fix the problem related to meaning verification. 
 It's just easier to do it manually, at least for now. 
 So, we're left with some structural and formatting problems. 
 To illustrate, just take a look at the report we generated.
-
 
 ```txt
 Last week achievements:
