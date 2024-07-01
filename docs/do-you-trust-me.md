@@ -149,19 +149,20 @@ jeo-maven-plugin:
 - Investigate and fix the issue of automatic frame computation in CustomClassWriter to prevent test failures [#528]
 - Enable 'spring' Integration Test in pom.xml by adding support for various Java features [#488]
 ```
-Moreover, sometimes AI can be smart enough to improve a report.
-For example, once it was wise enough to group a list of separate issues with similar content and purpose without any special instructions from us.
+
+Moreover, sometimes AI can be smart enough to improve the report even without any special instructions from us.
+For example, once it was able to group a list of separate issues with similar content and purpose.
 
 ```txt
 opeo-maven-plugin:
  - Add unit tests for the XmlParam class [#598], XmlAttributes class [#595], XmlAttribute class [#594], DirectivesNullable class [#593], DirectivesAttributes class [#592], and DirectivesAttribute class [#591] to improve code coverage and code quality.
 ```
 
-However, here we also encountered the same problems with the structure, formatting, and confusing as in the 'Last Week Achievements' section.
-So, we still need to perform some editing.
+However, here we also encountered the same problems with the structure, formatting, and confusion as in the 'Last Week's Achievements' section.
+So, we still need to perform some editing before sending the report.
 
 P.S.
-After several weeks, removing plans that I didn't want to address soon became extremely tedious.
+After several weeks, cleaning plans that I didn't want to address soon became extremely tedious.
 To simplify this task, we might add (I did exactly this) a [label](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels) for the issues we plan to solve in the near future.
 By doing this, we no longer need to spend much time on this section.
 
@@ -171,7 +172,7 @@ Now let's move to the most exciting part: risk identification, specifically our 
 Typically, developers mention some risks and possible problems in PR descriptions. 
 Actually, they can be mentioned anywhere, but let's start with something simple.
 
-I asked AI to generate the following prompt to identify risks from these descriptions:
+I asked AI to generate the following prompt to identify risks from pull requests descriptions:
 
 ```txt
 Please compile a summary of the risks identified in some repositories. 
@@ -198,8 +199,8 @@ In other words, it was a mess.
 Most likely, the key problem was with my prompt. 
 I tried several modifications, but the results remained more or less the same.
 
-So, I decided to give some clues to the AI and started writing all PR descriptions as clearly as possible. 
-And... surprise, surprise, it started working like a charm. 
+So, we can give some clues to the AI and start writing all PR descriptions as clearly as possible. 
+And... surprise, surprise, it helps. 
 For this PR description:
 
 ```txt
@@ -209,7 +210,7 @@ We need to pay attention to the mapping of these values and fix the problem.
 For now, it doesn't create any issues, but it's better to deal with it somehow.
 ```
 
-I got the following result:
+we get the following result:
 
 ```txt
 Risks:
@@ -217,17 +218,17 @@ jeo-maven-plugin:
 - In PR Update All Project Dependencies, there is a risk related to strange decompiled object values with -- default values that may need attention in the future [#199].
 ```
 
-The more human-readable messages I leave, the easier it is for AI to analyze results.
+The more human-readable messages we leave, the easier it is for AI to analyze results.
 (Who would've thought, right? 🤔)
-As a result, I have becoming more disciplined in my pull requests.
-I've now developed much better-styled, grammatically correct, and descriptive messages that are more understandable.
-So, it’s a nice improvement for people who read my PRs, not just for AI processing.
+As a result, we've now developed much better - styled, grammatically correct, and descriptive messages in our issues and pull requests that are more understandable.
+So, it’s a nice improvement for people who read our PRs, not just for AI processing.
 
-However, I should admit that in some cases I went beyond that, and now I sometimes add additional markers like 'Risk 1: ...,' 'Risk 2: ...' in the text
+However, I should admit that in some cases when we need to go beyond that, we can add additional markers like 'Risk 1: ...,' 'Risk 2: ...' in the text
 (as I did [here](https://github.com/objectionary/opeo-maven-plugin/pull/259)) to get more precise answers from the AI. 
 By doing this, the AI almost didn't make any mistakes. 
 But do we really need the AI in this case at all? 
-As you can see, it's exactly what I initially didn't want to do – structure my text and add meta information. 
+
+As you can see, it's exactly what we initially didn't want to do at all – structure text and add meta information to PRs and issues. 
 How ironic.
 
 ## Let's improve it?
@@ -254,8 +255,8 @@ Risks:
 ```
 
 Since we made three separate requests, the responses predictably came back in different formats. 
-We have at least three possible solutions to this problem. 
-Can you guess the simplest one? 
+We have at least one simple and fast solution to this problem. 
+Can you guess which one? 
 That's right, let's throw even more AI at it. More and more AI!
 Alright, let's not get carried away. 
 For now, we can just add one more request.
@@ -290,35 +291,35 @@ However, we have different formatting styles between reports now, which is okay 
 Though it looks a bit strange since each week I have differently formatted reports.
 Maybe it gives the impression of a real person.
 
-The second improvement we can apply is to improve the AI model itself. 
-I haven't mentioned this yet; all the previous requests I made were with an old but relatively cheap model, GPT-3.5-turbo. 
-So, to be honest, I decided to spend more money to check out the newest GPT-4 model. 
+The second feature we can apply to improve our reports is to use the better AI model. 
+I haven't mentioned this yet; all the previous requests we made were with an old but relatively cheap model, GPT-3.5-turbo. 
+So, to be honest, let's spend more money to check out the newest GPT-4 model. 
 And it works much better. 
 It is subjective, of course, but my perception tells me that the results look better in most cases. 
-Again, you can check the difference here.
+Again, you can check the difference [here](https://volodya-lombrozo.github.io/newsman/).
 
-The final improvement involved the format of the input data for the pull requests and issues I submitted to the AI.
-Initially, I didn't spend much time preparing the data.
-However, I later switched from unstructured text with delimiters to JSON, which seemed to help.
-Although I don't have concrete proof, it appears that the AI makes fewer mistakes.
+And the final improvement involved the format of the input data for the pull requests and issues we submit to the AI.
+Initially, as you remember, we didn't spend much time preparing the data.
+However, we can switch from unstructured text with delimiters to JSON, which seems to help.
+Although I don't have concrete proof, but it appears that the AI makes fewer mistakes.
 
-In summary, I can build more pipelines with chained requests, pay more money, format the input data, and so on.
+In summary, we can continue and build more pipelines with chained requests, pay more money, format the input data, and so on.
 And it will probably yield some gains.
-But, to be honest, I don't want to spend much on these tasks anymore.
-Moreover, I have a feeling that all these problems might be solved much more easily programmatically even without the use of AI.
-So, the current solution is enough for me.
+But, to be honest, do we really need to spend more time on these tasks? I don't think so. 
+Moreover, I have a strong feeling that all these problems might be solved much more easily programmatically even without the use of AI.
+So, I belive that the current solution is enough for us. And it's better to stop now.
 
 ## Bird's-eye View
 
 Let's agree; we completely changed the original task. 
 We formatted the pull request and issue descriptions, 
-added meta information like the 'soon' label and 'Risk' markers, 
+added meta information like the labels and 'Risk' markers, 
 and handled some parts programmatically. 
 Moreover, we spent significant time developing these scripts, configuring data, and adjusting prompts, which we initially wanted to avoid altogether.
 We still need to validate the report; we can't blindly trust it. 
 And I wonder if, after all these changes, we still need an AI at all.
 
-Did we fail in our attempt to build an AI-based application? 
+However, did we fail in our attempt to build an AI-based application? 
 I can't say that.
 Things are not so dramatically bad.
 Let's take a look at what we have.
@@ -341,31 +342,30 @@ And we start to trust our system more.
 This creates two extremes: a fully AI-driven system with low precision and a fully programmed system with high precision. 
 The development process bridges the gap between these extremes. 
 For some systems, low precision is acceptable, such as in our current task.
-And we will likely start creating some systems in this way.
-However, for critical applications like those in medicine, finance, and robotics, high precision is essential, and we will continue to code them as we do now.
+Maybe we in the future will start creating some systems in this way.
+However, for critical applications like those in medicine, finance, and robotics, high precision is essential, and I belive we will continue to code them as we do it now.
 
 ## Final Note 
 
 These days, we are experiencing significant growth in AI tools.
 Many of these tools have already been integrated into our work processes.
 They can generate code or unit tests very effectively, as well as documentation or well-written code comments. 
-And yes, this post was written with great help from AI. 
+And yes, this post was written with great help from AI too.
 Even the picture in this article was generated by AI. 
-Moreover, as I have mentioned, in some cases, AI indirectly improves our systems. 
-By preparing data to be more readable and understandable by AI systems, we also yield better results for people. 
+Moreover, as I have mentioned, in some cases, AI indirectly improves our systems:
+by preparing data to be more readable and understandable by AI systems, we also yield better results for people. 
 So, there is definite progress in many areas. 
-Most importantly, AI is changing the software development process itself.
+Most importantly, AI might change the software development process itself in the future.
 
-However, in our example with programmers activity summarization, not everything is perfect.
+However, in our example with programmers' activity, the situation is far from perfect.
 I hope I have demonstrated this. 
-Clearly, we still can't directly assign such tasks to AI, and I'm unsure if we ever will. 
+Clearly, we still can't assign such tasks to AI without our intervention, and I'm unsure if we ever will. 
 If we look at other systems for code review or PR description summarization, they lack accuracy and still produce many errors. 
-We can't rely on them either.
-Over time, we start to view their outputs as noise and simply ignore the results. 
-In other words, we just can't trust them fully.
+Hence, over time, we start to view the outputs of such systems as noise and simply ignore the results. 
+In other words, we just can't trust them.
 
 While it is possible and even likely that this will change in the future, for now, I'm still rather skeptical about AI. 
 We still need to control and verify its outputs, refine the code to increase precision, build sophisticated chains of prompts, and more. 
-And despite these efforts, we still cannot blindly trust AI.
+And even after all these efforts, we still cannot blindly trust AI.
 
 Perhaps these are just my concerns. What about you? Do you trust it?
