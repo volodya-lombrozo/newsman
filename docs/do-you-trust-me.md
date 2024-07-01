@@ -2,15 +2,15 @@
 
 We have lived in a period of AI shift for the past few years.
 AI is everywhere: searching, learning, text processing, code review, code writing assistance, and many other systems have arisen in recent years. 
-It seems everybody is trying to apply AI where it's possible and impossible. 
+It seems everyone is eager to apply AI wherever possible — and even where it might not be.
 I'm not an exception. 
 Under the influence of this wave, I decided to try to create something on my own that would help me in everyday life. 
 So here I will tell you my own story of writing an application with the use of AI, along with some thoughts about it, of course, which are rather contradictory.
 
 ## What is the task?
 
-I'm a developer in a distributed team, and like any other member, I sometimes need to explain what I did in the last week to my colleagues. 
-Our team actually prefers text-based reports instead of face-to-face communication for many reasons. 
+As a developer in a distributed team, I often need to explain my weekly progress to my colleagues. 
+Our team prefers text-based reports over face-to-face communication for many reasons.
 I know that for some it might look contradictory, but all the benefits of this approach have been mentioned many times already, and it’s just how we prefer to do it.
 So, after a while, we came up with a particular document format and structure for our weekly reports. 
 It is called [SIMBA](https://www.yegor256.com/2021/09/09/simba.html). 
@@ -39,22 +39,20 @@ Risks:
 Bye.
 ```
 
-As you can see, there are three distinguishing parts that should be summarized based on the results you achieved during the previous week.
-This report is usually short and very simple. 
-However, if you need to create this report every week, it might become tedious. 
-Extremely tedious. 
-Sometimes it's just hard to remember what you were doing at the beginning of the previous week.
-Moreover, people with lots of projects suffer because they switch their context almost every day and easily forget things. 
-Things that should be noted. 
-So why don't we generate this report automatically?
-Since we use GitHub for our projects, we have access to developer activity. 
-And since we have access to the activity, we can utilize that information to build a report.
+This report is typically short and straightforward. 
+As you can see, there are only three key parts to summarize based on last week's results.
 
-However, all this activity is usually poorly formatted: we don't have any rigid conventions for commits, issues, and pull request formatting. 
-Moreover, if this formatting existed, it might differ between projects. 
-And, to be honest, we don't want to invent these rigid rules, restrictions, and style guidelines. 
-It's boring. 
-We have AI that will extract and format all these parts of the report for us.
+But if you're doing this every week, it can get tedious. Extremely tedious. 
+Sometimes, it's a real challenge to recall what you were up to at the start of the previous week, which issues you planned to solve, and which are better to leave for the next week.
+Moreover, you have to keep in mind all possible risks and problems that might arise from the changes you made along the way.
+So why don't we generate this report automatically?
+
+In this blog, we will write a small [app](https://github.com/volodya-lombrozo/newsman) that generates a report based on GitHub user activity.
+This information allows us to build a detailed report.
+However, the activity data is often poorly formatted due to the lack of rigid conventions for commits, issues, and pull requests.
+Even if such formatting existed, it might vary between projects.
+Frankly, we don't want to create these strict rules and style guidelines — it’s tedious.
+Instead, we have AI to extract and format all the parts of the report for us.
 
 ## Can you just generate it for us?
 
@@ -72,7 +70,7 @@ Context:
 ```txt
 You are a developer tasked with composing a concise report detailing your activities and progress for the previous week, intended for submission to your supervisor.
 ```
-Prompt (don't read it entirely, it's boring):
+Prompt (it's boring):
 
 ```txt
 Please compile a summary of the work completed in the following Pull Requests (PRs). 
@@ -88,7 +86,7 @@ Example of a report: #{example}. List of Pull Requests: [#{prs}]"}
 
 That is it. We didn't do any grouping programmatically; we didn't prepare data; we didn't even write the prompt ourselves. 
 I asked AI to generate it for us, of course. 
-So, am I a prompt engineer now?
+(So, am I a prompt engineer?)
 And... we have great results.
 
 ```txt
@@ -106,12 +104,14 @@ Last week achievements.
   - Enabled all integration tests and improved label handling [#189]
 ```
 
-What I can't show you here is that the AI got confused and mixed up several pull requests across different repositories, losing some items from the report in the process. 
+It's hard to show you here, but the AI got confused and mixed up several pull requests across different repositories, losing some items from the report in the process. 
 However, it did manage to combine parts of each PR into concise, readable sentences — exactly what we need. 
-Now, we can review the final report, add any missing points, and fix a few sentences to restore their meaning. 
-Once that's done, we'll be ready to send the report.
 
-Further in this article, I won't include all the results because they would make the text excessively long and potentially confusing. 
+So, for now, we can review the text in the report manually, add any missing points, and fix a few sentences to restore their meaning. 
+Once that's done, we'll be ready to send the first version of our report.
+Good.
+
+Further, I won't include all the results because they would make the text excessively long and potentially confusing. 
 However, if you are really interested, 
 I have published the complete [history](https://volodya-lombrozo.github.io/newsman/) of the results I obtained along the way.
 Additionally, I have the [repository](https://github.com/volodya-lombrozo/newsman) with all the code, so you can check it as well.
