@@ -9,13 +9,12 @@ So here I will tell you my own story of writing an application with the use of A
 
 ## What is the task?
 
-As a developer in a distributed team, I often need to explain my weekly progress to my colleagues. 
-Our team prefers text-based reports over face-to-face communication for many reasons.
-I know that for some it might look contradictory, but all the benefits of this approach have been mentioned many times already, and it’s just how we prefer to do it.
+As a developer in a distributed team, I usually need to explain my weekly progress to my colleagues. 
+I know that for some it might look contradictory, but we prefer text-based reports over face-to-face communication.
+All the benefits of this approach have been mentioned many times already (like ([here](https://link.springer.com/article/10.1007/s10664-020-09835-6), [here](https://www.yegor256.com/2015/07/13/meetings-are-legalized-robbery.html) and [here](https://ieeexplore.ieee.org/abstract/document/1303810)), and it’s just how we prefer to do it.
 So, after a while, we came up with a particular document format and structure for our weekly reports. 
 It is called [SIMBA](https://www.yegor256.com/2021/09/09/simba.html). 
 This format is extremely simple:
-
 
 ```md
 From: Team Coordinator
@@ -39,24 +38,23 @@ Risks:
 Bye.
 ```
 
-This report is typically short and straightforward. 
-As you can see, there are only three key parts to summarize based on last week's results.
-
-But if you're doing this every week, it can get tedious. Extremely tedious. 
+As you can see, there are only three key parts ("Last week's achievements", "Next week's plans", and "Risks") which we are usually interested in.
+So, this report is typically short and straightforward. 
+But if you're doing this every week, it can get tedious. Extremely tedious, I would say. 
 Sometimes, it's a real challenge to recall what you were up to at the start of the previous week, which issues you planned to solve, and which are better to leave for the next week.
 Moreover, you have to keep in mind all possible risks and problems that might arise from the changes you made along the way.
 So why don't we generate this report automatically?
 
-In this blog, we will write a small [app](https://github.com/volodya-lombrozo/newsman) that generates a report based on GitHub user activity.
-This information allows us to build a detailed report.
+We can create a small [app](https://github.com/volodya-lombrozo/newsman) that will generate weekly reports based on developers' GitHub activity.
+This information should be sufficient to build a detailed weekly report.
 However, the activity data is often poorly formatted due to the lack of rigid conventions for commits, issues, and pull requests.
-Even if such formatting existed, it might vary between projects.
-Frankly, we don't want to create these strict rules and style guidelines — it’s tedious.
+Even if such formatting existed, it might vary between repositories and projects.
+And frankly, we don't want to create these strict rules and style guidelines — it’s boring.
 Instead, we have AI to extract and format all the parts of the report for us.
 
 ## Can you just generate it for us?
 
-We don't have much time to write a complex script or application for this task. 
+Let's be honest, we don't have much time to write a complex or application for this task. 
 We have many other responsibilities at our job, so we simply can't allocate time for it. 
 Let's start with a straightforward, initial attempt to generate the report.
 We'll focus on the 'Last Week Achievements' section now and delegate as much work as possible to AI.
@@ -104,8 +102,8 @@ Last week achievements.
   - Enabled all integration tests and improved label handling [#189]
 ```
 
-It's hard to show you here, but the AI got confused and mixed up several pull requests across different repositories, losing some items from the report in the process. 
-However, it did manage to combine parts of each PR into concise, readable sentences — exactly what we need. 
+It did manage to combine parts of each PR into concise, readable sentences — exactly what we need. 
+However, it's hard to show you here, but the AI got confused and mixed up several pull requests across different repositories, losing some items from the report in the process. 
 
 So, for now, we can review the text in the report manually, add any missing points, and fix a few sentences to restore their meaning. 
 Once that's done, we'll be ready to send the first version of our report.
@@ -125,8 +123,7 @@ We use plain GitHub issues, as many other open-source projects do.
 Hence, we can focus on issues opened by a developer in the last month, as these are the ones we will likely address sooner. 
 Of course, most of them won't be resolved during the next week, so the developer will need to remove the ones they won't solve during the following week.
 
-In other words, we can get a list of issues created by a developer for the last month, join them using '____' delimeter and send them with the following 
-prompt.
+In other words, we can get a list of issues created by a developer for the last month, join them using '____' delimeter and send them with the following prompt.
 
 ```txt
 Please compile a summary of the plans for the next week using the following GitHub Issues descriptions. 
@@ -140,7 +137,7 @@ Combine all the information from each Issue into a concise and fluent sentences,
 Please strictly adhere to the example template provided: #{example_plans}. List of GitHub issues to aggregate: [#{issues}].
 ```
 
-And we got more or less appropriate results in a human-readable format that are almost ready to be presented to the team.
+And again, we got more or less appropriate results in a human-readable format that are almost ready to be presented to the team.
 
 ```txt
 Next week plans:
@@ -150,8 +147,8 @@ jeo-maven-plugin:
 - Enable 'spring' Integration Test in pom.xml by adding support for various Java features [#488]
 ```
 
-Moreover, sometimes AI can be smart enough to improve the report even without any special instructions from us.
-For example, once it was able to group a list of separate issues with similar content and purpose.
+Moreover, sometimes AI is smart enough to improve the report even without any special instructions from us.
+For example, once it was able to group a list of separate issues with similar content.
 
 ```txt
 opeo-maven-plugin:
@@ -162,9 +159,8 @@ However, here we also encountered the same problems with the structure, formatti
 So, we still need to perform some editing before sending the report.
 
 P.S.
-After several weeks, cleaning plans that I didn't want to address soon became extremely tedious.
-To simplify this task, we might add (I did exactly this) a [label](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels) for the issues we plan to solve in the near future.
-By doing this, we no longer need to spend much time on this section.
+After several weeks, cleaning up plans that we don't want to address soon might become extremely tedious.
+To simplify this task, we might add (which I did) a [label](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels) for the issues we plan to solve in the near future.
 
 ## Risks 
 
@@ -172,7 +168,7 @@ Now let's move to the most exciting part: risk identification, specifically our 
 Typically, developers mention some risks and possible problems in PR descriptions. 
 Actually, they can be mentioned anywhere, but let's start with something simple.
 
-I asked AI to generate the following prompt to identify risks from pull requests descriptions:
+We can ask AI to generate the following prompt to identify risks from pull requests descriptions:
 
 ```txt
 Please compile a summary of the risks identified in some repositories. 
@@ -189,18 +185,17 @@ Please strictly adhere to the example template provided.
 Example of a report: #{example_risks}. List of Pull Requests: ```#{all}```.
 ```
 
-Unfortunately, it didn't work as expected this time.
-Not all code changes carried risks, so the AI often tried to invent new risks where there were none.
-Sometimes it simply repeated the PR description without identifying any problems. 
-Other times, it printed risks from the example provided instead of from the real data. 
-It also frequently confused PR numbers when it found risks.
-In other words, it was a mess.
+Unfortunately, this time it doesn't work as expected.
+Not all code changes carry risks, so the AI often tries to invent new risks where there are none.
+Sometimes, it simply repeats the PR description without identifying any problems.
+Other times, it prints risks from the example provided instead of from the real data.
+It also frequently confuses PR numbers.
+In other words, it is a mess.
 
-Most likely, the key problem was with my prompt. 
-I tried several modifications, but the results remained more or less the same.
-
-So, we can give some clues to the AI and start writing all PR descriptions as clearly as possible. 
-And... surprise, surprise, it helps. 
+Most likely, the key problem is with our prompt.
+I tried several modifications, but the results remain more or less the same.
+So, the only option we have is to give some clues to the AI and start writing all PR descriptions as clearly as possible.
+And... surprisingly, it helps.
 For this PR description:
 
 ```txt
@@ -210,7 +205,7 @@ We need to pay attention to the mapping of these values and fix the problem.
 For now, it doesn't create any issues, but it's better to deal with it somehow.
 ```
 
-we get the following result:
+we successfully identified the risk:
 
 ```txt
 Risks:
@@ -223,22 +218,24 @@ The more human-readable messages we leave, the easier it is for AI to analyze re
 As a result, we've now developed much better - styled, grammatically correct, and descriptive messages in our issues and pull requests that are more understandable.
 So, it’s a nice improvement for people who read our PRs, not just for AI processing.
 
-However, I should admit that in some cases when we need to go beyond that, we can add additional markers like 'Risk 1: ...,' 'Risk 2: ...' in the text
+However, I should admit that in some cases when we need to go beyond that, we can leave additional markers like 'Risk 1: ...,' 'Risk 2: ...' in the text
 (as I did [here](https://github.com/objectionary/opeo-maven-plugin/pull/259)) to get more precise answers from the AI. 
-By doing this, the AI almost didn't make any mistakes. 
+By doing this, the AI almost doesn't make any mistakes. 
 But do we really need the AI in this case at all? 
-
 As you can see, it's exactly what we initially didn't want to do at all – structure text and add meta information to PRs and issues. 
 How ironic.
 
 ## Let's improve it?
 
-Even though we've implemented all these parts, 
-We still had to handle much of the work, including structuring, formatting, and making sure each generated sentence actually made sense.
-I'm not sure if we can fix the problem related to meaning verification. 
-It's just easier to do it manually, at least for now. 
-So, we're left with some structural and formatting problems. 
-To illustrate, just take a look at the report we generated.
+Even though we've implemented all these parts, we still have to handle much of the work, including structuring, formatting, and ensuring each generated sentence makes sense.
+I'm unsure if we can somehow fix the issue related to meaning verification. 
+For now, it's just easier to do it manually. 
+Consequently, we're left with structural and formatting problems.
+We have several options that we can apply to improve our reports.
+
+The first thing we can improve is the entire report style. 
+Since we made three separate requests, the responses predictably came back in different formats. 
+To illustrate this, take a look at the report we generated.
 
 ```txt
 Last week achievements:
@@ -254,7 +251,6 @@ Risks:
        - The server is weak, we may fail the delivery of the dataset, report milestone will be missed [#557].
 ```
 
-Since we made three separate requests, the responses predictably came back in different formats. 
 We have at least one simple and fast solution to this problem. 
 Can you guess which one? 
 That's right, let's throw even more AI at it. More and more AI!
@@ -287,34 +283,33 @@ jeo-maven-plugin:
 - The server is weak, we may fail the delivery of the dataset, report milestone will be missed [#557].
 ```
 
-However, we have different formatting styles between reports now, which is okay in this case. 
-Though it looks a bit strange since each week I have differently formatted reports.
+However, we have different formatting styles between reports now, which is okay for our task. 
+Though it looks a bit strange since each week we send differently formatted reports.
 Maybe it gives the impression of a real person.
 
-The second feature we can apply to improve our reports is to use the better AI model. 
-I haven't mentioned this yet; all the previous requests we made were with an old but relatively cheap model, GPT-3.5-turbo. 
-So, to be honest, let's spend more money to check out the newest GPT-4 model. 
-And it works much better. 
+The second improvement we can apply to our reports is to use a better AI model. 
+I haven't mentioned this yet; all the previous requests we made were with an old but relatively cheap model, `gpt-3.5-turbo`. 
+So, to provide a clear experiment, let's spend a bit more money to check out the newest `gpt-4o` model. 
+It works much better. 
 It is subjective, of course, but my perception tells me that the results look better in most cases. 
 Again, you can check the difference [here](https://volodya-lombrozo.github.io/newsman/).
 
-And the final improvement involved the format of the input data for the pull requests and issues we submit to the AI.
-Initially, as you remember, we didn't spend much time preparing the data.
-However, we can switch from unstructured text with delimiters to JSON, which seems to help.
-Although I don't have concrete proof, but it appears that the AI makes fewer mistakes.
+The final improvement involves the format of the input data for the pull requests and issues we submit to the AI.
+Initially, as you remember, we didn't spend much time preparing the data. 
+However, we can switch from unstructured text with delimiters to JSON, which also seems to help. 
+And it appears that the AI makes fewer mistakes.
 
-In summary, we can continue and build more pipelines with chained requests, pay more money, format the input data, and so on.
-And it will probably yield some gains.
-But, to be honest, do we really need to spend more time on these tasks? I don't think so. 
-Moreover, I have a strong feeling that all these problems might be solved much more easily programmatically even without the use of AI.
-So, I belive that the current solution is enough for us. And it's better to stop now.
+In summary, we can continue building more pipelines with chained requests, spending more money, formatting the input data, and so on. 
+While this may yield some gains, do we really need to spend more time on these tasks? 
+I don't think so.
+Moreover, I strongly feel that these problems could be solved more easily programmatically, even without using AI. 
+Therefore, I believe that our current solution is sufficient, and it's better to stop now.
 
-## Bird's-eye View
+## What do we have in the end?
 
 Let's agree; we completely changed the original task. 
 We formatted the pull request and issue descriptions, 
-added meta information like the labels and 'Risk' markers, 
-and handled some parts programmatically. 
+added meta information like the labels and 'Risk' markers. 
 Moreover, we spent significant time developing these scripts, configuring data, and adjusting prompts, which we initially wanted to avoid altogether.
 We still need to validate the report; we can't blindly trust it. 
 And I wonder if, after all these changes, we still need an AI at all.
@@ -325,42 +320,40 @@ Things are not so dramatically bad.
 Let's take a look at what we have.
 We started the development very quickly. Very quickly.
 Initially, we didn't do anything special in terms of formatting or data preparation for AI analysis.
-Just a simple prompt with data, and we got raw, full-of-mistakes results.
+Just a simple prompt with data, and we got raw (full-of-mistakes) results.
 But we got results! In a few minutes.
 
 Later, when we needed to make our system more precise, we gradually added more code to it. 
 We specified the solution, added meta-information, improved prompts, built a chain of requests, and so on. 
-I bet if you continue to make the system more precise, you will suddenly realize that you don't need AI at some point. 
-And it's fine to remove the AI usage in this case, I believe. 
+I bet if we continue to refine the system, we will eventually realize that we don't need AI at all. 
 So, I can illustrate my observations about this development process as follows:
 
-![trust-third.png](trust-third.png "The more you develop the system, the more you trust it")
+![trust-third.png](trust-third.png "The more you develop, the more you trust it")
 
+It's kind of a joke, of course, but since this picture is also generated by AI, it clearly demonstrates the same idea of AI usage in general.
 We can quickly achieve full functionality, but initially with low precision. 
 Later, as we focus on increasing precision, development time extends, and the use of AI becomes more targeted or reduced. 
-And we start to trust our system more.
+Consequently, we start to trust our system more. 
 This creates two extremes: a fully AI-driven system with low precision and a fully programmed system with high precision. 
 The development process bridges the gap between these extremes. 
-For some systems, low precision is acceptable, such as in our current task.
-Maybe we in the future will start creating some systems in this way.
-However, for critical applications like those in medicine, finance, and robotics, high precision is essential, and I belive we will continue to code them as we do it now.
+For some systems, low precision is acceptable, such as in our current task and maybe in the future, we will start creating some low-accuracy systems exactly this way. 
+However, for most applications, especially critical ones like those in medicine, finance, and robotics, high precision is essential, and we will continue to code them as we do now.
 
 ## Final Note 
 
-These days, we are experiencing significant growth in AI tools.
-Many of these tools have already been integrated into our work processes.
+These days, we are experiencing significant growth in AI tools. 
+Many of these tools have already been integrated into our work processes. 
 They can generate code or unit tests very effectively, as well as documentation or well-written code comments. 
-And yes, this post was written with great help from AI too.
+And yes, this post was written with great help from AI too. 
 Even the picture in this article was generated by AI. 
-Moreover, as I have mentioned, in some cases, AI indirectly improves our systems:
-by preparing data to be more readable and understandable by AI systems, we also yield better results for people. 
+Moreover, as I have mentioned, in some cases, AI indirectly improves our systems. 
 So, there is definite progress in many areas. 
-Most importantly, AI might change the software development process itself in the future.
+Most importantly, AI might significantly change the software development process itself in the future.
 
-However, in our example with programmers' activity, the situation is far from perfect.
+However, in our example with programmers' activity, the situation is still far from perfect. 
 I hope I have demonstrated this. 
 Clearly, we still can't assign such tasks to AI without our intervention, and I'm unsure if we ever will. 
-If we look at other systems for code review or PR description summarization, they lack accuracy and still produce many errors. 
+If we look at other similar systems for code review or PR description summarization, for example, they lack accuracy and also produce many errors. 
 Hence, over time, we start to view the outputs of such systems as noise and simply ignore the results. 
 In other words, we just can't trust them.
 
