@@ -22,6 +22,6 @@ opeo-maven-plugin:
 - <leave empty>
 
 Best regards,
-Vladimir Zakharov  
+Vladimir Lombrozo  
 Software Developer  
 2024-03-19

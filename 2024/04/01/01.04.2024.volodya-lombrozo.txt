@@ -1,4 +1,4 @@
-From: Vladimir Zakharov
+From: Vladimir Lombrozo
 Subject: WEEK 14 JavaDataflow
 
 Hi all,
@@ -27,6 +27,6 @@ Risks:
 - <todo>
 
 Best regards,
-Vladimir Zakharov
+Vladimir Lombrozo
 Software Developer
 2024-04-01

@@ -16,6 +16,6 @@ Risks:
   - N/A
 
 Best regards,
-Vladimir Zakharov  
+Vladimir Lombrozo  
 Software Developer  
 2024-03-21
