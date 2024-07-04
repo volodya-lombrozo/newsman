@@ -44,13 +44,13 @@ Usage: newsman [options]
 ### Example
 To run `newsman` use the following command:
 ```shell
-newsman --name "Vladimir Zakharov" --username "volodya-lombrozo" --repository objectionary/jeo-maven-plugin,objectionary/opeo-maven-plugin
+newsman --name "Vladimir Lombrozo" --username "volodya-lombrozo" --repository objectionary/jeo-maven-plugin,objectionary/opeo-maven-plugin
 ```
 
 Don't forget to set your own values for `name`, `username` and `repository` parameters.
 Also you can download this repository and run the newsman script directly using the following command:
 ```shell
-./bin/newsman --name "Vladimir Zakharov" --username "volodya-lombrozo" --repository objectionary/jeo-maven-plugin,objectionary/opeo-maven-plugin
+./bin/newsman --name "Vladimir Lombrozo" --username "volodya-lombrozo" --repository objectionary/jeo-maven-plugin,objectionary/opeo-maven-plugin
 ```
 
 ## How to build a gem from sources
