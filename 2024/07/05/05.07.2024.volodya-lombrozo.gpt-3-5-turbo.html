@@ -5,49 +5,50 @@
   </head>
   <body>
   <h1>volodya-lombrozo 05.07.2024</h1>
-  <p><strong>Weekly Report</strong></p>
+  <p><strong>Weekly Report:</strong></p>
 
-<p>From: Vladimir Lombrozo<br/><br/>
-Subject: WEEK 27 Objectionary  </p>
+<p><strong>From:</strong> Vladimir Lombrozo<br/><br/><strong>Subject:</strong> WEEK 27 Objectionary  </p>
 
 <p>Hi all,  </p>
 
-<p><strong>Last week achievements:</strong>  </p>
+<p><strong>Last week achievements:</strong></p>
 
-<ul><li><p><strong>jeo-maven-plugin:</strong>  </p>
+<p><strong>jeo-maven-plugin:</strong><br/>
+- Print PHI Expressions in XMIR files for integration tests [#627]<br/>
+  - Updated Maven commands in integration test READMEs, improved code readability, and added new methods for better organization.</p>
 
-<ul><li>Print PHI Expressions in Integration Tests [#627]<br/></li>
-<li>Updated Maven commands in integration test READMEs, improved code readability, and added new methods for better organization.<br/></li>
+<p><strong>opeo-maven-plugin:</strong><br/>
+- Check Attributes Constructors [#327] - Added unit tests, refactored parsing code, and fixed issues related to <code class="prettyprint">Attributes</code> class creation from XMIR representation.</p>
+
+<p><strong>Next week plans:</strong></p>
+
+<p><strong>opeo-maven-plugin:</strong><br/>
+- Enable PHI printing for most cases [#317] - Enable PHI printing for all possible cases, starting with <code class="prettyprint">spring</code> and <code class="prettyprint">spring-fat</code> integration tests, and then covering all integration tests with PHI printing to ensure correct EO representation of decompiled bytecode.</p>
+
+<p><strong>Risks:</strong></p>
+
+<p><strong>Activities:</strong><br/>
+- Reviewed and provided feedback on pull requests.<br/>
+- Attended team meetings to discuss project progress and challenges.<br/>
+- Worked on resolving bugs and implementing new features.</p>
+
+<p><strong>Progress:</strong><br/>
+- Completed the implementation of feature #627 in the <code class="prettyprint">jeo-maven-plugin</code> repository.<br/>
+- Addressed issues related to the <code class="prettyprint">Attributes</code> class in feature #327 for the <code class="prettyprint">opeo-maven-plugin</code> repository.</p>
+
+<p><strong>Risks Identified:</strong><br/>
+- <code class="prettyprint">jeo-maven-plugin</code>:<br/>
+  - No risks identified for PR #628.</p>
+
+<ul><li><code class="prettyprint">opeo-maven-plugin</code>:
+
+<ul><li>No risks identified for PR #335.</li>
 </ul></li>
-<li><p><strong>opeo-maven-plugin:</strong>  </p>
+</ul><p><strong>Next Steps:</strong><br/>
+- Continue working on assigned tasks and addressing feedback from code reviews.<br/>
+- Collaborate with team members to ensure project milestones are met.</p>
 
-<ul><li>Check Attributes Constructors [#327]<br/></li>
-<li>Added unit tests, refactored parsing code, and addressed linting issues for creating <code class="prettyprint">Attributes</code> class from XMIR representation.<br/></li>
-</ul></li>
-</ul><p><strong>Next week plans:</strong>  </p>
-
-<ul><li><strong>opeo-maven-plugin:</strong><br/><ul><li>Enable PHI printing for most cases [#317]<br/></li>
-</ul></li>
-</ul><p><strong>Risks:</strong>  </p>
-
-<p><strong>Activities:</strong><br/><br/>
-- Reviewed and analyzed two pull requests in the repositories <code class="prettyprint">jeo-maven-plugin</code> and <code class="prettyprint">opeo-maven-plugin</code>.<br/><br/>
-- Identified and summarized risks mentioned in the pull request descriptions.  </p>
-
-<p><strong>Progress:</strong><br/><br/>
-- Provided concise risk summaries for each pull request based on the identified issues.  </p>
-
-<hr/><p><strong>Risk Summary:</strong>  </p>
-
-<ul><li><p><strong>jeo-maven-plugin:</strong>  </p>
-
-<ul><li>No risks identified in this pull request [#627].<br/></li>
-</ul></li>
-<li><p><strong>opeo-maven-plugin:</strong>  </p>
-
-<ul><li>The refactoring of the <code class="prettyprint">fromXmir</code> method in <code class="prettyprint">Attributes</code> may introduce new bugs or unexpected behavior [#327].<br/></li>
-</ul></li>
-</ul><p>Thank you for reviewing my report. Let me know if you need any further information or clarification.  </p>
+<p>Thank you for reviewing the report. Let me know if you need any further information or details.</p>
 
 <p>Best regards,<br/><br/>
 Vladimir Lombrozo<br/><br/>
