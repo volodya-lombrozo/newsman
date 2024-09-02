@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |spec|
   spec.name          = 'newsman'
-  spec.version       = '0.2.1'
+  spec.version       = '0.2.2'
   spec.authors       = ['Volodya Lombrozo']
   spec.email         = ['volodya.lombrozo@gmail.com']
   spec.summary       = 'GitHub user weekly news'
