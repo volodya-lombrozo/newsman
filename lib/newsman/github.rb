@@ -39,9 +39,9 @@ class Github
   end
 
   def issues(username, repositories)
-    one_month_ago = Date.today.prev_month.strftime('%Y-%m-%d')
+    one_year_ago = Date.today.prev_year.strftime('%Y-%m-%d')
     query = "is:issue is:open author:#{username}"\
-      " author:0pdd created:>=#{one_month_ago} #{repositories}"
+      " author:0pdd created:>=#{one_year_ago} #{repositories}"
     puts "Searching issues using the following query: '#{query}'"
     @client.search_issues(query).items.map do |issue|
       parse_issue(issue)
