@@ -19,22 +19,25 @@ Subject: WEEK 36 Objectionary  </p>
 <li>Renamed <code class="prettyprint">InnerClass</code> to <code class="prettyprint">inner-class</code> [#680]</li>
 </ul><p><strong>opeo-maven-plugin:</strong></p>
 
-<ul><li>Added a unit test to ensure <code class="prettyprint">opeo-maven-plugin</code> keeps packages [#432]</li>
-<li>Replaced <code class="prettyprint">[]</code> with <code class="prettyprint">@</code> in array symbols to make the normalizer work and added type information to method calls [#389]</li>
-<li>Replaced <code class="prettyprint">Constant</code> node with <code class="prettyprint">Literal</code> [#275]</li>
+<ul><li>Added a unit test to check that <code class="prettyprint">opeo-maven-plugin</code> keeps packages [#432]</li>
+<li>Replaced <code class="prettyprint">[]</code> array symbols with <code class="prettyprint">@</code> to make the normalizer work and added type information to method calls [#389]</li>
+<li>Replaced <code class="prettyprint">Constant</code> usages with <code class="prettyprint">Literal</code> usages [#275]</li>
 <li>Removed redundant if statements [#346]</li>
-<li>Removed the puzzle for issue [#408]</li>
+<li>Removed the puzzle for issue #408 [#408]</li>
 <li>Updated <code class="prettyprint">jeo-maven-plugin</code> to version <code class="prettyprint">0.5.6</code> and removed deprecated classes [#419]</li>
 <li>Added <code class="prettyprint">j$</code> prefix for class names [#420]</li>
 </ul><p><strong>Next week plans:</strong></p>
 
-<p><strong>Risks:</strong></p>
+<p><strong>opeo-maven-plugin:</strong></p>
+
+<ul><li>To add more tests to AgentsIT.java [#407]</li>
+<li>To remove <code class="prettyprint">program</code> and <code class="prettyprint">object</code> from AgentsIT.java [#403]</li>
+<li>To resolve reference names in DecompilerMachineTest.java [#388]</li>
+</ul><p><strong>Risks:</strong></p>
 
 <p><strong>jeo-maven-plugin:</strong></p>
 
 <ul><li>No risks identified [#685]</li>
-<li>No risks identified [#682]</li>
-<li>No risks identified [#681]</li>
 </ul><p><strong>opeo-maven-plugin:</strong></p>
 
 <ul><li>No risks identified [#433]</li>
@@ -44,7 +47,13 @@ Subject: WEEK 36 Objectionary  </p>
 <li>No risks identified [#428]</li>
 <li>No risks identified [#426]</li>
 <li>No risks identified [#425]</li>
-<li>No risks identified [#422]</li>
+</ul><p><strong>jeo-maven-plugin:</strong></p>
+
+<ul><li>No risks identified [#682]</li>
+<li>No risks identified [#681]</li>
+</ul><p><strong>opeo-maven-plugin:</strong></p>
+
+<ul><li>No risks identified [#422]</li>
 </ul><p>Best regards,<br/><br/>
 Vladimir Lombrozo<br/><br/>
 Software Developer  </p>
@@ -64,7 +73,10 @@ Software Developer  </p>
  - title: feat(#680): InnerClass -&gt; inner-class, repo: jeo-maven-plugin, url: https://github.com/objectionary/jeo-maven-plugin/pull/681<br/>
  - title: feat(#420): Add <code class="prettyprint">j$</code> Prefix For Class Names, repo: opeo-maven-plugin, url: https://github.com/objectionary/opeo-maven-plugin/pull/422</p>
 
-<p>Open Issues:</p>
+<p>Open Issues:<br/>
+ - title: AgentsIT.java:63-65: Add More Tests. Currently, we have..., repo: opeo-maven-plugin, issue number: #407, url: https://github.com/objectionary/opeo-maven-plugin/issues/407, labels: ["soon"]<br/>
+ - title: AgentsIT.java:50-56: Remove <code class="prettyprint">program</code> and <code class="prettyprint">object</code>..., repo: opeo-maven-plugin, issue number: #403, url: https://github.com/objectionary/opeo-maven-plugin/issues/403, labels: ["soon"]<br/>
+ - title: DecompilerMachineTest.java:446-451: Reference Names..., repo: opeo-maven-plugin, issue number: #388, url: https://github.com/objectionary/opeo-maven-plugin/issues/388, labels: ["soon"]</p>
 
 </body>
 </html>
