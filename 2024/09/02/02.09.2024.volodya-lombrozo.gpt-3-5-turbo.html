@@ -5,46 +5,71 @@
   </head>
   <body>
   <h1>volodya-lombrozo 02.09.2024</h1>
-  <p><strong>Weekly Report: Week 36 Objectionary</strong></p>
+  <p><strong>Weekly Report: Activities and Progress</strong></p>
 
-<p><strong>Activities and Progress:</strong></p>
+<p>From: Vladimir Lombrozo<br/>
+Subject: WEEK 36 Objectionary</p>
 
-<ol><li><p><strong>Repository: jeo-maven-plugin:</strong></p>
+<p>Hi all,</p>
+
+<p><strong>Last week achievements:</strong></p>
+
+<ul><li><p><strong>jeo-maven-plugin:</strong></p>
 
 <ul><li>Prove That <code class="prettyprint">jeo</code> Preserves <code class="prettyprint">metas</code> [#684]</li>
 <li>Use Lowercase For Opcode Names [#678]</li>
 <li>InnerClass -&gt; inner-class [#680]</li>
 </ul></li>
-<li><p><strong>Repository: opeo-maven-plugin:</strong></p>
+<li><p><strong>opeo-maven-plugin:</strong></p>
 
-<ul><li>Prove that opeo keeps packages [#432, #431]</li>
-<li>Replace <code class="prettyprint">[]</code> With <code class="prettyprint">@</code> [#389, #426]</li>
-<li>Replace Constant Node With Literal [#275]</li>
-<li>Remove redundant if statements [#346]</li>
-<li>Remove the puzzle for #408 issue [#408]</li>
-<li>Add Type Information to Method Calls [#389]</li>
-<li>Update jeo-maven-plugin and remove deprecated classes [#419, #425]</li>
-<li>Add <code class="prettyprint">j$</code> Prefix For Class Names [#420]</li>
+<ul><li>Prove that opeo keeps packages [#432]</li>
+<li>Replace <code class="prettyprint">[]</code> With <code class="prettyprint">@</code> [#431]</li>
+<li>Replce Constant Node With Literal [#430]</li>
+<li>Remove redundant if statements [#429]</li>
+<li>Remove the puzzle for #408 issue [#428]</li>
+<li>Add Type Information to Method Calls [#426]</li>
+<li>Update jeo-maven-plugin and remove deprecated classes [#425]</li>
+<li>Add <code class="prettyprint">j$</code> Prefix For Class Names [#422]</li>
 </ul></li>
-</ol><p><strong>Next week plans:</strong></p>
+</ul><p><strong>Next week plans:</strong></p>
 
-<ol><li><strong>Repository: opeo-maven-plugin:</strong>
+<ul><li><p><strong>opeo-maven-plugin:</strong></p>
 
-<ul><li>To add more tests to AgentsIT.java:63-65 to resolve puzzle <code class="prettyprint">404-88505bdc</code> from #404 [#407]</li>
-<li>To remove <code class="prettyprint">program</code> and <code class="prettyprint">object</code> from AgentsIT.java:50-56 to resolve puzzle <code class="prettyprint">381-3569ceec</code> from #381 [#403]</li>
-<li>To reference names in DecompilerMachineTest.java:446-451 to resolve puzzle <code class="prettyprint">277-fb1cb010</code> from #277 [#388]</li>
+<ul><li>To add more tests to AgentsIT.java:63-65 resolving puzzle from #404 [#407], and remove <code class="prettyprint">program</code> and <code class="prettyprint">object</code> from AgentsIT.java:50-56 resolving puzzle from #381 [#403]</li>
+<li>To resolve the puzzle from #277 in DecompilerMachineTest.java:446-451 by fixing Reference Names [#388]</li>
+<li>To remove the crutch from FormattingDecompiler.java:113-118 resolving puzzle from #355 [#358]</li>
+<li>To calculate the Max Stack Size in JeoCompiler.java:87-95 resolving puzzle from #229 [#286]</li>
 </ul></li>
-</ol><p><strong>Risks:</strong></p>
+<li><p><strong>jeo-maven-plugin:</strong></p>
 
-<p>During the past week, I reviewed and analyzed the list of pull requests in the repositories <code class="prettyprint">jeo-maven-plugin</code> and <code class="prettyprint">opeo-maven-plugin</code>. No risks were identified in any of the pull requests for both repositories. The activities mainly focused on feature enhancements, updates, and code refactoring. All the pull requests were related to improving functionality, updating versions, and enhancing code quality without introducing any identified risks.</p>
+<ul><li>Remove {@link #cleanAliases(XML)} from VerifiedEo.java:73-76 to resolve puzzle <code class="prettyprint">640-7dbdf202</code> from #640 with an estimated time of 60 minutes [#647]</li>
+</ul></li>
+</ul><p><strong>Risks:</strong></p>
 
-<p>Please let me know if you need any further information or details regarding the pull requests or any other aspect of the repositories.</p>
+<p><strong>Summary of Risks Identified in Pull Requests:</strong></p>
 
-<p>Thank you.</p>
+<ul><li><p><strong>jeo-maven-plugin:</strong></p>
 
-<p>Best regards,<br/><br/>
-Vladimir Lombrozo<br/><br/>
-Software Developer  </p>
+<ul><li>No risks identified in PR #685.</li>
+<li>No risks identified in PR #682.</li>
+<li>No risks identified in PR #681.</li>
+</ul></li>
+<li><p><strong>opeo-maven-plugin:</strong></p>
+
+<ul><li>No risks identified in PR #433.</li>
+<li>No risks identified in PR #431.</li>
+<li>No risks identified in PR #430.</li>
+<li>No risks identified in PR #429.</li>
+<li>No risks identified in PR #428.</li>
+<li>No risks identified in PR #426.</li>
+<li>No risks identified in PR #425.</li>
+<li>No risks identified in PR #422.</li>
+</ul></li>
+</ul><p>This week, I reviewed the pull requests in the repositories <code class="prettyprint">jeo-maven-plugin</code> and <code class="prettyprint">opeo-maven-plugin</code> and identified no risks in the mentioned PRs. I will continue to monitor and address any potential risks in upcoming tasks.</p>
+
+<p>Best regards,<br/>
+Vladimir Lombrozo<br/>
+Software Developer</p>
 
 <h2>2024-09-02</h2>
 
@@ -64,7 +89,10 @@ Software Developer  </p>
 <p>Open Issues:<br/>
  - title: AgentsIT.java:63-65: Add More Tests. Currently, we have..., repo: opeo-maven-plugin, issue number: #407, url: https://github.com/objectionary/opeo-maven-plugin/issues/407, labels: ["soon"]<br/>
  - title: AgentsIT.java:50-56: Remove <code class="prettyprint">program</code> and <code class="prettyprint">object</code>..., repo: opeo-maven-plugin, issue number: #403, url: https://github.com/objectionary/opeo-maven-plugin/issues/403, labels: ["soon"]<br/>
- - title: DecompilerMachineTest.java:446-451: Reference Names..., repo: opeo-maven-plugin, issue number: #388, url: https://github.com/objectionary/opeo-maven-plugin/issues/388, labels: ["soon"]</p>
+ - title: DecompilerMachineTest.java:446-451: Reference Names..., repo: opeo-maven-plugin, issue number: #388, url: https://github.com/objectionary/opeo-maven-plugin/issues/388, labels: ["soon"]<br/>
+ - title: FormattingDecompiler.java:113-118: Remove the crutch..., repo: opeo-maven-plugin, issue number: #358, url: https://github.com/objectionary/opeo-maven-plugin/issues/358, labels: ["soon"]<br/>
+ - title: VerifiedEo.java:73-76: Remove {@link #cleanAliases(XML)}..., repo: jeo-maven-plugin, issue number: #647, url: https://github.com/objectionary/jeo-maven-plugin/issues/647, labels: ["soon"]<br/>
+ - title: JeoCompiler.java:87-95: Calculate the Max Stack Size. We..., repo: opeo-maven-plugin, issue number: #286, url: https://github.com/objectionary/opeo-maven-plugin/issues/286, labels: ["soon"]</p>
 
 </body>
 </html>
