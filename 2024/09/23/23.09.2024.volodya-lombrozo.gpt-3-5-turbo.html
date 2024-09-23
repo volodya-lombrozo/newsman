@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+  <head>
+    <title>volodya-lombrozo 23.09.2024</title>
+  </head>
+  <body>
+  <h1>volodya-lombrozo 23.09.2024</h1>
+  <p><strong>Weekly Report: Activities and Progress</strong></p>
+
+<p><strong>From:</strong> Vladimir Lombrozo<br/><br/><strong>Subject:</strong> WEEK 39 Objectionary  </p>
+
+<p><strong>Last Week Achievements:</strong></p>
+
+<ul><li>Added unit tests for <code class="prettyprint">XmlAnnotations</code> and refactored <code class="prettyprint">BytecodeAnnotations</code> usage [#345] in <code class="prettyprint">jeo-maven-plugin</code>.</li>
+<li>Fixed the flaky test related to class loading by improving the <code class="prettyprint">JeoClassLoader</code> mechanism [#672].</li>
+<li>Added unit tests for <code class="prettyprint">DirectivesAttribute</code> and <code class="prettyprint">DirectivesAttributes</code> classes to improve code coverage and quality [#591].</li>
+<li>Added support for fully qualified names in XML element base attributes [#710].</li>
+<li>Refactored the <code class="prettyprint">XmlAttribute</code> class to return <code class="prettyprint">BytecodeAttribute</code> directly and added new tests [#594].</li>
+<li>Added a unit test for the <code class="prettyprint">XmlAttributes</code> class [#595].</li>
+<li>Replaced <code class="prettyprint">DirectivesTuple</code> with <code class="prettyprint">DirectivesValues</code> for consistency and clarity in XML representation classes [#707].</li>
+<li>Refactored method parameters handling in XML and bytecode representations, adding new classes and tests [#598].</li>
+</ul><p><strong>Next Week Plans:</strong></p>
+
+<ul><li>Update all value objects in <code class="prettyprint">jeo-maven-plugin</code> to be saved as <code class="prettyprint">bytes</code> objects [#715].</li>
+<li>Resolve the puzzle in the specified lines of the <code class="prettyprint">pom.xml</code> file to remove the text of the puzzle from the source code to enable phi-unphi integration test [#705].</li>
+<li>Add more tests to <code class="prettyprint">AgentsIT.java:63-65</code> resolving puzzle from #404 [#407] in <code class="prettyprint">opeo-maven-plugin</code>.</li>
+<li>Remove <code class="prettyprint">program</code> and <code class="prettyprint">object</code> from <code class="prettyprint">AgentsIT.java:50-56</code> resolving puzzle from #381 [#403] in <code class="prettyprint">opeo-maven-plugin</code>.</li>
+<li>Resolve Reference Names in <code class="prettyprint">DecompilerMachineTest.java:446-451</code> from #277 [#388] in <code class="prettyprint">opeo-maven-plugin</code>.</li>
+<li>Remove the crutch in <code class="prettyprint">FormattingDecompiler.java:113-118</code> resolving puzzle from #355 [#358] in <code class="prettyprint">opeo-maven-plugin</code>.</li>
+</ul><p><strong>Risks:</strong></p>
+
+<p><strong>Summary of Risks Identified in Pull Requests:</strong></p>
+
+<p><strong>jeo-maven-plugin:</strong></p>
+
+<ul><li>No risks identified in PR #719.</li>
+<li>No risks identified in PR #718.</li>
+<li>No risks identified in PR #717.</li>
+<li>No risks identified in PR #713.</li>
+<li>No risks identified in PR #712.</li>
+<li>No risks identified in PR #711.</li>
+<li>No risks identified in PR #708.</li>
+<li>No risks identified in PR #706.</li>
+</ul><p><strong>Overall Progress:</strong></p>
+
+<ul><li>Reviewed and analyzed 8 pull requests in the jeo-maven-plugin repository.</li>
+<li>Identified no risks in any of the pull requests.</li>
+<li>Ensured that all PRs were focused on code improvements, testing, and refactoring.</li>
+<li>No major issues or blockers were encountered during the review process.</li>
+<li>Communicated with the developers to provide feedback and guidance on the PRs.</li>
+</ul><p><strong>Next Steps:</strong></p>
+
+<ul><li>Continue reviewing and providing feedback on upcoming pull requests.</li>
+<li>Collaborate with the team to address any emerging issues or concerns.</li>
+<li>Monitor the progress of ongoing development tasks and ensure alignment with project goals.</li>
+<li>Plan for upcoming sprints and prioritize tasks based on project requirements.</li>
+</ul><p><strong>Additional Notes:</strong></p>
+
+<ul><li>The team has been proactive in addressing code quality and testing improvements.</li>
+<li>Encouraged developers to maintain a high standard of code quality and documentation.</li>
+<li>Continued to promote a collaborative and supportive team environment.</li>
+</ul><p>Thank you for your attention to this report. Please let me know if you require any further information or details.</p>
+
+<p>Best regards,<br/><br/>
+Vladimir Lombrozo<br/><br/>
+Software Developer  </p>
+
+<h2>2024-09-23</h2>
+
+<p>Closed Pull Requests:<br/>
+ - title: feat(#345): Add unit test for <code class="prettyprint">XmlAnnotations</code>, repo: jeo-maven-plugin, url: https://github.com/objectionary/jeo-maven-plugin/pull/719<br/>
+ - title: feat(#672): Fix The Flaky Test Related To Class Loading, repo: jeo-maven-plugin, url: https://github.com/objectionary/jeo-maven-plugin/pull/718<br/>
+ - title: feat(#591): Add Unit Tests for DirectivesAttribute and DirectivesAttributes, repo: jeo-maven-plugin, url: https://github.com/objectionary/jeo-maven-plugin/pull/717<br/>
+ - title: feat(#710): Add <code class="prettyprint">org.eolang</code> and <code class="prettyprint">org.eolang.jeo</code> packages, repo: jeo-maven-plugin, url: https://github.com/objectionary/jeo-maven-plugin/pull/713<br/>
+ - title: feat(#594): Add Unit Tests for <code class="prettyprint">XmlAttribute</code>, repo: jeo-maven-plugin, url: https://github.com/objectionary/jeo-maven-plugin/pull/712<br/>
+ - title: feat(#595): Add Unit Test for <code class="prettyprint">XmlAttributes</code>, repo: jeo-maven-plugin, url: https://github.com/objectionary/jeo-maven-plugin/pull/711<br/>
+ - title: feat(#707): Use <code class="prettyprint">seq</code> Object Instead of <code class="prettyprint">tuple</code> Object, repo: jeo-maven-plugin, url: https://github.com/objectionary/jeo-maven-plugin/pull/708<br/>
+ - title: feat(#598): Correct Method Paramters Transformation, repo: jeo-maven-plugin, url: https://github.com/objectionary/jeo-maven-plugin/pull/706</p>
+
+<p>Open Issues:<br/>
+ - title: Use <code class="prettyprint">bytes</code> base for all values, repo: jeo-maven-plugin, number: #715, url: https://github.com/objectionary/jeo-maven-plugin/issues/715, labels: ["bug", "soon"]<br/>
+ - title: pom.xml:302-309: Enable phi-unphi integration test. The..., repo: jeo-maven-plugin, issue number: #705, url: https://github.com/objectionary/jeo-maven-plugin/issues/705, labels: ["soon"]<br/>
+ - title: AgentsIT.java:63-65: Add More Tests. Currently, we have..., repo: opeo-maven-plugin, issue number: #407, url: https://github.com/objectionary/opeo-maven-plugin/issues/407, labels: ["soon"]<br/>
+ - title: AgentsIT.java:50-56: Remove <code class="prettyprint">program</code> and <code class="prettyprint">object</code>..., repo: opeo-maven-plugin, issue number: #403, url: https://github.com/objectionary/opeo-maven-plugin/issues/403, labels: ["soon"]<br/>
+ - title: DecompilerMachineTest.java:446-451: Reference Names..., repo: opeo-maven-plugin, issue number: #388, url: https://github.com/objectionary/opeo-maven-plugin/issues/388, labels: ["soon"]<br/>
+ - title: FormattingDecompiler.java:113-118: Remove the crutch..., repo: opeo-maven-plugin, issue number: #358, url: https://github.com/objectionary/opeo-maven-plugin/issues/358, labels: ["soon"]</p>
+
+</body>
+</html>
