@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+  <head>
+    <title>volodya-lombrozo 11.11.2024</title>
+  </head>
+  <body>
+  <h1>volodya-lombrozo 11.11.2024</h1>
+  <p><strong>From:</strong> Vladimir Lombrozo<br/><br/><strong>Subject:</strong> WEEK 46 Objectionary  </p>
+
+<hr/><p><strong>Hi all,</strong></p>
+
+<p><strong>Last week achievements:</strong></p>
+
+<p><em>jeo-maven-plugin:</em></p>
+
+<ul><li>Renamed <code class="prettyprint">org.eolang.jeo</code> atoms to <code class="prettyprint">jeo</code> atoms [#846]</li>
+<li>Enabled <code class="prettyprint">UnrollMojo</code> to run in parallel for improved performance [#834]</li>
+<li>Refactored <code class="prettyprint">AsmProgram</code> class into smaller cohesive classes [#699]</li>
+<li>Implemented <code class="prettyprint">LocalVariableTable</code> translation into XMIR and bytecode, and added method parameter names transformation [#833]</li>
+</ul><p><strong>Next week plans:</strong></p>
+
+<p><em>jeo-maven-plugin:</em></p>
+
+<ul><li>To optimize the <code class="prettyprint">unroll</code> goal as it is extremely slow [#834].</li>
+</ul><p><em>opeo-maven-plugin:</em></p>
+
+<ul><li>To add more tests in AgentsIT.java [#407]</li>
+<li>To remove <code class="prettyprint">program</code> and <code class="prettyprint">object</code> in AgentsIT.java [#403]</li>
+<li>To resolve reference names in DecompilerMachineTest.java [#388]</li>
+<li>To remove the crutch in FormattingDecompiler.java [#358]</li>
+</ul><p><strong>Risks:</strong></p>
+
+<p><em>jeo-maven-plugin:</em></p>
+
+<ul><li>No risks identified [#846].</li>
+<li>The introduction of a new dependency on <code class="prettyprint">Saxon-HE</code> for XML transformations may lead to compatibility issues with existing systems [#834].</li>
+<li>No risks identified [#699].</li>
+<li>No risks identified [#833].</li>
+<li>The requirement to add the <code class="prettyprint">-parameters</code> flag to <code class="prettyprint">javac</code> for preserving parameter names might complicate the build process for users unfamiliar with this setting [#833].</li>
+</ul><p><strong>Best regards,</strong><br/><br/>
+Vladimir Lombrozo<br/><br/>
+Software Developer  </p>
+
+<h2>2024-11-11  </h2>
+
+<p>Closed Pull Requests:<br/>
+ - title: feat(#846): <code class="prettyprint">org.eolang.jeo</code> -&gt; <code class="prettyprint">jeo</code> package, repo: jeo-maven-plugin, url: https://github.com/objectionary/jeo-maven-plugin/pull/853<br/>
+ - title: feat(#834): Run 'unroll' In Parallel, repo: jeo-maven-plugin, url: https://github.com/objectionary/jeo-maven-plugin/pull/852<br/>
+ - title: feat(#699): refactor <code class="prettyprint">AsmProgram</code> class, repo: jeo-maven-plugin, url: https://github.com/objectionary/jeo-maven-plugin/pull/842<br/>
+ - title: feat(#833): Preserve Method Local Variables, repo: jeo-maven-plugin, url: https://github.com/objectionary/jeo-maven-plugin/pull/837<br/>
+ - title: feat(#833): feat(#833): Method Param Names Transformation, repo: jeo-maven-plugin, url: https://github.com/objectionary/jeo-maven-plugin/pull/835</p>
+
+<p>Open Issues:<br/>
+ - title: Jeo <code class="prettyprint">unroll</code> Goal is Extremely Slow , repo: jeo-maven-plugin, number: #834, url: https://github.com/objectionary/jeo-maven-plugin/issues/834, labels: ["bug", "soon"]<br/>
+ - title: AgentsIT.java:63-65: Add More Tests. Currently, we have..., repo: opeo-maven-plugin, issue number: #407, url: https://github.com/objectionary/opeo-maven-plugin/issues/407, labels: ["soon"]<br/>
+ - title: AgentsIT.java:50-56: Remove <code class="prettyprint">program</code> and <code class="prettyprint">object</code>..., repo: opeo-maven-plugin, issue number: #403, url: https://github.com/objectionary/opeo-maven-plugin/issues/403, labels: ["soon"]<br/>
+ - title: DecompilerMachineTest.java:446-451: Reference Names..., repo: opeo-maven-plugin, issue number: #388, url: https://github.com/objectionary/opeo-maven-plugin/issues/388, labels: ["soon"]<br/>
+ - title: FormattingDecompiler.java:113-118: Remove the crutch..., repo: opeo-maven-plugin, issue number: #358, url: https://github.com/objectionary/opeo-maven-plugin/issues/358, labels: ["soon"]</p>
+
+</body>
+</html>
