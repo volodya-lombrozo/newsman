@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+  <head>
+    <title>volodya-lombrozo 18.11.2024</title>
+  </head>
+  <body>
+  <h1>volodya-lombrozo 18.11.2024</h1>
+  <p>From: Vladimir Lombrozo<br/><br/>
+Subject: WEEK 47 Objectionary  </p>
+
+<p>Hi all,</p>
+
+<p><strong>Last week achievements:</strong></p>
+
+<p><em>jeo-maven-plugin:</em></p>
+
+<ul><li>Added extra spaces for XMIR comments and supplementary comments for instructions [#849]</li>
+<li>Skipped already translated files to enhance processing efficiency [#784]</li>
+<li>Used URL encoding instead of Base64 for better readability [#844]</li>
+<li>Added human-readable bytecode listings to XMIR representation [#845]</li>
+<li>Added supplementary comments for values [#847]</li>
+<li>Used full object name for bytes, changing <code class="prettyprint">bytes</code> to <code class="prettyprint">org.eolang.bytes</code> [#851]</li>
+<li>Added logging and improved the unroll process, speeding up the <code class="prettyprint">add-refs.xsl</code> and <code class="prettyprint">vars-float-down.xsl</code> transformations [#834]</li>
+</ul><p><strong>Next week plans:</strong></p>
+
+<p><em>jeo-maven-plugin:</em></p>
+
+<ul><li>To refactor Transformation.java to resolve the puzzle from #784 by removing the puzzle text from the source code [#869]</li>
+<li>To optimize the extremely slow <code class="prettyprint">unroll</code> goal as identified in the benchmark [#834]</li>
+</ul><p><em>opeo-maven-plugin:</em></p>
+
+<ul><li>To add more tests in AgentsIT.java and resolve puzzle #404 [#407]</li>
+<li>To remove <code class="prettyprint">program</code> and <code class="prettyprint">object</code> from AgentsIT.java and resolve puzzle #381 [#403]</li>
+<li>To resolve reference names in DecompilerMachineTest.java and resolve puzzle #277 [#388]</li>
+<li>To remove the crutch from FormattingDecompiler.java and resolve puzzle #355 [#358]</li>
+</ul><p><strong>Risks:</strong></p>
+
+<p><em>jeo-maven-plugin:</em></p>
+
+<ul><li>No risks identified [#873].</li>
+<li>No risks identified [#868].</li>
+<li>No risks identified [#866].</li>
+<li>No risks identified [#864].</li>
+<li>No risks identified [#863].</li>
+<li>No risks identified [#862].</li>
+<li>Attempting to remove the <code class="prettyprint">@data</code> attribute from <code class="prettyprint">org.eolang.bytes</code> object results in all bytes being removed during the <code class="prettyprint">eo-maven-plugin:xmir-to-phi</code> goal [#851].</li>
+<li>No risks identified [#859].</li>
+<li>No risks identified [#858].</li>
+</ul><p>Best regards,<br/><br/>
+Vladimir Lombrozo<br/><br/>
+Software Developer  </p>
+
+<h2>2024-11-18  </h2>
+
+<p>Closed Pull Requests:<br/>
+ - title: feat(#849): add extra spaces for XMIR comments, repo: jeo-maven-plugin, url: https://github.com/objectionary/jeo-maven-plugin/pull/873<br/>
+ - title: feat(#784): Skip Already Translated Files, repo: jeo-maven-plugin, url: https://github.com/objectionary/jeo-maven-plugin/pull/868<br/>
+ - title: feat(#844): Use URLEncoding insead of Base64, repo: jeo-maven-plugin, url: https://github.com/objectionary/jeo-maven-plugin/pull/866<br/>
+ - title: feat(#845): Bytecode Listing, repo: jeo-maven-plugin, url: https://github.com/objectionary/jeo-maven-plugin/pull/864<br/>
+ - title: feat(#849): Add Supplementary Comments For Instructions, repo: jeo-maven-plugin, url: https://github.com/objectionary/jeo-maven-plugin/pull/863<br/>
+ - title: feat(#847): Add Supplementary Comments For Values, repo: jeo-maven-plugin, url: https://github.com/objectionary/jeo-maven-plugin/pull/862<br/>
+ - title: feat(#851): Use Full Object Name For Bytes, <code class="prettyprint">bytes</code> -&gt; <code class="prettyprint">org.eolang.bytes</code>, repo: jeo-maven-plugin, url: https://github.com/objectionary/jeo-maven-plugin/pull/861<br/>
+ - title: feat(#834): Add Logging And Improve Unroll, repo: jeo-maven-plugin, url: https://github.com/objectionary/jeo-maven-plugin/pull/859<br/>
+ - title: feat(#834): Speed Up The <code class="prettyprint">vars-fload-down.xsl</code> Transformation, repo: jeo-maven-plugin, url: https://github.com/objectionary/jeo-maven-plugin/pull/858</p>
+
+<p>Open Issues:<br/>
+ - title: Transformation.java:31-34: Refactor Transformation,..., repo: jeo-maven-plugin, issue number: #869, url: https://github.com/objectionary/jeo-maven-plugin/issues/869, labels: ["enhancement", "soon"]<br/>
+ - title: Jeo <code class="prettyprint">unroll</code> Goal is Extremely Slow , repo: jeo-maven-plugin, number: #834, url: https://github.com/objectionary/jeo-maven-plugin/issues/834, labels: ["bug", "soon"]<br/>
+ - title: AgentsIT.java:63-65: Add More Tests. Currently, we have..., repo: opeo-maven-plugin, issue number: #407, url: https://github.com/objectionary/opeo-maven-plugin/issues/407, labels: ["soon"]<br/>
+ - title: AgentsIT.java:50-56: Remove <code class="prettyprint">program</code> and <code class="prettyprint">object</code>..., repo: opeo-maven-plugin, issue number: #403, url: https://github.com/objectionary/opeo-maven-plugin/issues/403, labels: ["soon"]<br/>
+ - title: DecompilerMachineTest.java:446-451: Reference Names..., repo: opeo-maven-plugin, issue number: #388, url: https://github.com/objectionary/opeo-maven-plugin/issues/388, labels: ["soon"]<br/>
+ - title: FormattingDecompiler.java:113-118: Remove the crutch..., repo: opeo-maven-plugin, issue number: #358, url: https://github.com/objectionary/opeo-maven-plugin/issues/358, labels: ["soon"]</p>
+
+</body>
+</html>
