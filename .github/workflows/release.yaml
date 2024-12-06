@@ -17,9 +17,9 @@ jobs:
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: 3.3.6
-      run: bundle update 
    
     - name: Check the code
+      run: bundle update 
       run: rake test 
       run: rake install 
       run: rake rubocop 
