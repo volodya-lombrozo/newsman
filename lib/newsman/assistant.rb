@@ -118,16 +118,27 @@ class Assistant
   end
 
   def send(request)
-    @client.chat(
-      parameters: {
-        model: @model,
-        messages: [
-          { role: 'system', content: CONTEXT },
-          { role: 'user', content: request.to_s }
-        ],
-        temperature: @temperature
-      }
-    ).dig('choices', 0, 'message', 'content')
+    if @model == "o1-preview"
+      @client.chat(
+        parameters: {
+          model: @model,
+          messages: [
+            { role: 'user', content: request.to_s }
+          ]
+        }
+      ).dig('choices', 0, 'message', 'content')
+    else
+      @client.chat(
+        parameters: {
+          model: @model,
+          messages: [
+            { role: 'system', content: CONTEXT },
+            { role: 'user', content: request.to_s }
+          ],
+          temperature: @temperature
+        }
+      ).dig('choices', 0, 'message', 'content')
+    end
   end
 
   def deprecated(method)
