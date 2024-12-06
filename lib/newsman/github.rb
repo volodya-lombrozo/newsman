@@ -24,6 +24,7 @@
 
 # This class represents a useful abstraction over Github API.
 class Github
+
   def initialize(token)
     @client = Octokit::Client.new(github_token: token)
   end
@@ -40,8 +41,8 @@ class Github
 
   def issues(username, repositories)
     one_year_ago = Date.today.prev_year.strftime('%Y-%m-%d')
-    query = "is:issue is:open author:#{username}"\
-      " author:0pdd created:>=#{one_year_ago} #{repositories}"
+    query = "is:issue is:open assignee:#{username}"\
+      " created:>=#{one_year_ago} #{repositories} label:#{IMPORTANT_ISSUE}"
     puts "Searching issues using the following query: '#{query}'"
     @client.search_issues(query).items.map do |issue|
       parse_issue(issue)
