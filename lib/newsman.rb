@@ -129,15 +129,15 @@ def generate
   output_mode = options[:output]
   puts "Output mode is '#{output_mode}'"
   if output_mode.eql? 'txt'
-    puts 'Print result to txy file'
+    puts 'Print result to a txt file'
     output = Txtout.new('.')
     output.print(full_answer, github_username)
   elsif output_mode.eql? 'html'
-    puts 'Print result to html file'
+    puts 'Print result to a html file'
     output = Htmlout.new('.')
     output.print(full_answer, github_username, options[:model])
   else
-    puts 'Print result to stdout'
+    puts 'Print result to a stdout'
     output = Stdout.new
     output.print(full_answer)
   end

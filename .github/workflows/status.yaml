@@ -18,11 +18,11 @@ jobs:
         with:
           ruby-version: 3.2
       - run: gem install newsman 
-      - name: Run newsman script with gpt-3.5-turbo
+      - name: Run newsman script with o1-preview
         env:
           GITHUB_TOKEN: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
           OPENAI_TOKEN: ${{ secrets.OPENAI_TOKEN }}
-        run: newsman --name "Vladimir Lombrozo" --username "volodya-lombrozo" --model gpt-3.5-turbo --repository objectionary/jeo-maven-plugin,objectionary/opeo-maven-plugin -o html -t Objectionary 
+        run: newsman --name "Vladimir Lombrozo" --username "volodya-lombrozo" --model o1-preview --repository objectionary/jeo-maven-plugin,objectionary/opeo-maven-plugin -o html -t Objectionary 
       - name: Run newsman script with gpt-4o
         env:
           GITHUB_TOKEN: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
