@@ -1,0 +1,42 @@
+name: Release Ruby Gem
+
+on:
+  push:
+    tags:
+      - "v*.*.*" # Trigger the workflow for version tags like v1.2.3
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 3.3.6
+      run: bundle update 
+   
+    - name: Check the code
+      run: rake test 
+      run: rake install 
+      run: rake rubocop 
+    
+    - name: Release
+      run: rake publish
+
+    - name: Create GitHub Release
+      uses: actions/create-release@v1
+      with:
+        tag_name: ${{ github.ref_name }} # Use the tag name triggering the workflow
+        release_name: ${{ github.ref_name }} # Use the same name for the release
+        body: |
+            You can find all the information about the gem right here:
+            https://rubygems.org/gems/newsman
+            If you have any questions, just send them to:
+            https://github.com/volodya-lombrozo/newsman
+        draft: false
+        prerelease: false
+
