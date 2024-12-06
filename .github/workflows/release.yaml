@@ -18,14 +18,13 @@ jobs:
       with:
         ruby-version: 3.3.6
    
-    - name: Check the code
     - run: bundle update 
     - run: rake test 
     - run: rake install 
     - run: rake rubocop 
     
     - name: Release
-    - run: rake publish
+      run: rake publish
 
     - name: Create GitHub Release
       uses: actions/create-release@v1
