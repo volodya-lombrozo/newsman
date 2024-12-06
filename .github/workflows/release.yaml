@@ -30,6 +30,8 @@ jobs:
 
     - name: Create GitHub Release
       uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
       with:
         tag_name: ${{ github.ref_name }} # Use the tag name triggering the workflow
         release_name: ${{ github.ref_name }} # Use the same name for the release
