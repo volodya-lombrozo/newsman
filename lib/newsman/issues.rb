@@ -27,7 +27,6 @@ IMPORTANT_ISSUE = 'soon'
 
 # This class represents a GitHub Issue abstraction created by a user.
 class Issue
-   
   attr_accessor :title, :body, :repo, :number
 
   def initialize(title, body, repo, number, **additional)
@@ -127,7 +126,7 @@ class PddIssue
   end
 
   def important?
-    labels.include? IMPORTANT_ISSUE 
+    labels.include? IMPORTANT_ISSUE
   end
 
   def url

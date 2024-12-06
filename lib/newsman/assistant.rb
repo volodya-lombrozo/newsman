@@ -25,11 +25,6 @@ require 'openai'
 # This class mimics a robot that can analyse a developer activity.
 # The assistant uses OpenAI API to analyze.
 class Assistant
-  CONTEXT = 'You are a developer tasked'\
-  ' with composing a concise report detailing your activities'\
-  ' and progress for the previous week,'\
-  ' intended for submission to your supervisor.'
-
   def initialize(token, model: 'gpt-3.5-turbo', temperature: 0.3)
     @token = token
     @model = model
@@ -117,14 +112,13 @@ class Assistant
     send(prompt)
   end
 
+  # rubocop:disable Metrics/MethodLength
   def send(request)
-    if @model == "o1-preview"
+    if @model == 'o1-preview'
       @client.chat(
         parameters: {
           model: @model,
-          messages: [
-            { role: 'user', content: request.to_s }
-          ]
+          messages: [{ role: 'user', content: request.to_s }]
         }
       ).dig('choices', 0, 'message', 'content')
     else
@@ -132,7 +126,10 @@ class Assistant
         parameters: {
           model: @model,
           messages: [
-            { role: 'system', content: CONTEXT },
+            { role: 'system', content: 'You are a developer tasked'\
+  ' with composing a concise report detailing your activities'\
+  ' and progress for the previous week,'\
+  ' intended for submission to your supervisor.' },
             { role: 'user', content: request.to_s }
           ],
           temperature: @temperature
@@ -140,6 +137,7 @@ class Assistant
       ).dig('choices', 0, 'message', 'content')
     end
   end
+  # rubocop:enable Metrics/MethodLength
 
   def deprecated(method)
     warn "Warning! '#{method}' is deprecated and will be removed in future versions."

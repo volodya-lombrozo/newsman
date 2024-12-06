@@ -24,7 +24,6 @@
 
 # This class represents a useful abstraction over Github API.
 class Github
-
   def initialize(token)
     @client = Octokit::Client.new(github_token: token)
   end
