@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+  <head>
+    <title>volodya-lombrozo 09.12.2024</title>
+  </head>
+  <body>
+  <h1>volodya-lombrozo 09.12.2024</h1>
+  <p>From: Vladimir Lombrozo<br/><br/>
+Subject: WEEK 50 Objectionary  </p>
+
+<p>Hi all,</p>
+
+<p><strong>Last week achievements:</strong></p>
+
+<p><em>jeo-maven-plugin:</em></p>
+
+<ul><li>Upgraded <code class="prettyprint">eo</code> to version <code class="prettyprint">0.46.0</code> [#939]</li>
+<li>Removed names from opcodes [#923]</li>
+<li>Changed storage of empty byte arrays to use <code class="prettyprint">--</code> [#933]</li>
+<li>Fixed <code class="prettyprint">bytecode-to-eo</code> integration test to print <code class="prettyprint">eo</code> objects only on Java 11 and above [#928]</li>
+<li>Replaced <code class="prettyprint">jeo.string</code> with <code class="prettyprint">org.eolang.string</code> [#920]</li>
+</ul><p><strong>Next week plans:</strong></p>
+
+<p><em>jeo-maven-plugin:</em></p>
+
+<ul><li>To use the <code class="prettyprint">org.eolang:lints</code> library for testing generated XMIR for validity [#938]</li>
+<li>To optimize the 'spring-fat' integration test due to unreasonable execution time [#889]</li>
+<li>To resolve puzzle <code class="prettyprint">488-a7265a1a</code> by enabling bytecode verification for Spring and removing the puzzle text from the source code [#543]</li>
+<li>To resolve puzzle <code class="prettyprint">488-9f6378f7</code> by enabling the execution of the <code class="prettyprint">xmir-to-phi</code> transformation and removing the puzzle text from the source code [#506]</li>
+</ul><p><em>opeo-maven-plugin:</em></p>
+
+<ul><li>To remove the crutch from FormattingDecompiler.java and resolve puzzle <code class="prettyprint">355-b9843d4a</code> [#358]</li>
+<li>To decompile Java Streams into beautiful EO code [#329]</li>
+<li>To calculate the Max Stack Size in JeoCompiler.java and resolve puzzle <code class="prettyprint">229-ddf067cd</code> [#286]</li>
+</ul><p><strong>Risks:</strong></p>
+
+<p><em>jeo-maven-plugin:</em></p>
+
+<ul><li>No risks identified [#939]</li>
+<li>No risks identified [#923]</li>
+<li>No risks identified [#933]</li>
+<li>No risks identified [#928]</li>
+<li>No risks identified [#920]</li>
+</ul><p>Best regards,<br/><br/>
+Vladimir Lombrozo<br/><br/>
+Software Developer  </p>
+
+<h2>2024-12-09  </h2>
+
+<p>Closed Pull Requests:<br/>
+ - title: feat(#939): Upgrade <code class="prettyprint">eo</code> up to the <code class="prettyprint">0.46.0</code> version, repo: jeo-maven-plugin, url: https://github.com/objectionary/jeo-maven-plugin/pull/942<br/>
+ - title: feat(#923): Remove Names From Opcodes, repo: jeo-maven-plugin, url: https://github.com/objectionary/jeo-maven-plugin/pull/935<br/>
+ - title: feat(#933): use -- instead of empty values, repo: jeo-maven-plugin, url: https://github.com/objectionary/jeo-maven-plugin/pull/934<br/>
+ - title: frat(#928): Don't Print EO if Java &lt; 11", repo: jeo-maven-plugin, url: https://github.com/objectionary/jeo-maven-plugin/pull/929<br/>
+ - title: feat(#920): <code class="prettyprint">jeo.string</code> -&gt; <code class="prettyprint">org.eolang.string</code>, repo: jeo-maven-plugin, url: https://github.com/objectionary/jeo-maven-plugin/pull/927</p>
+
+<p>Open Issues:<br/>
+ - title: testing of generated XMIR is not using our "lints", repo: jeo-maven-plugin, number: #938, url: https://github.com/objectionary/jeo-maven-plugin/issues/938, labels: ["enhancement", "soon"]<br/>
+ - title: 'spring-fat' Integration Test Takes Unreasonable Amount of Time , repo: jeo-maven-plugin, number: #889, url: https://github.com/objectionary/jeo-maven-plugin/issues/889, labels: ["bug", "soon"]<br/>
+ - title: FormattingDecompiler.java:113-118: Remove the crutch..., repo: opeo-maven-plugin, issue number: #358, url: https://github.com/objectionary/opeo-maven-plugin/issues/358, labels: ["soon"]<br/>
+ - title: Decompile Java Streams to beautiful EO, repo: opeo-maven-plugin, number: #329, url: https://github.com/objectionary/opeo-maven-plugin/issues/329, labels: ["enhancement", "soon"]<br/>
+ - title: JeoCompiler.java:87-95: Calculate the Max Stack Size. We..., repo: opeo-maven-plugin, issue number: #286, url: https://github.com/objectionary/opeo-maven-plugin/issues/286, labels: ["soon"]<br/>
+ - title: pom.xml:88-92: Enable Bytecode Verification For Spring..., repo: jeo-maven-plugin, issue number: #543, url: https://github.com/objectionary/jeo-maven-plugin/issues/543, labels: ["enhancement", "soon"]<br/>
+ - title: pom.xml:80-85: Enable the execution of the <code class="prettyprint">xmir-to-phi</code>..., repo: jeo-maven-plugin, issue number: #506, url: https://github.com/objectionary/jeo-maven-plugin/issues/506, labels: ["bug", "soon"]</p>
+
+</body>
+</html>
