@@ -5,39 +5,56 @@
   </head>
   <body>
   <h1>volodya-lombrozo 23.12.2024</h1>
-  <p><strong>From:</strong> Vladimir Lombrozo<br/><br/><strong>Subject:</strong> WEEK 52 Objectionary<br/><br/><strong>Date:</strong> December 23, 2024</p>
+  <hr/><p><strong>From:</strong> Vladimir Lombrozo<br/><br/><strong>Subject:</strong> WEEK 52 Objectionary<br/><br/><strong>Date:</strong> 2024-12-23</p>
 
-<hr/><p><strong>Hi all,</strong></p>
+<hr/><p>Hi all,</p>
 
-<h3>Last Week's Achievements</h3>
+<hr/><h3>Last Week Achievements</h3>
 
-<p><em>No achievements reported.</em></p>
+<p><strong>1. eo</strong></p>
 
-<h3>Next Week's Plans</h3>
+<ul><li>Found and fixed the bug related to token names [#3706, #3715, #3714].</li>
+<li>Underlined syntax errors [#3332].</li>
+</ul><p><strong>2. jsmith</strong></p>
 
-<h4>jeo-maven-plugin</h4>
+<ul><li>Created a separate class for <code class="prettyprint">AntlrString</code> [#84].</li>
+<li>Made <code class="prettyprint">Attributes</code> class immutable [#105].</li>
+</ul><p><strong>3. lints</strong></p>
 
-<ul><li>To use <code class="prettyprint">lints</code> library to validate generated XMIR documents [#938]</li>
-<li>To optimize 'spring-fat' integration test execution time [#889]</li>
-<li>To enable bytecode verification for Spring and remove puzzle text from <code class="prettyprint">pom.xml</code> [#543]</li>
-<li>To enable execution of the <code class="prettyprint">xmir-to-phi</code> transformation and remove puzzle text from <code class="prettyprint">pom.xml</code> [#506]</li>
-</ul><h4>opeo-maven-plugin</h4>
+<ul><li>Fixed concurrent problem with lints loading [#148].</li>
+</ul><hr/><h3>Next Week Plans</h3>
 
-<ul><li>To remove the temporary workaround in <code class="prettyprint">FormattingDecompiler.java</code> lines 113-118 [#358]</li>
-<li>To enhance the decompiler to convert Java Streams into better EO code [#329]</li>
-<li>To implement calculation of the Max Stack Size in <code class="prettyprint">JeoCompiler.java</code> [#286]</li>
-</ul><h3>Risks</h3>
+<p><strong>1. jeo-maven-plugin</strong></p>
 
-<h4>repository-name</h4>
+<ul><li>To use <code class="prettyprint">org.eolang:lints</code> library to validate generated XMIR documents [#938].</li>
+<li>To optimize the 'spring-fat' integration test which takes unreasonable time to complete [#889].</li>
+<li>To enable Bytecode Verification for Spring integration tests in <code class="prettyprint">pom.xml</code> lines 88-92 [#543].</li>
+<li>To enable execution of the 'xmir-to-phi' step in custom transformations in <code class="prettyprint">pom.xml</code> lines 80-85 [#506].</li>
+</ul><p><strong>2. opeo-maven-plugin</strong></p>
 
-<ul><li>No risks identified.</li>
-</ul><hr/><p><strong>Best regards,</strong></p>
+<ul><li>To remove the workaround in <code class="prettyprint">FormattingDecompiler.java</code> by resolving puzzle from #355 [#358].</li>
+<li>To enhance decompilation to produce readable EO code for Java Streams [#329].</li>
+<li>To calculate the max stack size in <code class="prettyprint">JeoCompiler.java</code> by resolving puzzle from #229 [#286].</li>
+</ul><hr/><h3>Risks</h3>
 
-<p>Vladimir Lombrozo  </p>
+<p><strong>1. eo</strong></p>
 
-<h2>Software Developer</h2>
+<ul><li>The incorrect naming of <code class="prettyprint">TAB</code>/<code class="prettyprint">UNTAB</code> tokens may cause parsing problems [#3706].</li>
+</ul><p><strong>2. lints</strong></p>
 
-<p>Closed Pull Requests:</p>
+<ul><li>The current implementation contains a significant concurrency bug due to unsynchronized use of <code class="prettyprint">Sticky</code> object in a multi-threaded environment [#148].</li>
+</ul><hr/><p>Best regards,</p>
+
+<p>Vladimir Lombrozo<br/><br/>
+Software Developer</p>
+
+<hr/><hr/><p>Closed Pull Requests:<br/>
+ - title: feat(#3706): Use Correct Token Names, repo: eo, url: https://github.com/objectionary/eo/pull/3716<br/>
+ - title: feat(#3706): Found the Bug Related to Token Names, repo: eo, url: https://github.com/objectionary/eo/pull/3713<br/>
+ - title: Underline Syntax Errors, repo: eo, url: https://github.com/objectionary/eo/pull/3700<br/>
+ - title: feat(#84): Create a Separate Class For <code class="prettyprint">AntlrSting</code>, repo: jsmith, url: https://github.com/volodya-lombrozo/jsmith/pull/110<br/>
+ - title: feat(#105): Make <code class="prettyprint">Attributes</code> Immutable, repo: jsmith, url: https://github.com/volodya-lombrozo/jsmith/pull/109<br/>
+ - title: feat(#148): Fix Concurrent Problem With Lints Loading, repo: lints, url: https://github.com/objectionary/lints/pull/150</p>
 
 <p>Open Issues:<br/>
  - title: testing of generated XMIR is not using our "lints", repo: jeo-maven-plugin, number: #938, url: https://github.com/objectionary/jeo-maven-plugin/issues/938, labels: ["enhancement", "soon"]<br/>
