@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+  <head>
+    <title>volodya-lombrozo 30.12.2024</title>
+  </head>
+  <body>
+  <h1>volodya-lombrozo 30.12.2024</h1>
+  <hr/><p><strong>Weekly Report</strong></p>
+
+<p><strong>From:</strong> Vladimir Lombrozo<br/><br/><strong>Subject:</strong> WEEK 53 Objectionary  </p>
+
+<hr/><p><strong>Hi all,</strong></p>
+
+<p><strong>Last week achievements:</strong></p>
+
+<p><strong>jeo-maven-plugin:</strong></p>
+
+<ul><li>Disabled XMIR verification by default [#947]</li>
+<li>Used <code class="prettyprint">objectionary/lints</code> before and after <code class="prettyprint">phi/unphi</code> phases [#938]</li>
+<li>Switched to <code class="prettyprint">jcabi</code> XML implementation [#953]</li>
+<li>Added <code class="prettyprint">XmlDoc</code> and <code class="prettyprint">XmlNode</code> abstractions [#948]</li>
+<li>Updated dependencies [#949]</li>
+</ul><p><strong>eo:</strong></p>
+
+<ul><li>Added error location for custom errors [#3743]</li>
+<li>Used a single format for all error messages [#3756]</li>
+<li>Split <code class="prettyprint">ParsingErrors</code> into two separate classes [#3742]</li>
+<li>Identified a rule where an error occurred [#3706]</li>
+</ul><p><strong>jsmith:</strong></p>
+
+<ul><li>Implemented proper in-memory compilation and refactored SyntaxGuard to include InMemoryCompiler [#113, #89]</li>
+</ul><p><strong>Next week plans:</strong></p>
+
+<p><strong>jeo-maven-plugin:</strong></p>
+
+<ul><li>To optimize the 'spring-fat' integration test due to excessive execution time [#889]</li>
+<li>To enable Bytecode Verification for Spring by resolving the puzzle from #488 and removing the corresponding text from the source code [#543]</li>
+<li>To enable the execution of the <code class="prettyprint">xmir-to-phi</code> by resolving the puzzle from #488 and removing the corresponding text from the source code [#506]</li>
+</ul><p><strong>opeo-maven-plugin:</strong></p>
+
+<ul><li>To remove the crutch from FormattingDecompiler.java lines 113-118 [#358]</li>
+<li>To decompile Java Streams to beautiful EO [#329]</li>
+<li>To calculate the Max Stack Size in JeoCompiler.java lines 87-95 [#286]</li>
+</ul><p><strong>Risks:</strong></p>
+
+<p><strong>jeo-maven-plugin:</strong></p>
+
+<ul><li>The XMIR verification is disabled by default due to unreasonable time consumption, which could impact integration tests [#947]</li>
+<li>No risks identified [#938]</li>
+<li>No risks identified [#953]</li>
+<li>The <code class="prettyprint">jcabi-xml</code> library is causing performance issues, necessitating the ability to change implementations [#948]</li>
+<li>No risks identified [#949]</li>
+</ul><p><strong>eo:</strong></p>
+
+<ul><li>No risks identified [#3743]</li>
+<li>No risks identified [#3756]</li>
+<li>No risks identified [#3742]</li>
+<li>No risks identified [#3706]</li>
+</ul><p><strong>jsmith:</strong></p>
+
+<ul><li>No risks identified [#113]</li>
+<li>No risks identified [#89]</li>
+</ul><p><strong>Best regards,</strong><br/><br/>
+Vladimir Lombrozo<br/><br/>
+Software Developer<br/><br/>
+2024-12-30  </p>
+
+<hr/><hr/><p>Closed Pull Requests:<br/>
+ - title: feat(#947): Disable XMIR Verification by Default, repo: jeo-maven-plugin, url: https://github.com/objectionary/jeo-maven-plugin/pull/956<br/>
+ - title: feat(#938): Use <code class="prettyprint">objectionary/lints</code> Before and After <code class="prettyprint">phi/unphi</code>, repo: jeo-maven-plugin, url: https://github.com/objectionary/jeo-maven-plugin/pull/955<br/>
+ - title: feat(#953): Use <code class="prettyprint">jcabi</code> Xml Implementation, repo: jeo-maven-plugin, url: https://github.com/objectionary/jeo-maven-plugin/pull/954<br/>
+ - title: feat(#3743): Add Error Location for Custom Errors, repo: eo, url: https://github.com/objectionary/eo/pull/3766<br/>
+ - title: feat(#948): Add <code class="prettyprint">XmlDoc</code> and <code class="prettyprint">XmlNode</code> Abstractions, repo: jeo-maven-plugin, url: https://github.com/objectionary/jeo-maven-plugin/pull/952<br/>
+ - title: feat(#949): Update Deps, repo: jeo-maven-plugin, url: https://github.com/objectionary/jeo-maven-plugin/pull/950<br/>
+ - title: feat(#3756): Use a Single Format for All Error Messages, repo: eo, url: https://github.com/objectionary/eo/pull/3762<br/>
+ - title: feat(#113): Use Proper In-memory Compilation, repo: jsmith, url: https://github.com/volodya-lombrozo/jsmith/pull/114<br/>
+ - title: feat(#3742): Split <code class="prettyprint">ParsingErrors</code> on Two Separate Classes, repo: eo, url: https://github.com/objectionary/eo/pull/3751<br/>
+ - title: feat(#3706): Identify a Rule Where an Error Occurred, repo: eo, url: https://github.com/objectionary/eo/pull/3741<br/>
+ - title: feat(#89): SyntaxGuard Refactoring, repo: jsmith, url: https://github.com/volodya-lombrozo/jsmith/pull/111</p>
+
+<p>Open Issues:<br/>
+ - title: 'spring-fat' Integration Test Takes Unreasonable Amount of Time , repo: jeo-maven-plugin, number: #889, url: https://github.com/objectionary/jeo-maven-plugin/issues/889, labels: ["bug", "soon"]<br/>
+ - title: FormattingDecompiler.java:113-118: Remove the crutch..., repo: opeo-maven-plugin, issue number: #358, url: https://github.com/objectionary/opeo-maven-plugin/issues/358, labels: ["soon"]<br/>
+ - title: Decompile Java Streams to beautiful EO, repo: opeo-maven-plugin, number: #329, url: https://github.com/objectionary/opeo-maven-plugin/issues/329, labels: ["enhancement", "soon"]<br/>
+ - title: JeoCompiler.java:87-95: Calculate the Max Stack Size. We..., repo: opeo-maven-plugin, issue number: #286, url: https://github.com/objectionary/opeo-maven-plugin/issues/286, labels: ["soon"]<br/>
+ - title: pom.xml:88-92: Enable Bytecode Verification For Spring..., repo: jeo-maven-plugin, issue number: #543, url: https://github.com/objectionary/jeo-maven-plugin/issues/543, labels: ["enhancement", "soon"]<br/>
+ - title: pom.xml:80-85: Enable the execution of the <code class="prettyprint">xmir-to-phi</code>..., repo: jeo-maven-plugin, issue number: #506, url: https://github.com/objectionary/jeo-maven-plugin/issues/506, labels: ["bug", "soon"]</p>
+
+</body>
+</html>
