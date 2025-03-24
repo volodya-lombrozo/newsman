@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+  <head>
+    <title>volodya-lombrozo 24.03.2025</title>
+  </head>
+  <body>
+  <h1>volodya-lombrozo 24.03.2025</h1>
+  <hr/><p><strong>Weekly Report</strong></p>
+
+<p><strong>From:</strong> Vladimir Lombrozo<br/><br/><strong>Subject:</strong> WEEK 13 Objectionary  </p>
+
+<hr/><p><strong>Achievements from Last Week:</strong></p>
+
+<p><strong>EO:</strong></p>
+
+<ul><li>Added a disabled test for XMIR bytes with an anonymous abstract object [#3807].</li>
+<li>Improved error message for invalid program definition and corrected line for TAB token [#3851].</li>
+<li>Removed the unnecessary puzzle [#3745].</li>
+<li>Updated xnav dependency version to <code class="prettyprint">0.1.16</code> [#4018].</li>
+<li>Avoided using 'test' suffix in test names [#chore].</li>
+</ul><p><strong>JEO-Maven-Plugin:</strong></p>
+
+<ul><li>Removed 'xmir-to-phi' transformation from 'spring-fat' integration test [#633].</li>
+<li>Removed <code class="prettyprint">parallelThreads</code> from <code class="prettyprint">pom.xml</code> configuration [#1044].</li>
+<li>Enabled EO Printing in 'custom-transformations' integration test [#619].</li>
+<li>Implemented bytecode verification for 'spring-fat' integration test [#543].</li>
+<li>Removed todo comment for enabling xmir-to-phi goal [#506].</li>
+<li>Removed outdated JavaToEo test and fixed SPDX license issue [#93].</li>
+<li>Enabled XMIR verification for the 'jna' integration test [#1004].</li>
+<li>Added SPDX Metas to all generated XMIR files [#1028].</li>
+</ul><hr/><p><strong>Plans for Next Week:</strong></p>
+
+<p><strong>OPEO-Maven-Plugin:</strong></p>
+
+<ul><li>To remove the crutch from FormattingDecompiler.java lines 113-118 and resolve puzzle 355-b9843d4a [#358].</li>
+<li>To decompile Java Streams to beautiful EO [#329].</li>
+<li>To calculate the Max Stack Size in JeoCompiler.java lines 87-95 and resolve puzzle 229-ddf067cd [#286].</li>
+</ul><hr/><p><strong>Risks:</strong></p>
+
+<p><strong>EO:</strong></p>
+
+<ul><li>The XMIR format is missing an anonymous abstract object for bytes, which could lead to incorrect compilation [#3807].</li>
+<li>No risks identified [#3851].</li>
+<li>No risks identified [#3745].</li>
+<li>No risks identified [#4018].</li>
+<li>It's illegal to use 'test' noun in the test names, which could lead to naming conflicts [#chore].</li>
+</ul><p><strong>JEO-Maven-Plugin:</strong></p>
+
+<ul><li>The transformation is still rather long and will likely remain unchanged, potentially slowing down the build process [#633].</li>
+<li>No risks identified [#1044].</li>
+<li>The lack of support for Java 8 previously disabled EO Printing, which could affect integration testing [#619].</li>
+<li>Bytecode verification cannot be enabled for the 'spring-fat' integration test, which might affect test coverage [#543].</li>
+<li>No risks identified [#506].</li>
+<li>No risks identified [#93].</li>
+<li>No risks identified [#1004].</li>
+<li>No risks identified [#1028].</li>
+</ul><hr/><p><strong>Best regards,</strong><br/><br/>
+Vladimir Lombrozo<br/><br/>
+Software Developer<br/><br/>
+2025-03-24  </p>
+
+<hr/><hr/><p>Closed Pull Requests:<br/>
+ - title: test(#3807): Add disabled test for XMIR bytes with anonymous abstract object, repo: eo, url: https://github.com/objectionary/eo/pull/4031<br/>
+ - title: fix(#3851): Improve error message for invalid program definition, repo: eo, url: https://github.com/objectionary/eo/pull/4029<br/>
+ - title: fix(#3851): Correct line for TAB token , repo: eo, url: https://github.com/objectionary/eo/pull/4026<br/>
+ - title: chore(#3745): Remove the unnecessary puzzle, repo: eo, url: https://github.com/objectionary/eo/pull/4025<br/>
+ - title: chore(#633): Remove 'xmir-to-phi' transformation from 'spring-fat' integration test, repo: jeo-maven-plugin, url: https://github.com/objectionary/jeo-maven-plugin/pull/1047<br/>
+ - title: fix(#1044): Remove <code class="prettyprint">parallelThreads</code> from <code class="prettyprint">pom.xml</code> configuration, repo: jeo-maven-plugin, url: https://github.com/objectionary/jeo-maven-plugin/pull/1046<br/>
+ - title: chore(#4018): Update xnav dependency version <code class="prettyprint">0.1.16</code>, repo: eo, url: https://github.com/objectionary/eo/pull/4024<br/>
+ - title: feat(#619): Enable EO Printing in 'custom-transformations' integration test, repo: jeo-maven-plugin, url: https://github.com/objectionary/jeo-maven-plugin/pull/1045<br/>
+ - title: chore: don't use 'test' suffix in test names, repo: eo, url: https://github.com/objectionary/eo/pull/4019<br/>
+ - title: feat(#543): Bytecode Verification for 'spring-fat' Integration Test, repo: jeo-maven-plugin, url: https://github.com/objectionary/jeo-maven-plugin/pull/1041<br/>
+ - title: feat(#506): Remove todo comment for enabling xmir-to-phi goal, repo: jeo-maven-plugin, url: https://github.com/objectionary/jeo-maven-plugin/pull/1040<br/>
+ - title: feat(#93): Remove outdated JavaToEo test and fix SPDX license issue, repo: jeo-maven-plugin, url: https://github.com/objectionary/jeo-maven-plugin/pull/1039<br/>
+ - title: feat(#1004): enable XMIR verification for the 'jna' integration test, repo: jeo-maven-plugin, url: https://github.com/objectionary/jeo-maven-plugin/pull/1037<br/>
+ - title: feat(#1028): Add SPDX Metas to All Generated XMIR Files, repo: jeo-maven-plugin, url: https://github.com/objectionary/jeo-maven-plugin/pull/1034</p>
+
+<p>Open Issues:<br/>
+ - title: FormattingDecompiler.java:113-118: Remove the crutch..., repo: opeo-maven-plugin, issue number: #358, url: https://github.com/objectionary/opeo-maven-plugin/issues/358, labels: ["soon"]<br/>
+ - title: Decompile Java Streams to beautiful EO, repo: opeo-maven-plugin, number: #329, url: https://github.com/objectionary/opeo-maven-plugin/issues/329, labels: ["enhancement", "soon"]<br/>
+ - title: JeoCompiler.java:87-95: Calculate the Max Stack Size. We..., repo: opeo-maven-plugin, issue number: #286, url: https://github.com/objectionary/opeo-maven-plugin/issues/286, labels: ["soon"]</p>
+
+</body>
+</html>
