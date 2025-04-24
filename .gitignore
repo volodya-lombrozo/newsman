@@ -3,3 +3,4 @@ ri20min.rb
 ./lib/newsman/.env
 *.gem
 .idea/*
+.aidy
