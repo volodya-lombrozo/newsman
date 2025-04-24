@@ -7,7 +7,7 @@ gem 'faraday-retry'
 gem 'minitest'
 gem 'net-http'
 gem 'nokogiri', '~> 1.16'
-gem 'octokit', '~> 9.0'
+gem 'octokit', '~> 10.0'
 gem 'optparse'
 gem 'redcarpet', '~> 3.6'
 gem 'rubocop', require: false
