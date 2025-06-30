@@ -22,7 +22,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
           OPENAI_TOKEN: ${{ secrets.OPENAI_TOKEN }}
-        run: newsman --name "Vladimir Lombrozo" --username "volodya-lombrozo" --model gpt-4o --repository objectionary/jeo-maven-plugin,objectionary/opeo-maven-plugin,objectionary/eo,objectionary/lints,volodya-lombrozo/jsmith -o html -t Objectionary
+        run: newsman --name "Vladimir Lombrozo" --username "volodya-lombrozo" --model gpt-4o --repository objectionary/jeo-maven-plugin,objectionary/opeo-maven-plugin,objectionary/eo,objectionary/lints,volodya-lombrozo/jsmith,cqfn/refrax -o html -t Objectionary
       - run: mkdir -p gh-pages/$(date +'%Y/%m/%d')
       - run: cp *.html gh-pages/$(date +'%Y/%m/%d')
       - uses: JamesIves/github-pages-deploy-action@v4.7.3
