@@ -4,3 +4,4 @@ ri20min.rb
 *.gem
 .idea/*
 .aidy
+.aidy/
