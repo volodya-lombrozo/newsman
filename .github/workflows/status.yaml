@@ -25,7 +25,7 @@ jobs:
         run: newsman --name "Vladimir Lombrozo" --username "volodya-lombrozo" --model gpt-4o --repository objectionary/jeo-maven-plugin,objectionary/eo,objectionary/lints,volodya-lombrozo/jsmith,cqfn/refrax -o html -t Objectionary
       - run: mkdir -p gh-pages/$(date +'%Y/%m/%d')
       - run: cp *.html gh-pages/$(date +'%Y/%m/%d')
-      - uses: JamesIves/github-pages-deploy-action@v4.7.3
+      - uses: JamesIves/github-pages-deploy-action@v4.7.4
         with:
           branch: gh-pages
           folder: gh-pages
