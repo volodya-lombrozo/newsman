@@ -18,14 +18,14 @@ jobs:
         with:
           ruby-version: 4.0.1
       - run: gem install newsman 
-      - name: Run newsman script with gpt-5-mini
+      - name: Run newsman script with gpt-5-chat-latest
         env:
           GITHUB_TOKEN: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
           OPENAI_TOKEN: ${{ secrets.OPENAI_TOKEN }}
         run: |-
           newsman --name "Vladimir Lombrozo" \
                   --username "volodya-lombrozo" \
-                  --model gpt-5-mini \
+                  --model gpt-5-chat-latest \
                   --repository objectionary/eoc,objectionary/jeo-maven-plugin,objectionary/eo,objectionary/lints,volodya-lombrozo/jsmith,cqfn/refrax,objectionary/hone-maven-plugin \
                   -o html \
                   -t Objectionary
