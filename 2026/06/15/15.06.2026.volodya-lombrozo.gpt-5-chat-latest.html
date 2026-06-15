@@ -5,8 +5,7 @@
   </head>
   <body>
   <h1>volodya-lombrozo 15.06.2026</h1>
-  <p>Here is your report reformatted into a single, cohesive, and consistent style.<br/><br/>
-All original text has been preserved exactly as provided.</p>
+  <p>Here is your report reformatted into a single cohesive and consistent style, with all original text preserved exactly as provided:</p>
 
 <hr/><p><strong>From:</strong> Vladimir Lombrozo<br/><br/><strong>Subject:</strong> WEEK 25 Objectionary  </p>
 
@@ -14,41 +13,41 @@ All original text has been preserved exactly as provided.</p>
 
 <hr/><h3>Last Week Achievements</h3>
 
-<p><strong>eo:</strong></p>
+<p><strong>eo:</strong><br/>
+- Enabled the <code class="prettyprint">object-has-data</code> lint in pom.xml [#4949]<br/><br/>
+- Enabled the <code class="prettyprint">ascii-only</code> lint and bumped <code class="prettyprint">lints</code> to <code class="prettyprint">0.2.3</code> [#5186]<br/><br/>
+- Upgraded <code class="prettyprint">jcabi-xml</code> to <code class="prettyprint">0.37.1</code> to fix a race condition [#5192]<br/><br/>
+- Removed the <code class="prettyprint">empty-object</code> lint skip [#5154]<br/><br/>
+- Removed <code class="prettyprint">Janitor</code> and disabled cache in <code class="prettyprint">eo-runtime</code> [#5197]<br/><br/>
+- Added <code class="prettyprint">[LINT]</code> prefix to lint warning and error log messages [#5202]<br/><br/>
+- Suppressed mandatory-package lint in root-level <code class="prettyprint">eo-runtime</code> objects [#5205]<br/><br/>
+- Upgraded <code class="prettyprint">lints</code> to <code class="prettyprint">0.2.4</code> and removed stale suppressions [#5211]  </p>
 
-<ul><li>Enabled the <code class="prettyprint">object-has-data</code> lint in pom.xml [#4949]<br/></li>
-<li>Enabled the <code class="prettyprint">ascii-only</code> lint and bumped <code class="prettyprint">lints</code> to <code class="prettyprint">0.2.3</code> [#5186]<br/></li>
-<li>Upgraded <code class="prettyprint">jcabi-xml</code> to <code class="prettyprint">0.37.1</code> to fix a race condition [#5192]<br/></li>
-<li>Removed the <code class="prettyprint">empty-object</code> lint skip [#5154]<br/></li>
-<li>Removed <code class="prettyprint">Janitor</code> and disabled cache in <code class="prettyprint">eo-runtime</code> [#5197]<br/></li>
-<li>Added <code class="prettyprint">[LINT]</code> prefix to lint warning and error log messages [#5202]<br/></li>
-<li>Suppressed mandatory-package lint in root-level <code class="prettyprint">eo-runtime</code> objects [#5205]<br/></li>
-<li>Upgraded <code class="prettyprint">lints</code> to <code class="prettyprint">0.2.4</code> and removed stale suppressions [#5211]<br/></li>
-</ul><p><strong>lints:</strong></p>
+<p><strong>lints:</strong><br/><br/>
+- Fixed the false positive in <code class="prettyprint">unit-test-missing</code> for concrete non-abstraction objects [#952]<br/><br/>
+- Updated <code class="prettyprint">eo-parser</code> to version 0.61.1 and adapted atom syntax changes [#929]  </p>
 
-<ul><li>Fixed the false positive in <code class="prettyprint">unit-test-missing</code> for concrete non-abstraction objects [#952]<br/></li>
-<li>Updated <code class="prettyprint">eo-parser</code> to version 0.61.1 and adapted atom syntax changes [#929]<br/></li>
-</ul><hr/><h3>Next Week Plans</h3>
+<hr/><h3>Next Week Plans</h3>
 
-<p><em>(No items listed)</em></p>
+<p><em>(No entries provided)</em></p>
 
 <hr/><h3>Risks</h3>
 
-<p><strong>eo:</strong></p>
+<p><strong>eo:</strong><br/><br/>
+- Upgrading <code class="prettyprint">lints</code> and removing suppressions may introduce new linting errors in existing code [#5211].<br/><br/>
+- Suppressing the <code class="prettyprint">mandatory-package</code> lint at the root level might hide structural package issues in the future [#5205].<br/><br/>
+- Adding the <code class="prettyprint">[LINT]</code> prefix to log messages could break existing log parsers or monitoring tools relying on old formats [#5202].<br/><br/>
+- Disabling caching in <code class="prettyprint">eo-runtime</code> may degrade performance during repeated builds [#5197].<br/><br/>
+- Removing the <code class="prettyprint">empty-object</code> lint skip could surface new lint violations that block builds [#5154].<br/><br/>
+- Upgrading <code class="prettyprint">jcabi-xml</code> may cause unforeseen compatibility issues despite fixing the race condition [#5192].<br/><br/>
+- Enabling the <code class="prettyprint">object-has-data</code> lint may require refactoring existing EO objects to comply with new rules [#4949].<br/><br/>
+- Enabling the <code class="prettyprint">ascii-only</code> lint could break builds containing non-ASCII characters in EO sources [#5186].  </p>
 
-<ul><li>No risks identified [#5211].<br/></li>
-<li>No risks identified [#5205].<br/></li>
-<li>No risks identified [#5202].<br/></li>
-<li>Disabling cache in <code class="prettyprint">eo-runtime</code> may lead to performance degradation during repeated builds [#5197].<br/></li>
-<li>No risks identified [#5154].<br/></li>
-<li>Upgrading <code class="prettyprint">jcabi-xml</code> could introduce compatibility issues with existing XML handling logic [#5192].<br/></li>
-<li>Enabling <code class="prettyprint">object-has-data</code> lint might cause new build failures if legacy code violates the rule [#4949].<br/></li>
-<li>Enabling <code class="prettyprint">ascii-only</code> lint may reject valid non-ASCII identifiers used in existing EO objects [#5186].<br/></li>
-</ul><p><strong>lints:</strong></p>
+<p><strong>lints:</strong><br/><br/>
+- Adjusting the <code class="prettyprint">unit-test-missing</code> rule may overlook some objects that still require tests [#952].<br/><br/>
+- Updating <code class="prettyprint">eo-parser</code> and adapting syntax may introduce parsing inconsistencies with legacy EO code [#929].  </p>
 
-<ul><li>No risks identified [#952].<br/></li>
-<li>Updating <code class="prettyprint">eo-parser</code> to a new version could break compatibility with existing syntax or tests [#929].<br/></li>
-</ul><hr/><p><strong>Best regards,</strong><br/><br/>
+<hr/><p><strong>Best regards,</strong><br/><br/>
 Vladimir Lombrozo<br/><br/>
 Software Developer<br/><br/>
 2026-06-15  </p>
