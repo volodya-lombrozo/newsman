@@ -5,7 +5,7 @@
   </head>
   <body>
   <h1>volodya-lombrozo 22.06.2026</h1>
-  <p>Here is your report reformatted into a single cohesive and consistent style, with the original text preserved exactly as provided:  </p>
+  <p>Here’s your report reformatted into a single cohesive and consistent style, with all original text preserved exactly as provided:  </p>
 
 <hr/><p><strong>From:</strong> Vladimir Lombrozo<br/><br/><strong>Subject:</strong> WEEK 26 Objectionary  </p>
 
@@ -13,17 +13,19 @@
 
 <hr/><h3>Last Week Achievements</h3>
 
-<p><strong>eo:</strong><br/>
-- Upgraded the lints dependency from 0.2.6 to 0.2.7 [#5241]<br/><br/>
-- Enabled the <code class="prettyprint">wrong-test-order</code> lint in eo-runtime pom.xml [#5223]<br/><br/>
-- Adjusted vars-float-up to insert floated variables before tests [#5232]<br/><br/>
-- Enabled the <code class="prettyprint">unused-void-attr</code> lint and bumped lints to 0.2.6 [#4155]<br/><br/>
-- Fixed lint warnings in eo-runtime source files [#5221]  </p>
-
 <p><strong>lints:</strong><br/>
-- Allowed suppression of the <code class="prettyprint">unused-void-attr</code> lint with the "unused" prefix and later removed the lint to prevent false positives [#574]<br/><br/>
-- Skipped capitalization checks for <code class="prettyprint">@todo</code> and <code class="prettyprint">@fixme</code> markers [#805]<br/><br/>
-- Suppressed <code class="prettyprint">sparse-decoration</code> false positives when <code class="prettyprint">@</code> uses <code class="prettyprint">^</code> [#963]  </p>
+- Added suppression support for unused void attributes with the "unused" prefix and later removed the <code class="prettyprint">unused-void-attr</code> lint to avoid false positives [#574]<br/><br/>
+- Skipped capitalization checks for comments starting with <code class="prettyprint">@todo</code> or <code class="prettyprint">@fixme</code> markers [#805]<br/><br/>
+- Suppressed sparse-decoration false positives when <code class="prettyprint">@</code> uses <code class="prettyprint">^</code> [#963]<br/><br/>
+- Wrapped <code class="prettyprint">Sticky</code> with <code class="prettyprint">Synced</code> in <code class="prettyprint">LtByXsl</code> for thread safety [#970]  </p>
+
+<p><strong>eo:</strong><br/>
+- Fixed lint warnings in eo-runtime source files [#5221]<br/><br/>
+- Enabled <code class="prettyprint">wrong-test-order</code> lint in eo-runtime pom.xml [#5223]<br/><br/>
+- Renamed <code class="prettyprint">positive-infinity</code>/<code class="prettyprint">negative-infinity</code> to <code class="prettyprint">pinf</code>/<code class="prettyprint">ninf</code> and <code class="prettyprint">line-separator</code> to <code class="prettyprint">eol</code> [#5224]<br/><br/>
+- Inserted floated vars before tests in vars-float-up [#5232]<br/><br/>
+- Enabled <code class="prettyprint">unused-void-attr</code> lint and bumped lints to 0.2.6 [#4155]<br/><br/>
+- Upgraded lints dependency from 0.2.6 to 0.2.7 [#5241]  </p>
 
 <hr/><h3>Next Week Plans</h3>
 
@@ -31,18 +33,20 @@
 
 <hr/><h3>Risks</h3>
 
-<p><strong>eo:</strong><br/>
-- No risks identified [#5241].<br/><br/>
-- No risks identified [#5223].<br/><br/>
-- No risks identified [#5232].<br/><br/>
-- No risks identified [#4155].<br/><br/>
-- The temporary disabling of two lints may hide potential code quality issues until upstream fixes are merged [#5221].  </p>
-
 <p><strong>lints:</strong><br/>
+- The previous thread-safety race condition in <code class="prettyprint">LtByXsl</code> could still cause concurrency issues if similar patterns exist elsewhere [#970].<br/><br/>
+- The removal of the <code class="prettyprint">unused-void-attr</code> lint may hide legitimate unused attribute problems if not carefully reviewed [#574].<br/><br/>
+- Allowing suppression of <code class="prettyprint">unused-void-attr</code> with an <code class="prettyprint">unused</code> prefix might lead to inconsistent naming and overlooked unused attributes [#574].<br/><br/>
 - No risks identified [#963].<br/><br/>
-- No risks identified [#805].<br/><br/>
-- No risks identified [#574].<br/><br/>
-- The new suppression mechanism might encourage developers to silence warnings instead of addressing underlying issues [#574].  </p>
+- No risks identified [#805].  </p>
+
+<p><strong>eo:</strong><br/>
+- Renaming constants like <code class="prettyprint">positive-infinity</code> and <code class="prettyprint">negative-infinity</code> may break backward compatibility in dependent modules [#5224].<br/><br/>
+- Upgrading the <code class="prettyprint">lints</code> dependency could introduce new linting failures or inconsistencies in existing EO sources [#5241].<br/><br/>
+- Enabling the <code class="prettyprint">wrong-test-order</code> lint may cause unexpected build failures if legacy tests are not yet compliant [#5223].<br/><br/>
+- Adjusting <code class="prettyprint">vars-float-up</code> behavior could affect object ordering and lead to subtle runtime differences [#5232].<br/><br/>
+- Enabling <code class="prettyprint">unused-void-attr</code> lint might generate false positives in complex EO structures [#4155].<br/><br/>
+- Disabling two lints due to upstream issues may allow style regressions or untracked code quality problems [#5221].  </p>
 
 <hr/><p><strong>Best regards,</strong><br/><br/>
 Vladimir Lombrozo<br/><br/>
@@ -50,6 +54,8 @@ Software Developer<br/><br/>
 2026-06-22  </p>
 
 <hr/><hr/><p>Closed Pull Requests:<br/>
+ - title: fix(#970): wrap <code class="prettyprint">Sticky</code> with <code class="prettyprint">Synced</code> in <code class="prettyprint">LtByXsl</code> for thread safety, repo: lints, url: https://github.com/objectionary/lints/pull/971<br/>
+ - title: fix(#5224): rename <code class="prettyprint">positive-infinity</code>/<code class="prettyprint">negative-infinity</code> to <code class="prettyprint">pinf</code>/<code class="prettyprint">ninf</code> and <code class="prettyprint">line-separator</code> to <code class="prettyprint">eol</code>, repo: eo, url: https://github.com/objectionary/eo/pull/5247<br/>
  - title: build(#5241): upgrade lints dependency from 0.2.6 to 0.2.7, repo: eo, url: https://github.com/objectionary/eo/pull/5242<br/>
  - title: fix(#963): suppress sparse-decoration false positive when <code class="prettyprint">@</code> uses <code class="prettyprint">^</code>, repo: lints, url: https://github.com/objectionary/lints/pull/964<br/>
  - title: fix(#805): skip capitalization check for <code class="prettyprint">@todo</code>/<code class="prettyprint">@fixme</code> markers, repo: lints, url: https://github.com/objectionary/lints/pull/960<br/>
