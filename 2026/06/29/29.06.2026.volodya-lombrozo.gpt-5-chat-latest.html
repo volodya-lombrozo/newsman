@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+  <head>
+    <title>volodya-lombrozo 29.06.2026</title>
+  </head>
+  <body>
+  <h1>volodya-lombrozo 29.06.2026</h1>
+  <p>Here is your report reformatted into a single cohesive and consistent style, with the original text preserved exactly as provided:</p>
+
+<hr/><p><strong>From:</strong> Vladimir Lombrozo<br/><br/><strong>Subject:</strong> WEEK 27 Objectionary  </p>
+
+<hr/><p><strong>Hi all,</strong></p>
+
+<hr/><h3>Last Week Achievements</h3>
+
+<p><strong>eo:</strong><br/>
+- Renamed <code class="prettyprint">positive-infinity</code>/<code class="prettyprint">negative-infinity</code> to <code class="prettyprint">pinf</code>/<code class="prettyprint">ninf</code> and <code class="prettyprint">line-separator</code> to <code class="prettyprint">eol</code> [#5224]<br/><br/>
+- Enabled <code class="prettyprint">duplicate-names-in-diff-context</code> lint in pom.xml [#4156]<br/><br/>
+- Skipped test source generation for discovered EO dependencies [#5269]  </p>
+
+<p><strong>lints:</strong><br/>
+- Wrapped <code class="prettyprint">Sticky</code> with <code class="prettyprint">Synced</code> in <code class="prettyprint">LtByXsl</code> for thread safety [#970]<br/><br/>
+- Removed the <code class="prettyprint">duplicate-names-in-diff-context</code> lint [#972]<br/><br/>
+- Used <code class="prettyprint">xsl:key</code> to fix O(n²) complexity in redundant-object lint [#975]<br/><br/>
+- Fixed duplicate-as-attribute XSL to use key-based lookup [#994]  </p>
+
+<p><strong>eoc:</strong><br/>
+- Skipped Maven Central check for SNAPSHOT parser versions [#1009]  </p>
+
+<hr/><h3>Next Week Plans</h3>
+
+<p><em>(No items listed)</em></p>
+
+<hr/><h3>Risks</h3>
+
+<p><strong>eo:</strong><br/>
+- No risks identified [#5269].<br/><br/>
+- No risks identified [#4156].<br/><br/>
+- No risks identified [#5224].  </p>
+
+<p><strong>lints:</strong><br/>
+- The duplicate-as-attribute XSL may still cause performance degradation if the key-based lookup is misapplied [#994].<br/><br/>
+- The redundant-object lint optimization could introduce incorrect duplicate detection if key indexing fails [#975].<br/><br/>
+- The removal of the duplicate-names-in-diff-context lint might allow undetected naming conflicts in certain scopes [#972].<br/><br/>
+- The thread-safety fix in LtByXsl may not fully prevent race conditions under heavy parallel load [#970].  </p>
+
+<p><strong>eoc:</strong><br/>
+- No risks identified [#1009].  </p>
+
+<hr/><p><strong>Best regards,</strong><br/><br/>
+Vladimir Lombrozo<br/><br/>
+Software Developer<br/><br/>
+2026-06-29  </p>
+
+<hr/><hr/><p>Closed Pull Requests:<br/>
+ - title: fix(#5269): skip test source generation for discovered EO dependencies, repo: eo, url: https://github.com/objectionary/eo/pull/5270<br/>
+ - title: perf(#994): fix duplicate-as-attribute XSL to use key-based lookup, repo: lints, url: https://github.com/objectionary/lints/pull/1004<br/>
+ - title: perf(#975): use xsl:key to fix O(n²) complexity in redundant-object lint, repo: lints, url: https://github.com/objectionary/lints/pull/976<br/>
+ - title: feat(#4156): enable <code class="prettyprint">duplicate-names-in-diff-context</code> lint in pom.xml, repo: eo, url: https://github.com/objectionary/eo/pull/5251<br/>
+ - title: fix(#972): remove <code class="prettyprint">duplicate-names-in-diff-context</code> lint, repo: lints, url: https://github.com/objectionary/lints/pull/973<br/>
+ - title: fix(#1009): skip Maven Central check for SNAPSHOT parser versions, repo: eoc, url: https://github.com/objectionary/eoc/pull/1010<br/>
+ - title: fix(#970): wrap <code class="prettyprint">Sticky</code> with <code class="prettyprint">Synced</code> in <code class="prettyprint">LtByXsl</code> for thread safety, repo: lints, url: https://github.com/objectionary/lints/pull/971<br/>
+ - title: fix(#5224): rename <code class="prettyprint">positive-infinity</code>/<code class="prettyprint">negative-infinity</code> to <code class="prettyprint">pinf</code>/<code class="prettyprint">ninf</code> and <code class="prettyprint">line-separator</code> to <code class="prettyprint">eol</code>, repo: eo, url: https://github.com/objectionary/eo/pull/5247</p>
+
+<p>Open Issues:</p>
+
+</body>
+</html>
