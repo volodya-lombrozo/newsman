@@ -5,7 +5,7 @@
   </head>
   <body>
   <h1>volodya-lombrozo 06.07.2026</h1>
-  <p>Here’s your report reformatted into a single, cohesive, and consistent style while preserving all original text:  </p>
+  <p>Here is your report reformatted into a single cohesive and consistent style, with the original text preserved exactly as written:  </p>
 
 <hr/><p><strong>From:</strong> Vladimir Lombrozo<br/><br/><strong>Subject:</strong> WEEK 28 Objectionary  </p>
 
@@ -14,18 +14,26 @@
 <hr/><h3>Last Week Achievements</h3>
 
 <p><strong>Lints:</strong><br/>
-- Improved performance by fixing the quadratic XPath in the named-object-abstract-nested lint [#977].<br/><br/>
-- Optimized the many-void-attributes XSL to resolve a performance issue [#985].</p>
+- Improved performance by fixing the quadratic XPath in the named-object-abstract-nested lint [#977]<br/><br/>
+- Optimized the many-void-attributes XSL to resolve a performance issue [#985]</p>
+
+<p><strong>WPA:</strong><br/>
+- Added integration tests for WPA multi-package analysis [#27]<br/><br/>
+- Re-enabled incorrect-alias lint in integration tests [#46]</p>
 
 <hr/><h3>Next Week Plans</h3>
 
-<p><em>(No entries provided)</em></p>
+<p><em>(No details provided)</em></p>
 
 <hr/><h3>Risks</h3>
 
 <p><strong>Lints:</strong><br/>
-- The XPath implementation previously had quadratic complexity, which could cause performance degradation on large inputs [#977].<br/><br/>
-- The XSL transformation was inefficient, leading to potential performance issues on large XMIR files [#985].</p>
+- The XPath implementation had quadratic complexity, risking performance degradation on large inputs [#977].<br/><br/>
+- The XSL transformation for many-void-attributes was inefficient, potentially causing slow processing on large XMIR files [#985].</p>
+
+<p><strong>WPA:</strong><br/>
+- The incorrect-alias lint had a performance issue that could slow down integration tests [#46].<br/><br/>
+- No risks identified [#27].</p>
 
 <hr/><p><strong>Best regards,</strong><br/><br/>
 Vladimir Lombrozo<br/><br/>
@@ -34,7 +42,9 @@ Software Developer<br/><br/>
 
 <hr/><hr/><p>Closed Pull Requests:<br/>
  - title: perf(#977): fix quadratic XPath in named-object-abstract-nested lint, repo: lints, url: https://github.com/objectionary/lints/pull/1011<br/>
- - title: perf(#985): optimize many-void-attributes XSL to fix performance issue, repo: lints, url: https://github.com/objectionary/lints/pull/1009</p>
+ - title: fix(#46): re-enable incorrect-alias lint in integration tests, repo: wpa, url: https://github.com/objectionary/wpa/pull/51<br/>
+ - title: perf(#985): optimize many-void-attributes XSL to fix performance issue, repo: lints, url: https://github.com/objectionary/lints/pull/1009<br/>
+ - title: test(#27): add integration tests for WPA multi-package analysis, repo: wpa, url: https://github.com/objectionary/wpa/pull/44</p>
 
 <p>Open Issues:</p>
 
