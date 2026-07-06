@@ -26,7 +26,7 @@ jobs:
           newsman --name "Vladimir Lombrozo" \
                   --username "volodya-lombrozo" \
                   --model gpt-5-chat-latest \
-                  --repository objectionary/eoc,objectionary/jeo-maven-plugin,objectionary/eo,objectionary/lints,volodya-lombrozo/jsmith,cqfn/refrax,objectionary/hone-maven-plugin \
+                  --repository objectionary/eoc,objectionary/jeo-maven-plugin,objectionary/eo,objectionary/lints,objectionary/wpa,volodya-lombrozo/jsmith,cqfn/refrax,objectionary/hone-maven-plugin \
                   -o html \
                   -t Objectionary
       - run: mkdir -p gh-pages/$(date +'%Y/%m/%d')
