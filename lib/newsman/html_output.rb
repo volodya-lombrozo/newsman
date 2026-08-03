@@ -23,6 +23,7 @@
 require 'erb'
 require 'redcarpet'
 require 'nokogiri'
+require_relative 'docx_output'
 
 # This class represents a report output in HTML format.
 class Htmlout
@@ -32,6 +33,7 @@ class Htmlout
     </head>
     <body>
       <h1><%= title %></h1>
+      <p><a href="<%= docx %>">Download as Word (.docx)</a></p>
       <%= body %>
     </body>
   HTML
@@ -44,6 +46,7 @@ class Htmlout
   def print(report, reporter, model)
     title = title(reporter)
     body = to_html(report)
+    docx = Docxout.new(@root).print(report, reporter, model)
     puts "Create a html file in a directory #{@root}"
     file = File.new(File.join(@root, filename(reporter, model)), 'w')
     puts "File #{file.path} was successfully created"

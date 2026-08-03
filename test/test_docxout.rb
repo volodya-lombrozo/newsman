@@ -23,49 +23,31 @@
 
 require 'minitest/autorun'
 require 'date'
-require_relative '../lib/newsman/html_output'
+require 'zip'
+require_relative '../lib/newsman/docx_output'
 
-class TestHtmlout < Minitest::Test
-  EXPECTED = "<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.0 Transitional//EN\" \"http://www.w3.org/TR/REC-html40/loose.dtd\">
-<html>
-  <head>
-    <title>volodya-lombrozo #{Time.new.strftime('%d.%m.%Y')}</title>
-  </head>
-  <body>
-  <h1>volodya-lombrozo #{Time.new.strftime('%d.%m.%Y')}</h1>
-  <p><a href=\"#{Time.new.strftime('%d.%m.%Y')}.volodya-lombrozo.gpt-3-5-turbo.docx\">Download as Word (.docx)</a></p>
-  <p>Issue description</p>
-
-<p>Here is a new paragraph<br/>
-List is here:<br/>
- - one<br/>
- - two<br/>
- - three</p>
-
-</body>
-</html>
-".freeze
-
-  def test_writes_to_a_html_file
+class TestDocxout < Minitest::Test
+  def test_writes_to_a_docx_file
     Dir.mktmpdir do |temp_dir|
-      output = Htmlout.new(temp_dir)
+      output = Docxout.new(temp_dir)
       today = Date.today.strftime('%d.%m.%Y')
-      expected = "#{today}.volodya-lombrozo.gpt-3-5-turbo.html"
-      output.print("Issue description\n\nHere is a new paragraph\nList is here:\n - one\n - two\n - three",
-                   'volodya-lombrozo',
-                   'gpt-3.5-turbo')
+      expected = "#{today}.volodya-lombrozo.gpt-3-5-turbo.docx"
+      returned = output.print("Issue description\n\nHere is a new paragraph\nList is here:\n - one\n - two\n - three",
+                              'volodya-lombrozo',
+                              'gpt-3.5-turbo')
+      assert_equal(expected, returned)
       assert(File.exist?(File.join(temp_dir, expected)))
-      assert_equal(EXPECTED, File.read(File.join(temp_dir, expected)))
     end
   end
 
-  def test_also_writes_a_docx_file
+  def test_docx_uses_times_new_roman_12pt
     Dir.mktmpdir do |temp_dir|
-      output = Htmlout.new(temp_dir)
-      today = Date.today.strftime('%d.%m.%Y')
-      expected = "#{today}.volodya-lombrozo.gpt-3-5-turbo.docx"
-      output.print('Issue description', 'volodya-lombrozo', 'gpt-3.5-turbo')
-      assert(File.exist?(File.join(temp_dir, expected)))
+      output = Docxout.new(temp_dir)
+      path = File.join(temp_dir, output.print('Issue description', 'volodya-lombrozo', 'gpt-3.5-turbo'))
+      document_xml = Zip::File.open(path) { |zip| zip.read('word/document.xml') }
+      assert_includes(document_xml, 'w:ascii="Times New Roman"')
+      assert_includes(document_xml, '<w:sz w:val="24"/>')
+      assert_includes(document_xml, 'Issue description')
     end
   end
 end

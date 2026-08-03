@@ -31,6 +31,7 @@ require_relative 'newsman/issues'
 require_relative 'newsman/stdout_output'
 require_relative 'newsman/txt_output'
 require_relative 'newsman/html_output'
+require_relative 'newsman/docx_output'
 require_relative 'newsman/report'
 require_relative 'newsman/assistant'
 require_relative 'newsman/github'
@@ -60,7 +61,7 @@ def generate
     end
     opts.on('-o', '--output OUTPUT',
             'Output type. Newsman prints a report to a stdout by default.'\
-            "You can choose another options like '-o html', '-o txt' or even '-o html'") do |o|
+            "You can choose another options like '-o html', '-o txt' or '-o docx'") do |o|
       options[:output] = o
     end
     opts.on('-t', '--title TITLE', 'Project Title. Empty by default') { |t| options[:title] = t }
@@ -128,13 +129,18 @@ def generate
   full_answer = report.append_additional(full_answer)
   output_mode = options[:output]
   puts "Output mode is '#{output_mode}'"
-  if output_mode.eql? 'txt'
+  case output_mode
+  when 'txt'
     puts 'Print result to a txt file'
     output = Txtout.new('.')
     output.print(full_answer, github_username)
-  elsif output_mode.eql? 'html'
+  when 'html'
     puts 'Print result to a html file'
     output = Htmlout.new('.')
+    output.print(full_answer, github_username, options[:model])
+  when 'docx'
+    puts 'Print result to a docx file'
+    output = Docxout.new('.')
     output.print(full_answer, github_username, options[:model])
   else
     puts 'Print result to a stdout'
