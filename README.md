@@ -98,6 +98,25 @@ newsman --help
 ```
 And you should see a welcome message from newsman.
 
+## Releases
+
+Releases are handled by the [`release.yaml`](.github/workflows/release.yaml) GitHub Actions workflow. It runs whenever a tag matching `v*.*.*` (e.g. `v1.2.1`) is pushed, or manually via `workflow_dispatch`. On trigger it:
+
+1. Runs the test suite (`rake test`) and RuboCop (`rake rubocop`).
+2. Builds and installs the gem (`rake install`).
+3. Publishes the gem to [RubyGems.org](https://rubygems.org/gems/newsman) (`rake publish`), using the `RUBYGEMS_API_KEY` secret.
+4. Creates a GitHub Release for the pushed tag, using the `RELEASE_GITHUB_TOKEN` secret.
+
+### How to cut a release
+
+1. **Bump the version** in `newsman.gemspec` (`spec.version`) and commit it to `main`. RubyGems refuses to publish a version that's already live, so this step is mandatory - the workflow's `gem push` will silently fail otherwise (the publish step is `continue-on-error: true`, so the run can still show green even though nothing was actually published).
+2. **Tag the commit** with the same version, prefixed with `v`, and push the tag:
+   ```shell
+   git tag v1.2.1
+   git push origin v1.2.1
+   ```
+3. Watch the `Release Ruby Gem` workflow run in the Actions tab, and confirm the new version shows up on [RubyGems.org](https://rubygems.org/gems/newsman) and as a [GitHub Release](https://github.com/volodya-lombrozo/newsman/releases).
+
 ## Examples
 
 You can find examples of generated reports [here](https://volodya-lombrozo.github.io/newsman/)
