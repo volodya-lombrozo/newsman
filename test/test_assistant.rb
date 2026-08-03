@@ -35,4 +35,31 @@ class TestAssistant < Minitest::Test
     assert_equal expected,
                  assistant.say_hello
   end
+
+  def test_fixed_temperature_for_reasoning_models
+    %w[o1 o1-preview o1-mini o3 o3-mini o4-mini gpt-5 gpt-5-mini gpt-5.6].each do |model|
+      assistant = Assistant.new('test-token', model: model)
+      assert(assistant.fixed_temperature?, "expected #{model} to have a fixed temperature")
+    end
+  end
+
+  def test_custom_temperature_for_chat_models
+    %w[gpt-3.5-turbo gpt-4o gpt-4.1 gpt-5-chat-latest].each do |model|
+      assistant = Assistant.new('test-token', model: model)
+      refute(assistant.fixed_temperature?, "expected #{model} to allow a custom temperature")
+    end
+  end
+
+  def test_o1_preview_skips_system_message
+    assistant = Assistant.new('test-token', model: 'o1-preview')
+    messages = assistant.messages('do something')
+    assert_equal([{ role: 'user', content: 'do something' }], messages)
+  end
+
+  def test_other_models_keep_system_message
+    assistant = Assistant.new('test-token', model: 'gpt-5.6')
+    messages = assistant.messages('do something')
+    assert_equal(2, messages.size)
+    assert_equal('system', messages.first[:role])
+  end
 end
