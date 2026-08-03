@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+  <head>
+    <title>volodya-lombrozo 03.08.2026</title>
+  </head>
+  <body>
+  <h1>volodya-lombrozo 03.08.2026</h1>
+  <p><a href="03.08.2026.volodya-lombrozo.gpt-5-6.docx">Download as Word (.docx)</a></p>
+  <p><strong>From:</strong> Vladimir Lombrozo<br/><br/><strong>Subject:</strong> WEEK 32 Objectionary</p>
+
+<p>Hi all,</p>
+
+<h2>Last week achievements:</h2>
+
+<h3>lints:</h3>
+
+<ul><li>Updated jtcop-maven-plugin to v1.4.4 [#1177]</li>
+<li>Fixed the Vale CI check failing on INFO-level violations [#1180]</li>
+<li>Upgraded eo-parser to v0.62.1 and pinned the home version [#1179]</li>
+<li>Optimized the bytes-without-data XSL selector [#978]</li>
+<li>Bumped hone-maven-plugin and excluded JUnit tests [#1124]</li>
+<li>Pinned Java 23 and enabled the pull_request trigger in the Infer workflow [#1144]</li>
+<li>Removed the deep profile from the PIT workflow [#1145]</li>
+<li>Upgraded qulice-maven-plugin to v0.27.9 [#1151]</li>
+<li>Upgraded qulice-maven-plugin to v0.27.8 [#1141]</li>
+<li>Improved benchmark reliability by handling broken pipes, adding failure notices, renaming the timings file, restructuring tests, fixing an NPE, and synchronizing shared CSV access [#1114]</li>
+<li>Added tests for the unsorted-named-attributes lint and introduced a PR benchmark comparison workflow [#1109]</li>
+</ul><h2>Next week plans:</h2>
+
+<h2>Risks:</h2>
+
+<h3>lints:</h3>
+
+<ul><li>No risks identified [#1177].</li>
+<li>Pre-existing INFO-level violations may cause the Vale CI check to fail [#1180].</li>
+<li>Unpinned dependencies may break the reserved CI profile and cause unstable test assertions [#1179].</li>
+<li>Expensive XPath predicate evaluation may degrade performance on large XMIR files [#978].</li>
+<li>No risks identified [#1124].</li>
+<li>Missing Java 23 configuration may cause inconsistent compilation behavior in CI jobs [#1144].</li>
+<li>Test discovery issues in the deep profile may result in 0% reported mutation coverage [#1145].</li>
+<li>No risks identified [#1151].</li>
+<li>No risks identified [#1141].</li>
+<li>Broken pipe signals may cause spurious benchmark workflow failures, while benchmark errors may remain unnoticed [#1114].</li>
+<li>Shared timing-file contention may cause benchmark tests to fail with a NullPointerException [#1114].</li>
+<li>Multiple Tojos instances accessing the same timing file may cause a NullPointerException [#1114].</li>
+<li>Concurrent writes to the shared timings CSV may trigger benchmark test failures and NullPointerExceptions [#1114].</li>
+<li>Nested preceding-sibling lookups may significantly degrade lint performance [#1109].</li>
+<li>No risks identified [#1109].</li>
+</ul><p>Best regards,<br/><br/>
+Vladimir Lombrozo<br/><br/>
+Software Developer  </p>
+
+<h2>2026-08-03</h2>
+
+<p>Closed Pull Requests:<br/>
+ - title: chore(#1177): update jtcop-maven-plugin to v1.4.4, repo: lints, url: https://github.com/objectionary/lints/pull/1184<br/>
+ - title: ci(#1180): fix vale CI check failing on INFO-level violations, repo: lints, url: https://github.com/objectionary/lints/pull/1183<br/>
+ - title: build(#1179): upgrade eo-parser to 0.62.1 and pin home version, repo: lints, url: https://github.com/objectionary/lints/pull/1181<br/>
+ - title: perf(#978): optimize bytes-without-data XSL selector, repo: lints, url: https://github.com/objectionary/lints/pull/1178<br/>
+ - title: build(#1124): bump hone-maven-plugin and exclude JUnit tests, repo: lints, url: https://github.com/objectionary/lints/pull/1164<br/>
+ - title: ci(#1144): pin Java 23 and enable pull_request trigger in infer workflow, repo: lints, url: https://github.com/objectionary/lints/pull/1158<br/>
+ - title: ci(#1145): remove deep profile from pit workflow, repo: lints, url: https://github.com/objectionary/lints/pull/1157<br/>
+ - title: build(#1151): upgrade qulice-maven-plugin to 0.27.9, repo: lints, url: https://github.com/objectionary/lints/pull/1152<br/>
+ - title: build(#1141): upgrade qulice-maven-plugin to 0.27.8, repo: lints, url: https://github.com/objectionary/lints/pull/1142<br/>
+ - title: ci(#1114): handle broken pipe in benchmark script and add failure notice, repo: lints, url: https://github.com/objectionary/lints/pull/1139<br/>
+ - title: fix(#1114): rename timings.csv to lint-timings.csv and split benchmark tests, repo: lints, url: https://github.com/objectionary/lints/pull/1137<br/>
+ - title: test(#1114): consolidate benchmark tests and fix NPE, repo: lints, url: https://github.com/objectionary/lints/pull/1127<br/>
+ - title: fix(#1114): synchronize shared timings CSV access in benchmarks, repo: lints, url: https://github.com/objectionary/lints/pull/1126<br/>
+ - title: test(#1109): add tests for unsorted-named-attributes lint, repo: lints, url: https://github.com/objectionary/lints/pull/1113<br/>
+ - title: ci(#1109): add benchmark comparison workflow for PRs, repo: lints, url: https://github.com/objectionary/lints/pull/1111</p>
+
+<p>Open Issues:</p>
+
+</body>
+</html>
