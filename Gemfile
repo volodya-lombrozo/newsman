@@ -12,4 +12,4 @@ gem 'optparse'
 gem 'redcarpet', '~> 3.6'
 gem 'rubocop', require: false
 gem 'ruby-openai', '~> 8.0'
-gem 'rubyzip', '~> 2.3'
+gem 'rubyzip', '~> 3.0'
