@@ -112,32 +112,32 @@ class Assistant
     send(prompt)
   end
 
-  # rubocop:disable Metrics/MethodLength
+  # OpenAI's reasoning-family models (o1, o3, o4-mini, gpt-5, ...) only accept
+  # the default temperature (1) and reject any explicit value with a 400.
+  # Their "-chat" flavors (e.g. gpt-5-chat-latest) are non-reasoning and
+  # support a custom temperature just like gpt-4o, gpt-3.5-turbo, etc.
+  FIXED_TEMPERATURE_MODELS = /\A(o[1-9]|gpt-5)/
+
   def send(request)
+    parameters = { model: @model, messages: messages(request) }
+    parameters[:temperature] = @temperature unless fixed_temperature?
+    @client.chat(parameters: parameters).dig('choices', 0, 'message', 'content')
+  end
+
+  def fixed_temperature?
+    @model.match?(FIXED_TEMPERATURE_MODELS) && !@model.include?('chat')
+  end
+
+  SYSTEM_PROMPT = 'You are a developer tasked with composing a concise report detailing'\
+    ' your activities and progress for the previous week, intended for submission to your supervisor.'
+
+  def messages(request)
     if @model == 'o1-preview'
-      @client.chat(
-        parameters: {
-          model: @model,
-          messages: [{ role: 'user', content: request.to_s }]
-        }
-      ).dig('choices', 0, 'message', 'content')
+      [{ role: 'user', content: request.to_s }]
     else
-      @client.chat(
-        parameters: {
-          model: @model,
-          messages: [
-            { role: 'system', content: 'You are a developer tasked'\
-  ' with composing a concise report detailing your activities'\
-  ' and progress for the previous week,'\
-  ' intended for submission to your supervisor.' },
-            { role: 'user', content: request.to_s }
-          ],
-          temperature: @temperature
-        }
-      ).dig('choices', 0, 'message', 'content')
+      [{ role: 'system', content: SYSTEM_PROMPT }, { role: 'user', content: request.to_s }]
     end
   end
-  # rubocop:enable Metrics/MethodLength
 
   def deprecated(method)
     warn "Warning! '#{method}' is deprecated and will be removed in future versions."
