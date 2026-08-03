@@ -62,7 +62,7 @@ Usage: newsman [options]
     -u, --username USERNAME          GitHub username. For example, 'volodya-lombrozo'
     -r, --repository REPOSITORIES    Specify which repositories to include in a report. You can specify several repositories using a comma separator, for example: '-r objectionary/jeo-maven-plugin,objectionary/opeo-maven-plugin'
     -p, --position POSITION          Reporter position in a company. Default value is a 'Software Developer'.
-    -o, --output OUTPUT              Output type. Newsman prints a report to a stdout by default. You can choose another options like '-o html', '-o txt' or even '-o html'
+    -o, --output OUTPUT              Output type. Newsman prints a report to a stdout by default. You can choose another options like '-o html', '-o txt' or '-o docx'. The 'html' output also generates a downloadable '.docx' copy (Times New Roman, 12pt) and links it from the page.
     -t, --title TITLE                Project Title. Empty by default
     -m, --model MODEL                AI model to use. gpt-3.5-turbo by default
 ```
