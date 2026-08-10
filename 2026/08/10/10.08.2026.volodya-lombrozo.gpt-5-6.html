@@ -10,40 +10,39 @@
 
 <p>Hi all,</p>
 
-<p><strong>Last week achievements:</strong></p>
+<h2>Last week achievements:</h2>
 
-<p><strong>lints:</strong></p>
+<h3>lints:</h3>
 
 <ul><li>Removed comments from test fixtures [#1219]</li>
 <li>Fixed Javadoc formatting for Qulice v0.30.6 [#1220]</li>
 <li>Added a lint for package members without void attributes [#1170]</li>
-<li>Replaced the macOS 15 CI runner with macOS 15 Intel [#1203]</li>
+<li>Replaced the macOS 15 runner with macOS 15 Intel [#1203]</li>
 <li>Fixed unused-alias detection for overlapping prefixes [#1055]</li>
-<li>Bumped typos to v1.49.0 and increased the test timeout [#1194]</li>
-<li>Replaced benchmark workflow path exclusions with an allowlist [#1196]</li>
-<li>Upgraded qulice-maven-plugin to v0.30.1 [#1174]</li>
+<li>Updated the benchmark workflow to use a path allowlist [#1196]</li>
 <li>Enabled hone workflows [#723]</li>
-<li>Clarified that lints also enforce naming conventions [#1102]</li>
-</ul><p><strong>eo:</strong></p>
+<li>Clarified that lints enforce naming conventions [#1102]</li>
+<li>Updated dependencies: crate-ci/typos, qulice-maven-plugin [#1194, #1174]</li>
+</ul><h3>eo:</h3>
 
 <ul><li>Moved eo-runtime tests to a separate workflow [#6392]</li>
-</ul><p><strong>Next week plans:</strong></p>
+</ul><h2>Next week plans:</h2>
 
-<p><strong>Risks:</strong></p>
+<h2>Risks:</h2>
 
-<p><strong>lints:</strong></p>
+<h3>lints:</h3>
 
 <ul><li>No risks identified [#1222].</li>
-<li>Stricter linting rules may cause Javadoc formatting checks to fail [#1221].</li>
+<li>No risks identified [#1221].</li>
 <li>Package members without void attributes may cause runtime failures when using the implicit receiver form [#1209].</li>
-<li>macOS runner queue delays may slow CI feedback on pull requests [#1204].</li>
-<li>Overlapping target prefixes may cause incorrect unused-alias detection [#1202].</li>
+<li>Long macOS runner queue times may delay CI feedback [#1204].</li>
+<li>Overlapping target prefixes may cause used aliases to be incorrectly reported as unused [#1202].</li>
 <li>Insufficient test timeouts may destabilize Windows CI builds [#1200].</li>
-<li>A denylist-based benchmark workflow may trigger unnecessary runs for non-code changes [#1197].</li>
-<li>Stricter Qulice checks may expose code-quality violations and break validation [#1190].</li>
-<li>Conditional guards and JDK-based profile detection may prevent Hone workflows from running as intended [#1189].</li>
-<li>Incomplete documentation may misrepresent the naming conventions enforced by the lints package [#1188].</li>
-</ul><p><strong>eo:</strong></p>
+<li>Broad workflow path rules may trigger unnecessary benchmark runs for non-code changes [#1197].</li>
+<li>No risks identified [#1190].</li>
+<li>No risks identified [#1189].</li>
+<li>No risks identified [#1188].</li>
+</ul><h3>eo:</h3>
 
 <ul><li>No risks identified [#6393].</li>
 </ul><p>Best regards,<br/><br/>
