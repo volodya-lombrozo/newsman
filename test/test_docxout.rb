@@ -50,4 +50,50 @@ class TestDocxout < Minitest::Test
       assert_includes(document_xml, 'Issue description')
     end
   end
+
+  def test_renders_markdown_headers_as_word_headings
+    Dir.mktmpdir do |temp_dir|
+      output = Docxout.new(temp_dir)
+      report = "# Title\n\n## Subtitle\n\n### Section"
+      path = File.join(temp_dir, output.print(report, 'volodya-lombrozo', 'gpt-3.5-turbo'))
+      document_xml = Zip::File.open(path) { |zip| zip.read('word/document.xml') }
+      %w[Heading1 Heading2 Heading3].each { |style| assert_includes(document_xml, %(<w:pStyle w:val="#{style}"/>)) }
+      assert_includes(document_xml, '>Title<')
+      refute_includes(document_xml, '# Title')
+    end
+  end
+
+  def test_renders_markdown_bullet_lists_as_word_lists
+    Dir.mktmpdir do |temp_dir|
+      output = Docxout.new(temp_dir)
+      report = "List is here:\n\n- one\n- two\n* three"
+      path = File.join(temp_dir, output.print(report, 'volodya-lombrozo', 'gpt-3.5-turbo'))
+      document_xml = Zip::File.open(path) { |zip| zip.read('word/document.xml') }
+      assert_includes(document_xml, '<w:numId w:val="1"/>')
+      assert_includes(document_xml, '>one<')
+      refute_includes(document_xml, '>- one<')
+    end
+  end
+
+  def test_renders_markdown_numbered_lists_as_word_lists
+    Dir.mktmpdir do |temp_dir|
+      output = Docxout.new(temp_dir)
+      report = "1. first\n2. second"
+      path = File.join(temp_dir, output.print(report, 'volodya-lombrozo', 'gpt-3.5-turbo'))
+      document_xml = Zip::File.open(path) { |zip| zip.read('word/document.xml') }
+      assert_includes(document_xml, '<w:numId w:val="2"/>')
+      assert_includes(document_xml, '>first<')
+    end
+  end
+
+  def test_docx_package_includes_a_valid_numbering_part
+    Dir.mktmpdir do |temp_dir|
+      output = Docxout.new(temp_dir)
+      path = File.join(temp_dir, output.print("- one\n- two", 'volodya-lombrozo', 'gpt-3.5-turbo'))
+      Zip::File.open(path) do |zip|
+        assert(zip.find_entry('word/numbering.xml'))
+        assert(zip.find_entry('word/_rels/document.xml.rels'))
+      end
+    end
+  end
 end
