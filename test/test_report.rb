@@ -73,4 +73,17 @@ class TestReport < Minitest::Test
     actual = ReportItems.new(prs, issues).to_s
     assert_equal expected, actual
   end
+
+  def test_report_items_with_activity_metrics
+    expected = <<~EXPECTED
+      Closed Pull Requests:
+
+      Open Issues:
+
+      Issues reviewed: 7 (labeled/assigned), 3 closed
+      PRs reviewed: 5
+    EXPECTED
+    actual = ReportItems.new([], [], issues_reviewed: IssueActivity.new(7, 3), prs_reviewed: 5).to_s
+    assert_equal expected, actual
+  end
 end
