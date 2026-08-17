@@ -25,6 +25,21 @@ require 'json'
 
 IMPORTANT_ISSUE = 'soon'
 
+# Represents how many issues a user reviewed (labeled, assigned, commented, etc.)
+# and how many of those were closed, during a given period.
+class IssueActivity
+  attr_reader :reviewed, :closed
+
+  def initialize(reviewed, closed)
+    @reviewed = reviewed
+    @closed = closed
+  end
+
+  def to_s
+    "Issues reviewed: #{@reviewed} (labeled/assigned), #{@closed} closed"
+  end
+end
+
 # This class represents a GitHub Issue abstraction created by a user.
 class Issue
   attr_accessor :title, :body, :repo, :number

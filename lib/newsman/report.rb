@@ -65,9 +65,11 @@ end
 
 # Report items inner class.
 class ReportItems
-  def initialize(prs, issues)
+  def initialize(prs, issues, issues_reviewed: nil, prs_reviewed: nil)
     @prs = prs || []
     @issues = issues || []
+    @issues_reviewed = issues_reviewed
+    @prs_reviewed = prs_reviewed
   end
 
   # Returns true if there are no pull requests or issues, false otherwise
@@ -78,6 +80,15 @@ class ReportItems
   def to_s
     prs_list = @prs.map(&:detailed_title).map { |obj| " - #{obj}\n" }.join
     issues_list = @issues.map(&:detailed_title).map { |obj| " - #{obj}\n" }.join
-    "Closed Pull Requests:\n#{prs_list}\nOpen Issues:\n#{issues_list}"
+    "Closed Pull Requests:\n#{prs_list}\nOpen Issues:\n#{issues_list}#{activity}"
+  end
+
+  private
+
+  def activity
+    return '' unless @issues_reviewed || @prs_reviewed
+
+    lines = [@issues_reviewed&.to_s, (@prs_reviewed ? "PRs reviewed: #{@prs_reviewed}" : nil)].compact
+    "\n#{lines.join("\n")}\n"
   end
 end

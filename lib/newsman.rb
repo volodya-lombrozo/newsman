@@ -99,6 +99,8 @@ def generate
   github = Github.new(github_token)
   prs = github.pull_requests(github_username, github_repositories)
   issues = github.issues(github_username, github_repositories)
+  issues_reviewed = github.issues_reviewed(github_username, github_repositories)
+  prs_reviewed = github.pull_requests_reviewed(github_username, github_repositories)
   puts "\nNow lets test some aggregation using OpenAI\n\n"
   assistant = Assistant.new(openai_token, model: options[:model])
   # Build previous results
@@ -118,7 +120,7 @@ def generate
     reporter,
     reporter_position,
     options[:title],
-    additional: ReportItems.new(prs, issues)
+    additional: ReportItems.new(prs, issues, issues_reviewed: issues_reviewed, prs_reviewed: prs_reviewed)
   )
   full_answer = assistant.format(report.build(
                                    answer,

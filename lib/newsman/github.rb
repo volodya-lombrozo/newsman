@@ -24,8 +24,8 @@
 
 # This class represents a useful abstraction over Github API.
 class Github
-  def initialize(token)
-    @client = Octokit::Client.new(github_token: token)
+  def initialize(token, client: nil)
+    @client = client || Octokit::Client.new(github_token: token)
   end
 
   def pull_requests(username, repositories)
@@ -46,6 +46,24 @@ class Github
     @client.search_issues(query).items.map do |issue|
       parse_issue(issue)
     end.select(&:important?)
+  end
+
+  def issues_reviewed(username, repositories)
+    since = date_one_week_ago(Date.today)
+    reviewed_query = "is:issue involves:#{username} updated:>=#{since} #{repositories}"
+    closed_query = "is:issue is:closed involves:#{username} closed:>=#{since} #{repositories}"
+    puts "Searching issues reviewed using the following query: '#{reviewed_query}'"
+    reviewed = @client.search_issues(reviewed_query).total_count
+    puts "Searching issues closed using the following query: '#{closed_query}'"
+    closed = @client.search_issues(closed_query).total_count
+    IssueActivity.new(reviewed, closed)
+  end
+
+  def pull_requests_reviewed(username, repositories)
+    since = date_one_week_ago(Date.today)
+    query = "is:pr reviewed-by:#{username} updated:>=#{since} #{repositories}"
+    puts "Searching pull requests reviewed using the following query: '#{query}'"
+    @client.search_issues(query).total_count
   end
 
   def parse_pr(pull_request)
