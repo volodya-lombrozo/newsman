@@ -86,6 +86,18 @@ class TestDocxout < Minitest::Test
     end
   end
 
+  def test_strips_markdown_bold_markers
+    Dir.mktmpdir do |temp_dir|
+      output = Docxout.new(temp_dir)
+      report = 'Deploys are **blocked** until review, __really__ blocked.'
+      path = File.join(temp_dir, output.print(report, 'volodya-lombrozo', 'gpt-3.5-turbo'))
+      document_xml = Zip::File.open(path) { |zip| zip.read('word/document.xml') }
+      assert_includes(document_xml, 'Deploys are blocked until review, really blocked.')
+      refute_includes(document_xml, '**')
+      refute_includes(document_xml, '__')
+    end
+  end
+
   def test_docx_package_includes_a_valid_numbering_part
     Dir.mktmpdir do |temp_dir|
       output = Docxout.new(temp_dir)

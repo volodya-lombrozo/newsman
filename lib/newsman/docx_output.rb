@@ -57,6 +57,8 @@ class Docxout
   BULLET = /^\s{0,3}[-*]\s+(.+?)\s*$/
   # Matches markdown numbered list items, e.g. "1. item".
   NUMBERED = /^\s{0,3}\d+\.\s+(.+?)\s*$/
+  # Matches markdown bold markers, e.g. "**bold**" or "__bold__".
+  BOLD = /(\*\*|__)(.+?)\1/
 
   FONT = 'Times New Roman'
   # Word expresses font size in half-points, so 12pt is 24.
@@ -151,6 +153,6 @@ class Docxout
   def run_xml(line)
     "<w:r><w:rPr><w:rFonts w:ascii=\"#{FONT}\" w:hAnsi=\"#{FONT}\" w:cs=\"#{FONT}\"/>" \
       "<w:sz w:val=\"#{SIZE}\"/><w:szCs w:val=\"#{SIZE}\"/></w:rPr>" \
-      "<w:t xml:space=\"preserve\">#{CGI.escapeHTML(line)}</w:t></w:r>"
+      "<w:t xml:space=\"preserve\">#{CGI.escapeHTML(line.gsub(BOLD, '\2'))}</w:t></w:r>"
   end
 end
