@@ -72,9 +72,9 @@ class ReportItems
     @prs_reviewed = prs_reviewed
   end
 
-  # Returns true if there are no pull requests or issues, false otherwise
+  # Returns true if there are no pull requests, issues, or reviewed activity, false otherwise
   def empty?
-    @prs.empty? && @issues.empty?
+    @prs.empty? && @issues.empty? && @issues_reviewed.nil? && @prs_reviewed.nil?
   end
 
   def to_s
