@@ -86,4 +86,11 @@ class TestReport < Minitest::Test
     actual = ReportItems.new([], [], issues_reviewed: IssueActivity.new(7, 3), prs_reviewed: 5).to_s
     assert_equal expected, actual
   end
+
+  def test_append_additional_keeps_reviewed_activity_when_no_prs_or_issues
+    additional = ReportItems.new([], [], issues_reviewed: IssueActivity.new(0, 0), prs_reviewed: 9)
+    report = Report.new('User', 'Developer', 'Project', additional: additional)
+    actual = report.append_additional('BASE REPORT')
+    assert_includes actual, 'PRs reviewed: 9'
+  end
 end
