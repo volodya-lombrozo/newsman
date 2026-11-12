@@ -18,7 +18,7 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency 'minitest', '~> 5.22'
   spec.add_development_dependency 'rspec', '~> 3.2'
-  spec.add_runtime_dependency 'json', '~> 2.6'
+  spec.add_runtime_dependency 'json', '~> 3.0'
   spec.add_dependency 'dotenv', '~> 3.1'
   spec.add_dependency 'faraday-retry', '~> 2.2'
   spec.add_dependency 'net-http', '~> 0.4'
