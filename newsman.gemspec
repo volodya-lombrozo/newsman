@@ -26,6 +26,6 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'octokit', '~> 8.0'
   spec.add_dependency 'optparse', '~> 0.8.0'
   spec.add_dependency 'redcarpet', '~> 3.6'
-  spec.add_dependency 'ruby-openai', '~> 6.3'
+  spec.add_dependency 'ruby-openai', '~> 8.0'
   spec.add_dependency 'rubyzip', '~> 2.3'
 end
